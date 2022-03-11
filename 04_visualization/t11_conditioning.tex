@@ -1,0 +1,85 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Visualization]{DS: Visualization}
+\subtitle{Conditioning}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Case Study: Median Weekly Earnings}
+	    \begin{columns}
+	        \begin{column}{.45\textwidth}
+	        
+	                    \centering
+	                    \includegraphics[scale=.65]{Bild55}
+
+	        \end{column}
+	        
+	        
+	        \begin{column}{.55\textwidth}
+	        
+	                This data comes from the US Bureau of Labor Statistics, who oversees surveys regarding the economic health of the US. They have plotted median weekly earnings for men and women by education level.
+	                \begin{itemize}
+	                    \item What comparisons are made easily with this plot?
+	                    \item What comparisons are most interesting and important?
+	                \end{itemize}
+	                
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	\begin{frame}{Use conditioning to aid comparison}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.4]{Bild56}
+	    \end{figure}
+	    \begin{itemize}
+	        \item Lines make it easy to see the large effect of having a BA on weekly earnings.
+	        \item Having two separate lines makes clear the wage difference between men and women.
+	        \begin{itemize}
+	            \item It also highlights the fact that the wage difference increases, as education level does.
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+	
+	\begin{frame}{How does the income gap increase with education?}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.4]{Bild57}
+	    \end{figure}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{But… which ratio should we pick? M/F or F/M?}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.38]{Bild58}
+	    \end{figure}
+	    
+	    \begin{itemize}
+	        \item Curves increasing from left to right give a positive impression
+	        \item Curves decreasing from left to right give a negative impression
+	    \end{itemize}
+	    
+	\end{frame}
+	
+	\begin{frame}{Distributions and relationships in subgroups}
+	
+	    \vspace{-2em}
+	    \centering
+	     \includegraphics[scale=.55]{Bild59}
+	
+	                \begin{itemize}
+	                    \item Juxtaposition: placing multiple plots side by side, with the same scale (aka ``small multiples'').
+	                    \item Superposition: placing multiple density curves, scatter plots on top of each other
+	                    \item Use color and shapes to represent additional variables.
+	                \end{itemize}
+
+	\end{frame}
+\end{document}

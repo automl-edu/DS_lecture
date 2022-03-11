@@ -1,0 +1,105 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Regular Expressions}
+\subtitle{Regular Expressions in Python (and Regex Groups)}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{re.findall in Python}
+	    In Python, re.findall(pattern, text) will return a list of all matches.
+	    \includegraphics[scale=.35]{Bild19}
+	\end{frame}
+	
+	
+	\begin{frame}{re.sub in Python}
+    	In Python, re.sub(pattern, repl, text) will return text with all instances of pattern replaced by repl.
+	    \includegraphics[scale=.35]{Bild20}
+	\end{frame}
+	
+	
+	\begin{frame}{Raw Strings in Python}
+    	Note: When specifying a pattern, we strongly suggest using “raw strings”. 
+    	\begin{itemize}
+    	    \item A raw string is created using r“” or r‘’ instead of just “” or ‘’.
+    	    \item The exact reason is a bit tedious.
+    	    \begin{itemize}
+    	        \item Rough idea: Regular expressions and Python strings both use \textbackslash as an escape character. 
+    	        \item Using non-raw strings leads to uglier regular expressions.
+    	    \end{itemize}
+    	\end{itemize}
+    	\begin{figure}
+    	    \centering
+    	    \includegraphics[scale=.5]{Bild21}
+    	\end{figure}
+	    
+	    
+	    
+	    For more information see “The Backslash Plague” under \\
+	    \url{https://docs.python.org/3/howto/regex.html}.
+	\end{frame}
+	
+	
+	\begin{frame}{Regular Expression Groups}
+    	Earlier we used parentheses to specify the order of operations.\\
+    	Parenthesis have another meaning:
+    	\begin{itemize}
+    	    \item Every set of parentheses specifies a so-called “group”. 
+    	    \item Regular expression matchers (e.g. re.findall, \url{regex101.com}) will return matches organized by groups. In Python, returned as tuples.
+    	\end{itemize}
+    	\begin{figure}
+    	    \centering
+    	    \includegraphics[scale=.35]{Bild22}
+    	\end{figure}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Regex Puzzle}
+    	Fill in the regex below so that after code executes, day is “26”, month is “Jan”, and year is “2014”. 
+    	\begin{itemize}
+    	    \item See lec08-working-with-text.ipynb or \url{https://tinyurl.com/reg913s}.
+    	\end{itemize}
+    	\begin{figure}
+    	    \centering
+    	    \includegraphics[scale=.6]{Bild23}
+    	    \includegraphics[scale=.4]{Bild27}
+    	\end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Regex Puzzle (One Possible Solution) }
+    	Fill in the regex below so that after code executes, day is “26”, month is “Jan”, and year is “2014”. 
+    	\begin{figure}
+    	    \centering
+    	    \includegraphics[scale=.6]{Bild24}
+    	    \includegraphics[scale=.4]{Bild27}
+    	\end{figure}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Extracting Date Information}
+    	With a little more work, we can do something similar and extract day, month, year, hour, minutes, seconds, and time zone all in one regular expression.
+    	\begin{itemize}
+    	    \item Derivation is left as an exercise for you
+    	\end{itemize}
+    	\begin{figure}
+    	    \centering
+    	    \includegraphics[scale=.6]{Bild25}
+    	\end{figure}
+    	You will also see code that uses re.search instead of re.findall.
+    	\begin{itemize}
+    	    \item Beyond the scope of our lecture today.
+    	\end{itemize}
+    	\begin{figure}
+    	    \centering
+    	    \includegraphics[scale=.65]{Bild26}
+    	\end{figure}
+	\end{frame}
+\end{document}

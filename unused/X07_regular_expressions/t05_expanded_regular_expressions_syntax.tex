@@ -1,0 +1,50 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Regular Expressions}
+\subtitle{Expanded Regular Expressions Syntax}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Expanded Regex Syntax}
+	    \includegraphics[scale=.38]{Bild11}
+	\end{frame}
+	
+	\begin{frame}{More Regular Expression Examples}
+	    \includegraphics[scale=.38]{Bild12}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Expanded Regex Puzzle: \url{https://tinyurl.com/reg913w}}
+	    \includegraphics[scale=.33]{Bild13}\\
+	    Challenge: Give a regular expression for any lowercase string thathas a repeated vowel (i.e. noon, peel, festoon, looop, etc).
+
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Expanded Regex Puzzle Solution}
+	    \includegraphics[scale=.33]{Bild13}\\
+	   Challenge: Give a regular expression for any lowercase string that has a repeated vowel (i.e. noon, peel, festoon, looop, etc): [a-z]*(aa|ee|ii|oo|uu)[a-z]*
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Expanded Regex Syntax Puzzle: \url{https://tinyurl.com/reg913v}}
+	   Select “Unit Tests” then click “Run Tests” to test your regex\\ \includegraphics[scale=.3]{Bild13} \\
+	   Challenge: Give a regular expression for any string that contains both a lowercase letter and a number.
+	\end{frame}
+	
+	
+	\begin{frame}{Expanded Regex Syntax Solution: \url{https://tinyurl.com/reg913v}}
+	   Select “Unit Tests” then click “Run Tests” to test your regex\\ \includegraphics[scale=.3]{Bild13} \\
+	  Challenge: Give a regular expression for any string that contains both a lowercase letter and a number: (.*[0-9].*[a-z].*)|(.*[a-z].*[0-9].*)
+
+	\end{frame}
+\end{document}

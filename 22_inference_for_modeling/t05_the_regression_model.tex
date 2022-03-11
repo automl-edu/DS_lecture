@@ -1,0 +1,92 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Inference for Modeling}
+\subtitle{The regression model}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{The regression model}
+	    \begin{itemize}
+	        \item When fitting a linear regression model, we are assuming there is some underlying true relationship between our features and response.
+	        \item But, we never get to see the true relationship.
+	        \item We instead see a noisy version of it.
+	    \end{itemize}
+	    \begin{equation*}
+	        \mathbb{Y} = \mathbb{X}\theta^* + \epsilon
+	    \end{equation*}
+	    $\mathbb{Y}:$ observed response\\
+	    $\mathbb{X}$: design matrix\\
+	    $\theta^*$: true parameters\\
+	    $\epsilon$: errors (assumed to be i.i.d. across observations)
+	\end{frame}
+	
+    \begin{frame}{Example: simple linear regression}
+        \begin{columns}
+            \begin{column}{.5\textwidth}
+                    \begin{align*}
+                        \hat{y}_i = \underbrace{\theta^*_0 + \theta^*_1x_i}_{f_{\theta^*(x_i) \text{ true linear relationship}}} +\underbrace{\epsilon_i}_{\text{random noise}}
+                    \end{align*}
+                    
+                    
+                    \bigskip
+                    \begin{align*}
+                        E[\epsilon_i] = 0, Var[\epsilon_i] = \sigma^2
+                    \end{align*}
+            \end{column}
+            
+            
+            \begin{column}{.5\textwidth}
+                  \begin{figure}
+                      \centering
+                      \includegraphics[scale=.28]{Bild10}
+                  \end{figure}  
+            \end{column}
+        \end{columns}
+    \end{frame}
+
+	
+	
+	
+	\begin{frame}{The regression model}
+	    \begin{itemize}
+	        \item When fitting a linear regression model, we are assuming there is some underlying true relationship between our features and response.
+	        \item But, we never get to see the true relationship.
+	        \item We instead see a noisy version of it.
+	    \end{itemize}
+	    \begin{equation*}
+	        \mathbb{Y} = \mathbb{X}\theta^* + \epsilon
+	    \end{equation*}
+	    $\mathbb{Y}:$ observed response\\
+	    $\mathbb{X}$: design matrix\\
+	    $\theta^*$: true parameters\\
+	    $\epsilon$: errors (assumed to be i.i.d. across observations)\\
+	    \bigskip
+	    We can observe the quantities in blue. The quantities in red are unobservable.
+        Our goal is to estimate   $\theta^*$     .
+
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Least squares estimation}
+	    \begin{itemize}
+	        \item We called   $\hat{\theta}$    the optimal model parameter, because it minimized MSE for our training data.
+	        \item  $\hat{\theta}$    is an estimate of    $\theta^*$   . Specifically, it is the one that minimizes the training MSE (or some regularized version of it).
+	    \end{itemize}
+	    \begin{align*}
+	        \hat{\theta} = (\mathbb{X^T}\mathbb{X})^{-1}\mathbb{X^T\mathbb{Y}}
+	        \includegraphics[scale=.25]{Bild11}
+	    \end{align*}
+	    
+	    \begin{itemize}
+	        \item This is nothing new – just a more rigorous statistical treatment of what we’ve already seen.
+	        \item Still make predictions as           $\hat{\mathbb{Y}} = \mathbb{X}\hat{\mathbb{\theta}}$        .
+	    \end{itemize}
+	\end{frame}
+\end{document}

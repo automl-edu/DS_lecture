@@ -1,0 +1,42 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Regression]{DS: Simple Linear Regression}
+\subtitle{Recap: Modeling}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Recap: Modeling}
+	    \begin{itemize}
+	        \item Choose a model.
+	        \begin{itemize}
+	            \item So far, we’ve seen the constant model $\hat{y} = \theta $
+	            \begin{itemize}
+	                \item $\theta$ is called a parameter.
+	            \end{itemize}
+	        \end{itemize}
+	       \item Choose a loss function.
+            \begin{itemize}
+                \item So far, the options have been squared loss or absolute loss.
+                \begin{itemize}
+                    \item Squared loss: $L_2(y,\hat{y}) = (y-\hat{y})^2$
+                    \item Absolute loss:$ L_1(y,\hat{y}) = |y-\hat{y}|$
+                \end{itemize}
+                \item Loss functions tell us how much to penalize a single prediction
+            \end{itemize}
+            \item Minimize average loss across our entire dataset, to determine the optimal parameters.
+            \begin{itemize}
+                \item Smaller average loss values mean a better fit;\\ $\leadsto$ we have to find the parameters that minimize average loss
+            \end{itemize}
+	    \end{itemize}
+	    \centering
+	    $MSE(y,\hat{y})= \frac{1}{n}\sum\limits_{i=1}^n(y_i-\hat{y_i})^2$
+	    \hspace{3cm}
+	    $MAE(y,\hat{y})= \frac{1}{n}\sum\limits_{i=1}^n|y_i-\hat{y_i}|$
+	\end{frame}
+\end{document}

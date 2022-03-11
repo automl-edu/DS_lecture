@@ -1,0 +1,97 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Data Cleaning and EDA}
+\subtitle{Keys and Joins}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	
+	
+	\begin{frame}{Structure: Keys}
+
+	 \begin{columns}
+	   
+	   
+	   \begin{column}{.4\textwidth}
+	    \begin{itemize}
+	        \item Often data will reference other pieces of data
+	        \item Primary key: the column or set of columns in a table that determine the values of the remaining columns
+	        \begin{itemize}
+	            \item Primary keys are unique
+	            \item Examples: SSN, ProductIDs, …
+	        \end{itemize}
+	    \end{itemize}
+		\end{column}
+		
+	   \begin{column}{.6\textwidth}
+	   \begin{figure}
+	       		    \includegraphics[scale=.28]{Bild14}
+	   \end{figure}
+
+		\end{column}
+		\end{columns}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Structure: Keys}
+
+	 \begin{columns}
+	   
+	   
+	   \begin{column}{.4\textwidth}
+	    \begin{itemize}
+	        \item Often data will reference other pieces of data
+	        \item Primary key: the column or set of columns in a table that determine the values of the remaining columns
+	        \begin{itemize}
+	            \item Primary keys are unique
+	            \item Examples: SSN, ProductIDs, …
+	        \end{itemize}
+	        \item Foreign keys: the column or sets of columns that reference primary keys in other tables.
+	        \item You will need to join across tables
+	    \end{itemize}
+		\end{column}
+		
+	   \begin{column}{.6\textwidth}
+	   \begin{figure}
+	       		    \includegraphics[scale=.28]{Bild15}
+	   \end{figure}
+
+		\end{column}
+		\end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Questions to ask about Structure}
+	    \begin{itemize}
+	        \item Are the data in a standard format or encoding?
+	        \begin{itemize}
+	            \item Tabular data: CSV, TSV, Excel, SQL
+	            \item Nested data: JSON or XML
+	       \end{itemize}
+	       \item Are the data organized in “records”?
+           \begin{itemize}
+               \item No: Can we define records by parsing the data?
+           \end{itemize}
+           \item Are the data nested? (records contained within records…)
+           \begin{itemize}
+               \item Yes: Can we reasonably un-nest the data?
+           \end{itemize}
+           \item Does the data reference other data?
+           \begin{itemize}
+               \item Yes: can we join/merge the data
+           \end{itemize}
+           \item What are the fields in each record?
+           \begin{itemize}
+               \item How are they encoded?  (e.g., strings, numbers, binary, dates …)
+               \item What is the type of the data?
+           \end{itemize}
+	    \end{itemize}
+	\end{frame}
+\end{document}

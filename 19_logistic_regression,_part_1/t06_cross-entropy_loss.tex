@@ -1,0 +1,133 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Logistic Regression, Part 1}
+\subtitle{Cross-entropy loss}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Log loss}
+	    \begin{columns}
+	        \begin{column}{.4\textwidth}
+	                Consider this new loss, called the (negative) log loss, for a single observation when the true y is equal to 1.\\
+	                \bigskip
+	                We can see that as our prediction gets further and further from 1, the loss approaches infinity (unlike squared loss, which maxed out at 1).
+	        \end{column}
+	        
+	        \begin{column}{.4\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.5]{Bild18}
+	                \end{figure}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Log loss}
+	    Let’s look at some losses in particular:
+        \begin{figure}
+            \centering
+            \includegraphics[scale=.33]{Bild19}
+        \end{figure}
+	    Note: The logistic function never outputs 0 or 1 exactly, so there’s never actually 0 loss or infinite loss
+	\end{frame}
+	
+	\begin{frame}{Log loss}
+	    So far, we’ve only looked at log loss when the correct class was 1. \\
+	    What if our correct class is 0?
+        \begin{figure}
+            \centering
+            \includegraphics[scale=.33]{Bild20}
+        \end{figure}
+	    If the correct class is 0, we want to have low loss for values of   $\hat{y}$   close to 0, and high loss for values of   $\hat{y}$    close to 1. This is achieved by just “flipping” the plot on the left!
+	\end{frame}
+	
+	
+	\begin{frame}{Cross-entropy loss}
+	    We can combine the two cases from the previous slide into a single loss function:
+	    \begin{align*}
+	        loss = \left\{\begin{array}{cc}
+	            -log(1 - \hat{y}) & y = 0  \\
+	            -log(\hat{y}) & y= 1 
+	        \end{array}\right.
+	    \end{align*}
+	    This is often written unconditionally as:
+	    \begin{equation*}
+	        \text{loss} = -y\log (\hat{y}) - (1 - y) \log (1 - \hat{y})
+	    \end{equation*}
+	    Note: Since y = 0 or 1, one of these two terms is always equal to 0, which reduces this equation to the piecewise one above.\\
+	    \bigskip
+	    We call this loss function cross-entropy loss (or “log loss”).
+	\end{frame}
+	
+	\begin{frame}{Mean cross-entropy loss}
+	    The empirical risk for the logistic regression model when using cross-entropy loss is then
+	    \begin{align*}
+	        R(\theta) = -\frac{1}{n}\sum\limits_{i=1}^n(y_i\log (\sigma (\mathbb{X}_i^T\theta)) + (1 - y_i)\log (1 - \sigma (\mathbb{X}_i^T\theta)))
+	    \end{align*}
+	    Benefits over mean squared error for logistic regression:
+	    \begin{itemize}
+	        \item Loss surface is guaranteed to be convex.
+	        \item More strongly penalizes bad predictions.
+	        \item Has roots in probability and information theory (next section).
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{Comparing loss surfaces}
+	  On the left, we have a plot of the MSE loss surface on our toy dataset from before.\\ On the right, we have a plot of the mean cross-entropy loss surface on the same dataset. 
+
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild21}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Comparing loss surfaces}
+	  On the left, we have a plot of the MSE loss surface on our toy dataset from before.\\ On the right, we have a plot of the mean cross-entropy loss surface on the same dataset. 
+
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild22}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Comparing loss surfaces}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild23}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}[c]{Modeling recipe}
+	    As per usual:
+	    \begin{itemize}
+	        \item[1]  Choose a model.
+	        \item[2] Choose a loss (and, optionally, a regularization penalty).
+	        \item[3] Minimize empirical risk for the given model, loss, and regularization penalty (using an analytical solution, or numerical technique like gradient descent).
+	    \end{itemize}
+	    For logistic regression, we can use squared loss if we want to!
+	    \begin{itemize}
+	        \item Using squared loss and using cross-entropy loss will usually result in different  $\hat{\theta}$
+	        \begin{itemize}
+	            \item Different optimization problems, different solutions.
+	            \item  Constant model: absolute loss meant median, squared loss meant mean.
+	        \end{itemize}
+	        \item Cross-entropy loss is strictly better than squared loss for logistic regression.
+	        \begin{itemize}
+	            \item Convex, so easier to minimize using numerical techniques
+	            \item Better suited for modeling probabilities.
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+\end{document}

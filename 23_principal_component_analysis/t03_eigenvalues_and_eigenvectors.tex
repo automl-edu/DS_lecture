@@ -1,0 +1,96 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Principal Component Analysis}
+\subtitle{Eigenvalues and Eigenvectors}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Eigenvalues and Eigenvectors}
+	    An eigenvector z is a special vector of a given matrix A, that has the following property:
+	    \begin{equation*}
+	        Az = \lambda z
+	    \end{equation*}
+	    Here, $\lambda$ is a scalar, and it is the eigenvalue corresponding to z. So this means that when a matrix is multiplied by one of its eigenvectors, the result is a scaled copy of the eigenvector.\\
+	    A matrix may have multiple eigenvectors, but most vectors are not eigenvectors.\\
+	    \bigskip
+	    
+        We can refer to the eigenvalues and eigenvectors of a matrix like so. Remember, an eigenvector is paired with a specific eigenvalue, and vice versa.
+        \begin{equation*}
+            (\lambda_1,z_1),(\lambda_2,z_2),...
+        \end{equation*}
+        
+
+	\end{frame}
+	
+	
+	\begin{frame}{An Example}
+	    Here is an example matrix A.
+	    \begin{equation*}
+	        A = \left[\begin{array}{cc}
+	           0  &  -1\\
+	           2  &   3
+	        \end{array}\right]
+	         \end{equation*}
+	        It has two eigenvalue and eigenvector pairs:
+	        \begin{equation*}
+	            \lambda_1 = 2, z_1 = \left[\begin{array}{c}
+	           1\\
+	           -2
+	        \end{array}\right]
+	        \hspace{1cm} \lambda_2 = 1, z_2 = \left[\begin{array}{c}
+	           1\\
+	           -1
+	        \end{array}\right]
+	        \end{equation*}
+	        We can verify that the relationship		$Az = \lambda z$	   holds:
+	        \begin{equation*}
+	            Az_1 = \left[\begin{array}{cc}
+	           0  &  -1\\
+	           2  &   3
+	        \end{array}\right] \left[\begin{array}{c}
+	           1\\
+	           -2
+	        \end{array}\right] = \left[\begin{array}{c}
+	           2\\
+	           -4
+	        \end{array}\right] = 2 \left[\begin{array}{c}
+	           1\\
+	           -2
+	        \end{array}\right] = \lambda_1 z_1
+	        \end{equation*}
+	\end{frame}
+	
+	
+	\begin{frame}{Eigenvectors of the Covariance Matrix}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	                We can determine the eigenvectors and eigenvalues of our covariance matrix.
+	                \begin{align*}
+	                    \lambda_1 = .051, z_1 = \left[\begin{array}{c}
+	                             0.573\\
+	                             0.820
+	                    \end{array}\right]\\
+	                    \lambda_2 = .007, z_2 = \left[\begin{array}{c}
+	                             -0.820\\
+	                             0.573
+	                    \end{array}\right]
+	                \end{align*}
+	                The plot on the right shows these eigenvectors, relatively scaled by their corresponding eigenvalues.
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.5]{Bild3}
+	                \end{figure}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+\end{document}

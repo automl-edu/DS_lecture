@@ -1,0 +1,192 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Estimation and Bias}
+\subtitle{Recap: Data Sampling and Probability}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Key Concepts in Sampling}
+	    \begin{columns}
+	        \begin{column}{.4\textwidth}
+	           \begin{figure}
+	               \includegraphics[scale=.4]{Bild2}
+	           \end{figure}
+	        \end{column}
+	        
+	        \begin{column}{.4\textwidth}
+	            
+	            Population: the set of all units of interest, size N.\\
+	            \bigskip
+	            \bigskip
+	            \bigskip
+	            \bigskip
+	            \bigskip
+	        
+	            Sampling frame: the set of all possible units that can be drawn into the sample\\
+	            \bigskip
+	            \bigskip
+	            Sample: a subset of the sampling frame, size n.
+	        \end{column}
+	        
+	    \end{columns}
+	    
+	\end{frame}
+	
+	
+	\begin{frame}{Scenario 1: A census}
+	    \begin{columns}
+	        \begin{column}{.4\textwidth}
+	           \begin{figure}
+	               \includegraphics[scale=.3]{Bild3}
+	           \end{figure}
+	        \end{column}
+	        
+	        \begin{column}{.4\textwidth}
+	            Key Features
+                \begin{itemize}
+                    \item population = sample = sampling frame
+                    \item Pros:
+                    \begin{itemize}
+                        \item Lots of data
+                        \item No selection bias
+                        \item Easy inference
+                    \end{itemize}
+                    \item Cons:
+                    \begin{itemize}
+                        \item Expensive (time, money)
+                        \item Often impossible
+
+                    \end{itemize}
+                \end{itemize}
+	        \end{column}
+	        
+	    \end{columns}
+	    
+	\end{frame}
+	
+	
+	\begin{frame}{Scenario 2: Administrative Data}
+	    \begin{columns}
+	        \begin{column}{.4\textwidth}
+	           \begin{figure}
+	               \includegraphics[scale=.8]{Bild4}
+	           \end{figure}
+	        \end{column}
+	        
+	        \begin{column}{.4\textwidth}
+	            Key Features
+                \begin{itemize}
+                    \item Sampling frame contains a lot not in population
+                    \item Have access to entire frame
+                \end{itemize}
+	        \end{column}
+	        
+	    \end{columns}
+	    
+	\end{frame}
+	
+	
+	\begin{frame}{Scenario 3: What we like to think we have}
+	    \begin{columns}
+	        \begin{column}{.4\textwidth}
+	           \begin{figure}
+	               \includegraphics[scale=.75]{Bild5}
+	           \end{figure}
+	        \end{column}
+	        
+	        \begin{column}{.4\textwidth}
+	            Key Feature
+                \begin{itemize}
+                    \item Optimistic sense that sample is representative of population
+                \end{itemize}
+	        \end{column}
+	        
+	    \end{columns}
+	    
+	\end{frame}
+	
+	
+		\begin{frame}{Scenario 4: What we usually have}
+	    \begin{columns}
+	        \begin{column}{.4\textwidth}
+	           \begin{figure}
+	               \includegraphics[scale=.35]{Bild6}
+	           \end{figure}
+	        \end{column}
+	        
+	        \begin{column}{.4\textwidth}
+	            Key Feature
+                \begin{itemize}
+                    \item Sample may be drawn from a skewed frame and may not be representative of population
+                \end{itemize}
+	        \end{column}
+	        
+	    \end{columns}
+	    
+	\end{frame}
+	
+	\begin{frame}{Case study – 1936 Presidential Election}
+	    \begin{columns}
+	        \begin{column}{.6\textwidth}
+	           \begin{figure}
+	               \includegraphics[scale=.33]{Bild7}
+	           \end{figure}
+	        \end{column}
+	        
+	        \begin{column}{.4\textwidth}
+	            Q: What was the population?\\
+	            A: All people who will cast votes in the 1936 Presidential election\\
+	            \bigskip
+	            Selection bias: systematically favoring (or excluding) certain groups for inclusion in the sample\\
+	            \bigskip
+	            Non-response bias: when people who don’t respond are non-representative of the population.
+
+	        \end{column}
+	        
+	    \end{columns}
+	    
+	\end{frame}
+	
+	
+	
+		\begin{frame}{Data Quality vs. Data Quantity.}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	           \begin{figure}
+	               \includegraphics[scale=.37]{Bild8}
+	           \end{figure}
+	        \end{column}
+	        
+	        \begin{column}{.5\textwidth}
+	            Literary Digest 1936 poll: n = 10,000,000
+                US population 1936: N = 128,000,000\\
+                \hspace{1cm}-> 8\%! \\
+	            \bigskip
+	            Gallup 1936 poll: n = 50,000\\
+                Gallup 2021: n = 1,000\\
+	            \bigskip
+	            Non-response bias: when people who don’t respond are non-representative of the population.
+	            \bigskip
+	            into the sample. The typical sample size for a Gallup poll, either a traditional stand-alone poll or one night's interviewing from Gallup's Daily tracking, is 1000
+	        \end{column}
+	        
+	    \end{columns}
+	    
+	\end{frame}
+	
+	
+	\begin{frame}{Case Study - Gender diversity in Data Science}
+	   Question: What proportion of Data 100 students identify as female?
+	   \begin{figure}
+	       \centering
+	       \includegraphics[scale=.4]{Bild9}
+	   \end{figure}
+	    
+	\end{frame}
+\end{document}

@@ -1,0 +1,69 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Inference for Modeling}
+\subtitle{Bootstrapping model parameters}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Parameter estimates}
+	    \begin{itemize}
+	        \item Our estimate for     $\theta^*$    depends on what our training data was.
+	        \begin{itemize}
+	            \item Different training data, different   $\hat{\theta}$   ! \hspace{2cm}  $\hat{\theta} = (\mathbb{X}^T\mathbb{X})^{-1}\mathbb{X}^T\mathbb{Y}$
+	        \end{itemize}
+	        \item We want to think about all of the different ways that our training data, and hence our parameter estimate, could have come out.
+	        \item Easy!
+	        \begin{itemize}
+	            \item Bootstrap our training data.
+	            \item Fit a linear model to each resample.
+	            \item Look at the resulting distribution of bootstrapped parameter estimates.
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{Assessing the quality of our model}
+	    \begin{itemize}
+	        \item Suppose we fit a linear regression model with p features, plus an intercept term.
+	    \end{itemize}
+	    \begin{align*}
+	        &y = f_{\theta^*}(x) + \epsilon = \theta_0^* + \sum\limits_{j=1}^P \theta_j^*x_j + \epsilon
+	        \includegraphics[scale=.25]{Bild12}\\
+	        &\hat{y} = f_{\theta^*}(x) = \hat{\theta}_0 + \sum\limits_{j=1}^P\hat{\theta}_jx_j
+	        \includegraphics[scale=.25]{Bild13}
+	    \end{align*}
+	    \begin{itemize}
+	        \item If the true    $\theta^*_1$   is 0, then the feature $x_1$   has no effect on the response.
+	        \item How can we test whether or not         $\theta^*_1$ = 0       ?
+	    \end{itemize}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Confidence interval for true slope}
+	    \begin{itemize}
+	        \item We want to test whether   $\theta^*_1$    is 0.
+	        \item We get one estimate  $\hat{\theta}_1$    from our sample.
+	        \item But we must imagine all the other ways the random sample could have come out.
+	        \item If the sample is large – bootstrap it! 
+	        \begin{itemize}
+	            \item Estimate   $\theta^*_1$     each time.
+	            \item Make a confidence interval for    $\theta^*_1$     and see if 0 is in the interval.
+	            \begin{itemize}
+	                \item If yes:   $\theta^*_1$     is not significantly different than 0.
+	                \item If no:   $\theta^*_1$     is significantly different than 0.
+	                \item Can formalize with the language of hypothesis testing, but won’t do so here.
+	            \end{itemize}
+                \item Works for linear (and logistic!) regression models with any number of features.
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+	
+	
+\end{document}

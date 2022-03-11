@@ -1,0 +1,91 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Feature Engineering}
+\subtitle{Mathematical Implications of Feature Engineering}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}[c]{Revisiting the Normal Equations}
+	    Recall that fitting an OLS model requires solving the normal equations
+        \begin{equation*}
+            (X^TX)\theta = X^Ty
+        \end{equation*}
+        which can be updated using the new design matrix to
+        \begin{equation*}
+            (\Phi^T\Phi)\theta = \Phi^Ty
+        \end{equation*}
+        Since feature engineering changes the $\Phi$ matrix, feature engineering can influence the solution to the normal equations.
+	\end{frame}
+	
+	
+	\begin{frame}[c]{Linearly dependent features}
+	    Recall the solution to the normal equations: $\theta^* = (\Phi^T\Phi)^{-1}\Phi^Ty$
+        \begin{itemize}
+            \item This solution exists only when $(\Phi^T\Phi)^{-1}$ exists
+            \item $(\Phi^T\Phi)^{-1}$  exists only when $\Phi$ is full rank (i.e. all columns are linearly independent)
+            \begin{itemize}
+                \item The proof is outside the scope of this class
+            \end{itemize}
+            \item If $\Phi$ is not full rank then there are infinite solutions to the normal equations
+            \begin{itemize}
+                \item This is bad because model parameters are unstable
+            \end{itemize}
+        \end{itemize}
+        A simple example of linearly dependent features is having height in both inches and cm\\
+        \bigskip
+        This issue of linear dependence is a problem for one of the feature engineering techniques we saw earlier in the lecture. Can you identify which one?
+	\end{frame}
+	
+	
+	\begin{frame}[c]{Linearly dependent features}
+	    Recall the solution to the normal equations: $\theta^* = (\Phi^T\Phi)^{-1}\Phi^Ty$
+        \begin{itemize}
+            \item This solution exists only when $(\Phi^T\Phi)^{-1}$ exists
+            \item $(\Phi^T\Phi)^{-1}$  exists only when $\Phi$ is full rank (i.e. all columns are linearly independent)
+            \begin{itemize}
+                \item The proof is outside the scope of this class
+            \end{itemize}
+            \item If $\Phi$ is not full rank then there are infinite solutions to the normal equations
+            \begin{itemize}
+                \item This is bad because model parameters are unstable
+            \end{itemize}
+        \end{itemize}
+        A simple example of linearly dependent features is having height in both inches and cm\\
+        \bigskip
+        This issue of linear dependence is a problem for one of the feature engineering techniques we saw earlier in the lecture. Can you identify which one?
+	\end{frame}
+	
+	
+	\begin{frame}{One-Hot Encoding and Linear Dependence}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild8}
+	    \end{figure}
+	    Notice that co\_appl + co\_sam = bias! This means the columns are linearly dependent
+	    \begin{itemize}
+	        \item Solution: Drop one of the one-hot encoded columns per variable
+	    \end{itemize}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Too Many Features}
+	    If you add too many features, the normal equations will have infinite solutions\\
+	    \bigskip
+        The normal equations can be thought of as a system of equations with N equations and P unknown quantities to solve for
+	    \begin{itemize}
+	        \item N: \# of data points
+	        \item P: \# of parameters
+	    \end{itemize}
+	    \bigskip
+	    If P > N, you have more unknowns than equations so there can be no unique solution\\
+	    \bigskip
+	    Additionally, too many features can cause overfitting, which will be covered in future lectures
+	\end{frame}
+\end{document}

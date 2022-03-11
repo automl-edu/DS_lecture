@@ -1,0 +1,86 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Clustering, Part 2}
+\subtitle{Review}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Review: Taxonomy of Machine Learning}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.4]{Bild1}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Review: Taxonomy of Machine Learning}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	            In “Unsupervised Learning”:
+	                \begin{itemize}
+	                    \item Goal is to identify patterns in unlabeled data
+	                    \begin{itemize}
+	                        \item We do not have input/output pairs
+	                    \end{itemize}
+	                \end{itemize}
+	                Note that if even if we have labels, we can still use clustering to “figure out” the labels
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.35]{Bild2}
+	                \end{figure}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	
+	
+	\begin{frame}{Clustering Example}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	            Consider the figure shown from Fall 2019 Midterm 2
+	                \begin{itemize}
+	                    \item Recall that each point represents the 1st and 2nd PC of how much time patrons spent at 8 different zoo exhibits
+	                \end{itemize}
+	                \bigskip
+	                Goal of clustering: Assign each point to a cluster
+	                \bigskip
+	                This is an unsupervised task
+	                \begin{itemize}
+	                    \item We don’t have labels for each visitor
+	                    \item Want to infer pattern even without labels
+	                \end{itemize}
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.35]{Bild3}
+	                \end{figure}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Before We Begin}
+	    This is the last lecture for the course that will introduce new content.\\
+        This is also a completely new lecture to Data 100.\\
+        This lecture will introduce relatively advanced material, so note the following:
+        \begin{itemize}
+            \item This lecture will be in scope for the final, but we will not ask low-level questions about tricky details.
+            \item You should just know the big picture: “Why are we doing what we’re doing?”
+            \item There are no assignments related to this lecture, everything you need to know for the exam will be covered here.
+        \end{itemize}
+	\end{frame}
+\end{document}

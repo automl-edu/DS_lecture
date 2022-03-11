@@ -1,0 +1,363 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Clustering, Part 1}
+\subtitle{Agglomerative Clustering}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{K-Means}
+	    Which clustering result do you like better? 
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.4]{Bild27}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{K-Means}
+	    Which clustering result do you like better? 
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild28}
+	    \end{figure}
+	    K-Means likes the one on the right better. It has lower inertia
+	    \begin{itemize}
+	        \item Why is the inertia on the right lower?
+	        \item Is clustering on the right “wrong”?
+	    \end{itemize}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{K-Means}
+	    Which clustering result do you like better? 
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild28}
+	    \end{figure}
+	    K-Means likes the one on the right better because it has lower inertia: sum of squared distances from each data point to its center
+	    \begin{itemize}
+	        \item Why is the inertia lower? K-Means optimizes for distance, not “blobbiness”
+	        \item Is clustering on the right “wrong”? Good question! 
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{Agglomerative Clustering}
+	    As with regression and classification, there are many ways to do clustering\\
+	    \bigskip
+	    So far we’ve seen K-Means, which attempts to minimize inertia 
+	    \begin{itemize}
+	        \item Results not guaranteed to optimize inertia
+	        \item Even global optimum may not match our intuition of the best result
+	    \end{itemize}
+	    \bigskip
+	    Let’s discuss an alternate idea known as “agglomerative clustering”
+	    \begin{itemize}
+	        \item Basic idea: 
+	        \begin{itemize}
+	            \item Every data point starts out as its own cluster
+	            \item Join clusters with neighbors until we have only K clusters left
+	        \end{itemize}
+	    \end{itemize}
+	    Let’s see an example for K = 2
+	\end{frame}
+	
+	
+	\begin{frame}{Agglomerative Clustering Example}
+	    When the algorithm starts, every data point is in its own cluster
+	    \begin{itemize}
+	        \item Below, 12 data points, so 12 clusters
+	        \item Join closest clusters. However, in this case we have a tie: 11 is as close to 1 as it is to 5
+	        \item We will break ties arbitrarily
+	    \end{itemize}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.5]{Bild29}
+	    \end{figure}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Agglomerative Clustering Example}
+	    When the algorithm starts, every data point is in its own cluster
+	    \begin{itemize}
+	        \item Below, 12 data points, so 12 clusters
+	        \item Merge clusters 1 and 11
+	    \end{itemize}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild30}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Agglomerative Clustering Example}
+	    Tricky question:
+	    \begin{itemize}
+	        \item What is the distance between clusters 1 and 3?
+	    \end{itemize}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild31}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Agglomerative Clustering Example}
+	    Tricky question:
+	    \begin{itemize}
+	        \item What is the distance between clusters 1 and 3?
+	        \item There is no right answer. Common choice, use the max $\leftarrow$Would be perfectly reasonable to do something else, e.g. average or minimum
+
+	    \end{itemize}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild32}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Agglomerative Clustering Example}
+	    Next two closest are 1 and 3, so merge them
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild33}
+	    \end{figure}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Agglomerative Clustering Example}
+	    Next two closest are 2 and 6, so merge them
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild34}
+	    \end{figure}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Agglomerative Clustering Example}
+	    Next two closest are 2 and 6, so merge them
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild35}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Agglomerative Clustering Example}
+	    Next two closest are 0 and 9, so merge them
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild36}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Agglomerative Clustering Example}
+	    Next two closest are 0 and 9, so merge them
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild37}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Agglomerative Clustering Example}
+	    Next two closest are 1 and 5, so merge them
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild38}
+	    \end{figure}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Agglomerative Clustering Example}
+	    Next two closest are 1 and 5, so merge them
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild39}
+	    \end{figure}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Agglomerative Clustering Example}
+	    Next two closest are 7 and 10, so merge them
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild40}
+	    \end{figure}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Agglomerative Clustering Example}
+	    Next two closest are 7 and 10, so merge them
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild41}
+	    \end{figure}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Agglomerative Clustering Example}
+	    Next two closest are 0 and 4, so merge them
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild42}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Agglomerative Clustering Example}
+	    Next two closest are 0 and 4, so merge them
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild43}
+	    \end{figure}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Agglomerative Clustering Example}
+	    We now have 5 clusters:\\
+Cluster 0 has 3 points, Cluster 1 has 4 points, Clusters 2 and 7 have 2 points each. Cluster 8 has one point.
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild44}
+	    \end{figure}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Agglomerative Clustering Example}
+	    Next two closest are 2 and 8, so merge them
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild44}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Agglomerative Clustering Example}
+	    Next two closest are 2 and 8, so merge them
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild45}
+	    \end{figure}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Agglomerative Clustering Example}
+	    Next two closest are 0 and 2, so merge them
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild46}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Agglomerative Clustering Example}
+	    Next two closest are 0 and 2, so merge them
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild47}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Agglomerative Clustering Example}
+	    Next up are 1 and 7. Why?
+	    \begin{itemize}
+	        \item Max line between any member of 1 and 7 is shorter than max line between any member of 0 and 7. Purple line is longer than red line.
+	    \end{itemize}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild48}
+	    \end{figure}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Agglomerative Clustering Example}
+	    Next up are 1 and 7. Why?
+	    \begin{itemize}
+	        \item Max line between any member of 1 and 7 is shorter than max line between any member of 0 and 7. Purple line is longer than red line.
+	    \end{itemize}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild49}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Agglomerative Clustering Example}
+	    At this point, we are done, because we only have two clusters left.
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild50}
+	    \end{figure}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Agglomerative Clustering Example}
+	    On the full dataset, our agglomerative clustering algorithm gets the “right” output
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild51}
+	    \end{figure}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Clustering and Dendrograms}
+	    \begin{columns}
+	        \begin{column}{.7\textwidth}
+	                Agglomerative clustering is one form of “hierarchical clustering”
+	                \begin{itemize}
+	                    \item Can keep track of when two clusters got merged 
+	                    \begin{itemize}
+	                        \item Each cluster is a tree
+	                    \end{itemize}
+	                    \item Can visualize merging hierarchy, resulting in a “dendrogram”
+	                    \begin{itemize}
+	                        \item Won’t discuss any further, but you might see these in the wild
+	                    \end{itemize}
+	                \end{itemize}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.6]{Bild52}
+	                \end{figure}
+	        \end{column}
+	        
+	        
+	        \begin{column}{.3\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.6]{Bild53}
+	                \end{figure}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	\begin{frame}{Clustering Algorithms: Many More We Haven’t Seen}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.5]{Bild54}
+	    \end{figure}
+	    \url{https://scikit-learn.org/stable/_images/sphx_glr_plot_cluster_comparison_001.png}
+	\end{frame}
+\end{document}

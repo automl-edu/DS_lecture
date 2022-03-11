@@ -1,0 +1,63 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Inference for Modeling}
+\subtitle{Summary}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Summary}
+	    \begin{itemize}
+	        \item Estimators are functions that provide estimates of true population parameters.
+	        \item We can bootstrap to estimate the sampling distribution of an estimator.
+	        \item Using this bootstrapped sampling distribution, we can compute a confidence interval for our estimator.
+	        \begin{itemize}
+	            \item This gives us a rough idea of how uncertain we are about the true population parameter.
+	            \item Only valid if the original random sample is representative.
+	        \end{itemize}
+	        \item The assumption when performing linear regression is that there is some true parameter theta that defines a linear relationship between features X and response y.
+	        \begin{itemize}
+	            \item We can use the bootstrap to determine whether or not an individual feature is significant.
+	        \end{itemize}
+	        \item Multicollinearity arises when features are correlated with one another.
+	    \end{itemize}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{What’s next}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	                \begin{itemize}
+	                    \item This lecture was a (brief) diversion from the “ML” perspective.
+	                    \begin{itemize}
+	                        \item ML: Make accurate predictions.
+	                        \item Statistics: Infer about a population.
+	                    \end{itemize}
+	                    \item So far, we’ve covered supervised learning in great detail.
+	                    \begin{itemize}
+	                        \item Linear regression, logistic regression, decision trees / random forests.
+	                    \end{itemize}
+	                    \item We will now spend some time talking about unsupervised learning.
+	                    \begin{itemize}
+	                        \item Dimensionality reduction, PCA.
+	                        \item Clustering.
+	                    \end{itemize}
+	                \end{itemize}
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.45]{Bild14}
+	                \end{figure}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+\end{document}

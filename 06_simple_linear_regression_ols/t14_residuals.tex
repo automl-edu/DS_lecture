@@ -1,0 +1,63 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Regression]{DS: Ordinary Least Squares}
+\subtitle{Residuals}
+
+\graphicspath{ {./figure_ols/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Residual plots}
+	    Residual plots can tell us about the quality of our model.
+	    \begin{itemize}
+	        \item In the simple linear regression case, with only one independent variable, we typically plot residuals vs. $x$.
+	        \item More generally, a residual plot is of residuals vs. fitted values.
+	    \end{itemize}
+	    Properties:
+	    \begin{itemize}
+	        \item A good residual plot has no pattern. This means that our model represents the relationship in the data well.
+	        \begin{itemize}
+	            \item If you see a curve, it is a sign that transformations or additional variables could help.
+	        \end{itemize}
+	        \item A good residual plot also has a similar vertical spread throughout the entire plot.
+	        \begin{itemize}
+	            \item If this is not the case, the accuracy of the predictions is not reliable.
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{Residual plots}
+	    \centering
+	    \includegraphics[scale=.4]{Bild11}
+	\end{frame}
+	
+	
+	\begin{frame}{Residual plots}
+	    \centering
+	    \includegraphics[scale=.45]{Bild12}
+	\end{frame}
+	
+	
+	\begin{frame}{Residuals are orthogonal to the span of X}
+	    When our linear model has an intercept term (i.e. when our design matrix has a column of all 1s), the following properties hold true:
+	    \begin{itemize}
+	        \item The sum of the residuals is 0.
+            \begin{itemize}
+                \item This is true, no matter what the features of model are.
+                \item This is why the positive and negative residuals cancel out in any residual plot where the (linear) model contains an intercept term, even if the model is terrible.
+            \end{itemize}
+            \item The average true $y$ value is equal to the average predicted $\hat{y}$ value.
+            \begin{itemize}
+                \item This follows from the property above.
+            \end{itemize}
+	    \end{itemize}
+	    
+        These properties are true when there is an intercept term, and not necessarily when there isn’t.
+
+	\end{frame}
+\end{document}

@@ -1,0 +1,72 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Principal Component Analysis}
+\subtitle{Covariance}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Covariance}
+	    Remember, we can define the covariance between two random variables as:
+	    \begin{equation*}
+	        \mathbb{Cov}(X,Y) = \mathbb{E}((X - \mathbb{E}(X))(Y- \mathbb{E}(Y)))
+	    \end{equation*}
+	    Usually, we are interested in the covariance between two features in our data.\\
+	    For example, if we have two features   $X_1$     and       $X_2$ , the covariance between them is:
+	    \begin{equation*}
+	        \frac{1}{n}(X_1 - \overline{X}_1)^T(X_2 - \overline{X}_2)
+	    \end{equation*}
+	    This is just the empirical calculation of the random variable notation above.
+
+	\end{frame}
+	
+	\begin{frame}{Covariance Matrix}
+	    Of course, in many cases, we have more than 2 features. It is practical to present all of the pairwise covariances in a matrix, like so:\\
+	    \bigskip
+	    \left[\begin{array}{cccc}
+	        Cov(X_1,X_1) & Cov(X_1,X_2) & \dots & Cov(X_1,X_d) \\
+	        Cov(X_2,X_1) & Cov(X_2,X_2) & \dots & Cov(X_2,X_d) \\
+	              \vdots &     \vdots   &   \ddots  &  \vdots  \\
+	        Cov(X_d,X_1) & Cov(X_d,X_2) & \dots & Cov(X_d,X_d)
+	    \end{array}\right]\\
+	    \bigskip
+	    Based on the formula from the previous slide, we can directly obtain the covariance matrix with the following expression, if and only if X is centered.
+	    \begin{align*}
+	        \frac{1}{n}X^TX
+	    \end{align*}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Real-World Data}
+	    Here is dataset showing students’ scores on their midterm and final exam.\\
+	    When calculating covariance, we need to center our data first.
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.35]{Bild2}
+	                \end{figure}
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                \\
+	                \bigskip
+	                \bigskip
+	                \begin{align*}
+	                     \frac{1}{n}X^TX =
+	                \left[\begin{array}{cc}
+	                    .022 & .021 \\
+	                   .021  & .037
+	                \end{array}\right]
+	                \end{align*}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+\end{document}

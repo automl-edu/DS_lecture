@@ -1,0 +1,106 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Visualization]{DS: Visualization}
+\subtitle{Box plots and violin plots}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Quartiles}
+	    \vspace{-2em}
+	     \begin{columns}
+            \begin{column}{.5\textwidth}
+                For a quantitative variable:
+                \begin{itemize}
+                    \item First or lower quartile: 25th percentile
+                    \item Second quartile: 50th percentile (median)
+                    \item Third or upper quartile: 75th percentile
+                \end{itemize}
+                The interval [first quartile, third quartile] contains the “middle 50\%" of the data.\\
+                \smallskip
+                Interquartile range (IQR) measures spread.
+                \begin{itemize}
+                    \item IQR = third quartile – first quartile.
+                \end{itemize}
+                Interquantile mean (IQM):
+                \begin{itemize}
+                    \item IQM = mean(IQR)
+                    \item compromise between mean and median
+                    \item[$\leadsto$] more robust against outliers
+                    \item[$\leadsto$] not influenced by two modes
+                \end{itemize}
+
+            \end{column}
+            
+            
+            \begin{column}{.5\textwidth}
+
+                       \includegraphics[scale=.6]{Bild37}
+
+            \end{column}
+        \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Box plots}
+	     \begin{columns}
+            \begin{column}{.5\textwidth}
+            
+                       \includegraphics[scale=.5]{Bild38}
+
+            \end{column}
+            
+            
+            \begin{column}{.5\textwidth}
+                Box plots summarize several characteristics of a numerical distribution. They visualize:
+                \begin{itemize}
+                    \item Lower quartile.
+                    \item Median.
+                    \item Upper quartile.
+                    \item “Whiskers”, placed at lower quartile minus 1.5*IQR and upper quartile plus 1.5*IQR.
+                    \item Outliers, which are defined as being further than 1.5*IQR from the extreme quartiles. \alert{Arbitrary definition!}
+                    \item We loose a lot of information, too!
+                \end{itemize}
+                \texttt{sns.boxplot(bweights)}
+
+            \end{column}
+        \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Box plots}
+	    \includegraphics[scale=.4]{Bild39}
+	\end{frame}
+	
+% 	\begin{frame}{Box plots}
+% 	    \includegraphics[scale=.4]{Bild40}
+% 	\end{frame}
+	
+	
+	\begin{frame}[c]{Violin plots}
+	     \begin{columns}
+            \begin{column}{.5\textwidth}
+
+                       \includegraphics[scale=.55]{Bild41}
+
+            \end{column}
+            
+            
+            \begin{column}{.5\textwidth}
+
+                Violin plots are similar to box plots, but also show smoothed density curves.
+                \begin{itemize}
+                    \item The “width” of our “box” now has meaning!
+                    \item The three quartiles and “whiskers” are still present – look closely
+                    \item Both box plots and violin plots are useful for comparing multiple distributions, which we are about to do.
+                \end{itemize}
+                
+            \end{column}
+        \end{columns}
+	\end{frame}
+\end{document}

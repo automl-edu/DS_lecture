@@ -1,0 +1,171 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Bias and Variance}
+\subtitle{Variance}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Definition of variance}
+	    \begin{itemize}
+	        \item Variance is the expected squared deviation from the expectation of X.
+	        \item It is defined as follows:
+	        \begin{equation*}
+	            \mathbb{Var}(X) = \mathbb{E}((X - \mathbb{E}(X))^2)
+	        \end{equation*}
+	        \item The units of the variance are the square of the units of X
+	        \item To get back to the right scale, we look at the standard deviation of X:
+	        \begin{equation*}
+	            \mathbb{SD}(X)  = \sqrt{\mathbb{Var}(X)}  =\sqrt{\mathbb{E}((X - \mathbb{E}(X))^2)}
+	        \end{equation*}
+	        \item Both standard deviation and variance must be non-negative.
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}[c]{Interpretation of variance}
+	    \begin{itemize}
+	        \item The main use of variance is to quantify chance error.
+	        \begin{itemize}
+	            \item How far away from the expectation can X be, just by chance?
+	        \end{itemize}
+	        \item By Chebyshev’s inequality from Data 8:
+	        \begin{itemize}
+	            \item No matter what the shape of the distribution of X is,
+	            \item The vast majority of the probability lies in the interval “expectation plus or minus a few SDs”.
+	            \item Specifically, if   $\mu$  = E[X] and    $\sigma$   = SD[X], then $P(|X - \mu| \leq \frac{1}{k^2})$.   
+	            \item We will not be using this formula in this class; it’s just here to remind you of it.
+	            \begin{itemize}
+	                \item Here’s a link to a discussion in the Data 8 book about this.
+	            \end{itemize}
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}[c]{An alternative calculation}
+	    There’s a more convenient form of variance for use in calculations.
+	    \begin{equation*}
+	        \mathbb{Var}(X) = \mathbb{E}(X^2) - (\mathbb{E}(X))^2
+	    \end{equation*}
+	    To derive this, we make repeated use of the linearity of expectation.
+	    \begin{align*}
+	        \mathbb{Var}(X) &= \mathbb{E}((X-\mathbb{E}(X))^2)\\
+	        &=  \mathbb{E}(X^2-2X\mathbb{E}(X) + (\mathbb{E}(X)^2))\\
+	        &= \mathbb{E}(X^2) - 2\mathbb{E}(X)\mathbb{E}(X) + (\mathbb{E}(X))^2\\
+	        &= \mathbb{E}(X^2) - (\mathbb{E}(X))^2
+	    \end{align*}
+	\end{frame}
+	
+	
+	
+	\begin{frame}[c]{An alternative calculation}
+	    \begin{equation*}
+	        \mathbb{Var}(X) = \mathbb{E}(X^2) - (\mathbb{E}(X))^2
+	    \end{equation*}
+	    For example, to compute the variance of one roll of a die, we can find
+	    \begin{equation*}
+	        \mathbb{Var}(X) = (1^2+2^2+3^2+4^2+5^2+6^2)\cdot \frac{1}{6}-(3.5)^2 = 2.92
+	    \end{equation*}
+	    
+	    \begin{itemize}
+	        \item This formulation also makes clear that if X is centered, i.e. $\mathbb{E}$(X) = 0, then $\mathbb{Var}$(X) = $\mathbb{E}$($X^2$).
+	        \item Since $\mathbb{Var}$(X) is non-negative, this property also shows us that                   $\mathbb{E}(X^2) \geq (\mathbb{E}(X))^2$.      Equality is if and only if X is a constant.
+	        \item If you know the expectation and variance of a random variable, you can easily determine the expectation of its square:   $\mathbb{E}(X^2) = \mathbb{Var}(X) + (\mathbb{E}(X))^2$. 
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}[c]{Linear transformations}
+	    We know that  $\mathbb{E}(aX + b) = a\mathbb{E}(X) + b$. In order to compute Var(aX + b), consider:\\
+	    \begin{columns}
+	        \begin{column}{.4\textwidth}
+	                A shift by b units does not affect spread:
+	                \begin{figure}
+	                    \includegraphics[scale=.5]{Bild7}
+	                \end{figure}
+	                Here, the distribution of X is in blue, and the distribution of X+4 is in orange.
+	        \end{column}
+	        
+	        
+	        \begin{column}{.4\textwidth}
+	                But scaling by a units does affect spread:
+	                \begin{figure}
+	                    \includegraphics[scale=.35]{Bild8}
+	                \end{figure}
+	                The distribution of X is in blue, and the distribution of 3X is in orange. 
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}[c]{Linear transformations}
+	   We know that       $\mathbb{E}(aX + b) = a\mathbb{E}(X) + b$. \\                  In order to compute $\mathbb{Var}$(aX + b), consider:
+	    \begin{itemize}
+	        \item A shift by b units does not affect spread. Thus, $\mathbb{Var}$(aX + b) = $\mathbb{Var}$(aX).
+	        \item The multiplication by a does affect spread!
+	    \end{itemize}
+	    Then,
+	    \begin{align*}
+	        \mathbb{Var}(aX + b) = \mathbb{Var}(aX) &= \mathbb{E}((aX)^2) - (\mathbb{E}(aX))^2\\
+	        &= \mathbb{E}(a^2X^2) - (a\mathbb{E}(X))^2\\
+	        &= a^2(\mathbb{E}(X^2) - (\mathbb{E}(X))^2)\\
+	        &= a^2\mathbb{Var}(X)
+	    \end{align*}
+	    In summary:
+	    \begin{align*}
+	        \mathbb{Var}(aX + b) &= a^2\mathbb{Var}(X)\\
+	        \mathbb{SD}(aX + b) &= |a|\mathbb{SD}(X)
+	    \end{align*}
+	\end{frame}
+	
+	
+	\begin{frame}[c]{Standardization of random variables}
+	   X in standard units is the random variable $X_{su} = \frac{X- \mathbb{E}(X)}{\mathbb{SD}(X)}$
+	   \begin{itemize}
+	       \item $X_{su}$ measures X on the scale “number of SDs from expectation.”
+	       \item It is a linear transformation of X. By the linear transformation rules for expectation and variance:
+	       \begin{equation*}
+	           \mathbb{E}(X_{su})  = 0, \hspace{5mm} \mathbb{SD}(X_{su}) = 1
+	       \end{equation*}
+	       \item Since $X_{su}$ is centered (has expectation 0):
+	       \begin{equation*}
+	           \mathbb{E}(X^2_{su}) = \mathbb{Var}(X_{su}) = 1
+	       \end{equation*}
+	       You should prove these facts yourself.
+	   \end{itemize}
+	\end{frame}
+	
+	\begin{frame}[c]{Covariance}
+	   The covariance of two random variables is their expected product of deviations.
+	   \begin{equation*}
+	       \mathbb{Cov}(X,Y) = \mathbb{E}((X-\mathbb{E}(X))(Y-\mathbb{E}(Y)))
+	   \end{equation*}
+	   \begin{itemize}
+	       \item It is a generalization of variance. Note:   $\mathbb{Cov}(X,X) = \mathbb{Var}(X)$.   
+	       \item Using the linearity of expectation and some algebra, you can show the following equality, which is a generalization of the alternative calculation for variance:
+	       \begin{equation*}
+	           \mathbb{Cov}(X,Y) = \mathbb{E}(XY) - \mathbb{E}(X)\mathbb{E}(Y)
+	       \end{equation*}
+	       \item To see whether variance is ever additive, we need to look at covariance differently.
+	   \end{itemize}
+	\end{frame}
+	
+	\begin{frame}[c]{Correlation}
+	   The units of the covariance are hard to interpret (e.g. “inch pounds”). In order to get rid of the units, we can scale it:
+	   \begin{align*}
+	       \frac{\mathbb{Cov}(X,Y)}{\mathbb{SD}(X)\mathbb{SD}(Y)}  &= \frac{ \mathbb{E}((X-\mathbb{E}(X))(Y-\mathbb{E}(Y)))}{\mathbb{SD}(X)\mathbb{SD}(Y)}\\
+	       &= \mathbb{E}\left( \frac{X-\mathbb{E}(X)}{\mathbb{SD}(X)} \cdot \frac{Y-\mathbb{E}(Y)}{\mathbb{SD}(Y)}\right)\\
+	       &= \mathbb{E}(X_{su}Y_{su})\\
+	       &= r(X,Y)
+	   \end{align*}
+	   Recall from Data 8: correlation is the average product in standard units. This is the random variable equivalent of that!
+
+	   Correlation is covariance scaled by the two SDs.
+	\end{frame}
+\end{document}

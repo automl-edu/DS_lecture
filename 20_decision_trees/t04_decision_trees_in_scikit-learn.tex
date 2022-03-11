@@ -1,0 +1,235 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Decision Trees}
+\subtitle{Decision Trees in scikit-learn}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Decision Tree Models With scikit-learn }
+	    The code to build a decision tree model in scikit-learn is very similar to what we saw for building linear and logistic regression models:
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.6]{Bild17}
+	    \end{figure}
+	    See lec20-decision-trees.ipynb if you want to try it out
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Decision Tree Models With scikit-learn }
+	    The code to build a decision tree model in scikit-learn is very similar to what we saw for building linear and logistic regression models:
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.6]{Bild17}
+	    \end{figure}
+	    See lec20-decision-trees.ipynb if you want to try it out
+        \begin{figure}
+            \centering
+            \includegraphics[scale=.4]{Bild18}
+        \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Visualizing Decision Tree Models }
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.6]{Bild17}
+	    \end{figure}
+	    Suppose we want to visualize the decision tree, similar to what we saw earlier:
+        \begin{figure}
+            \centering
+            \includegraphics[scale=.65]{Bild19}
+        \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Visualizing Decision Tree Models }
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.6]{Bild17}
+	    \end{figure}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \includegraphics[scale=.55]{Bild22}
+	                \end{figure}
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                There is a built in DecisionTree visualizer
+	                \begin{itemize}
+	                    \item Unfortunately, it isn’t very good
+	                \end{itemize}
+	                \begin{figure}
+	                    \includegraphics[scale=.65]{Bild21}
+	                \end{figure}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Visualizing Decision Tree Models }
+	    \begin{columns}
+	        \begin{column}{.4\textwidth}
+	        Can use GraphViz to get a much nicer picture.
+	                \begin{figure}
+	                    \includegraphics[scale=.5]{Bild23}
+	                \end{figure}
+	        \end{column}
+	        
+	        
+	        \begin{column}{.6\textwidth}
+	                \begin{figure}
+	                    \includegraphics[scale=.55]{Bild24}
+	                \end{figure}
+	                In each box, we see:
+	                \begin{itemize}
+	                    \item The rule
+	                    \item The gini impurity (chance that a sample would be misclassified if randomly assigned at this point)
+	                    \item The number of samples still unclassified
+	                    \item The number of samples in each class still unclassified
+	                    \item The most likely class
+	                \end{itemize}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Visualizing Decision Tree Models }
+	    \begin{columns}
+	        \begin{column}{.4\textwidth}
+	        Can use GraphViz to get a much nicer picture.
+	                \begin{figure}
+	                    \includegraphics[scale=.3]{Bild25}
+	                \end{figure}
+	        \end{column}
+	        
+	        
+	        \begin{column}{.6\textwidth}
+	                \begin{figure}
+	                    \includegraphics[scale=.55]{Bild24}
+	                \end{figure}
+	                In each box, we see:
+	                \begin{itemize}
+	                    \item The rule
+	                    \item The gini impurity (chance that a sample would be misclassified if randomly assigned at this point)
+	                    \item The number of samples still unclassified
+	                    \item The number of samples in each class still unclassified
+	                    \item The most likely class
+	                \end{itemize}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Visualizing Decision Tree Models}
+	    Plotting the decision boundaries for our logistic regression & decision tree models, yields these results:
+	    \begin{itemize}
+	        \item Decision tree has nonlinear boundary, and appears to get 100\% accuracy
+	        \begin{itemize}
+	            \item Let’s calculate the exact accuracy rather than just relying on our eyes
+	        \end{itemize}
+	    \end{itemize}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.45]{Bild26}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Measuring the Performance of Our Model}
+	    Running the code below, we see that we only get 99.3% accuracy
+        \begin{figure}
+            \centering
+            \includegraphics[scale=.65]{Bild27}
+        \end{figure}
+        To understand why, let’s look back at our decision tree model
+	\end{frame}
+	
+	
+	\begin{frame}{Understanding Our Decision Tree}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \includegraphics[scale=.55]{Bild23}
+	                \end{figure}
+	        \end{column}
+	        
+	        
+	         \begin{column}{.5\textwidth}
+	                \\ \bigskip \bigskip
+	                There is one terminal decision point where there is more than one possible right answer\\
+	                \bigskip
+	                Can you find it?
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	
+	
+	\begin{frame}{Understanding Our Decision Tree}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \includegraphics[scale=.55]{Bild23}
+	                \end{figure}
+	        \end{column}
+	        
+	        
+	         \begin{column}{.5\textwidth}
+	                \\ \bigskip \bigskip
+	                There is one terminal decision point where there is more than one possible right answer\\
+	                \bigskip
+	                The model was unable to come up with a decision rule to resolve these last 3 samples\\
+	                \bigskip
+	                Let’s see why using the query method of the dataframe class
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Understanding Our Decision Tree}
+	                \begin{figure}
+	                    \includegraphics[scale=.3]{Bild28}
+	                \end{figure}
+	    \begin{columns}
+	        \begin{column}{.4\textwidth}
+	                \begin{figure}
+	                    \includegraphics[scale=.35]{Bild23}
+	                \end{figure}
+	        \end{column}
+	        
+	        
+	         \begin{column}{.4\textwidth}
+	                There is one terminal decision point where there is more than one possible right answer
+	                \begin{itemize}
+	                    \item In the original data set, there was a versicolor iris with the same petal measurements as two virginicas
+	                \end{itemize}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Overfitting and Decision Trees}
+	    Bottom line: scikit-learn makes it easy to generate decision trees
+	    \begin{figure}
+	        \includegraphics[scale=.5]{Bild29}
+	    \end{figure}
+	    These decision trees will always have perfect accuracy on the training data, EXCEPT when there are samples from different categories with the exact same features
+	    \begin{itemize}
+	        \item That is, if the versicolor above had a petal\_length of 4.800001, we’d have 100\% training accuracy
+	    \end{itemize}
+	    \\
+	    \bigskip
+	    This tendency for perfect accuracy should give us concern about overfitting
+	\end{frame}
+\end{document}

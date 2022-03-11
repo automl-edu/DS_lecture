@@ -1,0 +1,175 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Regression]{DS: Ordinary Least Squares}
+\subtitle{Unique Solution?}
+
+\graphicspath{ {./figure_ols/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Does a solution always exist?}
+	    \begin{itemize}
+	        \item For all models so far, our goal has been to determine the value of $\vect{\vect{\theta}}$ that minimizes some average loss.
+	        \item The minimum value of both mean squared error and mean absolute error is 0.
+	    \end{itemize}
+	    \begin{equation*}
+	        MSE(\vect{y},\hat{\vect{y}}) = \frac{1}{n}\sum\limits_{i=1}^n(y_i \hat{y_i})^2 \hspace{1cm} MAE(\vect{y},\hat{\vect{y}}) = \frac{1}{n}\sum\limits_{i=1}^n|y_i \hat{y_i}|
+	    \end{equation*}
+	    
+	    \begin{itemize}
+	        \item This means, there is always at least one model parameter that minimizes average loss.
+	    \end{itemize}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Does a solution always exist?}
+	
+	    \vspace{-2em}
+	    \begin{columns}
+	    
+	        \begin{column}{.6\textwidth}
+	        
+	                \begin{itemize}
+	                    \item Constant model with squared loss: 
+	                    \begin{itemize}
+	                        \item Any set of values has a unique mean.
+	                        \item Thus, in this case, a unique solution always exists.
+	                    \end{itemize}
+	                    \item Simple linear model with squared loss: 
+                        \begin{itemize}
+                            \item Any set of non-constant values has a unique mean, SD, and correlation coefficient.
+                        \end{itemize}
+                        \item Constant model with absolute loss:
+                        \begin{itemize}
+                            \item This is unique when there is an odd number of y values.
+                            \item But when there is an even number of y values, there are infinitely many solutions!
+                            \begin{itemize}
+                                \item In such a case, any value of $\vect{\theta}$ between the “middle two” values minimized MAE
+                            \end{itemize}
+                        \end{itemize}
+                        
+	                \end{itemize}
+	                
+	        \end{column}
+	        
+	        
+	        
+	        \begin{column}{.4\textwidth}
+	        
+	            \bigksip
+	                \begin{equation*}
+	                    \hat{\vect{\theta}} = mean(y)
+	                \end{equation*}
+	                
+	                \begin{equation*}
+	                    \hat{{\theta}_1} = r\frac{\sigma_y}{\sigma_x} \hspace{1cm}
+	                    \hat{{\theta}_0} = \bar{y} - \hat{{\theta}_0}\bar{x}
+	                \end{equation*}
+	                
+	                
+	                \begin{equation*}
+	                    \hat{\vect{\theta}} = median(y)
+	                \end{equation*}
+	                
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Understanding the solution matrices}
+	    Typically, $n$ is much larger than $p$.
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.45]{Bild13}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Understanding the solution matrices}
+	Typically, $n$ is much larger than $p$.
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.45]{Bild14}
+	    \end{figure}
+	\end{frame}
+	
+	\begin{frame}{Understanding the solution matrices}
+	    The Normal Equation:
+
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.45]{Bild15}
+	    \end{figure}
+	    Our optimal parameter vector can be thought of as the solution to a set of $p + 1$ equations, with $p + 1$ unknowns. 
+
+	\end{frame}
+	
+	
+	\begin{frame}{Does a unique solution always exist?}
+	   Let’s consider our optimal $\vect{\theta}$ for the multiple linear regression model:
+	   \begin{equation*}
+	       \hat{\vect{\theta}} = (\vect{X}^\intercal\vect{X})^{-1} \vect{X}^\intercal\vect{Y}
+	   \end{equation*}
+	    
+	    \begin{itemize}
+	        \item As mentioned previously, at least one solution always exists.
+	        \begin{itemize}
+	            \item Intuitively, we can always draw a line of best fit for a given set of data. There may be multiple lines that are “equally good”.
+	        \end{itemize}
+	        \item When does a unique solution for   $\hat{\vect{\theta}}$  exist?
+            \begin{itemize}
+                \item When     $\vect{X}^\intercal\vect{X}$      is invertible. If it is not invertible, a unique solution does not exist.
+                \item In such a case, there will be infinitely many values of theta that minimize average squared loss.
+                \item If there are infinitely many “optimal” choices of coefficients, it’s unclear which to use.
+                \item We want a unique solution.
+            \end{itemize}
+	    \end{itemize}
+
+	\end{frame}
+	
+	
+	\begin{frame}{Invertibility of  $\vect{X}^\intercal\vect{X}$ }
+	    When is $\vect{X}^\intercal\vect{X}$ invertible?
+	    \begin{itemize}
+	        \item $\vect{X}^\intercal\vect{X}$ is invertible if and only if it is full rank.
+	        \begin{itemize}
+	            \item The shape of    $\vect{X}^\intercal\vect{X}$ is $(p + 1) \times (p + 1)$. Invertibility is only defined for square matrices.
+	            \item The rank of a matrix is the number of linearly independent columns (or rows) it contains.
+	            \item This is one of several conditions of the “invertible matrix theorem.”
+	        \end{itemize}
+	        \item   $\vect{X}^\intercal\vect{X}$ and $\vect{X}$ have the same rank.
+	        \begin{itemize}
+	            \item The proof is beyond the scope of this class.
+	        \end{itemize}
+	        \item The maximum possible rank of   $\vect{X}^\intercal\vect{X}$  is $p + 1$.
+	        \item Thus, $\vect{X}^\intercal\vect{X}$   is invertible if and only if $\vect{X}$ has rank $p + 1$ (full column rank). 
+            \begin{itemize}
+                \item That is, a unique solution for the least squares estimate exists if and only if all columns of $\vect{X}$ are linearly independent.
+                \item \alert{Trick}: Try to add a very small $\epsilon$ to the diagonal if it is not invertible
+            \end{itemize}
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{Invertibility of  $\vect{X}^\intercal\vect{X}$ }
+	    When does our design matrix    $\vect{X}$   not have full column rank?
+	    \begin{itemize}
+	        \item When some features in our design matrix are linear combinations of other features.
+	        \begin{itemize}
+	            \item If “Width”, “Height”, and “Perimeter” are all columns, $\vect{X}$ will not have full rank, since\\ Perimeter = 2 $\cdot$ Width + 2 $\cdot$ Height (linear combination).
+	            \item When we discuss one-hot encoding, this is something to be aware of.
+	        \end{itemize}
+	        \item  When our design matrix has more columns than rows (i.e. it is “fat”).
+	        \begin{itemize}
+	            \item In the normal setting, n > p + 1 (we typically have more observations than features). 
+	        \end{itemize}
+	    \end{itemize}
+	    \includegraphics[scale=.45]{Bild16}
+	\end{frame}
+\end{document}

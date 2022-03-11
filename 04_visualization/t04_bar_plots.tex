@@ -1,0 +1,62 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Visualization]{DS: Visualization, Part 1}
+\subtitle{Bar plots}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Bar plots}
+	    \begin{itemize}
+	        \item Bar plots are the most common way of displaying the distribution\\ of a qualitative (categorical) variable.
+	        \begin{itemize}
+	            \item For example, the proportion of adults in the upper, middle, and lower classes.
+	        \end{itemize}
+	        \item They are also used to display a numerical variable that has been measured on individuals in different categories
+	        \begin{itemize}
+	            \item For example, the average grades of students at Berkeley in several majors.
+	            \item Not a distribution! But bar plots still make sense.
+	        \end{itemize}
+	        \item Lengths encode values.
+	        \begin{itemize}
+	            \item Widths encode nothing!
+	            \item Color could indicate a sub-category (but not necessarily).
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Example dataset}
+	    We will be using the baby weights dataset for most of our plots.
+	    \begin{figure}
+	        \centering
+            \includegraphics[scale=.45]{Bild21}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Bar plots}
+	    Suppose births[‘Maternal Smoker’] is a series containing True and False. Then:
+	    \begin{figure}
+	        \centering
+            \includegraphics[scale=.4]{Bild22}
+	    \end{figure}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Bar plots}
+	    Suppose we have a list of majors and a list of GPAs (i.e., grades) corresponding to those majors.
+	    \begin{figure}
+	        \centering
+            \includegraphics[scale=.4]{Bild23}
+	    \end{figure}
+	\end{frame}
+	
+\end{document}

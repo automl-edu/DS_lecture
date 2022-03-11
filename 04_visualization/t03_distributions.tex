@@ -1,0 +1,107 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Visualization]{DS: Visualization}
+\subtitle{Distributions}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}[c]{What is a distribution?}
+	
+	    Frequentist view:
+	    \begin{itemize}
+	        \item A distribution describes the frequency at which values of a variable occur.
+	        \item All values must be accounted for once, and only once.
+	        \item The total frequencies must add up to 100\%, or to the number of values that we’re observing.
+	    \end{itemize}
+	    \bigskip
+	    Let’s look at some examples.
+	\end{frame}
+	
+	
+	\begin{frame}{What is a distribution?}
+	    \vspace{-1em}
+	    \begin{columns}
+	        \begin{column}{.4\textwidth}
+	        
+	              \begin{figure}
+	                  \includegraphics[scale=.49]{Bild18}
+	               \end{figure} 
+	               
+	        \end{column}
+	        
+	        \begin{column}{.6\textwidth}
+	           
+	              \\Does this chart show a distribution?\\
+	              \bigskip
+	              No!
+	              \begin{itemize}
+	                  \item Individuals can be in more than one category.
+	                  \item The numbers (and bar lengths) correspond to ``time'', not the proportion or number of individuals in the category.
+	              \end{itemize}
+	              
+	        \end{column}
+	        
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{What is a distribution?}
+	    \vspace{-1em}
+	    \begin{columns}
+	    
+	        \begin{column}{.4\textwidth}
+	              \begin{figure}
+	                  \includegraphics[scale=.45]{Bild19}
+	               \end{figure} 
+	               
+	        \end{column}
+	        
+	        \begin{column}{.6\textwidth}
+	           
+	              \\Does this chart show a distribution?\\
+	              \bigskip
+	              No!
+	              \begin{itemize}
+	                  \item The chart does show percents of individuals in different categories!
+	                  \item But, this is not a distribution because individuals can be in more than one category (see the fine print).
+	              \end{itemize}
+	              
+	        \end{column}
+	        
+	    \end{columns}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{What is a distribution?}
+	\vspace{-1em}
+	    \begin{columns}
+	    
+	        \begin{column}{.4\textwidth}
+	              \begin{figure}
+	                  \includegraphics[scale=.5]{Bild20}
+	               \end{figure} 
+	        \end{column}
+	        
+	        \begin{column}{.5\textwidth}
+	           
+	              \\Does this chart show a distribution?\\
+	              \bigskip
+	              Yes!
+	              \begin{itemize}
+	                  \item This chart shows the distribution of the qualitative ordinal variable “income tier.”
+	                  \item Each individual is in exactly one category.
+	                  \item The values we see are the proportions of individuals in that category.
+	                  \item Everyone is represented, as the total percentage is 100\%.
+	              \end{itemize}
+	        \end{column}
+	        
+	    \end{columns}
+	\end{frame}
+\end{document}

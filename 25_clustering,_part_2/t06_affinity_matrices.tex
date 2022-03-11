@@ -1,0 +1,99 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Clustering, Part 2}
+\subtitle{Affinity Matrices}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Creating a Graph from Point Data}
+	    It turns out that spectral clustering methods work really well on some types of traditional Euclidean point datasets (design matrices).\\
+	    \bigskip
+	    To use spectral clustering on a basic design matrix, we construct a graph from our data. This is actually the default setting in scikit-learn’s SpectralClustering method.\\
+	    \bigskip
+	    Each individual row in our design matrix will become a vertex in our new graph, and the edges between them represent how “close,” or how “related” each pair of points is.\\
+	    \bigskip
+	    There are two common ways of creating such graphs, we will discuss both.
+	\end{frame}
+	
+	
+	\begin{frame}{Example Dataset}
+	    Let’s say we have a dataset with 4 individuals and 2 features, like so:
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.5]{Bild17}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Points to Graph Method \#1: Distance Matrix}
+	    One way to construct a graph based on data is to have the edges be some measure of the distance\\ between each pair of points.\\
+        To do so, we can calculate the distance matrix.
+
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.4]{Bild18}
+	    \end{figure}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Question}
+	    Q: Should the weight of an edge between two vertices be equal to the distance between the two corresponding points?\\
+	    \bigskip
+	    A: No! Larger edge weights should indicate a stronger relationship between two vertices, but a large distance between two parts means they are far apart, and do not have that strong of a relationship.
+
+	\end{frame}
+	
+	
+	\begin{frame}{Points to Graph Method #1: Distance Matrix}
+	    To determine the edge weights, we apply a decaying function to the distance matrix.\\
+        Now, larger distances will lead to smaller edge weights, and vice versa.\\
+        Common choice:       $e^{-\gamma d}$        , where d is the distance, and $\gamma$ is some chosen constant.
+
+        \begin{figure}
+            \centering
+            \includegraphics[scale=.43]{Bild19}
+        \end{figure}    
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Points to Graph Method #1: Distance Matrix}
+	    Here is the resulting graph:
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.5]{Bild20}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Points to Graph Method #2: Nearest Neighbors}
+	    The other way to construct a graph is two draw an edge between points i and j, if j is one of\\ the \_\_ nearest neighbors of i. You choose \_\_\\
+        Example, with 1 nearest neighbor:
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.48]{Bild21}
+	    \end{figure}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Recap}
+	    If we are given point data (not a graph), we can still use spectral methods to cluster the points.\\
+	    \bigskip
+	    To do so, we construct a graph from the points, using either a function of the distance matrix, or nearest neighbors.\\
+	    \bigskip
+	    Usually, we don’t care about the actual graph, only the adjacency matrix.
+	    \begin{itemize}
+	        \item Such matrices are often also called “affinity matrices,” because they describe the strength of the relationship between the points.
+	    \end{itemize}
+	    \bigskip
+	    Which method you choose is dependent on your application—if you’re stuck, try both!
+	\end{frame}
+\end{document}

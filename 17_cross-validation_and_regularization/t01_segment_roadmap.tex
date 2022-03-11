@@ -1,0 +1,30 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Cross-Validation and Regularization}
+\subtitle{Segment Roadmap}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Segment Roadmap}
+	    Sections 17.1 through 17.4 discuss train-test splits and cross-validation
+	    \begin{itemize}
+	        \item 17.1: why we need to split our data into train and test, and how cross-validation works
+	        \item 17.2/17.3: creating train-test split and evaluating models fit on training data using testing data
+	        \item 17.4: implementing cross-validation and using it to test different models.
+	    \end{itemize}
+	    Sections 17.5 and 17.6 discuss regularization.
+	    \begin{itemize}
+	        \item 17.5: why we need to regularize and how penalties on the norm of our parameter vector accomplish this goal
+	        \item 17.6: explicitly lists the optimal model parameters when using L1 or L2 penalty on our linear model
+	    \end{itemize}
+	    [OPTIONAL] 17.7 is a great high-level overview of both the bias-variance tradeoff and regularization, created by GSI Paul Shao in Spring 2020.
+	\end{frame}
+	
+	
+\end{document}

@@ -1,0 +1,143 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Regression]{DS: Ordinary Least Squares}
+\subtitle{Problem statement}
+
+\graphicspath{ {./figure_ols/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Vector norms}
+	    \begin{itemize}
+	        \item The norm of a vector is some measure of that vector’s size.
+	        \item  The two norms we need to know (for now) are the L1 and L2 norms.
+	        \begin{itemize}
+	            \item $L_2$ will be used today.
+	            \item $L_1$ will appear a few lectures from now.
+	        \end{itemize}
+	    \end{itemize}
+	    \begin{columns}
+	        \begin{column}{.4\textwidth}
+	        Consider the vector:
+
+	                \vect{x} = $\left[\begin{array}{c}
+	          x_1\\
+	          x_2 \\
+	          x_3 \\
+	          \vdots\\
+	          x_n
+	    \end{array}\right]$
+	        \end{column}
+	        
+	        
+	        
+	         \begin{column}{.5\textwidth}
+	                $L_2$ vector norm:
+	                \begin{equation*}
+	                    ||\vect{x}||_2 = \sqrt{x_1^2 + x_2^2 + x_3^2 + ... + x_n^2} = \sqrt{\sum\limits_{i=1}^nx_i^2}
+	                \end{equation*}
+	                $L_1$ vector norm:
+	                \begin{equation*}
+	                    ||\vect{x}||_1 = |x_1| + |x_2| + |x_3| + ... +|x_n| = \sum\limits_{i=1}^n|x_i| 
+	                \end{equation*}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{$L_2$ vector norm}
+	    \begin{itemize}
+	        \item The $L_2$ vector norm can be thought of as the “length” of a vector.
+	        \begin{itemize}
+	            \item It is a generalization of the Pythagorean theorem into n dimensions.
+	            \begin{equation*}
+	                    ||\vect{x}||_2 = \sqrt{x_1^2 + x_2^2 + x_3^2 + ... + x_n^2} = \sqrt{\sum\limits_{i=1}^nx_i^2}
+	             \end{equation*}
+	        \end{itemize}
+	        \item  The “distance” between two vectors is the L2 norm of their difference.
+	        \begin{itemize}
+	            \item For instance, if $\vect{a}$ and $\vect{b}$ are two vectors of the same length, then their distance is
+                \begin{equation*}
+                    ||\vect{a}-\vect{b}||_2
+                \end{equation*}
+	        \end{itemize}
+	        \item Note, the square of the L2 norm of a vector is the sum of the squares of the vector’s elements:
+	    \end{itemize}
+	    \begin{equation*}
+                    ||\vect{x}||_2^2 = \sum\limits_{i=1}^nx_i^2
+        \end{equation*}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Residuals}
+	    \begin{columns}
+	        \begin{column}{.4\textwidth}
+	        	Residuals are defined as being the difference between an actual and predicted value, in the regression context.
+	        	\begin{itemize}
+	        	    \item We use the letter $e$ to denote residuals. The $i$-th residual is\\
+	        	    $e_i = y_i - \hat{y_i}$
+	        	    \item The MSE of a model is equal to the mean of the squares of its residuals:
+	        	\end{itemize}
+	        	\begin{equation*}
+	        	    MSE = \frac{1}{n}\sum\limits_{i=1}^ne_i^2
+	        	\end{equation*}
+	        \end{column}
+
+	         \begin{column}{.6\textwidth}
+
+                        \vspace{-3em}
+	                    \includegraphics[scale=.44]{Bild4}
+
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	\begin{frame}{Residual vector}
+	    We can stack all n residuals into a vector, called the residual vector, $\vect{e}$:
+        \begin{equation*}
+            \vect{e} = \vect{Y} - \hat{\vect{Y}}  =\left[\begin{array}{c}
+                 y_1 - \hat{y_1}\\
+                 y_2 - \hat{y_2}\\
+                 \vdots\\
+                 y_n - \hat{y_n}\\
+            \end{array}\right]
+        \end{equation*}
+        The residual vector is the “difference” between the two vectors containing our true $y$ values and predicted $y$ values. 
+
+	\end{frame}
+	
+	
+	\begin{frame}{Mean squared error, again}
+	    We are choosing our loss to be squared loss. This means, the average loss across our dataset is mean squared error.
+        \begin{equation*}
+            R(\vect{\theta} ) = \frac{1}{n}\sum_{i=1}^n(y_i - \hat{y_i})^2 = \frac{1}{n}\sum_{i=1}^n(y_i - \vect{X}_i^\intercal\vect{\theta})^2
+        \end{equation*}
+        We can write this in terms of the norm of the residual vector!
+        \begin{equation*}
+            R(\theta ) = \frac{1}{n}||\vect{Y} - \hat{\vect{Y}}||_2^2 = \frac{1}{n}||\vect{Y} - \vect{X}\vect{\theta}||_2^2
+        \end{equation*}
+       % $\vect{X}$ is the residual vector
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Optimization procedure}
+	    As we did in the last lecture, we note that the value of $\vect{\theta}$ that minimizes  $\frac{1}{n}||\vect{Y} - \vect{X}\vect{\theta}||_2^2$                     is the same value that minimizes
+
+        \begin{equation*}
+            R(\vect{\theta} ) = ||\vect{Y} - \vect{X}\vect{\theta}||_2^2
+        \end{equation*}
+        Therefore, our goal is to find the value of     $\vect{\theta}$   that minimizes the squared $L_2$ norm of the residual vector. In other words, we want the “distance” between   $\vect{Y}$   and    $\hat{\vect{Y}}$    to be minimized\\
+        \bigskip
+        There are two ways we can determine the optimal $\hat{\vect{\theta}}$     here.
+        \begin{itemize}
+            \item Using calculus, like we’ve done earlier.
+            \item Using a geometric argument. This is what we’ll do here.
+        \end{itemize}
+	\end{frame}
+\end{document}

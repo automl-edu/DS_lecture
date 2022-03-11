@@ -1,0 +1,134 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Logistic Regression, Classification}
+\subtitle{Thresholding}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Classification}
+	    Our motivation for performing logistic regression was to predict categorical labels. Specifically, we were looking to perform binary classification, i.e. classification where our outputs are 1 or 0.
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.5]{Bild1}
+	    \end{figure}
+	    However, the output of logistic regression is a continuous value in the range [0, 1], which we interpret as a probability – specifically,  P(Y=1|x)\\
+	    \bigskip
+	    In order to classify – that is, to predict a 1 or 0 – we pair our logistic model with a decision rule, or threshold.
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Thresholds}
+	    Given an observation x, the following decision rule outputs 1 or 0, depending on the probability that our model assigns to x belonging to class 1.\\
+	    \bigskip
+	    Example for T = 0.5:
+	    \begin{equation*}
+	        classify(x)  =\left\{\begin{array}{cc}
+	            1, &  P(Y=1|x) \geq 0.5 \\
+	            0, &  P(Y=1|x) < 0.5
+	        \end{array}\right.
+	            \includegraphics[scale=.25]{Bild2}
+	    \end{equation*}
+	    \begin{itemize}
+	        \item Note: We don’t need to set our threshold to 0.5. Depending on the type of errors we want to minimize, we can increase or decrease it.
+	        \begin{itemize}
+	            \item 0.5 is the default in scikit-learn’s LogisticRegression, though.
+	        \end{itemize}
+	        \item Logistic regression paired with a decision rule is a classifier.
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{Thresholds}
+	    Consider the single-feature logistic regression model from last lecture:
+	    \begin{equation*}
+	        P(Y=1|x) = \sigma (\theta_1 \cdot FG\_PCT\_DIFF)
+	    \end{equation*}
+	    Here, the blue line represents our modeled probabilities, and the red lines represent various thresholds.
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.5]{Bild3}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Thresholds in higher dimensions}
+	    \begin{columns}
+	        \begin{column}{.7\textwidth}
+	                Our thresholds work the same way, even if our models have multiple features.\\
+	                \bigskip
+	                Suppose we fit a model with 2 features – FG\_PCT\_DIFF and PF\_DIFF – along with an intercept term.
+	                \begin{align*}
+	                    P(Y=1|x) = \sigma (\theta_0  + \theta_1 \cdot FG\_PCT\_DIFF + \theta_2 \cdot PF\_DIFF)
+	                \end{align*}
+	        \end{column}
+	        
+	        
+	        \begin{column}{.4\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.5]{Bild4}
+	                \end{figure}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Thresholds in higher dimensions}
+	    \begin{columns}
+	        \begin{column}{.7\textwidth}
+	                Our thresholds work the same way, even if our models have multiple features.\\
+	                \bigskip
+	                Suppose we fit a model with 2 features – FG\_PCT\_DIFF and PF\_DIFF – along with an intercept term.
+	                \begin{align*}
+	                    P(Y=1|x) = \sigma (\theta_0  + \theta_1 \cdot FG\_PCT\_DIFF + \theta_2 \cdot PF\_DIFF)
+	                \end{align*}
+	                Any data point whose predicted probability is greater than 0.3 (above the plane) is classified as 1.
+	        \end{column}
+	        
+	        
+	        \begin{column}{.4\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.35]{Bild5}
+	                \end{figure}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{From probabilities to labels}
+	    \begin{columns}
+	        \begin{column}{.7\textwidth}
+	                With different thresholds, we get different predictions.
+	                \begin{itemize}
+	                    \item Everything above the red line is classified as 1, and everything below is classified as 0.
+	                    \item The larger we make T, our threshold, the fewer observations are classified as 1.
+	                    \begin{itemize}
+	                        \item The “standard” is higher.
+	                    \end{itemize}
+	                \end{itemize}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.5]{Bild3}
+	                \end{figure}
+	        \end{column}
+	        
+	        
+	        \begin{column}{.4\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.5]{Bild6}
+	                \end{figure}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+\end{document}

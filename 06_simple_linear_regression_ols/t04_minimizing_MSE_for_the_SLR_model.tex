@@ -1,0 +1,127 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Regression]{DS: Simple Linear Regression}
+\subtitle{Minimizing MSE for the SLR model}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Minimizing MSE for the SLR model}
+	    We will now walk through the calculus of determining the optimal parameters for the SLR model, using squared loss. Recall, mean squared error is of the form    MSE$(y,\hat{y})= \frac{1}{n}\sum_{i=1}^n(y_i-\hat{y}_i)^2$             
+	   Since our model (for a given observation) is  $\hat{y}_i = a +bx_i$                        , the quantity we want to minimize is: 
+	   \begin{equation*}
+	       R(a,b)= \frac{1}{n}\sum_{i=1}^n(y_i- (a +bx_i))^2
+	   \end{equation*}
+        \begin{itemize}
+            \item Note, there are now two parameters we need to optimize over. We want the best combination of a and b such that average loss is minimized.
+            \begin{itemize}
+                \item This gives us a model that fits the data as best as possible.
+            \end{itemize}
+            \item We refer to this combination of model and loss as \alert{``least squares linear regression''}.
+    
+        \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{Minimizing MSE for the SLR model}
+	    One slight simplification we can make: the pair (a, b) that minimizes is also the same pair (a, b) that minimizes      $R(a,b)= \alert{\frac{1}{n}}\sum_{i=1}^n(y_i- (a +bx_i))^2$    \\         
+	  %\begin{align*}
+	     \hspace{5cm} $ R(a,b)= \sum_{i=1}^n(y_i- (a +bx_i))^2$
+	   %\end{align*}
+        \begin{itemize}
+            \item The value of the objective function will be different, but what we’re looking for are the optimal parameters. Those won’t change when we multiply the function by a constant.
+            \item To determine the pair (a, b) that minimizes our objective function, we need to take partial derivatives with respect to both parameters (a, b), set them equal to 0, and solve both equations. 
+            \item Remember, our data points ${(x_1, y_1),(x_2,y_2),...,(x_n,y_n)} $ are constants here;\\ they are not variables!
+        \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{Minimizing MSE for the SLR model}
+	            First, we rearrange our objective function to be slightly more convenient. We then take the derivative with respect to a, and set it equal to 0
+	            \begin{align*}
+	                R(a,b) &= \sum_{i=1}^n(y_i-(a+bx_i))^2 = \sum_{i=1}^n(y_i-bx_i-a)^2 \\
+	                \frac{\partial R}{\partial a}&= \sum_{i=1}^n2(y_i-bx_i-a)(-1)=-2\sum_{i=1}^n(y_i-bx_i-a)\\
+	                0&= -2\sum_{i=1}^n(y_i-bx_i-a)
+	            \end{align*}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Minimizing MSE for the SLR model}
+	\vspace{-2em}
+	           Then, using the properties of summations, we rearrange to solve for $\hat{a}$.
+	           
+	           \vspace{-1em}
+	              \begin{align*}
+	                0 &= -2\sum_{i=1}^n(y_i-bx_i-a)\\
+	                0 &= \sum_{i=1}^n (y_i-bx_i-a)\\
+	                0 &= \sum_{i=1}^n y_i- b\sum_{i=1}^n x_i - n \cdot a\\
+	                n \cdot a &= \sum_{i=1}^ny_i- b\sum_{i=1}^nx_i\\
+	                \hat{a} &=\frac{1}{n} \sum_{i=1}^n y_i- b\cdot\frac{1}{n}\sum_{i=1}^n x_i = \bar{y}- b\bar{x} \\
+	              \end{align*}
+	              
+	        \vspace{-2em}
+            We now need to substitute this value into the objective function when we solve for the optimal b.
+	\end{frame}
+	
+	
+	\begin{frame}{Minimizing MSE for the SLR model}
+	           First, we substitute our expression for  $\hat{a}$   into the objective function:        
+	           %\centering
+	           \begin{align*}
+	                R(a,b) &= \sum_{i=1}^n(y_i-(a+bx_i))^2\\
+	                       &=  \sum_{i=1}^n(y_i- (\bar{y}-b\bar{x}  +bx_i))^2\\
+	                       &=  \sum_{i=1}^n(y_i- \bar{y}-b(x_i  -\bar{x}))^2\\
+               \end{align*}
+            	 
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Minimizing MSE for the SLR model}
+	       Then, we take the partial derivative w.r.t. b and set it to 0:
+            	\begin{align*}
+            	    R(a,b) &= \sum_{i=1}^n(y_i- \bar{y}-b(x_i  -\bar{x}))^2\\
+	                \frac{\partial R}{\partial  b} &= \sum_{i=1}^n2\cdot(y_i-\bar{y}-b(x_i-\bar{x}))\cdot(-1)\cdot(x_i-\bar{x})\\
+	                \frac{\partial R}{\partial  b} &=-2 \sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y}-b(x_i-\bar{x}))\\
+	                      0 &=  -2 \sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y}-b(x_i-\bar{x}))
+                 \end{align*}
+	\end{frame}
+	
+	
+	\begin{frame}{Minimizing MSE for the SLR model}
+	       And finally, we rearrange and solve for   $\hat{b}$  :
+
+            	\begin{align*}
+	                0 &= \sum_{i=1}^n\left[(x_i-\bar{x})(y_i-\bar{y})-b(x_i-\bar{x})^2\right]\\
+	                0 &= \sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})-b\sum_{i=1}^n(x_i-\bar{x})^2\\
+	                0 &= nr\sigma_x\sigma_y - bn\sigma_{x}^2\\
+	                b\sigma_{x}^2 &= r\sigma_x\sigma_y\\
+	                \hat{b} &= \frac{r\sigma_x\sigma_y}{\sigma_{x}^2} = r\frac{\sigma_y}{\sigma_x} 
+                 \end{align*}
+	\end{frame}
+	
+	
+	\begin{frame}{Minimizing MSE for the SLR model}
+	       We’ve now shown that when using squared loss as our loss function, the optimal parameters for the model            $\hat{y} = \hat{a} + \hat{b}x$        are given by
+                \begin{align*}
+	                \hat{b} = r\frac{\sigma_y}{\sigma_x}
+	                \hspace{3cm}
+	                \hat{a} = \bar{y} - \hat{b}\bar{x}
+                 \end{align*}
+
+            	\begin{itemize}
+            	    \item If we used a loss function other than squared loss, we’d get different optimal parameters!
+            	    \item This process of determining optimal model parameters by hand is something you should be able to do on your own.
+            	    \begin{itemize}
+            	        \item Change the model, change the loss, and try it yourself!
+            	    \end{itemize}
+            	    \item Note: We can also rewrite our model as follows, showing that $r$ is the slope of the regression line in standard units: $\frac{\hat{y}-\bar{y}}{\sigma_y} = r\left(\frac{x-\bar{x}}{\sigma_x}\right)$
+            	\end{itemize}
+	\end{frame}
+\end{document}

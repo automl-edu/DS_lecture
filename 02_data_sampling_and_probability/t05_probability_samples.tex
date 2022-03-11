@@ -1,0 +1,245 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Data Sampling and Probability}
+\subtitle{Probability Samples}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+		\begin{frame}{Probability sampling}
+	    \begin{columns}
+	        \begin{column}{.4\textwidth}
+	            Why? One reason is to reduce bias, but that’s not the main reason!
+	            \begin{itemize}
+	                \item Random samples can produce biased estimates of population characteristics.
+	                \begin{itemize}
+	                    \item For example, if we’re estimating the maximum of a population.
+	                \end{itemize}
+	                \item But with random samples we are able to estimate the bias and chance error.
+	                \begin{itemize}
+	                    \item We can quantify the uncertainty.
+	                \end{itemize}
+	            \end{itemize}
+	        \end{column}
+	        
+	        \begin{column}{.5\textwidth}
+	            For our purposes, probability samples and random samples will mean the same thing.
+	            \bigskip
+	            A probability sample is a type of sampling technique.
+	        \end{column}
+	        
+	    \end{columns}
+	    
+	\end{frame}
+	
+	
+		\begin{frame}{Probability sampling}
+	    \begin{columns}
+	        \begin{column}{.4\textwidth}
+	            In order for a sample to be a probability sample:
+	            \begin{itemize}
+	                \item You must be able to provide the chance that any specified set of individuals will be in the sample.
+	               \item All individuals in the population do not need to have the same chance of being selected.
+	                \item You will still be able to measure the errors, because you know all the probabilities.
+	            \end{itemize}
+	        \end{column}
+	        
+	        \begin{column}{.5\textwidth}
+	            Not all probability samples are necessarily good.
+	            \bigskip
+	            For instance, suppose I have three students: Allen, Kunal, Ishaan, and I want to sample two of them.
+	            \begin{itemize}
+	                \item I choose Allen with probability 1.
+	                \item I choose either Kunal or Ishaan, each with probability $\frac{1}{2}$.
+	            \end{itemize}
+	            This is a probability sample (but it’s not great).
+
+	        \end{column}
+	        
+	    \end{columns}
+	    
+	\end{frame}
+	
+	
+		\begin{frame}{Some random sampling schemes}
+	    \begin{columns}
+	        \begin{column}{.7\textwidth}
+	            A random sample with replacement is a sample drawn uniformly at random with replacement.
+
+	            \begin{itemize}
+	                \item Random doesn’t always mean “uniformly at random,” but in this specific context, it does.
+	            \end{itemize}
+	            A simple random sample is a sample drawn uniformly at random without replacement.
+                 \begin{itemize}
+	                \item Every individual has the same chance of being selected.
+	                \item Every pair has the same chance as every other pair.
+	                \item Every triple has the same chance as every other triple.
+	                \item And so on.
+
+	            \end{itemize}
+	        \end{column}
+	        
+	        \begin{column}{.3\textwidth}
+	            \begin{figure}
+	                \centering
+	                \includegraphics[scale=.5]{Bild14}
+	            \end{figure}
+
+	        \end{column}
+	        
+	    \end{columns}
+	    
+	\end{frame}
+	
+	
+	
+		\begin{frame}{Example scenario}
+	    \begin{columns}
+	        \begin{column}{.3\textwidth}
+	            Consider the following sampling scheme:
+
+	            \begin{itemize}
+	                \item Suppose a class roster has 1200 students listed alphabetically.
+	                \item Pick one of the first 10 students on the list at random.
+	                \item To create your sample, take that student and every 10th student listed after that (e.g. Students 8, 18, 28, etc).
+	            \end{itemize}
+	            Pause here and answer these questions!
+                 
+	        \end{column}
+	        
+	        \begin{column}{.6\textwidth}
+	           Is this a probability sample?\\
+	           \bigskip
+	           Does each student have the same probability of being selected?\\
+	           \bigskip
+	           Is this a simple random sample?
+
+
+	        \end{column}
+	        
+	    \end{columns}
+	    
+	\end{frame}
+	
+		\begin{frame}{Example scenario}
+	    \begin{columns}
+	        \begin{column}{.3\textwidth}
+	            Consider the following sampling scheme:
+
+	            \begin{itemize}
+	                \item Suppose a class roster has 1200 students listed alphabetically.
+	                \item Pick one of the first 10 students on the list at random.
+	                \item To create your sample, take that student and every 10th student listed after that (e.g. Students 8, 18, 28, etc).
+	            \end{itemize}
+                 
+	        \end{column}
+	        
+	        \begin{column}{.6\textwidth}
+	           Is this a probability sample?
+	           \begin{itemize}
+	               \item Yes. If my sample is [n, n + 10, n + 20, …, n + 1190], where 0 \leq n \leq 10, the probability of that sample is $\frac{1}{10}$
+	               \item Otherwise, the probability is 0.
+	               \item Only 10 possible samples!
+	           \end{itemize}
+	           Does each student have the same probability of being selected?\\
+	           \bigskip
+	           Is this a simple random sample?
+
+
+	        \end{column}
+	        
+	    \end{columns}
+	    
+	\end{frame}
+	
+	\begin{frame}{Example scenario}
+	    \begin{columns}
+	        \begin{column}{.3\textwidth}
+	            Consider the following sampling scheme:
+
+	            \begin{itemize}
+	                \item Suppose a class roster has 1200 students listed alphabetically.
+	                \item Pick one of the first 10 students on the list at random.
+	                \item To create your sample, take that student and every 10th student listed after that (e.g. Students 8, 18, 28, etc).
+	            \end{itemize}
+
+                 
+	        \end{column}
+	        
+	        \begin{column}{.6\textwidth}
+	           Is this a probability sample?
+	           \begin{itemize}
+	               \item Yes. If my sample is [n, n + 10, n + 20, …, n + 1190], where 0 \leq n \leq 10, the probability of that sample is $\frac{1}{10}$
+	               \item Otherwise, the probability is 0.
+	               \item Only 10 possible samples!
+	           \end{itemize}
+	           Does each student have the same probability of being selected?
+	           \begin{itemize}
+	               \item Yes. Each student is chosen with probability $\frac{1}{10}$. 
+	           \end{itemize}
+	           Is this a simple random sample?
+
+
+	        \end{column}
+	        
+	    \end{columns}
+	    
+	\end{frame}
+	
+	\begin{frame}{Example scenario}
+	    \begin{columns}
+	        \begin{column}{.3\textwidth}
+	            Consider the following sampling scheme:
+
+	            \begin{itemize}
+	                \item Suppose a class roster has 1200 students listed alphabetically.
+	                \item Pick one of the first 10 students on the list at random.
+	                \item To create your sample, take that student and every 10th student listed after that (e.g. Students 8, 18, 28, etc).
+	            \end{itemize}
+                 
+	        \end{column}
+	        
+	        \begin{column}{.6\textwidth}
+	           Is this a probability sample?
+	           \begin{itemize}
+	               \item Yes. If my sample is [n, n + 10, n + 20, …, n + 1190], where 0 \leq n \leq 10, the probability of that sample is $\frac{1}{10}$
+	               \item Otherwise, the probability is 0.
+	               \item Only 10 possible samples!
+	           \end{itemize}
+	           Does each student have the same probability of being selected?
+	           \begin{itemize}
+	               \item Yes. Each student is chosen with probability $\frac{1}{10}$. 
+	           \end{itemize}
+	           Is this a simple random sample?
+                \begin{itemize}
+                    \item No. The chance of selecting (8, 18) is 1/10; the chance of selecting (8, 9) is 0.
+                \end{itemize}
+
+	        \end{column}
+	        
+	    \end{columns}
+	    
+	\end{frame}
+	
+	
+	\begin{frame}{A very common approximation}
+	    \begin{itemize}
+	        \item A common situation in data science:
+	        \begin{itemize}
+	            \item We have an enormous population.
+	            \item We can only afford to sample a relatively small number of individuals.
+	        \end{itemize}
+	        \item If the population is huge compared to the sample, then random sampling with and without replacement are pretty much the same.
+	        \begin{itemize}
+	            \item For instance, if our population size is in the thousands, and we’re sampling 100 people, removing those 100 doesn’t change the population very much.
+	        \end{itemize}
+	        \item Probabilities of sampling with replacement are much easier to compute!
+	    \end{itemize}
+	\end{frame}
+	
+\end{document}

@@ -1,0 +1,327 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Logistic Regression, Classification}
+\subtitle{Evaluating classifiers}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Accuracy}
+	    \begin{itemize}
+	        \item Now that we actually have our classifier, let’s try and quantify how well it performs.
+	        \item The most basic evaluation metric for a classifier is accuracy.
+	        \begin{itemize}
+	            \item Widely used.
+	            \item model.score in scikit-learn calculates this.
+	            \item Changing the threshold can change our model’s accuracy (will explore soon).
+	            \item In the presence of class imbalance – not so meaningful!
+	        \end{itemize}
+	    \end{itemize}
+	    \begin{equation*}
+	        \text{accuracy} = \frac{\# \text{of points classified correctly}}{\# \text{points total}}
+	    \end{equation*}
+	\end{frame}
+	
+	
+	\begin{frame}[c]{Pitfalls of accuracy}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+                 Suppose we’re trying to build a classifier to filter spam emails.
+        	    \begin{itemize}
+        	        \item Each email is spam (1) or ham (0).
+        	    \end{itemize}
+        	    Let’s say we have 100 emails, of which 5 are truly spam, and the remaining 95 are ham.
+        	    \begin{itemize}
+        	        \item Your friend suggests you classify every email as ham.
+        	        \item What is the accuracy of your friend’s classifier?
+        	        \item Is accuracy a good metric of this classifier’s performance?
+        	    \end{itemize}
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                
+	        \end{column}
+	    \end{columns}
+	   
+	\end{frame}
+	
+	
+	
+	\begin{frame}[c]{Pitfalls of accuracy}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+                 Suppose we’re trying to build a classifier to filter spam emails.
+        	    \begin{itemize}
+        	        \item Each email is spam (1) or ham (0).
+        	    \end{itemize}
+        	    Let’s say we have 100 emails, of which 5 are truly spam, and the remaining 95 are ham.
+        	    \begin{itemize}
+        	        \item Your friend suggests you classify every email as ham.
+        	        \item What is the accuracy of your friend’s classifier?
+        	        \item Is accuracy a good metric of this classifier’s performance?
+        	    \end{itemize}
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                Accuracy is 95\%.
+                    \begin{itemize}
+                        \item But we didn’t detect any spam emails!
+                        \item Alternative: classify everything as spam.
+                        \begin{itemize}
+                            \item We’d catch all spam emails!
+                            \item But we’d also have a bunch of non-spam emails classified as spam.
+                        \end{itemize}
+                        \item This suggests we need to be looking at more than just accuracy.
+                    \end{itemize}
+	        \end{column}
+	    \end{columns}
+	   
+	\end{frame}
+	
+	
+	
+	\begin{frame}[c]{Types of classification errors}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+                 Moving forward, “positive” refers to 1 and “negative” refers to 0.
+        	    \begin{itemize}
+        	        \item True positives and true negatives are when we correctly classify an observation as being positive or negative.
+        	        \item False positives are like “false alarms.”
+        	        \item False negatives are when we “fail to detect” things.
+        	    \end{itemize}
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.38]{Bild7}
+	                \end{figure}
+	        \end{column}
+	    \end{columns}
+	   
+	\end{frame}
+	
+	
+	\begin{frame}{Confusion matrix}
+	    A confusion matrix gives us the four quantities on the previous slide, for a particular classifier and set of data.
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.4]{Bild8}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Precision and recall}
+	  \begin{columns}
+	      \begin{column}{.5\textwidth}
+	              \begin{align*}
+	                  \text{accuracy} = \frac{TP + TN}{n}
+	                  \includegraphics[scale=.35]{Bild9}\\
+	                  \text{precision} = \frac{TP}{TP + FP}
+	                  \includegraphics[scale=.35]{Bild10}\\
+	                  \text{recall} = \frac{TP}{TP + FN}
+	                  \includegraphics[scale=.35]{Bild11}
+	              \end{align*}
+	      \end{column}
+	      
+	      
+	      \begin{column}{.2\textwidth}
+	             \begin{figure}
+	                 \centering
+	                 \includegraphics[scale=.4]{Bild12}
+	             \end{figure} 
+	      \end{column}
+	  \end{columns}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Precision and recall}
+	  \begin{columns}
+	      \begin{column}{.5\textwidth}
+	              \begin{align*}
+	                  \text{accuracy} = \frac{TP + TN}{n}
+	                  \includegraphics[scale=.35]{Bild9}\\
+	                  \text{precision} = \frac{TP}{TP + FP}
+	                  \includegraphics[scale=.35]{Bild13}\\
+	                  \text{recall} = \frac{TP}{TP + FN}
+	                  \includegraphics[scale=.35]{Bild11}
+	              \end{align*}
+	      \end{column}
+	      
+	      
+	      \begin{column}{.2\textwidth}
+	             \begin{figure}
+	                 \centering
+	                 \includegraphics[scale=.4]{Bild14}
+	             \end{figure} 
+	      \end{column}
+	  \end{columns}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Precision and recall}
+	  \begin{columns}
+	      \begin{column}{.5\textwidth}
+	              \begin{align*}
+	                  \text{accuracy} = \frac{TP + TN}{n}
+	                  \includegraphics[scale=.35]{Bild9}\\
+	                  \text{precision} = \frac{TP}{TP + FP}
+	                  \includegraphics[scale=.35]{Bild10}\\
+	                  \text{recall} = \frac{TP}{TP + FN}
+	                  \includegraphics[scale=.35]{Bild15}
+	              \end{align*}
+	      \end{column}
+	      
+	      
+	      \begin{column}{.2\textwidth}
+	             \begin{figure}
+	                 \centering
+	                 \includegraphics[scale=.4]{Bild16}
+	             \end{figure} 
+	      \end{column}
+	  \end{columns}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Precision and recall}
+	  \begin{columns}
+	        \begin{column}{.5\textwidth}
+                 Suppose we’re trying to build a classifier to filter spam emails.
+        	    \begin{itemize}
+        	        \item Each email is spam (1) or ham (0).
+        	    \end{itemize}
+        	    Let’s say we have 100 emails, of which 5 are truly spam, and the remaining 95 are ham.
+        	    \begin{itemize}
+        	        \item Your friend suggests you classify every email as ham.
+        	        \item What is the accuracy?
+        	        \item What is the precision?
+        	        \item What is the recall?
+        	    \end{itemize}
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                Accuracy is 95\%.
+                    \begin{itemize}
+                        \item But we didn’t detect any spam emails!
+                        \item Alternative: classify everything as spam.
+                        \begin{itemize}
+                            \item We’d catch all spam emails!
+                            \item But we’d also have a bunch of non-spam emails classified as spam.
+                        \end{itemize}
+                        \item This suggests we need to be looking at more than just accuracy.
+                    \end{itemize}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Precision and recall}
+	  \begin{columns}
+	        \begin{column}{.5\textwidth}
+                 Suppose we’re trying to build a classifier to filter spam emails.
+        	    \begin{itemize}
+        	        \item Each email is spam (1) or ham (0).
+        	    \end{itemize}
+        	    Let’s say we have 100 emails, of which 5 are truly spam, and the remaining 95 are ham.
+        	    \begin{itemize}
+        	        \item Your friend suggests you classify every email as ham.
+        	        \item What is the accuracy?
+        	        \item What is the precision?
+        	        \item What is the recall?
+        	    \end{itemize}
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	               TP = 0, FP = 0, TN = 95, FN = 5\\
+	               \bigskip
+	               Accuracy = 95\%\\
+	               Precision = 0 / (0 + 0) = undefined\\
+	               Recall = 0 / (0 + 5) = 0\%\\
+	               \bigskip
+	               Accuracy doesn’t tell the full story.
+                    \begin{itemize}
+                        \item Class imbalance – the distribution of true observations is skewed
+                        \item Here, 95\% of true observations are negative.
+                    \end{itemize}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Trade-off between precision and recal}
+	    \begin{columns}
+	      \begin{column}{.8\textwidth}
+	              \begin{itemize}
+	                  \item Precision penalizes false positives, and recall penalizes false negatives.
+	                  \item We can achieve 100\% recall by making our classifier output “1”, regardless of the input.
+	                  \begin{itemize}
+	                      \item We would have no false negatives, but many false positives, and so our precision would be low.
+	                  \end{itemize}
+	                  \item This suggests that there is a tradeoff between precision and recall – they are inversely related. 
+	                  \begin{itemize}
+	                      \item Ideally, both would be near 100\%, but that’s unlikely to happen.
+	                  \end{itemize}
+	                  \item We can adjust our classification threshold to suit our needs, depending on the domain.
+	                  \begin{itemize}
+	                      \item Higher threshold – fewer false positives. Precision tends to increase.
+	                      \item Lower threshold – fewer false negatives. Recall increases.
+	                  \end{itemize}
+	              \end{itemize}
+	      \end{column}
+	      
+	      
+	      \begin{column}{.2\textwidth}
+	             \begin{figure}
+	                 \centering
+	                 \includegraphics[scale=.4]{Bild12}
+	             \end{figure} 
+	      \end{column}
+	  \end{columns}
+	\end{frame}
+	
+	\begin{frame}{Examples}
+	    In each of the following cases, what would we want to maximize: precision, recall, or accuracy?\\
+	    \begin{itemize}
+	        \item Predicting whether or not a patient has some disease.
+	        \item Determining whether or not someone should be sentenced to life in prison.
+	        \item  Determining if an email is spam or ham.
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{Examples}
+	    In each of the following cases, what would we want to maximize: precision, recall, or accuracy?\\
+	    \begin{itemize}
+	        \item Predicting whether or not a patient has some disease.
+	        \begin{itemize}
+	            \item Maximize recall.
+	            \item Presumably if we say someone has the disease, they will go through further testing.
+	            \item If we say they don’t, the condition may be left untreated, which is dangerous.
+	        \end{itemize}
+	        \item Determining whether or not someone should be sentenced to life in prison.
+	        \begin{itemize}
+	            \item Maximize precision.
+	            \item We don’t want to sentence innocent people, so we want to be very sure that this is a true positive.
+	        \end{itemize}
+	        \item  Determining if an email is spam or ham.
+	        \begin{itemize}
+	            \item Maximize accuracy, though this one is subjective.
+	            \item Depends what you think is worse – having a bunch of spam emails ending up in your inbox, or a bunch of non-spam emails being filtered out. 
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+\end{document}

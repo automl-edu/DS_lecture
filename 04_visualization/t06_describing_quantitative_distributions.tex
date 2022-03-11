@@ -1,0 +1,113 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Visualization]{DS: Visualization}
+\subtitle{Describing quantitative distributions}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Describing distributions}
+	    One of the benefits of a histogram or density curve is that they show us the “bigger picture” of our distribution (something we don’t get with a rug plot).\\
+	    \bigskip
+	    Some of the terminology we use to describe distributions:
+	    \begin{itemize}
+	        \item Modes.
+	        \item Skewness.
+	        \begin{itemize}
+	            \item Skewed left vs skewed right.
+	        \end{itemize}
+	        \item Tails.
+	        \begin{itemize}
+	            \item Left tail vs right tail.	
+	        \end{itemize}
+	        \item Outliers.
+	        \begin{itemize}
+	            \item Define these arbitrarily.
+	            \item Will see one definition in the next section.
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Modes}
+        \begin{columns}
+            \begin{column}{.5\textwidth}
+            A mode of a distribution is a local or global maximum.
+                    \begin{itemize}
+                        \item A distribution with a single clear maximum is called unimodal.
+                        \item Distributions with two modes are called bimodal.
+                        \begin{itemize}
+                            \item More than two: multimodal.
+                            \item \alert{Note}: Need to distinguish between modes and random noise
+                        \end{itemize}
+                    \end{itemize}
+            \end{column}
+            
+            
+            \begin{column}{.4\textwidth}
+
+                       \centering
+                       \includegraphics[scale=.3]{Bild34}
+
+            \end{column}
+        \end{columns}
+    \end{frame}
+    
+    
+    \begin{frame}{Skew and tails}
+        \begin{columns}
+            \begin{column}{.5\textwidth}
+            
+                       \centering
+                       \includegraphics[scale=.5]{Bild35}
+
+            \end{column}
+            
+            
+            \begin{column}{.4\textwidth}
+                   If a distribution has a long right tail, we call it skewed right.
+                   \begin{itemize}
+                       \item Such an example is on the left
+                       \item In such cases, the mean is typically to the right of the median.
+                       \begin{itemize}
+                           \item Think of the mean as the “balancing point” of the density.
+                       \end{itemize}
+                       \item In the event that the tail is on the left, we say the data is skewed left.
+                       \item Our distribution can be symmetric, when both tails are of equal size.
+                   \end{itemize}
+            \end{column}
+        \end{columns}
+    \end{frame}
+    
+    
+    
+    \begin{frame}{Example}
+        \begin{columns}
+            \begin{column}{.5\textwidth}
+            
+                       \centering
+                       \includegraphics[scale=.6]{Bild36}
+                   
+            \end{column}
+            
+            
+            \begin{column}{.4\textwidth}
+                   Consider the distribution of birth weights shown to the left. We might describe this as being:
+                   \begin{itemize}
+                       \item Unimodal. There is a single clear peak.
+                       \item Symmetric. It doesn’t appear to be skewed in any direction.
+                       \begin{itemize}
+                           \item Mean is very close to the median.
+                       \end{itemize}
+                       \item Roughly normal.
+                   \end{itemize}
+            \end{column}
+        \end{columns}
+    \end{frame}
+\end{document}

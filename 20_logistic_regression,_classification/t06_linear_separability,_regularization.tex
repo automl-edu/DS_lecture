@@ -1,0 +1,215 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Logistic Regression, Classification}
+\subtitle{Linear separability, regularization}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Question}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	              Suppose we’re training a single-parameter logistic regression model on the data to the right.\\
+	              \bigskip
+	              What $\theta$ minimizes mean cross-entropy loss? \\
+	              \bigskip
+	              $\hat{\theta} = -1$\\
+	              $\hat{\theta} = 1$\\
+	              $\hat{\theta} \rightarrow -\infty$\\
+	              $\hat{\theta} \rightarrow \infty$\\
+	        \end{column}
+	        
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.5]{Bild40}
+	                \end{figure}
+	        \end{column}
+	    \end{columns}
+	    
+	\end{frame}
+	
+	
+	\begin{frame}{Question}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	              Suppose we’re training a single-parameter logistic regression model on the data to the right.\\
+	              \bigskip
+	              What $\theta$ minimizes mean cross-entropy loss?\\
+	              \bigskip
+	              $\hat{\theta} \rightarrow -\infty$
+	        \end{column}
+	        
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.35]{Bild41}
+	                \end{figure}
+	                
+	        \end{column}
+	    \end{columns}
+	    \bigskip
+	    $\hat{y} = f_\theta (x) = P(Y=1|x) = \sigma (x\theta) \hspace{1cm} \sigma (t) = \frac{1}{1 + e^{-t}}$
+	\end{frame}
+	
+	
+	\begin{frame}{Loss surface}
+    
+
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	            On the right is the loss surface for mean cross-entropy loss.
+	            \begin{itemize}
+	                \item Gradient descent will (correctly) push our guess for theta towards negative infinity.
+	                \item It’s almost impossible to see, but that’s not a plateau – loss keeps decreasing and decreasing to the left.
+	                \begin{itemize}
+	                    \item Loss approaches 0.
+	                \end{itemize}
+	                \item Why is an infinitely large theta a bad idea? (     $\hat{\theta} \rightarrow -\infty$             )
+
+	            \end{itemize}  
+	        \end{column}
+	        
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.5]{Bild42}
+	                \end{figure}
+	                
+	        \end{column}
+	    \end{columns}
+	 \end{frame}
+	 
+	 
+	 \begin{frame}{Issues with large parameters}
+	             Why is an infinitely large theta a bad idea? (     $\hat{\theta} \rightarrow -\infty$             )
+	            \begin{itemize}
+	                \item A single wrong prediction will have infinite loss.
+	                \item “Overconfident”.
+	            \end{itemize}  
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.33]{Bild43}
+	                \end{figure}
+	 \end{frame}
+	 
+	 
+	 
+	 \begin{frame}{Linear separability}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	            Points are linearly separable if we can correctly separate the classes with a line.\\
+	            When considering linear separability, we ignore the class label. 
+	            \begin{itemize}
+	                \item The data to the left has only one feature, so it is 1D.
+	                \item We are looking for a degree 0 “hyperplane” to separate them, which is a vertical line.
+	            \end{itemize}  
+	        \end{column}
+	        
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.35]{Bild44}
+	                \end{figure}
+	                
+	        \end{column}
+	    \end{columns}
+	 \end{frame}
+	 
+	  \begin{frame}{Linear separability}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	            Points are linearly separable if we can correctly separate the classes with a line.\\
+	            When considering linear separability, we ignore the class label. 
+
+	            \begin{itemize}
+	                \item The data to the left has only one feature, so it is 1D.
+	                \item We are looking for a degree 0 “hyperplane” to separate them, which is a vertical line.
+	            \end{itemize}  
+	        \end{column}
+	        
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.35]{Bild45}
+	                \end{figure}
+	                
+	        \end{column}
+	    \end{columns}
+	 \end{frame}
+	 
+	 
+	  \begin{frame}{Linear separability in 2D}
+	             \includegraphics[scale=.4]{Bild46}\\
+	             More formally: A set of d-dimensional points is linearly separable if we can draw a degree d-1 hyperplane (line) that separates the points perfectly.
+
+	 \end{frame}
+	 
+	 
+	 \begin{frame}{Regularized logistic regression}
+	     \begin{itemize}
+	         \item If our training data is linearly separable, some of our weights will diverge to infinity (either positive or negative).
+	         \begin{itemize}
+	             \item This is because our numeric solver (e.g. gradient descent) will keep “rolling” further and further down the loss surface.
+	             \item Will eventually stop at some excessively large weight.
+	         \end{itemize}
+	         \item To avoid large weights, we use regularization.
+	         \begin{itemize}
+	             \item As with linear regression, we should standardize our features before applying regularization.
+	         \end{itemize}
+	         \item For instance, using L2 regularization, our objective function becomes:
+	     \end{itemize}
+	     \begin{equation*}
+	         R(\theta) = -\frac{1}{n}\sum\limits_{i=1}^n(y_i\log(\sigma (\mathbb{X}_i^T\theta)) + (1 - y_i)\log(1-\sigma (\mathbb{X}_i^T\theta))) + \lambda\sum\limits_{i=1}^p\theta^2_i
+	     \end{equation*}
+	 \end{frame}
+	 
+	 
+	 \begin{frame}{Regularized logistic regression}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.4]{Bild47}
+	    \end{figure}
+	     Loss surfaces for linearly separable toy dataset from before.
+	     \begin{itemize}
+	         \item Left: no regularization.
+	         \item Right: L2 regularization, with lambda = 0.1.
+	     \end{itemize}
+	 \end{frame}
+	 
+	 
+	 \begin{frame}{Regularized logistic regression in scikit-learn}
+	    \begin{itemize}
+	        \item scikit-learn’s LogisticRegression package applies regularization by default.
+	        \begin{itemize}
+	            \item L2 by default, but you can change the penalty parameter.
+	        \end{itemize}
+	        \item But, its regularization hyperparameter C is the inverse of the lambda that we’ve discussed.
+	        \begin{itemize}
+	            \item C = 1 / lambda.
+	        \end{itemize}
+	        \item By default, C = 1.
+	    \end{itemize}
+	    
+	   \\
+	   \bigskip
+	   LogisticRegression(C = 300)\\
+	   \includegraphics[scale=.5]{Bild48}
+
+	 \end{frame}
+\end{document}

@@ -1,0 +1,121 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Regular Expressions}
+\subtitle{More Advanced Regular Expressions Syntax}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Limitations of Regular Expressions}
+	  Writing regular expressions is like writing a program.
+	  \begin{columns}
+	       
+	   \begin{column}{.4\textwidth}
+	    
+	 
+	 
+	    \begin{itemize}
+	        \item Need to know the syntax well.
+	        \item Can be easier to write than to read.
+	        \item Can be difficult to debug.
+	    \end{itemize}
+	   \end{column}
+	   \begin{column}{.6\textwidth}
+	    
+	   
+	    \begin{figure}
+            \centering
+            \includegraphics[scale=.7]{Bild14}
+        \end{figure}
+        \end{column}
+         \end{columns}
+	    Regular expressions sometimes jokingly referred to as a “write only language”.\\
+	    Regular expressions are terrible at certain types of problems. Examples:
+	    \begin{itemize}
+	        \item For parsing a hierarchical structure, such as JSON, use a parser, not a regex!
+	        \item Complex features (e.g. valid email address).
+	        \item Counting (same number of instances of a and b). (impossible)
+	        \item Complex properties (palindromes, balanced parentheses). (impossible)
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{Email Address Regular Expression (a probably bad idea)}
+	    The regular expression for email addresses (for the Perl programming language):\\
+	    \includegraphics[scale=.58]{Bild15}\\
+	    From: \url{http://www.ex-parrot.com/~pdw/Mail-RFC822-Address.html}
+
+	\end{frame}
+	
+	
+	\begin{frame}{Even More Regular Expression Syntax}
+	    
+	    \includegraphics[scale=.45]{Bild16}\\
+	    Suppose you want to match one of our special characters like . or [ or ] 
+	    \begin{itemize}
+	        \item In these cases, you must “escape” the character using the backslash.
+	        \item You can think of the backslash as meaning “take this next character literally”.
+	    \end{itemize}
+
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Regular Expressions Puzzle: \url{tinyurl.com/reg913a}}
+	    
+	    \includegraphics[scale=.45]{Bild16}\\
+	    Create a regular expression that matches the red portion below.
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.5]{Bild17}
+	    \end{figure}
+
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Regular Expressions Puzzle Solution: \url{tinyurl.com/reg913a}}
+	    
+	    \includegraphics[scale=.45]{Bild16}\\
+	    Create a regular expression that matches the red portion below: \textbackslash[.* \textbackslash]
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.5]{Bild17}
+	    \end{figure}
+
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Quiz \url{tinyurl.com/reg913a}}
+	 
+	    \includegraphics[scale=.43]{Bild16}\\
+	    Create a regular expression that matches anything inside of angle brackets <>, but none of the string outside of angle brackets.
+        \begin{itemize}
+            \item Example: <div><td valign="top">Moo</td></div>
+            \item Moo should not match because it is not between < and >.
+            \item Note: This is equivalent to the problem of matching HTML tags.
+        \end{itemize}
+
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Even More Regular Expression Features}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild18}
+	    \end{figure}
+	    A few additional common regex features are listed above.
+        \begin{itemize}
+            \item Won’t discuss these in class, but might come up in discussion or hw.
+            \item There are even more out there!
+        \end{itemize}
+        The official guide is good! \url{https://docs.python.org/3/howto/regex.html}
+	\end{frame}
+\end{document}

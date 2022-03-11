@@ -1,0 +1,92 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Introduction}
+\subtitle{Data Science Lifecycle}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+
+    \begin{frame}[c]{}
+
+        \begin{figure}
+            \includegraphics[scale=.6]{bild15}
+        \end{figure}
+        The “data science lifecycle” you will see out in the wild may be slightly different than the one we teach you, but the core ideas are all the same.
+
+    \end{frame}
+
+    \begin{frame}{Data science lifecycle}
+        \begin{columns}
+        \begin{column}{.6\textwidth}
+            \begin{figure}
+                \includegraphics[scale=.35]{bild16}
+            \end{figure}
+        \end{column}
+        \begin{column}{.4\textwidth}
+            The data science lifecycle is a high-level description of the data science workflow.\\
+            Note the two distinct entry points!
+        \end{column}
+        \end{columns}
+    \end{frame}
+
+    \begin{frame}{1. Question/Problem Formulation}
+        \begin{itemize}
+            \item What do we want to know?
+            \item What problems are we trying to solve?
+            \item What are the hypotheses we want to test?
+            \item What are our metrics for success?
+        \end{itemize}
+    \hfill
+    \includegraphics[scale=.45]{bild17}
+    \end{frame}
+
+    \begin{frame}{2. Data Acquisition and Cleaning}
+        \begin{itemize}
+            \item What data do we have and what data do we need?
+            \item How will we sample more data?
+            \item Is our data representative of the population we want to study?
+        \end{itemize}
+        \includegraphics[scale=.45]{bild18}
+        
+    \end{frame}
+
+
+    \begin{frame}{3. Exploratory Data Analysis & Visualization}
+        \begin{columns}
+            \begin{column}{.3\textwidth}
+            \begin{figure}
+                \includegraphics[scale=.45]{bild19}
+                
+            \end{figure}
+            \end{column}
+            \begin{column}{.4\textwidth}
+            \begin{itemize}
+                \item How is our data organized and what does it contain?
+                \item Do we already have relevant data?
+                \item What are the biases, anomalies, or other issues with the data?
+                \item How do we transform the data to enable effective analysis?
+            \end{itemize}
+            \end{column}
+  
+        \end{columns}
+    \end{frame}
+
+    \begin{frame}{4. Prediction and Inference}
+        \begin{itemize}
+            \item What does the data say about the world?
+            \item Does it answer our questions or accurately solve the problem?
+            \item How robust are our conclusions and can we trust the predictions? 
+        \end{itemize}
+        \hfill
+        \includegraphics[scale=.45]{bild20}
+    \end{frame}
+
+
+
+\end{document}

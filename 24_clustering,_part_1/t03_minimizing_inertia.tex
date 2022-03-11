@@ -1,0 +1,147 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Clustering, Part 1}
+\subtitle{Minimizing Inertia}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{K-Means Clustering for K = 4}
+	    Below is an example of an output for K=4:
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.75]{Bild21}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{K-Means Clustering for K = 4}
+	    Each time you run K-Means, you get a different output
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.4]{Bild22}
+	    \end{figure}
+	    Which is best?
+	    \begin{itemize}
+	        \item One approach: Define some sort of loss function
+	        \pause
+	        \item Come up with a loss function for clustering
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{K-Means Clustering for K = 4}
+	    Each time you run K-Means, you get a different output
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.4]{Bild22}
+	    \end{figure}
+	    Come up with a loss function for clustering -- your ideas:
+	    \begin{itemize}
+	        \item The sum of distances from each point to its center
+	        \item Could take into account balance of number of points per cluster
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{K-Means Clustering for K = 4}
+	    To evaluate different clustering results, we need a loss function
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.5]{Bild23}
+	                \end{figure}
+	        \end{column}
+	        
+	        \begin{column}{.5\textwidth}
+	                Two common loss functions:
+	                \begin{itemize}
+	                    \item Inertia: Sum of squared distances from each data point to its center
+	                    \item Distortion: Weighted sum of squared distances from each data point to its center
+	                \end{itemize}
+	                Example: 
+	                \begin{itemize}
+	                    \item Inertia: 0.47$^2$ + 0.19$^2$ + 0.34$^2$   + 0.25$^2$ + 0.58$^2$ + 0.36$^2$ + 0.44$^2$
+	                    \item Distortion: (0.47$^2$ + 0.19$^2$ + 0.34$^2$)/3 + (0.25$^2$ + 0.58$^2$ + 0.36$^2$ + 0.44$^2$)/4
+
+	                \end{itemize}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{K-Means Clustering for K = 4}
+	    Each time you run K-Means, you get a different output
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.4]{Bild24}
+	    \end{figure}
+	   Our loss function says that the leftmost clustering is best (inertia: 44.96) and rightmost clustering (inertia: 54.35) is worst
+
+	\end{frame}
+	
+	
+	\begin{frame}{K-Means and Inertia}
+	    It turns out that the function K-Means is trying to minimize is inertia\\
+… but often fails to find global optimum. Why?\\
+Can think of K-means as a pair of optimizers that take turns
+    \begin{itemize}
+        \item First optimizer:
+        \begin{itemize}
+            \item Holds center positions constant
+            \item Optimizes data colors
+        \end{itemize}
+        \item Second optimizer:
+        \begin{itemize}
+            \item Holds data colors constant
+            \item Optimizes center positions
+        \end{itemize}
+        \item Neither gets total control 
+    \end{itemize}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Optimizing Inertia}
+	    Hard problem: Give an algorithm that optimizes inertia
+	    \begin{itemize}
+	        \item Your algorithm should return the EXACT best centers and colors
+	        \item Don’t worry about runtime
+	    \end{itemize}
+	    This is a bit of a CS61B/CS70/CS170 problem. It may be far too hard for some of you.
+	\end{frame}
+	
+	
+	\begin{frame}{Optimizing Inertia}
+	    Hard problem: Give an algorithm that optimizes inertia
+	    \begin{itemize}
+	        \item Your algorithm should return the EXACT best centers and colors
+	        \item Don’t worry about runtime
+	    \end{itemize}
+	    Algorithm:
+	    \begin{itemize}
+	        \item For all possible kn colorings:$\leftarrow$\includegraphics[scale=.35]{Bild25}
+	        \begin{itemize}
+	            \item Compute the k centers for that coloring
+	            \item Compute the inertia for the k centers
+	            \begin{itemize}
+	                \item If current inertia is better than best known, write down the current centers and coloring and call that the new best known
+	            \end{itemize}
+	        \end{itemize}
+	    \end{itemize}
+	    No better algorithm has been found$\leftarrow$\includegraphics[scale=.35]{Bild26}
+	    %\bigskip
+	    %*A “coloring” is just a choice of color for every point, e.g. point 1 = red, point 2 = green, point 3 = red, point 4 = blue\\
+	    %**For those who know what this means: K-Means is known to be an NP-hard problem
+	    
+	\end{frame}
+	
+	
+\end{document}

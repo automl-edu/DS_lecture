@@ -1,0 +1,62 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Regression]{DS: Simple Linear Regression}
+\subtitle{Visualizing loss surfaces}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Visualizing loss surfaces}
+	
+	    \begin{columns}
+	        \begin{column}{.55\textwidth}
+	        
+	                On the left, we have the plots of the loss surfaces for the constant model.
+	                \begin{itemize}
+	                    \item Top: squared loss (so average loss = MSE).
+	                    \begin{itemize}
+	                        \item The y-axis shows the MSE for each value of $\theta$ on the x-axis.
+	                    \end{itemize}
+	                    \item Bottom: absolute loss (so average loss = MAE).
+	                \end{itemize}
+	                The simple linear regression model has two parameters, a and b (or equivalently,   $\theta_0$    and    $\theta_1$    ). This means the loss surface will be 3D!
+
+	        \end{column}
+	        
+	        \begin{column}{.45\textwidth}
+
+                        \centering
+	                   \includegraphics[scale=.3]{Bild5}
+
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Visualizing loss surfaces}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	                Here, we have 3 axes.
+	                \begin{itemize}
+	                    \item One for   $\theta_0$ 
+	                    \item One for      $\theta_1$ 
+	                    \item One that tells us the mean squared error on our dataset, using the model    $\hat{y} = \theta_0 + \theta_1x$                           
+	                \end{itemize}
+	                The loss surface is nice and smooth (which we touted as a property of the squared loss in the last lecture).\\
+
+	        \end{column}
+	        
+	        \begin{column}{.5\textwidth}
+	               \begin{figure}
+	                   \includegraphics[scale=.3]{Bild6}
+	               \end{figure}
+
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+\end{document}

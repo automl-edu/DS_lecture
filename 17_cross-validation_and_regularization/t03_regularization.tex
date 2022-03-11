@@ -1,0 +1,127 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Cross-Validation and Regularization}
+\subtitle{Regularization}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Basic Idea}
+	    \begin{equation*}
+	        \hat{\theta} = \underset{\theta}{arg min} \frac{1}{n}\sum\limits_{i=1}^n\text{Loss}(y_i,f_\theta(x_i))
+	    \end{equation*}
+	    \underline{such that:}
+	    \begin{equation*}
+	        f_\theta \text{ does not 'overfit'}
+	    \end{equation*}
+	    Can we make this more formal?
+	\end{frame}
+	
+	
+	\begin{frame}[c]{Basic Idea}
+	    \begin{equation*}
+	        \hat{\theta} = \underset{\theta}{arg min} \frac{1}{n}\sum\limits_{i=1}^n\text{Loss}(y_i,f_\theta(x_i))
+	    \end{equation*}
+	    \underline{such that:}
+	    \begin{equation*}
+	         \text{Complexity}(f_\theta) \leq \beta
+	    \end{equation*}
+	    Complexity: How do we define this?\\
+	    $\beta$:  Regularization Hyperparameter
+
+	\end{frame}
+	
+	
+	\begin{frame}[c]{Idealized Notion of Complexity}
+	   \begin{equation*}
+	         \text{Complexity}(f_\theta) \leq \beta
+	    \end{equation*}
+        \begin{itemize}
+            \item Focus on complexity of linear models:
+            \begin{itemize}
+                \item Number and kinds of features
+            \end{itemize}
+            \item Ideal definition:
+            \begin{equation*}
+                \text{Complexity}(f_\theta) = \sum\limits_{j=1}^d\mathbb{I}[\theta_j \neq 0] 
+            \end{equation*}
+            \item Why?
+        \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}[c]{Ideal “Regularization”}
+	Find the best value of $\theta$ which uses fewer than $\beta$ features.
+	  \begin{equation*}
+	        \hat{\theta} = \underset{\theta}{arg min} \frac{1}{n}\sum\limits_{i=1}^n\text{Loss}(y_i,f_\theta(x_i))
+	    \end{equation*}
+	    \underline{such that}
+	    \begin{equation*}
+                \text{Complexity}(f_\theta) = \sum\limits_{j=1}^d\mathbb{I}[\theta_j \neq 0] \leq \beta
+        \end{equation*}
+        Combinatorial search problem – NP-hard to solve in general.
+
+	\end{frame}
+	
+	
+	\begin{frame}{Norm Balls}
+	    \includegraphics[scale=.35]{Bild5}
+	\end{frame}
+	
+	\begin{frame}{Norm Balls}
+	    \includegraphics[scale=.35]{Bild6}
+	\end{frame}
+	
+	\begin{frame}{Norm Balls}
+	    \includegraphics[scale=.35]{Bild7}
+	\end{frame}
+	
+	\begin{frame}{Norm Balls}
+	    \includegraphics[scale=.35]{Bild8}
+	\end{frame}
+	
+	\begin{frame}{Norm Balls}
+	    \includegraphics[scale=.35]{Bild9}
+	\end{frame}
+	
+	
+	\begin{frame}{Norm Balls}
+	    \includegraphics[scale=.35]{Bild10}
+	\end{frame}
+	
+	\begin{frame}{Norm Balls}
+	    \includegraphics[scale=.35]{Bild11}
+	\end{frame}
+	
+	\begin{frame}{Norm Balls}
+	    \includegraphics[scale=.35]{Bild12}
+	\end{frame}
+	
+	\begin{frame}{Norm Balls}
+	    \includegraphics[scale=.35]{Bild13}
+	\end{frame}
+	
+	
+	\begin{frame}{Norm Balls}
+	    \includegraphics[scale=.35]{Bild14}
+	\end{frame}
+	
+	
+	\begin{frame}{Norm Balls}
+	    \includegraphics[scale=.35]{Bild15}
+	\end{frame}
+	
+	
+	\begin{frame}{Norm Balls}
+	    \includegraphics[scale=.35]{Bild16}
+	\end{frame}
+	
+	\begin{frame}{.}
+	    \includegraphics[scale=.4]{Bild17}
+	\end{frame}
+\end{document}

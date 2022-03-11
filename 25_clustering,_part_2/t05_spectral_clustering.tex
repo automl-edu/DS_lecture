@@ -1,0 +1,77 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Clustering, Part 2}
+\subtitle{Spectral Clustering}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{A Note}
+	    It is now time to present the spectral clustering algorithm.\\
+	    \bigskip
+	    However, note that spectral clustering is a relatively new area of research, and there is no one single “right” way to go about it.\\
+	    \bigskip
+	    I will present a modified/simplified version of the algorithm developed by Jordan, Ng, and Weiss (2002). But note that there are other methods, and you might learn spectral clustering differently in other classes.
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.5]{Bild15}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Spectral Clustering Algorithm}
+	    Given a graph G = (V, E):\\
+	    \begin{itemize}
+	        \item[1]  Calculate the Laplacian matrix L = D - A.
+	        \item[2] Calculate the eigenvectors of L.
+	        \item[3] Pick the number of clusters k, and select the k eigenvectors of L corresponding to the k smallest eigenvalues. Each vertex now has its own coordinate, containing its corresponding element in each of the k eigenvectors.
+	        \item[4] Use k-means clustering to cluster these points.
+	    \end{itemize}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Example}
+	    Let’s say we want to divide our graph into k = 2 clusters.
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.5]{Bild15}
+	    \end{figure}
+	    We select the last two eigenvectors in V. These are $v_n$ and $v_{n-1}$.
+	    \begin{itemize}
+	        \item Remember, our eigenvectors are sorted by descending order of their eigenvalues. 
+	    \end{itemize}
+        \begin{align*}
+            v_n = \left[\begin{array}{c}
+                 -.5 \\
+                 -.5\\
+                 -.5\\
+                 -.5
+            \end{array}\right]
+            v_{n-1} = \left[\begin{array}{c}
+                 -.22  \\
+                 -.31 \\
+                 -.34 \\
+                 .86
+            \end{array}\right]
+        \end{align*}
+	\end{frame}
+	
+	
+	\begin{frame}{Example}
+	    Now, each vertex is represented by a specific point in 2D.\\
+        For example, the coordinate for vertex P is [$\begin{array}{cc}
+             -.5   & -.22 
+            \end{array}$]\\
+        On the left are these points, and on the right is the result of clustering those points.
+        \begin{figure}
+            \centering
+            \includegraphics[scale=.45]{Bild16}
+        \end{figure}
+	\end{frame}
+\end{document}

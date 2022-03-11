@@ -1,0 +1,99 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Data Sampling and Probability}
+\subtitle{How to sample effectively, and how to quantify the samples we collect.}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	
+	\begin{frame}{Roadmap}
+	    \begin{itemize}
+	        \item Formalizing various ideas that pertain to sampling.
+	        \begin{itemize}
+	            \item Why we need to sample in the first place.
+	            \item What it means for our sample to be biased.
+	            \item How to prevent these biases in our samples.
+	            \item What exactly a sampling frame is, and why choosing a good one is important.
+	        \end{itemize}
+	        \item Learning how to compute probabilities from samples.
+	        \begin{itemize}
+	            \item This will be continued into Lecture 3.
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+	
+	\begin{frame}[c]{Data Science Lifecycle}
+	    \begin{columns}
+	        \begin{column}{.4\textwidth}
+	        \begin{figure}
+	            %\centering
+	            \includegraphics[scale=.6]{Bild1}
+	        \end{figure}
+	        \end{column}
+	            
+	        \begin{column}{.4\textwidth}
+	        \bigskip
+	        \bigskip
+	        \bigskip
+	        \bigskip
+	            \centering
+	            \begin{align*}
+	                \text{We call this the} \\
+	                \textbf{Data Science Lifecycle}
+	            \end{align*}
+	            
+	        \end{column}
+
+	    \end{columns}
+	\end{frame}
+	
+	\begin{frame}{Question}
+	    \begin{columns}
+	        \begin{column}{.4\textwidth}
+	        \bigskip
+	        \bigskip
+	        \bigskip
+	        \bigskip
+	         \centering
+	            \begin{align*}
+	                \text{Question: How many squirrels are there} \\
+	                \text{in Central Park, New York City?}
+	            \end{align*}
+	       
+	        \end{column}
+	            
+	        \begin{column}{.4\textwidth}
+	            
+	        \begin{figure}
+	            %\centering
+	            \includegraphics[scale=.45]{Bild2}
+	        \end{figure}
+	            
+	        \end{column}
+	        
+	        \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}
+	    \includegraphics[scale=.6]{Bild3}
+	\end{frame}
+	
+	\begin{frame}
+	    \includegraphics[scale=.6]{Bild4}
+	\end{frame}
+	
+	
+	\begin{frame}
+	    \includegraphics[scale=.37]{Bild5}
+	\end{frame}
+	
+	
+	
+\end{document}

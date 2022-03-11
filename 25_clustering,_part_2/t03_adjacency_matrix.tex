@@ -1,0 +1,77 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Clustering, Part 2}
+\subtitle{Adjacency Matrix}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Graph}
+	    A graph is defined by its vertices, and its edges. Often, you might see the expression G = (V, E)\\
+        But how do we express graphs mathematically?\\
+        Recall, these two graphs are the same graph, so they should have the same representation.
+        \begin{figure}
+            \centering
+            \includegraphics[scale=.5]{Bild11}
+        \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Adjacency Matrix}
+	   We will represent the edges in an adjacency matrix A.\\
+      Two graphs are the same if and only if they have the same adjacency matrix.\\
+      A will have one row and one column for each vertex.
+        \begin{itemize}
+            \item In other words, A will be of size n x n, if the graph has n vertices.
+        \end{itemize}
+        
+        \begin{align*}
+            A_{ij} &= \text{ the weight of the edge connecting vertices i and j} \\
+                    &= \text{0 if no edge connects vertices i and j}
+        \end{align*}
+        \begin{figure}
+            \centering
+            \includegraphics[scale=.245]{Bild12}
+        \end{figure}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Adjacency Matrix}
+	    These two graphs have the same adjacency matrix, so they are the same graph.
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.4]{Bild13}
+	    \end{figure}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Adjacency Matrix}
+	    These two graphs have different adjacency matrices, so they are different graphs.
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.4]{Bild14}
+	    \end{figure}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Properties}
+	    The adjacency matrix gives our graph a mathematical representation.\\
+        Notice the matrix is square, and symmetric, that is: $A_{ij} = A_{ij}\forall i,j$\\
+        \bigskip
+        Can think of our adjacency matrix as “featurizing” our graph:\\
+        \begin{itemize}
+            \item  Each row represents an individual data point (vertex)
+            \item Each column represents that data point’s relationship with other data points (edges)
+        \end{itemize}
+        \bigskip
+        Remember, a larger edge weight represents a stronger connection between two vertices.
+	\end{frame}
+\end{document}

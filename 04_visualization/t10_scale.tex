@@ -1,0 +1,132 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Visualization]{DS: Visualization}
+\subtitle{Scale}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Case Study: Planned Parenthood Hearing}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	        
+	                    \centering
+	                    \includegraphics[scale=.65]{Bild51}
+	        \end{column}
+	        
+	        \begin{column}{.5\textwidth}
+	        
+	                In 2015, Planned Parenthood was accused of selling aborted fetal tissue for profit.\\
+	                Congressman Chaffetz (R-UT) showed this plot which originally appeared in a report by Americans United for Life.
+	                \begin{itemize}
+	                    \item What is this graph plotting?
+	                    \item What message is this plot trying to convey?
+	                    \item Is anything suspicious?	
+	                \end{itemize}
+	                
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Keep axis scales consistent}
+	    \begin{columns}
+	        \begin{column}{.45\textwidth}
+	        
+	                    \centering
+	                    \includegraphics[scale=.65]{Bild51}
+	        \end{column}
+	        
+	        \begin{column}{.55\textwidth}
+	        
+	                The scales for the two lines are completely different
+	                \begin{itemize}
+	                    \item 327000 is smaller than 935573,\\ but appears to be way bigger.
+	                    \item Be careful when you use two different scales for the same axis!
+	                \end{itemize}
+	        \end{column}
+	        
+	    \end{columns}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Consider scale of the data}
+	
+	    \vspace{-2em}
+	    \begin{columns}
+	        \begin{column}{.55\textwidth}
+	        
+	            The top plot draws all of the data on the same scale.
+	            \begin{itemize}
+	                \item It clearly shows there was a dramatic drop in cancer screenings by PP.
+	                \item But there are still far more cancer screenings than abortions.
+	                \item  We can plot percentage change instead of raw counts (bottom). This shows that cancer screenings have decreased and abortions have increased, without being misleading.
+
+	            \end{itemize} 
+	        \end{column}
+	        
+	        
+	        \begin{column}{.4\textwidth}
+
+	                    \centering
+	                    \includegraphics[scale=.35]{Bild52}
+	                    
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Consider scale of the data}
+	
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+
+	                    \centering
+	                    \includegraphics[scale=.6]{Bild53}
+
+	        \end{column}
+	        
+	        
+	        \begin{column}{.4\textwidth}
+	        
+	              We could also visualize abortions and cancer screenings as a percentage of total procedures.
+	              \begin{itemize}
+	                  \item Abortions increased from 13\% to 26\% of total procedures.
+	              \end{itemize}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Reveal the data}
+	
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	        
+	                \begin{itemize}
+	                    \item Choose axis limits to fill the visualization.
+	                    \item If necessary:
+	                    \begin{itemize}
+	                        \item Zoom in on the bulk of the data.
+	                        \item Create multiple plots to show different regions of interest.
+	                    \end{itemize}
+	                \end{itemize}
+	                On the left, the bulk of the data is in the [0, 10] range on the x-axis.
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	        
+	                    \centering
+	                    \includegraphics[scale=.38]{Bild54}
+	                    
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+\end{document}

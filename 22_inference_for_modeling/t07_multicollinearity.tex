@@ -1,0 +1,49 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Inference for Modeling}
+\subtitle{Multicollinearity}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{The meaning of “slope”}
+	    Consider the equation
+	    \begin{align*}
+	        y = a_0 + a_1x_1 + a_2x_2 + ... + a_px_p 
+	    \end{align*}
+	    \begin{itemize}
+	        \item The slope $a_1$ measures the change in y per unit change in $x_1$, assuming all other variables are held constant.
+	        \item We use an equation of the above form for linear regression.
+	        \item But what if we can’t hold all other variables constant?
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{Multicollinearity}
+	    \begin{itemize}
+	        \item If features are related to each other, it might not be possible to have a change in one of them while holding the others constant.
+	        \begin{itemize}
+	            \item Then, the individual slopes will have no meaning.
+	        \end{itemize}
+	        \item Multicollinearity: when a feature can be predicted fairly accurately by a linear combination of other features.
+	        \begin{itemize}
+	            \item Slopes can’t be interpreted.
+	            \item Small changes in the data can lead to big changes in the slopes.
+	            \item Doesn’t impact the predictive capability of our model – only impacts interpretability.
+	        \end{itemize}
+	        \item Perfect multicollinearity: one feature can be written exactly as a linear combination of other features.
+	        \begin{itemize}
+	            \item Design matrix isn’t full rank! Can’t find unique   $\hat{\theta}$   .
+	            \begin{itemize}
+	                \item For instance, one-hot encoding with an intercept term. 
+	            \end{itemize}
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+	
+\end{document}

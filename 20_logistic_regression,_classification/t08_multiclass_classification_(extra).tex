@@ -1,0 +1,107 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Logistic Regression, Classification}
+\subtitle{Multiclass classification (Extra)}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Note}
+	    \begin{itemize}
+	        \item We will not cover these slides in lecture.
+	        \item They are meant to serve as a reference for the lab assignment that covers multiclass classification in the context of decision trees.
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{Multiclass classification}
+	    Sometimes we have more than one class that we’re interested in.\\
+	    \bigskip
+	    Example, we want to predict what kind of animal an image contains, of the following 5 choices.
+	    \begin{itemize}
+	        \item Dog
+	        \item Cat
+	        \item Lion
+	        \item Zebra
+	        \item Other
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{Multiclass classification: one vs. rest}
+	    The simplest way to do multiclass classification is to build N binary classifiers, one for each category.
+	    \begin{itemize}
+	        \item Resulting prediction will just be whichever classifier gives highest probability.
+	    \end{itemize}
+	    Example from before:
+	    \begin{itemize}
+	        \item Build a dog classifier.
+	        \item Build an cat classifier.
+	        \item Build a lion classifier.
+	        \item Build an zebra classifier…
+	    \end{itemize}
+	    Given a voter, assign the class which has the highest probability among all N.
+	\end{frame}
+	
+	
+	\begin{frame}{Visual example}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.5]{Bild49}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Visual example}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.5]{Bild50}
+	    \end{figure}
+	\end{frame}
+	
+	\begin{frame}{Visual example}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.5]{Bild51}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Visual example}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.5]{Bild52}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Visual example}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.5]{Bild53}
+	    \end{figure}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Multiclass classification: softmax}
+	    One downside of building N binary classifiers: Class imbalance.\\
+        Alternate techniques exist that we will not discuss.\\
+        \bigskip
+        Example: Softmax.
+        \begin{itemize}
+            \item Related to neural networks.
+            \item Idea: Different theta for every class, i.e. for class j we have   $\theta^{(j)}$       . 
+            \item Won’t discuss in Data 100 . See CS188, CS189, CS182, Info 254, or Stat 151A.
+        \end{itemize}
+        
+        \begin{equation*}
+            P(Y=j|x) = \frac{exp(x^T\theta^{(j)})}{\sum_{m=1}^kexp(x^T\theta^{(m)})}
+        \end{equation*}
+	\end{frame}
+\end{document}

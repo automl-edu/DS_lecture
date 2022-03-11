@@ -1,0 +1,32 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Bias and Variance}
+\subtitle{Overfitting}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Introduction to Overfitting}
+	    In the previous lectures, our goal has been to minimize a loss function (MSE)
+	    \begin{itemize}
+	        \item We do this by collecting more features, or through feature engineering
+	    \end{itemize}
+	    \bigskip
+	    However, we only ever evaluated our model on the data on which it was trained
+	    \begin{itemize}
+	        \item The whole point in building a model is to learn something about the world
+	        \item Why do we care about finding a   $\hat{Y}$   if we already know   Y  ?
+	    \end{itemize}
+	    \bigskip
+	    We care about how well our model performs on new data, for which we want to predict Y\\
+	    \bigskip
+	    To the demo!
+	\end{frame}
+	
+	
+\end{document}

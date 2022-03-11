@@ -1,0 +1,178 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Introduction}
+\subtitle{What is data science?}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+
+    \begin{frame}{Data is changing the world}
+        \begin{figure}
+            \centering
+            \includegraphics[scale= .65]{bild1}
+        \end{figure}
+    \end{frame}
+
+    % \begin{frame}{Data science is a fundamentally interdisciplinary field}
+    %     \begin{figure}
+    %         \centering
+    %         \includegraphics[scale=.43]{bild2}
+    %     \end{figure}
+    % \end{frame}
+
+    \begin{frame}{Data Science Venn Diagram}
+        \begin{figure}
+            \centering
+            \includegraphics[scale=.4]{bild3}
+        \end{figure}
+    \end{frame}
+
+    \begin{frame}{Data Science in Industry}
+        \begin{figure}
+            \centering
+            \vspace{-2em}
+            \includegraphics[scale= .65]{bild5}
+        \end{figure}
+        %The tasks that data scientists say they work on regularly.\\
+        Self-reported. Based on the results of Kaggle’s 2019 Machine Learning \& Data Science Survey.
+    \end{frame}
+    
+    \begin{frame}[c]{Insight}
+        \begin{columns}
+        \begin{column}{.5\textwidth}
+        
+        Good data analysis is not:
+        \begin{itemize}
+            \item Simple application of a statistics recipe.
+            \item Simple application of statistical software.
+        \end{itemize}
+        There are many tools out there for data science, but they are merely tools.
+        \begin{itemize}
+            \item They don’t do any of the important thinking!
+        \end{itemize}
+        \end{column}
+        \begin{column}{.4\textwidth}
+        
+            \begin{figure}
+                \centering
+                \includegraphics[width=1.0\textwidth]{bild4}
+            \end{figure}
+            
+        \end{column}
+        
+        
+        \end{columns}
+        \bigskip
+        “The purpose of computing is insight, not numbers.” - R. Hamming. Numerical Methods for Scientists and Engineers (1962).
+
+    \end{frame}
+    
+    
+    \begin{frame}[c]{Example questions in data science}
+        Some (broad) questions we might try to answer with data science:
+        \begin{itemize}
+            \item Is the world getting better or worse?
+            \item Is the use of the COMPAS algorithm for prison sentencing fair?
+            \item Where should we put docking ports for our bikes?
+            \item What should we eat to avoid dying early of heart disease?
+            \item Do immigrants from poor countries have a positive or negative impact on the economy?
+            \item Are people vaccinated against COVID-19 also protected from new variants
+            \item Who will win the next soccer tournament?
+        \end{itemize}
+    \end{frame}
+    
+    
+    \begin{frame}{Data science drives policy and public understanding}
+        There are real-world implications of the work we do as data scientists.
+        \begin{columns}
+            \begin{column}{.6\textwidth}
+                    \begin{figure}
+                        \centering
+                        \includegraphics[scale=.5]{bild6}
+                    \end{figure}
+                    The problem is that this weekly cycle is fake. It's an artifact of how the data is collected and reported.
+            \end{column}
+            
+            \begin{column}{.4\textwidth}
+                    \begin{figure}
+                        \centering
+                        \includegraphics[scale=.5]{bild7}
+                    \end{figure}
+            \end{column}
+        \end{columns}
+    \end{frame}
+    
+    \begin{frame}{Data science drives policy and public understanding}
+        There are real-world implications of the work we do as data scientists.
+        \begin{columns}
+            \begin{column}{.3\textwidth}
+                    \begin{figure}
+                        \centering
+                        \includegraphics[scale=.6]{bild8}
+                    \end{figure}
+            \end{column}
+            \begin{column}{.3\textwidth}
+                    \begin{figure}
+                        \centering
+                        \includegraphics[scale=.4]{bild9}
+                    \end{figure}
+            \end{column}
+            
+            \begin{column}{.3\textwidth}
+                    \begin{figure}
+                        \centering
+                        \includegraphics[scale=.5]{bild10}
+                    \end{figure}
+            \end{column}
+        \end{columns}
+    \end{frame}
+
+
+    \begin{frame}{Unconscious bias is real – be mindful of it}
+    \begin{colmuns}
+        \begin{column}{.4\textwidth}
+            A “depixelizer” (link in description) was built that takes pixelated images and generates images that are perceptually realistic and downscale correctly.
+            \begin{figure}
+                \centering
+                \includegraphics[scale=.5]{bild11}
+            \end{figure}
+        \end{column}
+        \begin{column}{.4\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[scale=.37]{bild12}
+            \end{figure}
+            What do you notice? Why might this be happening?
+        \end{column}
+    \end{colmuns}
+    
+    \end{frame}
+    
+    \begin{frame}{Question what you see}
+        \begin{columns}
+            \begin{column}{.4\textwidth}
+                    \begin{figure}
+                        \centering
+                        \includegraphics[scale=.5]{Bild13}
+                    \end{figure}
+                    Are autism rates and organic food sales inherently related? Seems unlikely.
+            \end{column}
+            
+             \begin{column}{.4\textwidth}
+                \begin{figure}
+                    \includegraphics[scale=.35]{bild14}
+                \end{figure}
+                  Can taking a CS class make you worse at CS? Seems unlikely.
+             \end{column}
+           
+        \end{columns}
+    \end{frame}
+    
+    
+\end{document}

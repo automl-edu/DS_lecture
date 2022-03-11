@@ -1,0 +1,161 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Bias and Variance}
+\subtitle{Expectation, Revisited}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Random Variable}
+	    \begin{columns}
+	        \begin{column}{.4\textwidth}
+	                A random variable is a variable that can takes numerical values with particular probabilities.\\
+	                \bigskip
+	                Example 1:\\
+                    Let X take the value 1 if FDR, 0 if \\
+                    Landon\\
+                    \bigskip
+                    Example 2:\\
+                    Let Y be the \# of pips on a roll of a \\
+                    6-sided die
+
+
+
+	        \end{column}
+	        
+	        
+	        \begin{column}{.4\textwidth}
+	            Notation:
+	                \begin{itemize}
+	                    \item Random variables (RVs) use capital letters
+	                    \begin{itemize}
+	                        \item X, Y, Z
+	                    \end{itemize}
+	                    \item A particular value taken by an RV is indicated by a lowercase letter.
+	                    \begin{itemize}
+	                        \item x, y, z
+	                    \end{itemize}
+	                    \item The (Probability) Distribution of a discrete RV can be expressed as a table or graphic.
+	                    \begin{itemize}
+	                        \item P(X = x)
+	                    \end{itemize}
+	                \end{itemize}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Discrete vs. Continuous}
+	    \begin{columns}
+	        \begin{column}{.4\textwidth}
+	               Most random variables we have discussed so far follow discrete distributions.\\
+
+	               RVs following discrete distributions can only take on specific values, and are defined by their Probability Mass Function.\\
+
+	               Example: Binomial Distribution.
+                    \begin{figure}
+                        \includegraphics[scale=.5]{Bild4}
+                    \end{figure}
+	        \end{column}
+	        
+	        
+	        \begin{column}{.4\textwidth}
+	            Other random variables, like ε, follow continuous distributions.\\
+
+	               RVs following continuous distributions take on values to arbitrary precision, and are defined by their Probability Density Function.\\
+	               Example: Normal Distribution.\\
+	               \bigskip
+                    \begin{figure}
+                        \includegraphics[scale=.5]{Bild5}
+                    \end{figure}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Expectations}
+	    The expectation of a random variable X is the weighted average of the values of X, where the weights are the probabilities of the values.
+	    \begin{columns}
+	        \begin{column}{.4\textwidth}
+                    \begin{figure}
+                        \includegraphics[scale=.5]{Bild6}
+                    \end{figure}
+	        \end{column}
+	        
+	        
+	        \begin{column}{.4\textwidth}
+	            \begin{itemize}
+	                \item Expectation is a number, not a random variable
+	                \item It is analogous to the average.
+	                \begin{itemize}
+	                    \item It has the same units as the random variable.
+	                    \item It doesn’t need to be a possible value of the random variable.
+	                    \item It is the center of gravity of the probability histogram.
+	                \end{itemize}
+	            \end{itemize}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	
+	\begin{frame}[c]{Properties of Expectations}
+	    Linear transformations\\
+	    Let $Z = aX + b;\hspace{5mm} \mathbb{E}(Z) = \mathbb{E}( aX + b) = a\mathbb{E}(X) + \mathbb{E}(b) = a\mathbb{E}(X) + b$\\
+	    \bigskip
+	    Additivity\\
+	    Let $W = X_1 + X_2; \hspace{5mm} \mathbb{E}(W) = \mathbb{E}( X_1 + X_2) =  \mathbb{E}( X_1) + \mathbb{E}(X_2)$\\
+	    \bigskip
+	    Linearity of Expectation\\
+	    Let $V = aX_1 + bX_2;\hspace{5mm} \mathbb{E}(V) = \mathbb{E}( aX_1 + bX_2) = a\mathbb{E}(X_1) + b\mathbb{E}(X_2)  $
+	\end{frame}
+	
+	
+	\begin{frame}[c]{Expectation of a Function of a Random Variable}
+	    What if we want to calculate E(X2)? Or more generally, E( f(X) )? Does this equal f( E(X) )?\\
+	    NO!\\
+	    Let’s work through an example with the distribution of one six-sided die roll:
+	    \begin{align*}
+	        \mathbb{E}(f(x)) &= \sum\limits_kf(k)\mathbb{P}(X=k)\\
+	        \mathbb{E}(X^2) &= \sum\limits_kk^2\mathbb{P}(X=k)\\
+	        &= 1^2\cdot \frac{1}{6} + 2^2\cdot \frac{1}{6} + 3^2\cdot \frac{1}{6} + 4^2\cdot \frac{1}{6} +  5^2\cdot \frac{1}{6} + 6^2\cdot \frac{1}{6} = \frac{91}{6}\\
+	        \mathbb{E}(X^2) &\neq (\mathbb{E}(X))^2 = \left(\frac{7}{2}\right)^2 = \frac{49}{4}
+	    \end{align*}
+	\end{frame}
+	
+	
+	\begin{frame}[c]{Estimators and Bias}
+	    Recall that parameters represent the truth, and we estimate these parameters with statistics\\
+	    Take the function: $g(x) = \theta_0 + \theta_1x$\\
+	   $\theta_0$ and $\theta_1$ are parameters. We estimate them with:
+	    \begin{align*}
+	       \hat{\theta}_1 = r\frac{\sigma_y}{\sigma_x}\hspace{5mm} \hat{\theta}_0 = \overline{y} - \hat{\theta}_1\overline{x}
+	    \end{align*}
+	    Recall that statistical bias is the expected difference between your estimate and the truth.
+        \begin{align*}
+            \mathbb{E}(\hat{\theta} - \theta) = \mathbb{E}(\hat{\theta}) - \theta
+        \end{align*}
+        Remember, $\hat{\theta}$	is random! It is random because the dataset you sample is random.\\
+        (We can prove that the above estimates for $\theta_0$ and $\theta_1$ are unbiased, but we will not do so here.)
+
+	\end{frame}
+	
+	
+	\begin{frame}[c]{Summary}
+	   \begin{itemize}
+	       \item Random variables are functions of our sample.
+	       \item The expectation of a random variable is the weighted average of its possible values, weighted by the probabilities of those values.
+	       \begin{itemize}
+	           \item Expectation behaves nicely with linear transformations of random variables.
+	           \item Expectation is also additive.
+	           \item We can calculate the expectation of a function of a random variable.
+	       \end{itemize}
+	       \item The optimal weights in our linear models are estimates of the true parameters.
+	   \end{itemize}
+	\end{frame}
+\end{document}

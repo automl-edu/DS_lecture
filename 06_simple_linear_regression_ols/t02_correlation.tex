@@ -1,0 +1,79 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Regression]{DS: Simple Linear Regression}
+\subtitle{Correlation}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Exploring relationships between two variables}
+	    \begin{itemize}
+	        \item The constant model we saw in the last lecture was only able to capture the distribution of a single variable. It was a summary statistic.
+	        \item More commonly, we create models that try to explain the relationships between multiple variables (which we will now denote with x and y).
+	        \item When using the \texttt{Tips} dataset as a motivator in the last lecture, we looked at a histogram of the data (with an overlaid KDE).
+	        \item When we have two continuous variables, we have several choices.
+	        \begin{itemize}
+	            \item Scatter plot. These are the simplest choice.
+	            \item Hexbin plot.
+	            \item Contour plot.
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{Exploring relationships between two variables}
+	    \includegraphics[scale=.4]{Bild1}
+	\end{frame}
+	
+	
+	
+	
+	\begin{frame}{Correlation coefficient}
+	    The Pearson’s correlation coefficient (r) measures the strength of the linear association between two variables. 
+	    \begin{itemize}
+	        \item It is a unitless quantity.
+	        \item Ranges between -1 and 1
+	        \begin{itemize}
+	            \item r = 1 indicates a perfect positive \alert{linear} association\\
+	            i.e., x and y lie exactly on a straight line that is sloped upwards. 
+	            \item r = -1 indicates a perfect negative linear association between x and y.
+	            \item The closer r is to 0, the weaker the linear association between x and y is.
+	        \end{itemize}
+	        \item It says nothing about causality or non-linear association.
+	        \begin{itemize}
+	            \item Even if r = 1, it does not mean that x causes y! \alert{Correlation does not imply causality}.
+	            \item When r = 0, we say our two variables are uncorrelated. They could be related through some non-linear association, though.
+	        \end{itemize}
+	        \item Very sensitive to outliers, as you will see in discussion. 
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{Correlation coefficient}
+	    r is the average of the product of x and y, both measured in standard units. \\
+Suppose our data looks like ${(x_1, y_1),(x_2,y_2),...,(x_n,y_n)} $  $x_i$ in standard units = $ \frac{x_i - \hat{x}}{\sigma_x}$\\
+\bigskip
+We then have:
+\begin{equation*}
+    r=\frac{1}{n}\sum\limits_{i=1}^n\left(\frac{x_i-\overline{x}}{\sigma_x}\right)\left(\frac{y_i-\overline{y}}{\sigma_y}\right)
+\end{equation*}
+Note: Since    $\sigma_x$    and    $\sigma_y$    are constants, we can pull them out of the sum, and write: 
+
+\begin{equation*}
+   \frac{1}{n}\sum\limits_{i=1}^n\left(x_i-\overline{x}\right)\left(y_i-\overline{y}\right) = r\sigma_x\sigma_y
+\end{equation*}
+	This quantity is called the covariance of two variables.
+   
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Correlation coefficient}
+	    \includegraphics[scale=.4]{Bild2}
+	\end{frame}
+\end{document}

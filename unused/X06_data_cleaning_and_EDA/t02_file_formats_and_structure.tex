@@ -1,0 +1,196 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Data Cleaning and EDA}
+\subtitle{File Formats and Structure}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{What should we look for?}
+	    
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Key Data Properties to Consider in EDA}
+	    \begin{itemize}
+	        \item Structure -- the “shape” of a data file
+	        \item Granularity -- how fine/coarse is each datum
+	        \item Scope -- how (in)complete is the data
+	        \item Temporality -- how is the data situated in time
+	        \item Faithfulness -- how well does the data capture “reality”
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{Key Data Properties to Consider in EDA}
+	    \begin{itemize}
+	        \item \textbf{Structure -- the “shape” of a data file}
+	        \item Granularity -- how fine/coarse is each datum
+	        \item Scope -- how (in)complete is the data
+	        \item Temporality -- how is the data situated in time
+	        \item Faithfulness -- how well does the data capture “reality”
+	    \end{itemize}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Key Data Properties to Consider in EDA}
+	    \begin{itemize}
+	        \item \textbf{Structure -- the “shape” of a data file}
+	        \item Granularity -- how fine/coarse is each datum
+	        \item Scope -- how (in)complete is the data
+	        \item Temporality -- how is the data situated in time
+	        \item Faithfulness -- how well does the data capture “reality”
+	    \end{itemize}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Rectangular Data}
+	   \begin{columns}
+	   
+	   
+	   \begin{column}{.7\textwidth}
+	    
+	   
+	    We prefer rectangular data for data analysis (why?)
+	    \begin{itemize}
+	        \item Regular structures are easy manipulate and analyze
+	        \item A big part of data cleaning is about transforming data to be more rectangular
+	    \end{itemize}
+	    
+        Two kinds of rectangular data: Tables and Matrices \\
+		\centering	(what are the differences?)
+		\end{column}
+		
+	   \begin{column}{.3\textwidth}
+	   \begin{figure}
+	       		    \includegraphics[scale=.3]{Bild8}
+	   \end{figure}
+
+		\end{column}
+		\end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Rectangular Data}
+	   \begin{columns}
+	   
+	   
+	   \begin{column}{.7\textwidth}
+	    
+	   
+	    We prefer rectangular data for data analysis (why?)
+	    \begin{itemize}
+	        \item Regular structures are easy manipulate and analyze
+	        \item A big part of data cleaning is about transforming data to be more rectangular
+	    \end{itemize}
+	    
+        Two kinds of rectangular data: Tables and Matrices \\
+		\centering	(what are the differences?)
+		\end{column}
+		
+	   \begin{column}{.3\textwidth}
+	   \begin{figure}
+	       		    \includegraphics[scale=.3]{Bild8}
+	   \end{figure}
+
+		\end{column}
+		\end{columns}
+		
+	\begin{itemize}
+		    \item[1.] Tables (a.k.a. data-frames  in R/Python and relations in SQL)
+		    \begin{itemize}
+		        \item Named columns with different types
+		        \item Manipulated using data transformation languages (map, filter, group by, join, …)
+		    \end{itemize}
+		    \item[2.] Matrices
+		    \begin{itemize}
+		        \item Numeric data of the same type
+		        \item Manipulated using linear algebra 
+		    \end{itemize}
+		\end{itemize}
+	\end{frame}
+	
+	
+	
+	
+	\begin{frame}{How are these data files formatted?}
+	    \includegraphics[scale=.39]{Bild9}
+	\end{frame}
+
+
+
+    \begin{frame}{Comma and Tab Separated Values Files}
+	   \begin{columns}
+	   
+	   
+	   \begin{column}{.4\textwidth}
+	    
+	    \begin{itemize}
+	        \item Tabular data where
+	        \begin{itemize}
+	            \item Records are delimited by a newline: “\n”, “\r\n”
+	            \item Fields are delimited by ‘,’ (comma) or ‘\t’ (tab)
+	        \end{itemize}
+	        \item Very Common! 
+	        \item Issues?
+	        \begin{itemize}
+	            \item Commas, tabs in records
+	            \item Quoting
+	            \item \dots
+	        \end{itemize}
+	    \end{itemize}
+		\end{column}
+		
+	   \begin{column}{.4\textwidth}
+	   \begin{figure}
+	       		    \includegraphics[scale=.3]{Bild10}
+	   \end{figure}
+
+		\end{column}
+		\end{columns}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{JavaScript Object Notation (JSON)}
+	           \centering                                                                                           
+	           \includegraphics[scale=.75]{Bild11}                               
+	   \begin{itemize}
+	       \item Widely used file format for nested data
+	       \begin{itemize}
+	           \item Very similar to python dictionaries
+	           \item Strict formatting ”quoting” addresses some issues in CSV/TSV
+	       \end{itemize}
+	       \item Issues
+	       \begin{itemize}
+	           \item Not rectangular
+	           \item Each record can have different fields
+	           \item Nesting means records can contain tables – complicated
+	       \end{itemize}
+	   \end{itemize}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Extensible Markup Language - XML (another kind of nested data)}
+	                                                                                      
+	           \includegraphics[scale=.4]{Bild12}                               
+	\end{frame}
+	
+	
+	
+	
+	\begin{frame}{Log Data}
+	               Is this a csv file? tsv? JSON/XML?\\
+                                                                       
+	           \includegraphics[scale=.4]{Bild13}                               
+	\end{frame}
+\end{document}

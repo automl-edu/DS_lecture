@@ -1,0 +1,56 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Regression]{DS: Ordinary Least Squares}
+\subtitle{Residuals}
+
+\graphicspath{ {./figure_ols/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Summary}
+	    \begin{itemize}
+	        \item We defined the multiple linear regression model in terms of matrices.
+	        \begin{equation*}
+	            \hat{\vect{Y}} = \vect{X}\vect{\theta}
+	        \end{equation*}
+	        \item We used a geometric argument to derive the optimal parameter vector   $\hat{\vect{\theta}}$  , that minimizes average squared loss. This value is called the least squares estimate.
+	        \begin{equation*}
+	            \hat{\vect{\theta}} = (\vect{X}^\intercal\vect{X})^{-1} \vect{X}^\intercal\vect{Y}
+	        \end{equation*}
+	        \item We discussed residuals and their properties.
+	        \item We explored when a unique solution for   $\hat{\vect{\theta}}$     exists, and when one does not.
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{Moving forward}
+
+	    \begin{itemize}
+	        \item Feature engineering.
+	        \begin{itemize}
+	            \item The process of extracting and creating more sophisticated features from our data.
+	        \end{itemize}
+	        \item The Bias-Variance tradeoff.
+	        \begin{itemize}
+	            \item Discussing this idea of a “true model,” and where the errors in our predictions come from.
+	        \end{itemize}
+	        \item Regularization and Cross-Validation.
+	        \begin{itemize}
+	            \item Making our models more “general”, by updating our objective function.
+	        \end{itemize}
+	        \item Gradient descent.
+	        \begin{itemize}
+	            \item Minimizing average loss using numerical methods.
+	        \end{itemize}
+	        \item Logistic regression.
+	        \begin{itemize}
+	            \item What if we want to predict categories (1 and 0), instead of numbers?
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+	
+\end{document}

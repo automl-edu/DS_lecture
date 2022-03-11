@@ -1,0 +1,111 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Data Sampling and Probability}
+\subtitle{samples}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	
+	\begin{frame}{Sampling from a finite population}
+	    A census is great, but expensive and difficult to execute
+	    \bigskip
+	    A sample is a subset of the population.
+        \begin{itemize}
+            \item Samples are often used to make inferences about the population
+            \item How you draw the sample will affect your accuracy.
+            \item Two common sources of error:
+            \begin{itemize}
+                \item chance error: random samples can vary from what is expected, in any direction.
+                \item bias: a systematic error in one direction.
+            \end{itemize}
+               \bigskip
+               \bigskip
+               We will now look at some types of non-random samples, before formalizing what it means for a sample to be random.
+
+        \end{itemize}
+	    
+	\end{frame}
+	
+	\begin{frame}{Convenience samples}
+	    \begin{columns}
+	        \begin{column}{.4\textwidth}
+	             A convenience sample is whoever you can get ahold of.
+	             \begin{itemize}
+	                 \item Not a good idea for inference!
+	                 \item Haphazard ≠ random.
+	                 \item Sources of bias can introduce themselves in ways you may not think of!
+	             \end{itemize}
+	                \bigskip
+	                Convenience samples are not random.
+	        \end{column}
+	        \begin{column}{.4\textwidth}
+	                Example: Suppose we have a cage of mice, and each week, we want to measure the weights of these mice. To do so, we take a convenience sample of these mice, and weigh them.
+	                
+	                \bigskip
+	                Do you expect the weights of our sampled mice to be representative of all mice in our cage?
+	                
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.4]{Bild9}
+	                \end{figure}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	\begin{frame}{Quota samples}
+	    \begin{columns}
+	        \begin{column}{.4\textwidth}
+	            In a quota sample, you first specify your desired breakdown of various subgroups, and then reach those targets however you can.
+	             \begin{itemize}
+	                 \item For example: you may want to sample individuals in your town, and you may want the age distribution of your sample to match that of your town’s census results.
+	             \end{itemize}
+	                \bigskip
+	               Quota samples are not random.
+
+	        \end{column}
+	        \begin{column}{.4\textwidth}
+	               Issues with quota samples:
+                   \begin{itemize}
+                       \item Reaching quotas “however you can” is, as we saw in the previous slide, not random.
+                       \item By setting quotas, you require that your sample look like your population with regards to just a few aspects – but not all!
+                       \begin{itemize}
+                           \item For example, if you set quotas for age, your sample might be representative of your population with regards to age.
+                           \item What about gender? Ethnicity? Income?
+                       \end{itemize}
+ 
+                   \end{itemize}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+
+	\begin{frame}{Quality, not quantity!}
+	     \begin{columns}
+	        \begin{column}{.4\textwidth}
+	            Try to ensure that the sample is representative of the population.
+                   \begin{itemize}
+                       \item Don’t just try to get a big sample.
+                       \item If your method of sampling is bad, and your sample is big, you will have a big, bad sample!
+                   \end{itemize}
+                   \bigskip
+                   This is a phenomenon you will explore in-depth in Homework 2, where you will perform an analysis of the 2016 US Presidential Elections.
+
+
+	        \end{column}
+	        \begin{column}{.4\textwidth}
+	               \begin{figure}
+	                   \centering
+	                   \includegraphics[scale=.4]{Bild10}
+	                   \caption{Big bad Wolf}
+	               \end{figure}
+	        \end{column}
+	        
+	    \end{columns}
+	\end{frame}
+	
+\end{document}

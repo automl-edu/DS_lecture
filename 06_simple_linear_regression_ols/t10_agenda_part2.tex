@@ -1,0 +1,57 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Regression]{DS: Ordinary Least Squares}
+\subtitle{Agenda Part 2}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+    % \begin{frame}{Simple Linear Regression}
+    %     In the last lecture, we re-introduced the simple linear regression model from Data 8.\\
+    %      \hspace{6cm} $\hat{y} = f_\theta (x)  = \theta_0 +  \theta_1x$ 
+    %      \begin{itemize}
+    %          \item Our loss function was squared loss, and so our objective function was mean squared error (MSE).
+    %          \item To solve for the optimal parameters (also known as coefficients or weights), we minimized MSE by hand using calculus\\
+    %          \hspace{4cm}
+    %          $\hat{\theta}_1 = r\frac{\sigma_y}{\sigma_x}$ \hspace{2cm} $\hat{\theta}_0 = \bar{y} - \hat{\theta}_1\bar{x}$
+    %          \begin{itemize}
+    %             \item These are parameter estimates.
+    %         \end{itemize}
+    %         \item We also looked at r, the correlation coefficient, and its relation to the optimal coefficients.
+    %      \end{itemize}
+         
+    % \end{frame}
+    
+    
+    
+    % \begin{frame}{Multiple Regression}
+    %     We also extended this model to account for multiple features. \\
+    %     \hspace{1cm}
+    %      $\hat{y} = f_\theta (x) = \theta_0 + \theta_1x_1 + \theta_2x_2 + ... + \theta_px_p = \sum\limits_{j=1}^p\theta_jx_j$ \hspace{.25cm}
+    %      Each $x_j$ is a separate feature.
+    %     \begin{itemize}
+    %         \item We learned about multiple R², an extension of the correlation coefficient r to multiple features.
+    %         \item Our loss function yet again was squared loss.
+    %         \item We didn’t minimize MSE by hand – we abstracted away the process of determining the theta values. 
+    %         \item Lastly, we introduced RMSE as a method of comparing model performance.
+    %     \end{itemize}
+    %      Today, we will learn how to find the optimal parameters (``thetas'') for multiple regression, for any number of features.
+    % \end{frame}
+    
+    
+    \begin{frame}[c]{Agenda}
+       \begin{itemize}
+           \item Use vector dot products to define the multiple regression model.
+           \item Formulate the problem statement using vector norms.
+           \item Use a geometric derivation to solve for the optimal $\bar{\vec{\theta}}$ (which is now a vector).
+           \item Explore properties of residuals.
+           \item Understand when a unique solution exists.
+       \end{itemize}
+       $\leadsto$ Lots of linear algebra! 
+    \end{frame}
+\end{document}

@@ -1,0 +1,62 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Visualization]{DS: Visualization}
+\subtitle{Comparing quantitative distributions}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Overlaid histograms and density curves}
+	    \includegraphics[scale=.35]{Bild42}\\
+	    We can overlay multiple histograms and density curves on top of one another.
+	    \begin{itemize}
+	        \item First: Not terrible, but looks like three separate histograms.
+	        \item Second: Has the most information, but isn’t very clear!
+	        \item Third: Rough estimate of both distributions, but is the most clear by far.
+	        \item Neither will generalize well to three or more distributions.
+	    \end{itemize}
+    \end{frame}
+    
+    \begin{frame}{Overlaid eCDFs}
+        \includegraphics[width=.45\textwidth]{04_visualization/figure/cdf_iris_sepal_length_shifted.png}
+	    \includegraphics[width=.45\textwidth]{04_visualization/figure/cdf_iris_sepal_length_shifted_scaled.png}\\
+	    
+	    We can also overlay eCDFs
+	    \begin{itemize}
+	        \item First plot: shifted distributions
+	        \item Second plot: shifted and scaled distribution
+	        \item Crossing lines are often interesting (as in the second plot)
+	        \item[$\leadsto$] more probability mass in certain ranges
+	    \end{itemize}
+    \end{frame}
+	
+	
+	\begin{frame}{Side by side box plots and violin plots}
+	    \centering
+	    \includegraphics[scale=.4]{Bild43}
+	\end{frame}
+	
+	
+	\begin{frame}{Side by side box plots and violin plots}
+	    \begin{columns}
+            \begin{column}{.5\textwidth}
+
+                       \includegraphics[scale=.4]{Bild44}
+
+            \end{column}
+            
+            \begin{column}{.5\textwidth}
+               Box plots and violin plots are concise, and thus are well suited to be stacked side by side to compare multiple distributions at once.
+               \begin{itemize}
+                   \item At a glance, we can tell that the median birth weight is higher for babies whose mothers did not smoke while pregnant (“False”).
+                   \item The violin plot shows us the bimodal nature of the “True” category.
+               \end{itemize}
+            \end{column}
+        \end{columns}
+	\end{frame}
+\end{document}

@@ -1,0 +1,79 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Feature Engineering}
+\subtitle{Feature Engineering: Text Data}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Bag-of-words Encoding}
+	    \begin{itemize}
+	        \item Generalization of one-hot-encoding for a string of text:
+	        \begin{figure}
+	            \includegraphics[scale=.35]{Bild4}
+	        \end{figure}
+	        \item Encode text as a long vector of word counts (Issues?)
+	        \begin{itemize}
+	            \item Typically high dimensional (millions of columns) and very sparse
+	            \item Word order information is lost… (is this an issue?)
+	            \item What happens when you see a word not in the dictionary?
+	        \end{itemize}
+	        \item A bag is another term for a multiset: an unordered collection which may contain multiple instances of each element.
+	        \item Stop words: words that do not contain significant information
+	        \begin{itemize}
+	            \item Examples: the, in, at, or, on, a, an, and …
+	            \item Typically removed
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{N-Gram Encoding}
+	    \begin{itemize}
+	        \item Sometimes word order matters:
+	        \begin{figure}
+	            \includegraphics[scale=.35]{Bild5}
+	        \end{figure}
+	        \item How do we capture word order in a “vector” model?
+	        \begin{itemize}
+	            \item N-Gram: “Bag-of- sequences-of-words” 
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{.}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild6}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{N-Gram Encoding}
+	    \begin{itemize}
+	        \item Sometimes word order matters:
+	        \begin{figure}
+	            \includegraphics[scale=.35]{Bild5}
+	        \end{figure}
+	        \item How do we capture word order in a “vector” model?
+	        \begin{itemize}
+	            \item N-Gram: “Bag-of- sequences-of-words” 
+	        \end{itemize}
+	        \item Issues:
+	        \begin{itemize}
+	            \item Can be very sparse (many combinations occur only once)
+	            \item Many combinations will only occur at prediction time drop
+	            \item Often use hashing approximation:
+	            \begin{itemize}
+	                \item Increment counter at hash(“not enjoy”) collisions are okay
+	            \end{itemize}
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+\end{document}

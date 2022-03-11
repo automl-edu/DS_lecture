@@ -1,0 +1,127 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Bias and Variance}
+\subtitle{Decomposition of Risk}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Model Risk}
+	    For a new individual at (x, Y):
+	    \begin{itemize}
+	        \item Expected mean squared error of prediction:
+	        \begin{equation*}
+	            \text{model risk} = \mathbb{E}((Y-\hat{Y}(x))^2)
+	        \end{equation*}
+	    \end{itemize}
+	    The expectation is taken over all possible samples that we could have collected.
+	    \begin{itemize}
+	        \item Remember, each new sample would generate a different $\hat{Y}(x)$
+	        \item Also, for some fixed x, Y can be different due to the random error $\epsilon$
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}[c]{Decomposition of Error and Risk}
+	    The model risk can be decomposed into three pieces:
+	    \begin{align*}
+	        \mathbb{E}((Y-\hat{Y}(x))^2) &= \mathbb{E}(\epsilon^2)\\
+	        &+ (g(x) - \mathbb{E}(\hat{Y}(x)))^2\\
+	        &+ \mathbb{E}((\mathbb{E}(\hat{Y}(x))-\hat{Y}(x))^2)
+	    \end{align*}
+	    \begin{equation*}
+	        \text{model risk} = \sigma^2 + (\text{model bias})^2 + \text{model variance}
+	    \end{equation*}
+	    See the video for the derivation!
+	\end{frame}
+	
+	
+	\begin{frame}[c]{Observation Variance}
+	    \begin{equation*}
+	        \mathbb{Var}(Y) = \mathbb{Var}(g(x) + \epsilon) = \mathbb{Var}(\epsilon) = \sigma^2
+	    \end{equation*}
+	    Some reasons:
+	    \begin{itemize}
+	        \item Measurement error
+	        \item Missing information acting like noise
+	    \end{itemize}
+	    \bigskip
+	    Some remedies:
+	    \begin{itemize}
+	        \item Could try to get more precise measurements.
+	        \item Often this is beyond the control of the data scientist.
+	    \end{itemize}
+	\end{frame}
+	
+	\begin{frame}[c]{Model Variance}
+	    \begin{equation*}
+	        \text{model variance} = \mathbb{Var}(\hat{Y}(x)) = \mathbb{E}((\hat{Y}(x) - \mathbb{E}(\hat{Y}(x)))^2)
+	    \end{equation*}
+	    Main reason:
+	    \begin{itemize}
+	        \item Overfitting: small differences in random samples lead to large differences in the fitted model
+	    \end{itemize}
+	    \bigskip
+	    Some remedies:
+	    \begin{itemize}
+	        \item Reduce model complexity
+	        \item Don’t fit the noise
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}[c]{Model Bias}
+	    \begin{equation*}
+	        \text{model bias} = \mathbb{E}(\hat{Y}(x)) - g(x)
+	    \end{equation*}
+	    Some reasons:
+	    \begin{itemize}
+	        \item Underfitting
+	        \item Lack of domain knowledge
+	    \end{itemize}
+	    \bigskip
+	    Remedies:
+	    \begin{itemize}
+	        \item Increase model complexity (but don’t overfit)
+	        \item Consult domain experts to see which models make sense
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}[c]{A Constant Model}
+	    So which model is better? Model A or Model B?\\
+	    \bigskip
+	    Model A: Select a random number between 0 and 1. This is your estimate of p. This is equivalent to running np.random.random()in Python.\\
+        Model B: Select .75 as your estimate of p.\\
+        \bigskip
+        We can calculate the model risks directly. Note that the observation variance is 0.
+        \begin{columns}
+            \begin{column}{.4\textwidth}
+                  Model A:\\
+                  \bigskip
+                  Model Bias = .5 - .5 = 0\\
+                  Model Variance = (1 - 0)$^2$ / 12 = 1/12\\
+                  \bigskip
+                  Risk = 0$^2$ + 1/12 = 1/12
+            \end{column}
+            
+            
+            \begin{column}{.4\textwidth}
+                   Model B:\\
+                  \bigskip
+                  Model Bias = .75 - .5 = .25\\
+                  Model Variance = 0\\
+
+                  \bigskip
+                  Risk = .25$^2$ + 0 = 1/16
+ 
+            \end{column}
+        \end{columns}
+
+	\end{frame}
+\end{document}

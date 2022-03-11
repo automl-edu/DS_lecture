@@ -1,0 +1,38 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Logistic Regression, Classification}
+\subtitle{Summary}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Summary}
+	    \begin{itemize}
+	        \item Logistic regression models the probability of belonging to class 1.
+	        \begin{itemize}
+	            \item Designed for binary classification.
+	        \end{itemize}
+	        \item In order to make classifications, we employ a threshold, or decision rule.
+	        \begin{itemize}
+	            \item Different thresholds yield different decision boundaries.
+	        \end{itemize}
+	        \item To evaluate our models, we can look at several numeric and visual metrics.
+	        \begin{itemize}
+	            \item Accuracy, precision, recall.
+	            \item PR curves, ROC curves.
+	        \end{itemize}
+	        \item Decision boundaries for logistic regression are linear in terms of the model’s features.
+	        \item Using regularization for logistic regression is a good idea.
+	        \begin{itemize}
+	            \item It is necessary when our data is linearly separable to prevent our weights from diverging.
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+	
+	
+\end{document}

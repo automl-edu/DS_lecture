@@ -1,0 +1,47 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Regression]{DS: Simple Linear Regression}
+\subtitle{Simple linear regression}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Graph of averages}
+	    Suppose we want to now predict the value of $y$, for any given $x$. One reasonable thing to do might be to compute the average value of $y$ for each $x$, and predict that.\\
+	    \includegraphics[scale=.45]{Bild3}\\
+	    Doing this yields predictions that look like a line. So, let’s model this relationship with a line!
+
+	\end{frame}
+	
+	
+	\begin{frame}{Equation of the regression line}
+	    A simple linear model (with a slope and intercept) is of the form
+	    \begin{equation*}
+	        \hat{y} = \theta_0 + \theta_1x
+	    \end{equation*}
+        Note, we have two parameters now ($\theta_0$ and $\theta_1$). For simplicity’s sake, we will instead say (for now):
+        \begin{equation*}
+	        \hat{y} = a + bx
+	    \end{equation*}
+        We call this the \alert{simple linear regression model (SLR)}.\\
+        To determine the \alert{optimal model} parameters $\hat{a}$  and  $\hat{b}$ in closed form, we need to choose a loss function. Choosing squared loss (and hence MSE) gives the following optimal parameters:  
+        \begin{equation*}
+            \hat{b} = r\frac{\sigma_y}{\sigma_x}  \hspace{3cm}
+            \hat{a} = \overline{y} -\hat{b}\overline{x}
+        \end{equation*}
+
+        Note: these are defined in terms of the correlation coefficient, r!
+
+	\end{frame}
+	
+	
+	\begin{frame}{Example}
+	    \includegraphics[scale=.4]{Bild4}\\
+	    Our linear model matches the predicted means quite well.
+	\end{frame}
+\end{document}

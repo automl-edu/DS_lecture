@@ -1,0 +1,173 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Data Cleaning and EDA}
+\subtitle{Granularity, Scope, and Temporality}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	
+	\begin{frame}{Key Data Properties to Consider in EDA}
+	    \begin{itemize}
+	        \item Structure -- the “shape” of a data file
+	        \item \textbf{Granularity -- how fine/coarse is each datum}
+	        \item Scope -- how (in)complete is the data
+	        \item Temporality -- how is the data situated in time
+	        \item Faithfulness -- how well does the data capture “reality”
+	    \end{itemize}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Granularity}
+	    \centering
+	    \includegraphics[scale=.35]{Bild18}
+	    \begin{itemize}
+	        \item What does each record represent?
+	        \begin{itemize}
+	            \item Examples: a purchase, a person, a group of users
+	        \end{itemize}
+	        \item Do all records capture granularity at the same level?
+	        \begin{itemize}
+	            \item Some data will include summaries (aka rollups) as records
+	        \end{itemize}
+	        \item If the data are coarse how was it aggregated?
+	        \begin{itemize}
+	            \item Sampling, averaging, …
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Key Data Properties to Consider in EDA}
+	    \begin{itemize}
+	        \item Structure -- the “shape” of a data file
+	        \item Granularity -- how fine/coarse is each datum
+	        \item \textbf{Scope -- how (in)complete is the data}
+	        \item Temporality -- how is the data situated in time
+	        \item Faithfulness -- how well does the data capture “reality”
+	    \end{itemize}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Scope}
+	    \begin{itemize}
+	        \item Does my data cover my area of interest?
+	        \begin{itemize}
+	            \item Example: I am interested in studying crime in California but I only have Berkeley crime data. 
+	        \end{itemize}
+	        \item Is my data too expansive?
+	        \begin{itemize}
+	            \item Example: I am interested in student grades for DS100 but have student grades for all statistics classes.
+	            \item Solution: Filtering ⇒ Implications on sample?
+	            \begin{itemize}
+	                \item If the data is a sample I may have poor coverage after filtering …
+	            \end{itemize}
+	        \end{itemize}
+	        \item Does my data cover the right time frame?
+	        \begin{itemize}
+	            \item More on this in temporality … 
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Revisiting the Sampling Frame}
+	    \begin{itemize}
+	        \item The sampling frame is the population from which the data was sampled.
+	        \begin{itemize}
+	            \item Note that this may not be the population of interest.
+	        \end{itemize}
+	        \item How complete/incomplete is the frame (and its data)? 
+	        \item How is the frame/data situated in place?
+	        \item How well does the frame/data capture reality?
+	        \item How is the frame/data situated in time? 
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{Key Data Properties to Consider in EDA}
+	    \begin{itemize}
+	        \item Structure -- the “shape” of a data file
+	        \item Granularity -- how fine/coarse is each datum
+	        \item Scope -- how (in)complete is the data
+	        \item \textbf{Temporality -- how is the data situated in time}
+	        \item Faithfulness -- how well does the data capture “reality”
+	    \end{itemize}
+	\end{frame}
+	
+	
+	
+	
+	\begin{frame}{Temporality}
+	    \begin{itemize}
+	        \item Data changes – when was the data collected?
+	        \item What is the meaning of the time and date fields?
+	        \begin{itemize}
+	            \item When the “event” happened?
+	            \item When the data was collected or was entered into the system?
+	            \item Date the data was copied into a database (look for many matching timestamps)
+	        \end{itemize}
+	        \item Time depends on where! (Time zones & daylight savings)
+	        \begin{itemize}
+	            \item Learn to use datetime python library
+	            \item Multiple string representation (depends on region): 07/08/09?
+	        \end{itemize}
+	        \item Are there strange null values?
+	        \begin{itemize}
+	            \item January 1$^{st}$ 1970, January 1$^{st}$ 1900
+	        \end{itemize}
+	        \item Is there periodicity? Diurnal patterns
+	    \end{itemize}
+	\end{frame}
+	
+	
+	
+	
+	\begin{frame}{Unix Time / POSIX Time}
+	    \begin{columns}
+	    \begin{column}{.7\textwidth}
+	    
+	  
+	    
+	    \begin{itemize}
+	        \item Time measured in seconds since January 1$^{st}$ 1970
+	        \begin{itemize}
+	            \item Minus leap seconds …
+	        \end{itemize}
+	        \item Unix time follows Coordinated Universal Time (UTC)
+	        \begin{itemize}
+	            \item International time standard 
+	            \item Measured at 0 degrees latitude
+	            \begin{itemize}
+	                \item Similar to Greenwich Mean Time (GMT)
+	            \end{itemize}
+	            \item No daylight savings 
+	            \item Time codes 
+	        \end{itemize}
+	        \item Time Zones
+	        \begin{itemize}
+	            \item San Francisco (UTC-8) without daylight savings
+	        \end{itemize}
+	    \end{itemize}
+	    \bigskip
+	    \url{https://en.wikipedia.org/wiki/Coordinated_Universal_Time}
+	      \end{column}
+	      
+	      
+	      \begin{column}{.3\textwidth}
+	              \begin{figure}
+	                  \includegraphics[scale=.45]{Bild19}
+	              \end{figure}
+	      \end{column}
+	    \end{columns}
+	\end{frame}
+\end{document}

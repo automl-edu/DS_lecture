@@ -1,0 +1,63 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Regular Expressions}
+\subtitle{String Canonicalization}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Goal 1: Joining Tables with Mismatched Labels}
+	    \includegraphics[scale=.38]{Bild1}\\
+	    \pause
+	    To join our tables we’ll need to canonicalize the county names.
+	    \begin{itemize}
+	        \item Canonicalize: Convert data that has more than one possible presentation into a standard form.
+	    \end{itemize}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Canonicalizing County Names}
+	    \includegraphics[scale=.36]{Bild2}\\
+	    
+	\end{frame}
+	
+	
+	\begin{frame}{Canonicalizing}
+	    Canonicalizing
+	    \begin{itemize}
+	        \item Replace each string with a unique representation.
+	        \item Feels very “hacky”, but messy problems often have messy solutions.
+	    \end{itemize}
+	    \begin{columns}
+	    
+	     \begin{column}{.6\textwidth}
+	     
+	    Tools used:
+	    \begin{figure}
+	          \includegraphics[scale=.36]{Bild4}
+	    \end{figure}
+
+	    
+	     \end{column}
+	     
+	     
+	     \begin{column}{.45\textwidth}
+	     \begin{figure}
+	         \includegraphics[scale=.5]{Bild3}
+	     \end{figure}
+	     
+	      Can be done slightly better but not by much 
+	    \begin{itemize}
+	        \item Code is very brittle! Requires maintenance.
+	    \end{itemize}
+	    \end{column}
+	    \end{columns}
+	    
+	\end{frame}
+\end{document}

@@ -1,0 +1,140 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Principal Component Analysis}
+\subtitle{Bonus}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{As an aside...}
+	    \begin{columns}
+	        \begin{column}{.4\textwidth}
+	                PCA has one goal stated two different ways:
+	                \begin{itemize}
+	                    \item Find directions that minimize projection error
+	                    \item Find directions that maximize captured variance
+	                \end{itemize}
+	                \bigskip
+	                Why are these two goals equivalent?
+                    Maximizing variance = spreading out red dots
+                    Minimizing error = making red lines short
+	        \end{column}
+	        
+	        
+	        \begin{column}{.6\textwidth}
+	                \begin{figure}
+	                    %\centering
+	                    \includegraphics[scale=.25]{Bild18}
+	                \end{figure}
+	        \end{column}
+	    \end{columns}
+	    \url{https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues/140579#140579}
+
+	\end{frame}
+	
+	\begin{frame}{As an aside...}
+	    \begin{columns}
+	        \begin{column}{.4\textwidth}
+	                Imagine that the black line is a stick, and the red lines are springs attached to the stick from the points.\\
+	                \bigskip
+	                The first PC is where the stick comes to rest.\\
+	                \bigskip
+                    SVD finds this for us.\\
+                    
+	        \end{column}
+	        
+	        
+	        \begin{column}{.6\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.25]{Bild19}
+	                \end{figure}
+	        \end{column}
+	        
+	        
+	    \end{columns}
+	    \url{https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues/140579#140579}
+
+	\end{frame}
+	
+	
+	\begin{frame}{Regression: The Big Idea}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	                Suppose we know the child mortality rate of a given country
+	                \begin{itemize}
+	                    \item Linear regression tries to predict the fertility rate from the mortality rate
+	                    \item For example, if the mortality is 6, we might guess the fertility is near 4
+	                \end{itemize}
+	                \bigskip
+	                The regression line tells us the “best” prediction of fertility given all possible mortality values\\
+	                \begin{itemize}
+	                    \item Minimizes the root mean squared error [see vertical red lines, only some shown]
+	                \end{itemize}
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.5]{Bild20}
+	                \end{figure}
+	        \end{column}
+	        
+	        
+	    \end{columns}
+
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Regression: The Big Idea}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	                We can also perform a regression in the reverse direction.\\
+	                \bigskip
+	                That is, given the fertility, we try to predict the mortality.\\
+	                \bigskip
+	                In this case, we get a different regression line which minimizes the root mean squared length of the horizontal lines.
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.5]{Bild21}
+	                \end{figure}
+	        \end{column}
+	        
+	        
+	    \end{columns}
+
+	\end{frame}
+	
+	
+	\begin{frame}{SVD: Minimizing the Perpendicular Error}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	                Instead of minimizing horizontal or vertical error, the first principal component minimizes the error \underline{perpendicular} to the subspace onto which we’re projecting\\
+	                \bigskip
+	                That is, SVD finds the line such that if we project our data onto that line, the error between the projection and our original data is minimized
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.5]{Bild22}
+	                \end{figure}
+	        \end{column}
+	        
+	        
+	    \end{columns}
+
+	\end{frame}
+\end{document}

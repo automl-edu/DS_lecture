@@ -1,0 +1,38 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Decision Trees}
+\subtitle{}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Decision Trees}
+	    A Decision Tree is a very simple way to classify data. It is simply a tree of questions that must be answered in sequence to yield a predicted classification.
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild1}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Example: Flower Classification}
+	    The Iris flower data set is a commonly used example:
+	    \begin{itemize}
+	        \item Created by statistician/biologist Ronald Fisher for his paper “The use of multiple measurements in taxonomic problems”.
+	        \item Data set consists of 150 flower measurements from 3 different species.
+	        \item For each, we have “petal length”, “petal width”, “sepal length”, “sepal width”.
+	    \end{itemize}
+	    Goal is to predict species from other data.
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild2}
+	    \end{figure}
+	    \url{https://en.wikipedia.org/wiki/Sepal}
+
+	\end{frame}
+\end{document}

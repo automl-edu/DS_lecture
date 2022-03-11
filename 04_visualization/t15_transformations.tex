@@ -1,0 +1,174 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Visualization]{DS: Visualization}
+\subtitle{Transformations}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Transforming data can reveal patterns}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.43]{Bild94}
+	    \end{figure}
+	    When a distribution has a large dynamic range, it can be useful to take the log.
+	\end{frame}
+	
+	
+	\begin{frame}{Why straighten relationships?}
+	   Now, we will look at how to linearize the scatter plot of two variables. Why?
+	   \begin{itemize}
+	       \item If we know what transformation made our plot of $y$ vs. $x$ linear, we can “backtrack” to figure out the exact relationship between $x$ and $y$.
+	       \item Linear relationships are particularly simple to interpret.
+	       \begin{itemize}
+	           \item We know what slopes and intercepts mean.
+	           \item We will be doing a lot of linear modeling – starting next lecture!
+	       \end{itemize}
+	   \end{itemize}
+	        \includegraphics[scale=.43]{Bild95}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Log of y-values}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	                If we take the log of our $y$-values and notice a linear relationship, we can say (roughly) that
+	                \begin{equation*}
+	                    \log y = ax + b
+	                \end{equation*}
+	                Working backwards:
+	                \begin{align*}
+	                    \log y &= ax + b\\
+	                    y &= e^{ax+b}\\
+	                    y &= e^{ax}e^b\\
+	                    y &= Ce^{ax}
+	                \end{align*}
+	                This implies an exponential relationship in the original plot.
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                  % \centering
+	                    \includegraphics[scale=.3]{Bild96}
+	                \end{figure}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Log of both x and y-values}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	                If we take the log of both axes and notice a linear relationship, we can say (roughly) that
+	                \begin{equation*}
+	                    \log y = a\cdot \log x + b
+	                \end{equation*}
+	                Working backwards:
+	                \begin{align*}
+	                    y &= e^{a\cdot \log x+b}\\
+	                    y &= Ce^{a\cdot \log x}\\
+	                    y &= Cx^a
+	                \end{align*}
+	                This implies a power relationship in the original plot (a one-term polynomial).
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                  % \centering
+	                    \includegraphics[scale=.33]{Bild97}
+	                \end{figure}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Log transform as a “Swiss army knife”}
+	    \begin{align*}
+	        &y = a^k \rightarrow \log (y) = x\log (a)\\
+	        &y = ax^k \rightarrow \log (y) = \log (a) + k\log (x)
+	    \end{align*}
+	    Properties of logarithms make them very powerful!
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Basic functional relations}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+
+	               Knowing the general shapes of polynomial, exponential, and logarithmic curves\\ (regardless of base) will go a long way.
+	               
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	        
+	                   \centering
+	                   \includegraphics[scale=.35]{Bild98}
+
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	
+% 	\begin{frame}{Tukey-Mosteller Bulge Diagram}
+	
+% 	    \begin{columns}
+	    
+% 	        \begin{column}{.5\textwidth}
+
+% 	               This diagram can help us choose which transformation(s) to apply to our data in order to linearize it.
+% 	               \begin{itemize}
+% 	                   \item There are multiple solutions. Some will fit better than others.
+% 	                   \item sqrt and log make a value “smaller”. Raising to a value to a power makes it “bigger”.
+% 	                   \item Each of these transformations equates to increasing or decreasing the scale of an axis.
+% 	               \end{itemize}
+	               
+% 	        \end{column}
+	        
+	        
+% 	        \begin{column}{.5\textwidth}
+
+% 	                   \centering
+% 	                   \includegraphics[scale=.35]{Bild99}
+
+% 	        \end{column}
+	        
+% 	    \end{columns}
+	    
+% 	\end{frame}
+	
+	
+	
+	\begin{frame}{Summary}
+	    \begin{itemize}
+	        \item Choose appropriate scales.
+	        \item Condition in order to make comparisons more natural.
+	        \item Choose colors and markings that are easy to interpret correctly.
+	        \item Add context and captions that help tell the story.
+	        \item Smoothed estimates of distributions help with big-picture interpretation.
+	        \begin{itemize}
+	            \item Kernel Density Estimates are a method of smoothing data.
+	        \end{itemize}
+	        \item Transforming our data can linearize relationships.
+	        \begin{itemize}
+	            \item Helpful when we start linear modeling next lecture.
+	        \end{itemize}
+	        \item More generally – reveal the data!
+	        \begin{itemize}
+	            \item Eliminate anything unrelated to the data itself – “chart junk.”
+	            \item It’s fine to plot the same thing multiple ways, if it helps fit the narrative better.
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+\end{document}

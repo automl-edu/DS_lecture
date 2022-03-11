@@ -1,0 +1,158 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Decision Trees}
+\subtitle{Random Forests}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Random Forests: Harnessing Variance}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	                As we’ve seen, fully-grown decision trees will almost always overfit data
+	                \begin{itemize}
+	                    \item Low model bias, high model variance
+	                    \item In other words, small changes in dataset will result in very different decision tree
+	                    \item Example: Two models on the right trained on different subsets of the same data
+	                \end{itemize}
+	                
+	                Random Forest Idea: Build many decision trees and have them vote
+	        \end{column}
+	        
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.35]{Bild55}
+	                \end{figure}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Random Forests: Harnessing Variance}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	                What do we mean by vote?
+	                \begin{itemize}
+	                    \item For a given x/y, use whichever prediction is most popular
+	                \end{itemize}
+	                
+	                Consider example at right with 9 models
+	                \begin{itemize}
+	                    \item 6 votes orange, 3 votes green 
+	                    \item Random forest prediction is orange
+	                \end{itemize}
+	        \end{column}
+	        
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.35]{Bild56}
+	                \end{figure}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	\begin{frame}{Building Many Trees}
+	    Big fundamental problem: We only have one training set\\
+	    \bigskip
+	    How can we build many trees using one training set?
+
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Bagging}
+	    Bagging: Short for Bootstrap AGGregatING
+	    \begin{itemize}
+	        \item Generate bootstrap resamples of training data
+	        \item Fit one model for each resample
+	        \item Final model = average predictions of each small model
+	        \item Invented by Leo Breiman in 1994 (Berkeley Statistics!)
+	    \end{itemize}
+
+	\end{frame}
+	
+	\begin{frame}{Random Forests}
+	    Bagging often isn’t enough to reduce model variance!
+	    \begin{itemize}
+	        \item Decision trees often look very similar to each other
+	        \item E.g., one strong feature always used for first split
+	    \end{itemize}
+	    
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.4]{Bild57}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Random Forests}
+	    \begin{itemize}
+	        \item Bagging often isn’t enough to reduce model variance!
+	        \begin{itemize}
+	            \item Decision trees often look very similar to each other and thus make similar predictions
+	            \item Ensemble will still have low bias and high model variance
+	            \item E.g. one strong feature always used for first split
+	        \end{itemize}
+	        \item Idea: Only use a sample of m features at each split
+	        \begin{itemize}
+	            \item Usually m = sqrt(p) for decision trees used for classification
+	            \item Here p is the number of features
+	        \end{itemize}
+	        \item Algorithm creates individual trees, each overfit in a different way
+	        \begin{itemize}
+	            \item The hope is that the the overall forest has low variance
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Random Forests Algorithm}
+	    \begin{itemize}
+	        \item Bootstrap training data T times. For each resample, fit a decision tree by doing the following:
+	        \begin{itemize}
+	            \item Start with data in one node. Until all nodes pure:
+	            \item Pick an impure node
+	            \item Pick a random subset of m features. Pick the best feature x and split value $\beta$ such that the loss of the resulting split is minimized, e.g. x = petal\_width, $\beta$ = 0.8 has loss 0.66
+	            \item Split data into two nodes, one where x < $\beta$, and one where x ≥ $\beta$
+	        \end{itemize}
+	        \item To predict, ask the T decision trees for their predictions and take majority vote
+	    \end{itemize}
+	    This approach has two hyperparameters T and m
+	\end{frame}
+	
+	\begin{frame}{Avoiding Overfitting with Heuristics}
+	    We’ve seen many approaches to avoid overfitting decision trees
+	    \begin{itemize}
+	        \item Preventing growth
+	        \item Pruning
+	        \item Random forests
+	    \end{itemize}
+	    \bigskip
+	    These ideas are generally “heuristic”
+
+	    \begin{itemize}
+	        \item Not provably best or mathematically optimal
+	        \item Instead, they are just ideas that somebody thought sounded good, implemented, then found to work in practice acceptably well
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{Why Random Forests?}
+	    \begin{itemize}
+	        \item Versatile: does both regression and classification
+	        \item Invariant to feature scaling and translation
+	        \item Automatic feature selection
+	        \item Nonlinear decision boundaries without complicated feature engineering
+	        \item Doesn’t overfit as often as other nonlinear models (e.g. polynomial features)
+	        \item Example of ensemble method: combine the knowledge of many simple models to make a sophisticated model
+	        \item Example of using bootstrap to reduce model variance
+	    \end{itemize}
+	\end{frame}
+	
+\end{document}

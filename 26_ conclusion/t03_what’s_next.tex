@@ -1,0 +1,57 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Conclusion}
+\subtitle{What’s next}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{What didn’t we focus on in Data 100?}
+	    \begin{itemize}
+	        \item Causal inference.
+	        \begin{itemize}
+	            \item How do we establish causality when we identify a correlation observed during EDA?
+	        \end{itemize}
+	        \item Deep learning.
+	        \begin{itemize}
+	            \item How can the machine do the hard work of picking the right features instead of requiring humans to pick them in advance?
+	        \end{itemize}
+	        \item Decision making.
+	        \begin{itemize}
+	            \item After we build our fancy regression/classification/clustering algorithms, what do we do next?
+	            \item How do we avoid false discoveries?
+	        \end{itemize}
+	        \item Time series analysis.
+	        \item Other flavors of machine learning (e.g. reinforcement learning).
+	        \item Open-ended exploration of problems and datasets picked by you.
+	        \item Non-tabular data (e.g. images, videos, sensor-generated data).
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{scikit-learn in practice}
+	    \hfill
+	    \includegraphics[scale=.5]{Bild15}
+	    \begin{itemize}
+	        \item We learned how to use many models and techniques in scikit-learn
+	        \begin{itemize}
+	            \item LinearRegression.
+	            \item Ridge, RidgeCV, Lasso, LassoCV.
+	            \item LogisticRegression.
+	            \item train\_test\_split, cross\_val\_score, score, etc.
+	        \end{itemize}
+	        \item But there are many, many more features in scikit-learn that we didn’t touch.
+            \begin{itemize}
+                \item GridSearchCV? KernelRidge? BayesianRidge? SVC?
+                \item \url{https://scikit-learn.org/stable/} is your friend.
+            \end{itemize}
+	        \item scikit-learn is used heavily in industry. You should practice it!
+	    \end{itemize}
+	\end{frame}
+	
+\end{document}

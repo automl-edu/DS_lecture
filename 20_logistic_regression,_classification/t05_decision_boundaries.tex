@@ -1,0 +1,131 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Logistic Regression, Classification}
+\subtitle{Decision boundaries}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Decision boundaries}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	            Consider our original single-feature model.\\
+	            \bigskip
+	            $P(Y=1|x) = \sigma (\theta_1 \cdot FG\_PCT\_DIFF)$\\
+	            \bigskip
+	            The grey dots are true observations from the 2017-18 NBA season.
+	             
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.55]{Bild33}\\
+	                \end{figure}
+	        \end{column}
+	        
+	    \end{columns}
+	\end{frame}
+	
+	\begin{frame}{Decision boundaries}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	            If we pick a threshold, e.g. T = 0.3, we get a predicted class from probabilities.
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.55]{Bild34}\\
+	                \end{figure}
+	        \end{column}
+	        
+	    \end{columns}
+	\end{frame}
+	
+	\begin{frame}{Decision boundaries }
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	            If we pick a threshold, e.g. T = 0.3, we get a predicted class from probabilities.
+	            \begin{itemize}
+	                \item The effect is that x < xT predicts class 0, and x > xT predicts class 1.
+	                \item $x_T$ is known as a decision boundary.
+	                \begin{itemize}
+	                    \item $x_T$ is a function of model parameters and T.
+
+	                \end{itemize}
+	            \end{itemize}
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.35]{Bild35}\\
+	                \end{figure}
+	        \end{column}
+	        
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Decision boundaries for 2D models}
+	
+	Now consider our “better” model, $ P(Y=1|x) = \sigma (\theta_0  + \theta_1 \cdot FG\_PCT\_DIFF + \theta_2 \cdot PF\_DIFF)$                                                    . It is drawn below with the thresholding line T = 0.3. What does its decision boundary look like?\\
+        \includegraphics[scale=.5]{Bild36}
+	     
+	\end{frame}
+	
+	
+	\begin{frame}{Decision boundaries for 2D models}
+	
+	Now consider our “better” model, $ P(Y=1|x) = \sigma (\theta_0  + \theta_1 \cdot FG\_PCT\_DIFF + \theta_2 \cdot PF\_DIFF)$                                                    . It is drawn below with the thresholding line T = 0.3. . The decision boundary is linear. \\
+	
+        \begin{figure}
+            \centering
+            \includegraphics[scale=.35]{Bild37}
+        \end{figure}
+	     
+	\end{frame}
+	
+	\begin{frame}{Decision boundaries for 2D models}
+	Suppose we minimized mean cross-entropy loss to determine the optimal model parameters for this model, and found\\
+	$P(Y=1|x) = \sigma (0.035 + 34.705\cdot FG\_PCT\_DIFF - 0.160\cdot PF\_DIFF)$\\
+	\bigskip
+	If we set T = 0.3, our decision boundary is \\
+	$\sigma (0.035 + 34.705\cdot FG\_PCT\_DIFF - 0.160\cdot PF\_DIFF) = 0.3$\\
+	\bigskip
+	Which simplifies to
+	%$0.035 + 34.705\cdot FG\_PCT\_DIFF - 0.160\cdot PF\_DIFF = \sigma^{-1}(0.3)$
+	
+        \begin{figure}
+            \centering
+            \includegraphics[scale=.25]{Bild38}
+        \end{figure}
+	     
+	\end{frame}
+	
+	
+	\begin{frame}{Decision boundaries for 2D models}
+	If we overlay our true observations onto our decision boundary, we can get a rough sense of the accuracy of our model and the types of errors it makes.\\
+	\begin{itemize}
+	    \item Blue points in the orange region are false positives.
+	    \item Orange points in the blue region are false negatives.
+	\end{itemize}
+	
+        \begin{figure}
+            \centering
+            \includegraphics[scale=.35]{Bild39}
+        \end{figure}
+	     
+	\end{frame}
+	
+	
+\end{document}

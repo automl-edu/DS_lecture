@@ -1,0 +1,198 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Principal Component Analysis}
+\subtitle{Motivating PCA}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Dimensionality}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	               Consider the data shown. How many dimensions does this data have?
+	               \begin{itemize}
+	                   \item 3, because 2 weight columns are redundant
+	                   \item In linear algebra terms, we’d observe that this matrix has rank 3
+	                   \item More generally: Can think of a dataset’s dimensionality as the rank of the matrix representing the data 
+	               \end{itemize}
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.4]{Bild4}
+	                \end{figure}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Dimensionality}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	               In the previous example, we had one column that was exactly linearly dependent on another.\\
+	               \bigskip
+	               More generally, we want to summarize data with fewer dimensions, even if no obvious redundancies exist.
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.4]{Bild5}
+	                \end{figure}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Summarizing Our Data}
+	    We want to summarize each student with a single “score.”
+	    \begin{itemize}
+	        \item We usually have a predetermined rubric (e.g. 40\% HW, 24\% Final, 10\% Discussion, etc.)
+	        \item Notice the rubric is a linear combination of the features for each student.
+	    \end{itemize}
+	    BUT, what if we wanted a different score, one number that captures the student’s relative performance as comprehensively as possible?\\
+	    \bigskip
+	    We want to find a linear combination that maximizes the variance of this score.\\
+	    \hfill \includegraphics[scale=.6]{Bild6}
+	\end{frame}
+	
+	
+	\begin{frame}{Summarizing Our Data}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	               Let’s say we wanted to assign the “score” based only on the midterm and final exam.\\
+	               \bigskip
+	               Here, you can see how different linear combinations of the midterm and final affect the variance of our score.\\
+	               \bigskip
+	               The variance seems to be maximized when our arrow points up and to the right (or down and to the left).\\
+	               \bigskip
+	               We still don’t know precisely which vector we should use.
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.55]{Bild7}
+	                \end{figure}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Connection to SVD}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	               \begin{equation*}
+	                   X = U\Sigma V^T
+	               \end{equation*}
+	               The long black arrow is the first row in $V^T$.
+                  \begin{equation*}
+                      v_1^T = [\begin{array}{cc}
+                          0.573 & 0.820
+                      \end{array}]
+                  \end{equation*}
+                  The first row of $V^T$ is the direction that captures the most variance in our data.
+                  (Note: There exists a proof, but we will not cover it here.)
+
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.35]{Bild8}
+	                \end{figure}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Calculating Our Scores}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	               Now, we know that $v_1$ tells us the linear combination that maximizes variance. But how do use $v_1$ to compute the “score”?\\
+	               \bigskip
+	               Treat $v_1$ as an axis and find where each blue data point lies along it.
+	               \begin{itemize}
+	                   \item We project each data point onto v1, using the formula on the right, converting blue points to purple points.
+	                   \item $x_1$’s “score” is	$x_1\cdot v_1$		, which is also the coordinate of $x_1$ along the $v_1$ axis.
+	               \end{itemize}
+
+
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.4]{Bild9}
+	                \end{figure}
+	                \begin{align*}
+	                    %&\includegraphics[scale=.25]{Bild10}\\
+	                    proj_v_1 x_1 &= \left(\frac{x_1\cdot v_1}{\| v_1 \| ^2}\right)v_1
+	                   % &\includegraphics[scale=.25]{Bild11}
+	                \end{align*}
+	                $x_1$: $x_1$ score\\
+	                $\| v_1 \|$: equal to 1
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Calculating Our Scores}
+	    Let’s consider the following student : $x^T_{Dr. Doofenshmirtz} = [\begin{array}{cc}
+	       0.2  & -0.05
+	    \end{array}]$\\
+	    This means the student scored 20 percentage points above average on the midterm, and 5 percentage points below average on the final.\\
+        Recall, $v_1^T = [\begin{array}{cc}
+	       0.573  & 0.820
+	    \end{array}] $\\
+	    \bigskip
+	    To calculate the student’s score, we perform the following calculation:\\
+	    $x_{Dr. Doofenshmirtz} \cdot v_1 = \left[\begin{array}{c}
+	         0.2  \\
+	         -0.05
+	    \end{array}\right] \cdot \left[\begin{array}{c}
+	         0.573  \\
+	         0.820
+	    \end{array}\right] = 0.573\times 0.2 + 0.820\times -0.05 = 0.074 $\\
+	    \bigskip
+	    (The mean score across all students will be 0, if we wanted to convert this into an actual grade, we could shift every score up by some constant.)
+	\end{frame}
+	
+	
+	\begin{frame}{Matrix Algebra}
+	    To calculate the score for every student, we can use matrix operations.
+	    \begin{equation*}
+	        Xv_1 = \left[\begin{array}{ccc}
+	            \dots & x_1 & \dots \\
+	            \dots & x_2 & \dots \\
+	                  & \vdots & \\
+	            \dots & x_n  & \dots
+	        \end{array}\right] \cdot \left[\begin{array}{c}
+	             \vdots\\
+	             v_1\\
+	             \vdots
+	        \end{array}\right] = \left[\begin{array}{c}
+	             x_1 \cdot v_1\\
+	             x_2 \cdot v_1\\
+	             \vdots\\
+	             x_n \cdot v_1
+	        \end{array}\right]
+	    \end{equation*}
+	    X is centered\\
+	    \bigskip
+	    The $i^{th}$ element in the vector on the right is the score for the $i^{th}$ student.\\
+        (We’ll give this vector a name later.)
+	\end{frame}
+\end{document}

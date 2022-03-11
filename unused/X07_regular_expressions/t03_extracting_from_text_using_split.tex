@@ -1,0 +1,48 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Regular Expressions}
+\subtitle{Extracting From Text Using Split}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Goal 2: Extracting Date Information}
+	    Suppose we want to extract times and dates from web server logs that look like the following:\\
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.45]{Bild5}\\
+	    \end{figure}
+	    \pause
+	    
+	    There are existing libraries that do most of the work for us, but let’s try to do it from scratch.
+	    \begin{itemize}
+	        \item Will do together, just a little bit at a time.
+	        \item Let’s go check out lec08-working-with-text.ipynb.
+	    \end{itemize}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Extracting Date Information}
+	    Suppose we want to extract times and dates from web server logs that look like the following:\\
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild5}\\
+	    \end{figure}
+	    \pause
+	    
+	    One possible solution:
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild6}
+	    \end{figure}
+	    \pause
+	    What if webserver changes log formats, or has a bug? $\rightarrow$ This solution breaks!! (brittle)
+
+	\end{frame}
+\end{document}

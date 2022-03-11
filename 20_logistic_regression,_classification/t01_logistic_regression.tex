@@ -1,0 +1,43 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Logistic Regression, Classification}
+\subtitle{}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Agenda}
+	    \begin{itemize}
+	        \item How to convert from probabilities to classifications (1 or 0) by using thresholds.
+	        \item Lots of metrics for evaluating logistic regression models and classifiers – accuracy, precision, recall, PR curves, and more.
+	        \item Exploring decision boundaries.
+	        \item Linear separability and regularization.
+	    \end{itemize}
+	    \bigskip
+	    As in the last lecture, the concepts will be in the slides, and the coding details will be in the notebook.
+	\end{frame}
+	
+	
+	\begin{frame}{Logistic regression}
+	    \begin{itemize}
+	        \item In a logistic regression model, we predict a binary categorical variable (class 0 or class 1) as a linear function of features, passed through the logistic function.
+	        \begin{itemize}
+	            \item Our response is the probability that our observation belongs to class 1.
+	            \begin{equation*}
+	                \hat{y} = f_\theta(x) = P(Y=1|x) = \sigma (x^T\theta)
+	            \end{equation*}
+	        \end{itemize}
+	        \item We arrived at this model by assuming that the log-odds of the probability of belonging to class 1 is linear.
+	        \item To find  $\hat{\theta}$  , we can choose squared loss or cross-entropy loss.
+	        \begin{itemize}
+	            \item Squared loss works, but is generally not a good idea.
+	            \item Cross-entropy loss is much better (convex, better suited for modeling probabilities).
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+\end{document}

@@ -1,0 +1,52 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Regression]{DS: Simple Linear Regression}
+\subtitle{Summary}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Summary}
+	    \begin{itemize}
+	        \item We now know of three models, $\hat{y} = f_\theta (x)$             .
+	        \begin{itemize}
+	            \item The constant model,  $f_\theta (x) = \theta$ 
+                \item The simple linear regression model  $f_\theta (x) = \theta_0 +  \theta_1x$ 
+                \item The multiple linear regression model	 $f_\theta (x) = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + ... + \theta_p x_p$
+                \item A model with optimal parameters is denoted $f_\hat{\theta} (x)$
+	        \end{itemize}
+            
+            \item We looked at the correlation coefficient, $r$, and studied its properties.
+	        \item We solved for the optimal parameters for the simple linear model by hand, by minimizing average squared loss (MSE).
+	    \end{itemize}
+	    \begin{align*}
+	        \hat{\theta}_1 = r \frac{\sigma_y}{\sigma_x} \hspace{1cm} \hat{\theta}_0 = \bar{y} - \hat{\theta}_1 \bar{x}
+	    \end{align*}
+	    \begin{itemize}
+	        \item We introduced the notion of a feature, and how we can have multiple in our models.
+	        \item We discussed the multiple R² coefficient and RMSE as methods of evaluating the quality of a linear model
+	    \end{itemize}
+	\end{frame}
+	
+	
+	
+% 	\begin{frame}{Next time}
+% 	    In the next lecture, we will...
+% 	    \begin{itemize}
+% 	        \item Express the multiple linear regression model using matrix-vector notation.
+% 	        \item Explicitly solve for the optimal parameters.
+% 	        \begin{itemize}
+% 	            \item Thus far, we’ve done this by hand for the constant and simple linear models.
+%                 \item The process of solving for the optimal parameters will inform us of several properties of linear models!
+%                 \item There will be a lot of linear algebra!
+% 	        \end{itemize}
+%             \item Look at residuals and their properties.
+% 	        \item Think about what it means for a model to be “linear.”
+% 	    \end{itemize}
+% 	\end{frame}
+\end{document}

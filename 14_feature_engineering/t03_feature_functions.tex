@@ -1,0 +1,72 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Feature Engineering}
+\subtitle{Feature Functions}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Expressing Feature Engineering Mathematically}
+	    We encapsulate the feature engineering process as a function $\phi$ that transforms the raw data x into the features ultimately used for the model\\
+	    \bigskip
+	    We call $\phi$ a feature function because it maps data vectors to feature vectors\\
+	    \bigskip
+	    Example: Intercept term in Simple Linear Regression
+        \begin{equation*}
+            \hat{y} = \theta_0 + \theta_1x = \left[\begin{array}{c}
+                 1\\
+                 x
+            \end{array}\right] \cdot \left[\begin{array}{c}
+                 \theta_0\\
+                 \theta_1
+            \end{array}\right] = \phi(x)^T\theta
+        \end{equation*}
+        
+        \begin{equation*}
+            x \rightarrow \phi (x) \rightarrow \left[\begin{array}{c}
+                 1\\
+                 x
+            \end{array}\right]
+        \end{equation*}
+	\end{frame}
+	
+	
+	\begin{frame}{Expressing Feature Engineering Mathematically}
+	    Feature functions can be arbitrarily complex (i.e. they can encompass multiple feature engineering operations)\\
+	    \bigskip
+	    Example: MPG dataset
+        \begin{figure}
+            \centering
+            \includegraphics[scale=.4]{Bild7}
+        \end{figure}
+        This feature function takes in a DataFrame and outputs another DataFrame with 5 times the number of features
+	\end{frame}
+	
+	
+	
+	\begin{frame}[c]{Revisiting the Design Matrix}
+	    The feature function $\phi$ transforms one data vector into one feature vector\\
+	    \bigskip
+	    We have multiple data vectors $x_1,x_2,...,x_n$ so we need to apply $\phi$ to each data vector\\
+        \begin{equation*}
+            X = \left[\begin{array}{c}
+                 x_1\\
+                 x_2\\
+                 \vdots\\
+                 x_n
+            \end{array}\right] \rightarrow \phi \rightarrow \left[\begin{array}{c}
+                 \phi(x_1)\\
+                 \phi(x_2)\\
+                 \vdots\\
+                 \phi(x_n)
+            \end{array}\right] = \Phi
+        \end{equation*}
+        In the previous lecture, the X matrix was called the design matrix\\
+        After applying the feature functions, the design matrix is called $\phi$
+	\end{frame}
+\end{document}

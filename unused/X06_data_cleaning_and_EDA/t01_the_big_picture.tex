@@ -1,0 +1,173 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Data Cleaning and EDA}
+\subtitle{Exploratory data analysis and its role in the data science lifecycle.}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Pandas and Jupyter Notebooks}
+	    \begin{itemize}
+	        \item Introduced DataFrame concepts
+	        \begin{itemize}
+	            \item Series: A named column of data with an index
+	            \item Indexes: The mapping from keys to rows
+	            \item DataFrame: collection of series with common index
+	        \end{itemize}
+	        \item Dataframe access methods
+	        \begin{itemize}
+	            \item Filtering on predicts and slicing
+	            \item df.loc: location by index
+	            \item df.iloc: location by integer address
+	            \item groupby \& pivot aggregating data
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{Today}
+	    \centering
+	    \includegraphics[scale=.5]{Bild1}
+	    
+	\end{frame}
+	
+	
+	\begin{frame}{Congratulations!}
+	    \begin{columns}
+	    
+	    \begin{column}{.4\textwidth}
+	    
+	    
+	    \begin{figure}
+	        \includegraphics[scale=.5]{Bild1}
+	    \end{figure}
+	   \end{column}
+	   
+	   \begin{column}{.4\textwidth}
+	        \bigskip
+	        \bigskip
+	        \bigskip
+	        \bigskip\\
+	        You have collected or been given a box of data?\\
+	        What do you do next?
+	   \end{column}
+	   
+	   
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{.}
+	    \centering
+	    \includegraphics[scale=.45]{Bild2}
+	\end{frame}
+	
+	
+	\begin{frame}{Topics}
+	    \begin{columns}
+	    
+	    \begin{column}{.4\textwidth}
+	    
+	    
+	    \begin{figure}
+	        \includegraphics[scale=.35]{Bild3}
+	    \end{figure}
+	   \end{column}
+	   
+	   \begin{column}{.4\textwidth}
+	        Topics For This Lecture 
+            \begin{itemize}
+                \item Understanding the Data
+                \begin{itemize}
+                    \item Data Cleaning 
+                    \item Exploratory Data Analysis (EDA)
+                    \item Basic data visualization
+                \end{itemize}
+                \item Common Data Anomalies 
+                \begin{itemize}
+                    \item … and how to fix them
+                \end{itemize}
+            \end{itemize}
+	   \end{column}
+	   
+	   
+	    \end{columns}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{.}
+	    \centering
+	    \includegraphics[scale=.38]{Bild4}
+	\end{frame}
+	
+	
+	\begin{frame}{Data Cleaning}
+	    \begin{itemize}
+	        \item The process of transforming raw data to facilitate subsequent analysis
+	        \item Data cleaning often addresses issues
+	        \begin{itemize}
+	            \item structure / formatting
+	            \item missing or corrupted values
+	            \item unit conversion
+	            \item encoding text as numbers
+	            \item \dots
+	        \end{itemize}
+            \item Sadly, data cleaning is a big part of data science…
+
+	    \end{itemize}
+	\end{frame}
+	
+	
+	
+	
+	\begin{frame}{.}
+	    \centering
+	    \includegraphics[scale=.7]{Bild5}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{.}
+	    \centering
+	    \includegraphics[scale=.38]{Bild4}
+	\end{frame}
+	
+	
+		\begin{frame}{Exploratory Data Analysis (EDA)}
+		    \centering “Getting to know the data”
+	    \begin{itemize}
+	        \item The process of transforming, visualizing, and summarizing data to:
+	        \begin{itemize}
+	            \item Build/confirm understanding of the data and its provenance
+	            \item Identify and address potential issues in the data
+	            \item Inform the subsequent analysis
+	            \item discover potential hypothesis … (be careful)
+	        \end{itemize}
+            \item EDA is an open-ended analysis
+            \begin{itemize}
+                \item Be willing to find something surprising
+            \end{itemize}
+
+	    \end{itemize}
+	\end{frame}
+	
+	
+	
+	\begin{frame}
+	    \centering
+	    \includegraphics[scale=.38]{Bild6}
+	\end{frame}
+	
+	
+	
+	\begin{frame}
+	    \centering
+	    \includegraphics[scale=.38]{Bild7}
+	\end{frame}
+\end{document}

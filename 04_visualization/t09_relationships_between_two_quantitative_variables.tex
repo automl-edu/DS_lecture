@@ -1,0 +1,149 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Visualization]{DS: Visualization}
+\subtitle{Relationships between two quantitative variables}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Scatter plots}
+	    \begin{columns}
+            \begin{column}{.4\textwidth}
+            
+            Scatter plots are used to reveal relationships between pairs of numerical variables.
+            \begin{itemize}
+                \item We often use scatter plots to help inform modeling choices.
+                \item For instance, the simple linear model requires the trend in our data to be roughly linear, and for spread to be roughly equal
+            \end{itemize}
+            
+            \end{column}
+            
+            \begin{column}{.6\textwidth}
+            
+                       \includegraphics[width=0.8\textwidth]{Bild45}
+                       
+            \end{column}
+        \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Scatter plots}
+	    \includegraphics[scale=.35]{Bild46}
+	    \begin{itemize}
+	        \item We can also use color to encode categorical variables.
+	        \item These plots suffer from overplotting – many of the points are on top of one another!
+	        \begin{itemize}
+	            \item First solution: add a small amount random noise in both the x and y directions. (risky)
+	            \item Second solution: use transparency (\texttt{alpha=0.6})
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{Scatter plots}
+	    \includegraphics[scale=.4]{Bild47}
+	\end{frame}
+	
+	
+	\begin{frame}{Hex plots}
+	    \begin{columns}
+            \begin{column}{.5\textwidth}
+            Can be thought of as a two dimensional histogram. Shows the joint distribution.
+            \begin{itemize}
+                \item The x-y plane is binned into hexagons
+                \item More shaded hexagons typically indicate a greater density/frequency
+            \end{itemize}
+            
+            \bigskip
+            Why hexagons instead of squares?
+            \begin{itemize}
+                \item Easier to see linear relationships
+                \item More efficient for covering region
+                \item \alert{Visual bias} of squares – drawn to see vertical and horizontal lines
+            \end{itemize}
+            \end{column}
+            
+            
+            \begin{column}{.5\textwidth}
+               \begin{figure}
+                       \includegraphics[scale=.33]{Bild48}
+                \end{figure}
+            \end{column}
+        \end{columns}
+	\end{frame}
+	
+	
+	
+	
+	\begin{frame}{Contour plots}
+	    \begin{columns}
+            \begin{column}{.5\textwidth}
+            Contour plots are two dimensional versions of density curves.
+            
+            \bigskip
+            Each of the last few plots has been created by \texttt{sns.jointplot}.
+            \begin{itemize}
+                \item By default, shows marginal distributions on the horizontal and vertical axes
+                \item These are the histograms/density curves of each variable independently.
+            \end{itemize}
+            \end{column}
+            
+            
+            \begin{column}{.5\textwidth}
+               \begin{figure}
+                       \includegraphics[scale=.35]{Bild49}
+                \end{figure}
+            \end{column}
+        \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Intermediate Summary}
+	    \begin{itemize}
+	        \item Visualization requires a lot of thought!
+	        \item Types of variables constrain the charts that you can make.
+	        \begin{itemize}
+	            \item Single quantitative: rug plot, histogram, density plot, eCDF.
+	            \item Two quantitative: scatter plot, hex plot, contour plot.
+	            \item Combination: bar plot, overlaid histograms/density plots, SBS box/violin plots.
+	        \end{itemize}
+	        \item This class primarily uses \texttt{seaborn} and \texttt{matplotlib}.
+	        \begin{itemize}
+	            \item \texttt{pandas} also has basic built-in plotting methods.
+	            \item Many other visualization libraries exist. \texttt{plotly} is one of them.
+	            \begin{itemize}
+	                \item It very easily creates interactive plots.
+	                \item It will appear in lecture code and assignments! 
+	            \end{itemize}
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{FAIL!}
+	    \begin{columns}
+            \begin{column}{.5\textwidth}
+            \begin{figure}
+                       \includegraphics[scale=.35]{Bild50}
+                \end{figure}
+            \end{column}
+            
+            
+            \begin{column}{.5\textwidth}
+                \\
+                \bigskip
+                \bigskip
+               This is the result of calling births.plot(). If you don’t provide any specifications, \texttt{pandas} just guesses what you want visualized. It often makes no sense!
+
+            \end{column}
+        \end{columns}
+	\end{frame}
+	
+	
+\end{document}

@@ -1,0 +1,136 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Logistic Regression, Part 1}
+\subtitle{Logistic regression with squared loss}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Logistic regression with squared loss}
+	    To find   $\hat{\theta}$   so that we can make predictions, we need to choose a loss function. 
+        \begin{itemize}
+            \item We can start with our old friend, squared loss.
+            \item Doing so yields the following empirical risk:
+        \end{itemize}
+        \begin{equation*}
+            R(\theta) = \frac{1}{n}\sum\limits_{i=1}^n(y_i-\sigma (\mathbb{X}_i^T\theta))^2
+        \end{equation*}
+        
+        Sometimes, this works fine (and it is actually still used in some applications). Other times...\\
+        \bigskip
+        Here,    $\mathbb{X}_i$    is a single row of our design matrix.
+
+
+	\end{frame}
+	
+	\begin{frame}{Pitfalls of squared loss with logistic regression}
+	    \begin{columns}
+	        \begin{column}{.4\textwidth}
+	                The loss surface of MSE for a logistic regression model with a single slope plus an intercept often looks something like this.\\
+	                \bigskip
+	                If your initial guess for   $\hat{\theta}$  is way out in the flat yellow region, your numerical optimization routine can get stuck.
+	                \begin{equation*}
+	                    \theta^{(t+1)} = \theta^{(t)} - \alpha\nabla_\theta R(\theta,\mathbb{X},\mathbb{Y})
+	                \end{equation*}
+	                If the gradient is 0, your update rule will stop changing.
+	        \end{column}
+	        
+	        
+	        \begin{column}{.4\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.5]{Bild12}
+	                \end{figure}
+	       \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Pitfalls of squared loss with logistic regression}
+	    On the left, we have a toy dataset (i.e. we’ve plotted the original data, y vs. x). On the right, we have a plot of the mean squared error of this dataset when fitting a single-feature logistic regression model, for different values of (i.$\theta$ the loss surface).
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.4]{Bild13}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Pitfalls of squared loss with logistic regression}
+	    On the left, we have a toy dataset (i.e. we’ve plotted the original data, y vs. x). On the right, we have a plot of the mean squared error of this dataset when fitting a single-feature logistic regression model, for different values of (i.$\theta$ the loss surface).
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.4]{Bild14}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Pitfalls of squared loss with logistic regression}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	                For this particular loss surface, different initial guesses for thetahat yield different “optimal values”, as per scipy.optimize.minimize:
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.65]{Bild15}
+	                \end{figure}
+	                This loss surface is not convex. We’d like it to be.
+	        \end{column}
+	        
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.65]{Bild16}
+	                \end{figure}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Pitfalls of squared loss with logistic regression}
+        Another issue: since  $y_i$     is either 0 or 1, and   $\hat{y_i}$    is between 0 and 1,          $(y_i - \hat{y_i})^2$            is also bounded between 0 and 1.
+        \begin{itemize}
+            \item Even if our probability is nowhere close, the loss isn’t that large in magnitude.
+            \begin{itemize}
+                \item If we say the probability is 10$^{-6}$, but it happens anyway, error should be large.
+            \end{itemize}
+            \item We want to penalize wrong answers significantly.
+        \end{itemize}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	                \\ \bigskip
+	               Suppose the observation we're trying to predict is actually in class 1. \\
+	               \bigskip
+	               
+	                On the right, we have a plot of     $(1 - \hat{y})^2$            vs $\hat{y}$      . This is the squared loss for a single prediction
+	        \end{column}
+	        
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.55]{Bild17}
+	                \end{figure}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	\begin{frame}{Summary of issues with squared loss and logistic regression}
+	    While it can work, squared loss is not the best choice of loss function for logistic regression.
+	    \begin{itemize}
+	        \item Average squared loss is not convex.
+	        \begin{itemize}
+	            \item Numerical methods will struggle to find a solution.
+	        \end{itemize}
+	        \begin{itemize}
+	            \item Wrong predictions aren’t penalized significantly enough.
+	        \end{itemize}
+	        \item Squared loss (and hence, average squared loss) are bounded between 0 and 1.
+	    \end{itemize}
+	    \\
+	    \bigskip
+	    Fortunately, there’s a solution.
+	\end{frame}
+\end{document}

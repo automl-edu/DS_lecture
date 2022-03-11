@@ -1,0 +1,86 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Inference for Modeling}
+\subtitle{Bootstrap confidence intervals}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Confidence intervals}
+	    \begin{itemize}
+	        \item Intuition: Estimate an interval where we think the population parameter is, based on the center and variance of the estimator.
+	        \item What does a P\% confidence interval mean?
+	        \begin{itemize}
+	            \item Imagine the following procedure:
+	            \begin{itemize}
+	                \item Take a sample from the population.
+	                \item Compute P\% confidence interval for the true population parameter, somehow.
+	            \end{itemize}
+	            \item If we repeat this procedure many times, the population parameter will be in our interval P\% of the time, in the long run.
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{Confidence intervals}
+	    An estimator f exists in order to guess the value of an unknown parameter $\theta^*$.
+        An estimator ci for a P\% confidence interval for f is a function that takes a sample and returns an interval. This interval will (ideally) contain $\theta^*$ for P\% of samples.
+        \begin{columns}
+            \begin{column}{.5\textwidth}
+                    \begin{figure}
+                        \centering
+                        \includegraphics[scale=.35]{Bild8}
+                    \end{figure}
+            \end{column}
+        
+        
+             \begin{column}{.5\textwidth}
+             \\
+             \bigskip
+             \bigskip
+                How do we compute ci(s,f,P)?
+                    \begin{itemize}
+                        \item Approximate the sampling distribution of f using the sample s.
+                        \item Choose the middle P\% of samples from this approximate distribution.
+                    \end{itemize}
+            \end{column}
+        
+        \end{columns}
+        
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Bootstrap confidence intervals}
+	    An estimator ci for a P\% confidence interval for f is a function that takes a sample and returns an interval. This interval will (ideally) contain $\theta^*$ for P\% of samples.
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild9}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Confidence intervals}
+	    \begin{itemize}
+	        \item The confidence level is a statement about the procedure used to create our interval.
+	        \item It is not the case that a 95\% confidence interval means “there is a 95\% chance that the population parameter is in our interval”.
+	        \begin{itemize}
+	            \item The population parameter is fixed.
+	            \item Our interval is fixed. The population parameter is either in it, or it isn’t.
+	            \item Nothing random here!
+	        \end{itemize}
+	        \item The confidence intervals we’ve created are sometimes called percentile bootstrap confidence intervals.
+	        \begin{itemize}
+	            \item There are other methods of creating confidence intervals.
+	            \begin{itemize}
+	                \item E.g. assume that the sampling distribution of your estimator is normal.
+	            \end{itemize}
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+\end{document}

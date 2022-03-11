@@ -1,0 +1,55 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Principal Component Analysis}
+\subtitle{PCA Summary}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Summary}
+	    Singular value decomposition (SVD) describes a matrix decomposition: 
+	    \begin{itemize}
+	        \item X = $U\Sigma V^T$
+	        \item If X has rank r, then there will be r non-zero values on the diagonal of $\Sigma$
+	        \item The values in $\Sigma$, called singular values, are ordered from largest to smallest
+	    \end{itemize}
+	    \bigskip
+	    Principal component analysis (PCA) is a specific application of SVD:
+	    \begin{itemize}
+	        \item X is a data matrix centered at the mean of each column
+	        \item The first d rows of $V^T$ are directions for the d principal components
+	        \item The first d columns of XV (or U$\Sigma$) contain the d principal components of X
+	    \end{itemize}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Principal Component Analysis Applications}
+	    Situations to perform PCA:
+	    \begin{itemize}
+	        \item Create informative visualizations from high-dimensional data
+	        \item Remove dimensions that do not add much information (variance) to our data
+	        \item Use as a preprocessing algorithm for other learning algorithms (e.g. Logistic Regression)
+	        \item Use V matrix to determine which features contribute to the most important PCs
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{PCA Quick Facts}
+	    \begin{itemize}
+	        \item Columns of U are orthogonal
+	        \item Rows of $V^T$ are orthogonal
+	        \item Each column of U has unit length
+	        \item Each row of $V^T$ has unit length
+	        \item We can write XV = U$\Sigma$ (because $V^T$V = I)
+	        \item If X has rank r, then there will be r non-zero values on the diagonal of $\Sigma$
+	        \item The singular values are the square roots of the eigenvalues of the covariance matrix, and the rows of $V^T$ are the eigenvectors of the covariance matrix.
+	        \item $\sum\limits_{j=1}^d\sigma^2_j = n\sum\limits_{i=1}^dVar(X_i)$ is the reason why PCA actually works
+	    \end{itemize}
+	\end{frame}
+\end{document}

@@ -1,0 +1,101 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Clustering, Part 2}
+\subtitle{Laplacian Matrix}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Dimensionality}
+	    There is one problem with our adjacency matrix—it is very big!
+	    \begin{itemize}
+	        \item If our graph contains n vertices, its adjacency matrix will be of size $n^2$.
+	        \item 10,000 vertices -> 100,000,000 entries in our matrix
+	    \end{itemize}
+	    \bigskip
+	    We will need to reduce this matrix to fewer dimensions. How?
+	    \\\bigskip
+	    A: Eigenvalues and eigenvectors!\\
+        However, we don’t want to use the adjacency matrix… see next slide. 
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Laplacian Matrix}
+	    To reduce the dimensionality, we must first construct the Laplacian matrix L.
+	    \begin{align*}
+	        L=D-A
+	    \end{align*}
+	    D is a diagonal matrix, where each diagonal entry    $D_{ii}$     is equal to the sum of all of the edge weights connected to vertex i. All off-diagonal entries are 0. In math terms: 
+	    \begin{align*}
+	        &D_{ii}  =\sum\limits_{j=1}^nA_{ij}\\
+	        &D_{ij}  = 0 \text{ if } i\neq j  
+	    \end{align*}
+	    (D actually contains the degree of each vertex, but we will not use this term.)
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Laplacian Matrix}
+	    Here is the Laplacian matrix for our graph.\\
+        Note that each row and each column sum to 0. It is also symmetric.\\
+        A graph is also uniquely defined by its Laplacian matrix.
+
+	    \begin{align*}
+	        A = \left[\begin{array}{cccc}
+	            0 & 5 & 3 & 1 \\
+	            5 & 0 & 2 & 0 \\
+	            3 & 2 & 0 & 0 \\
+	            1 & 0 & 0 & 0
+	        \end{array}\right] 
+	        D = \left[\begin{array}{cccc}
+	            9 & 0 & 0 & 0 \\
+	            0 & 7 & 0 & 0 \\
+	            0 & 0 & 5 & 0 \\
+	            0 & 0 & 0 & 1
+	        \end{array}\right] 
+	        L = D-A =  \left[\begin{array}{cccc}
+	            9 & -5 & -3 & -1 \\
+	            -5 & 7 & -2 & 0 \\
+	            -3 & -2 & 5 & 0 \\
+	            -1 & 0 & 0 & 1
+	        \end{array}\right] 
+	    \end{align*}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.5]{Bild15}
+	    \end{figure}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Eigenvectors of Laplacian}
+	    Now, we determine the eigenvectors of the Laplacian matrix, and store them in a matrix V.\\
+        The columns of V are sorted by their corresponding eigenvalue, in descending order.\\
+        The corresponding eigenvalues here are 13.31, 7.44, 1.25, and 0.
+
+
+	    \begin{align*}
+	        V = \left[\begin{array}{cccc}
+	            \vdots & \vdots &  & \vdots \\
+	            v_1 & v_2 & \dots & v_n \\
+	            \vdots & \vdots &  & \vdots
+	        \end{array}\right] 
+	        = \left[\begin{array}{cccc}
+	            -.80 & .26 & -.22 & -.5 \\
+	            .58 & .56 & -.31 & -.5 \\
+	            .15 & -.78 & -.34 & -.5 \\
+	            .06 & -.04 & .86 & -.5
+	        \end{array}\right] 
+	    \end{align*}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.5]{Bild15}
+	    \end{figure}
+	\end{frame}
+\end{document}

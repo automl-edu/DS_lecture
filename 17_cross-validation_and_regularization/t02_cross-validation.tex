@@ -1,0 +1,75 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Cross-Validation and Regularization}
+\subtitle{Cross-Validation}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Training Error vs Test Error}
+	    \includegraphics[scale=.4]{Bild1}
+	\end{frame}
+	
+	
+	\begin{frame}{Training Error vs Test Error}
+	    \includegraphics[scale=.4]{Bild2}
+	\end{frame}
+	
+	
+	\begin{frame}{Generalization: The Train-Test Split}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	               \begin{itemize}
+	                   \item Training Data: used to fit model
+	                   \item Test Data: check generalization error
+	                   \item How to split? 
+	                   \begin{itemize}
+	                       \item Randomly, Temporally, Geo…
+	                       \item Depends on application (usually randomly)
+	                   \end{itemize}
+	                   \item What size? (90\%-10\%)
+	                   \begin{itemize}
+	                       \item Larger training set – more complex models
+	                       \item Larger test set – better estimate of generalization error 
+	                       \item Typically between 75\%-25\% and 90\%-10\%
+	                   \end{itemize}
+	               \end{itemize} 
+	        \end{column}
+	        
+	        
+	       \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \includegraphics[scale=.5]{Bild3}
+	                \end{figure}
+	        \end{column}
+	    \end{columns}
+	    \bigskip
+	    You can only use the test dataset once after deciding on the model.
+
+	\end{frame}
+	
+	\begin{frame}{Generalization: Validation Split}
+	    \includegraphics[scale=.43]{Bild4}\\
+	    Cross validation simulates multiple train test-splits within the training data.
+
+	\end{frame}
+	
+	\begin{frame}[c]{Recipe for Successful Generalization}
+	    \begin{itemize}
+	        \item Split your data into training and test sets (90\%, 10\%)
+	        \item Use only the training data when designing, training, and tuning the model
+	        \begin{itemize}
+	            \item Use cross validation to test generalization during this phase
+	            \item Do not look at the test data!
+	        \end{itemize}
+	        \item Commit to your final model and train once more using only the training data.
+	        \item Test the final model using the test data. 
+	        \item Train on all available data and ship it!
+	    \end{itemize}
+	\end{frame}
+\end{document}

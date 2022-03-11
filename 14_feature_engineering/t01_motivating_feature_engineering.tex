@@ -1,0 +1,115 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Feature Engineering}
+\subtitle{Motivating Feature Engineering}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Can we fit a model to this data?}
+	    \centering
+	    \includegraphics[scale=.75]{Bild1}
+	\end{frame}
+	
+	
+	\begin{frame}{Can we fit a model to this data?}
+	    Simple Linear Regression?\\
+	    No, because the data is fundamentally nonlinear
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.65]{Bild2}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Can we fit a model to this data?}
+	    Multiple Linear Regression?\\
+	    No, because there are no other features to add
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.6]{Bild1}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Can we fit a model to this data?}
+	    Idea: Create an extra feature to use in the model. What feature should we add?\\
+	    Since the data looks like a parabola, let’s add a quadratic feature
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.65]{Bild3}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{What is a feature?}
+	    A feature is an input to our model
+	    \begin{itemize}
+	        \item So far, we have just used the raw data as features
+	    \end{itemize}
+	    We can also create new features to use an inputs to our model
+	    \begin{itemize}
+	        \item The process of creating new features is called feature engineering
+	    \end{itemize}
+	    Example: Quadratic model
+	    \begin{columns}
+	        \begin{column}{.4\textwidth}
+	                \begin{figure}
+                	        \centering
+                	        \includegraphics[scale=.35]{Bild3}
+	                 \end{figure}
+	        \end{column}
+	        
+	        
+	        \begin{column}{.4\textwidth}
+	            \bigskip
+	             
+	              
+	               \begin{equation*}
+	                   \theta_0 + \theta_1x + \theta_2x^2 
+	               \end{equation*} 
+	               Features: x, $x^2$\\
+	               Parameters: $\theta_0, \theta_1, \theta_2$
+
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Can we really just create our own features?}
+	    Yes! (with some restrictions)\\
+	    We can create any feature we want as long we can write the model in the form
+	    \begin{equation*}
+	        \hat{y} = x^T\theta
+	    \end{equation*}
+	    This is a linear combination of the features. The features cannot depend on the parameters of the model!\\
+	    Example: Adding a Quadratic Feature
+	               \begin{equation*}
+	                   \hat{y} = \theta_0 + \theta_1x_1 + \theta_2x_1^2 = \left[\begin{array}{c}
+	                        1\\
+	                        x_1\\
+	                        x_1^2
+	                   \end{array}\right] \cdot \left[\begin{array}{c}
+	                        \theta_0\\
+	                        \theta_1\\
+	                        \theta_1
+	                   \end{array}\right] = x^T\theta
+	               \end{equation*} 
+	\end{frame}
+	
+	
+	\begin{frame}[c]{Lecture Roadmap}
+	    We can choose/create x any way we like as long as our model follows the form $\hat{y}  = x^T\theta$
+        The rest of the lecture will discuss different techniques we can use to create x:
+        \begin{itemize}
+            \item How can we create features from quantitative data?
+            \item How can we create features from categorical data?
+            \item How can we create features from text data? 
+        \end{itemize} 
+	\end{frame}
+\end{document}

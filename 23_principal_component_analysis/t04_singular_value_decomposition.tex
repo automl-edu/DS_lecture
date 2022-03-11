@@ -1,0 +1,70 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Principal Component Analysis}
+\subtitle{Singular Value Decomposition}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Singular Value Decomposition}
+	    We can decompose a (centered, design) matrix X into the following three matrices:
+	    \begin{equation*}
+	        X = U\Sigma V^T = \left[\begin{array}{cccc}
+	        \vdots & \vdots & \dots &\vdots \\
+	       u_1 & u_2 & \dots & u_d \\
+	              \vdots &     \vdots   &   \dots  &  \vdots 
+	    \end{array}\right]
+	    \left[\begin{array}{cccc}
+	        \sigma_1 & 0 & \dots & 0 \\
+	        0 & \sigma_2 & \dots & 0 \\
+	              \vdots &     \vdots   &   \ddots  &  \vdots  \\
+	       0 & 0 & \dots &\sigma_d
+	    \end{array}\right]
+	    \left[\begin{array}{ccc}
+	       \dots & v^T_1 & \dots  \\
+	       \dots & v^T_2 & \dots  \\
+	        &     \vdots   &  \\
+	       \dots & v^T_d & \dots  
+	    \end{array}\right]
+	    \end{equation*}
+	    U has n rows and d columns—it has the same shape as X.\\
+	    $\Sigma$ has d rows and d columns. Every off-diagonal entry is 0.\\
+	    $V^T$ has d rows and d columns.
+	    
+	\end{frame}
+	
+	\begin{frame}{$\Sigma$ and $V^T$}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	               The diagonal entries of $\Sigma$ (written as σi) are called the singular values of X. These are the square roots of the eigenvalues of $X^TX$.\\
+	               The singular values are sorted in descending order.
+	               \begin{equation*}
+	               \left[\begin{array}{cccc}
+	                        \sigma_1 & 0 & \dots & 0 \\
+	                        0 & \sigma_2 & \dots & 0 \\
+	                        \vdots &     \vdots   &   \ddots  &  \vdots  \\
+                            0 & 0 & \dots &\sigma_d
+	                \end{array}\right]
+	                \end{equation*}
+	        \end{column}
+	        
+	        \begin{column}{.5\textwidth}
+	               Each row of $V^T$ (or alternatively, each column of V), is an eigenvector of $X^TX$. The eigenvalue for $V_1$ is $\sigma_1^2$.\\
+	               The rows of $V^T$ are orthogonal to each other.
+                   \begin{equation*}
+	               \left[\begin{array}{ccc}
+	                    \dots & v^T_1 & \dots  \\
+	                    \dots & v^T_2 & \dots  \\
+	                      &     \vdots   &  \\
+	                    \dots & v^T_d & \dots  
+	                \end{array}\right]
+	                \end{equation*}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+\end{document}

@@ -1,0 +1,182 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Visualization]{DS: Visualization}
+\subtitle{What is visualization?}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{What is this a visualization of?}
+	    \centering
+	    \includegraphics[scale=.5]{Bild1}
+	\end{frame}
+	
+	
+	\begin{frame}{Squash ball bounce positions in a gym.}
+	    \centering
+	    \includegraphics[scale=.5]{Bild2}
+	\end{frame}
+	
+	
+	\begin{frame}{What is this a visualization of?}
+	    \centering
+	    \includegraphics[scale=.5]{Bild3}
+	\end{frame}
+	
+	
+	
+    \begin{frame}{Soldiers who died in the Vietnam War}
+	    \centering
+	    \includegraphics[scale=.5]{Bild4}\\
+	     (names are ordered by their time of death).
+	\end{frame}
+
+
+
+    \begin{frame}{What is visualization?}
+	    \centering
+	    \includegraphics[scale=.45]{Bild5}
+	\end{frame}
+	
+	
+	\begin{frame}{Take advantage of the human visual perception system}
+	    \centering
+	    \includegraphics[scale=.4]{Bild6}
+	\end{frame}
+	
+	
+	\begin{frame}{Visualizations are for humans}
+	    \centering
+	    \includegraphics[scale=.4]{Bild7}
+	\end{frame}
+	
+	
+	\begin{frame}{Visualize, then quantify!}
+	    \begin{columns}
+	    \begin{column}{.6\textwidth}
+	        \begin{figure}
+	            \centering
+	            \vspace{-2em}
+        	    \includegraphics[scale=.5]{Bild9}
+	        \end{figure}
+	     Each of these datasets has the same means, standard deviations, and correlation. This means they have the same regression line\\
+
+	     \textbf{Visualization complements statistics.}
+
+	     \end{column}
+	    \begin{column}{.4\textwidth}
+	        \begin{figure}
+	            \centering
+        	    \includegraphics[scale=.34]{Bild8}
+	        \end{figure}
+        	    
+	    
+	    \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	
+	\begin{frame}[c]{Goals of data visualization}
+	
+	    \vspace{-1em}
+	    \begin{columns}
+	    \begin{column}{.6\textwidth}
+	      \begin{enumerate}
+	          \item To help your own understanding of your data/results
+	          \begin{itemize}
+	              \item Key part of exploratory data analysis.
+	              \item Useful throughout modeling as well.
+	              \item Lightweight, iterative and flexible.
+	          \end{itemize}
+	          \item To communicate results/conclusions to others.
+	          \begin{itemize}
+	              \item Highly editorial and selective. 
+	              \item Be thoughtful and careful!
+	              \item Fine tuned to achieve a communications goal.
+	              \item Often time-consuming: bridges into design, even art.
+	          \end{itemize}
+	          $\leadsto$ A constant tool across the lifecycle of data science
+	     \end{enumerate}
+
+	     \end{column}
+	    \begin{column}{.4\textwidth}
+	        \begin{figure}
+	            \centering
+        	    \includegraphics[scale=.4]{Bild10}
+	        \end{figure}
+        	    The John Hunter Excellence in Plotting Contest\\
+                \small \url{https://jhepc.github.io/gallery.html} 
+	    
+	    \end{column}
+	    \end{columns}
+
+	\end{frame}
+	
+	
+	
+	\begin{frame}[c]{Why data visualization?}
+	    \begin{itemize}
+	        \item One goal of data science is to inform human decisions.
+	        \begin{itemize}
+	            \item Excellent plots directly address this goal.
+	            \item Sometimes the most useful results from data analysis are the visualizations!
+	        \end{itemize}
+	        \item Data visualization isn’t as simple as calling \texttt{plot()}.
+	        \begin{itemize}
+	            \item Many plots are possible, but only a few are useful for the task at hand!
+	            \item Every visualization has trade-offs.
+	        \end{itemize}
+	    \end{itemize}
+    %     Roadmap:
+    % \begin{itemize}
+    %     \item Today: Establish when to use certain types of visualizations. 
+    %     \item Next lecture: Discuss various principles of visualization, along with kernel density estimation and transformation.
+    % \end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Three ways to plot}
+	    \begin{itemize}
+	        \item matplotlib (plt)
+	        \begin{itemize}
+	            \item The underlying plotting library powering all three of these.
+	        \end{itemize}
+	        \item pandas .plot()
+	        \begin{itemize}
+	            \item Knows how to make some default plots for you!
+	        \end{itemize}
+	        \item seaborn (sns)
+	        \begin{itemize}
+	            \item Allows us to create sophisticated visualizations quickly.
+	            \item Not just a colorful version of matplotlib!
+	        \end{itemize}
+	        \item There are several other ways, but these are what we’ll focus on.
+	        \item Moving forward, we won’t necessarily show you all of the ways to plot something.
+	        \begin{itemize}
+	            \item But we will give you the code for at least one way!
+	            \item Play around with arguments in the supplemental notebook.
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+	
+	\begin{frame}{The rich Python plotting ecosystem ...}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.38]{Bild24}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{We focus on these two}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.3]{Bild25}
+	    \end{figure}
+	\end{frame}
+	
+\end{document}

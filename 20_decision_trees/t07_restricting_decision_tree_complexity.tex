@@ -1,0 +1,96 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Decision Trees}
+\subtitle{Basic Decision Tree Generation}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Overfitting and Our Algorithm}
+	    A “fully grown” decision tree built with our algorithm runs the risk of overfitting\\
+	    \bigskip
+	    One idea to avoid overfitting: Don’t allow fully grown trees
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.45]{Bild52}
+	    \end{figure}
+	\end{frame}
+	
+	\begin{frame}{Regularization Terms and Decision Trees?}
+	    We can’t just use the regularization term idea from linear models
+	    \begin{itemize}
+	        \item There is no global function being minimized
+	        \item Instead, the decision tree is built up node by node in a “greedy” fashion
+	    \end{itemize}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.45]{Bild52}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Approach 1: Preventing Growth}
+	    Approach 1: Set one or more special rules to prevent growth\\
+	    \bigskip
+	    Examples:
+	    \begin{itemize}
+	        \item Don’t split nodes with < 1\% of the samples  
+	        \item Don’t allow nodes to be more than 7 levels deep in the tree
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{Approach 2: Pruning}
+	    Approach 2: Let tree fully grow, then cut off less useful branches of the tree. For example, consider the highlighted branch below:
+	    \begin{itemize}
+	        \item Many rules that affect few points
+	        \item How can we avoid this?
+	    \end{itemize}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.25]{Bild53}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Specific Pruning Example}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	              \begin{figure}
+            	        \centering
+            	        \includegraphics[scale=.35]{Bild54}
+	            \end{figure}  
+	        \end{column}
+	        
+	        \begin{column}{.5\textwidth}
+	                One way to prune: 
+	                \begin{itemize}
+	                    \item Before creating the tree, set aside a validation set
+	                    \item If replacing a node by its most common prediction has no impact on the validation error, then don’t split that node
+	                \end{itemize}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Overfitting and Our Algorithm}
+	    A “fully grown” decision tree built with our algorithm runs the risk of overfitting\\
+	    \bigskip
+	    One idea to avoid overfitting: Don’t allow fully grown trees
+	    \begin{itemize}
+	        \item Approach 1: Set rules to prevent full growth
+	        \item Approach 2: Allow full growth then prune branches afterwards
+	    \end{itemize}
+	    
+        Won’t discuss these in any great detail
+        \begin{itemize}
+            \item There’s a completely different idea called a “random forest” that is more popular and IMO more beautiful
+        \end{itemize}
+	\end{frame}
+\end{document}

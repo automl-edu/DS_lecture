@@ -1,0 +1,281 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Visualization]{DS: Visualization}
+\subtitle{Perception}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Perception of Color}
+
+	        \centering
+	        \includegraphics[scale=.45]{Bild60}
+
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Colormaps}
+
+	        \centering
+	        \includegraphics[scale=.45]{Bild61}
+
+	\end{frame}
+	
+	
+	
+	\begin{frame}{The jet/rainbow colormap actively misleads}
+
+	        \centering
+	        \includegraphics[scale=.35]{Bild62}
+
+	\end{frame}
+	
+	
+	\begin{frame}{Use a perceptually uniform colormap!}
+	
+	    \vspace{-2em}
+	    \begin{columns}
+	        \begin{column}{.6\textwidth}
+	        
+	                \begin{itemize}
+	                    \item Perceptually uniform colormaps have the property that if the data goes from 0.1 to 0.2, the perceptual change is the same as when the data goes from 0.8 to 0.9.
+	                    \item Jet, the old matplotlib default, was far from uniform.
+	                    \item Viridis, the new default colormap, is.
+	                    \item Avoid combinations of red and green, due to red-green color blindness.
+	                \end{itemize}
+	        \end{column}
+	        
+	        
+	        \begin{column}{.4\textwidth}
+
+	                    \centering
+	                    \includegraphics[scale=.33]{Bild63}
+
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Except when not :) The Google Turbo Colormap}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.35]{Bild64}
+	    \end{figure}
+	    \url{https://ai.googleblog.com/2019/08/turbo-improved-rainbow-colormap-for.html }
+	\end{frame}
+	
+	
+	\begin{frame}{Use color to highlight data type}
+	    \begin{columns}
+	        \begin{column}{.7\textwidth}
+	        
+	                \begin{itemize}
+	                    \item Qualitative: Choose a qualitative scheme that makes it easy to distinguish between categories.
+	                    \begin{itemize}
+	                        \item One category isn’t “higher” or “lower” than another.
+	                    \end{itemize}
+	                    \item Quantitative: Choose a color scheme that implies magnitude.
+	                    \begin{itemize}
+	                        \item More on this in the next slide.
+	                    \end{itemize}
+	                    \item The plot on the right has both!
+	                \end{itemize}
+	        \end{column}
+	        
+	        
+	        \begin{column}{.4\textwidth}
+
+	                    \centering
+	                    \includegraphics[scale=.5]{Bild65}
+
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Sequential vs. diverging colormaps for quantitative data}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+
+	                    \centering
+	                    \includegraphics[scale=.5]{Bild66}
+
+	                If the data progresses from low to high, use a sequential scheme where lighter colors are for more extreme values.
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	        
+	                    \vspace{-2em}
+	                    \centering
+	                    \includegraphics[scale=.5]{Bild67}
+
+	                If low and high values deserve equal emphasis, use a diverging scheme where lighter colors represent middle values.
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Default Matplotlib colormaps}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.4]{Bild68}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Domain specific colormaps: cmocean}
+	
+	        \vspace{-1em}
+	        \centering
+	        \includegraphics[scale=.35]{Bild69}
+	        
+	         Beautiful colormaps for oceanography by Kristen Thyng
+	\end{frame}
+	
+	
+	\begin{frame}{Extra reading}
+	    You may want to refer to these articles, which also discuss colormaps.
+	    \begin{itemize}
+	        \item Rainbow Colormap (Still) Considered Harmful - paper and presentation slides.
+	        \item \url{https://eagereyes.org/basics/rainbow-color-map}
+	        \item \url{https://everydayanalytics.ca/2017/03/when-to-use-sequential-and-diverging-palettes.html}
+	        \item \url{https://web.natur.cuni.cz/~langhamr/lectures/vtfg1/mapinfo_2/barvy/colors.html}
+	    \end{itemize}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Perception of Markings}
+	        \centering
+	        \includegraphics[scale=.35]{Bild70}
+
+	    The accuracy of our judgements depend on the type of marking.
+
+	\end{frame}
+	
+	
+	\begin{frame}{Perception of Markings}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.4]{Bild71}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Perception of Markings}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.44]{Bild72}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Perception of Markings}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.42]{Bild73}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Perception of Markings}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.38]{Bild74}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Lengths are easy to distinguish; Angles are hard}
+	        \centering
+	        \includegraphics[scale=.4]{Bild75}
+	        
+	        Be careful when using pie charts! 
+
+	\end{frame}
+	
+	
+	\begin{frame}{Areas are hard to distinguish}
+	
+	        \centering
+	        \includegraphics[scale=.4]{Bild76}
+	        
+	        Be careful with area charts! Area judgements are inaccurate.\\
+	        For example, South Africa has twice the GDP of Algeria, but that isen't clear from areas.
+	        
+	\end{frame}
+	
+	
+	\begin{frame}{Areas are hard to distinguish}
+	    \begin{figure}
+	        \centering
+	        \includegraphics[scale=.4]{Bild77}
+	    \end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{Avoid jiggling the baseline}
+	
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	                Stacked bar charts, histograms, and area charts are hard to read because the baseline moves. 
+	                \begin{itemize}
+	                    \item In the first plot, the top blue bars are all roughly of the same length. But that’s not immediately obvious!
+	                    \item In the second plot, comparing the number of 15-64 year old males in Germany and Mexico is difficult.
+	                \end{itemize}
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+
+                        \vspace{-2.5em}
+	                    \centering
+	                    \includegraphics[scale=.35]{Bild78}
+
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Avoid jiggling the baseline}
+	        \centering
+	        \includegraphics[scale=.35]{Bild79}
+
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Summary}
+    	 
+    	 \begin{itemize}
+    	     \item Be careful of the intended message of plots
+    	     \begin{itemize}
+    	         \item intended by you as the one creating the plots
+    	         \item intended by others and you read the plot
+    	     \end{itemize}
+    	     \smallskip
+    	     \item Plotting and perception is also a matter of taste and practice
+    	     \begin{itemize}
+    	         \item For instance, I'm used to read eCDF plots
+    	         \item For others, it could be hard
+    	     \end{itemize}
+    	     \smallskip
+    	     \item Most important: \alert{One message per plot!}
+    	     \begin{itemize}
+    	         \item Don't try to convey several messages in a single plot
+    	     \end{itemize}
+    	 \end{itemize}
+    	 
+	\end{frame}
+	
+\end{document}
