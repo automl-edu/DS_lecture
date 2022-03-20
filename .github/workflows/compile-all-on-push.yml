@@ -42,7 +42,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: Slides ${{ matrix.week }} (${{ matrix.mode }})
-          path: ${{ matrix.week }}/*.pdf
+          path: ${{ matrix.week }}/${{ matrix.mode }}/*.pdf
   merge:
     name: Merge slides
     needs: compile
