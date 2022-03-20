@@ -28,20 +28,20 @@ jobs:
             "26_conclusion",
             "SQL_08"
           ]
-        #mode: [
+        mode: [
         #        "animation",
-        #        "handout",
-        #]
+                "handout",
+        ]
     steps:
       - uses: actions/checkout@v2
       - name: compile week ${{ matrix.week }} with xelatex
         uses: ./.github/actions/xelatex-week
         with:
           folder: ${{ matrix.week }}
-          #mode: ${{ matrix.mode }}
+          mode: ${{ matrix.mode }}
       - uses: actions/upload-artifact@v2
         with:
-          name: Slides ${{ matrix.week }} #(${{ matrix.mode }})
+          name: Slides ${{ matrix.week }} (${{ matrix.mode }})
           path: ${{ matrix.week }}/*.pdf
   merge:
     name: Merge slides
@@ -73,7 +73,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v2
         with:
-          name: Slides ${{ matrix.week }} #(handout)
+          name: Slides ${{ matrix.week }} (handout)
           path: ${{ matrix.week }}/
       - name: Prepare output folder
         run: sh -c "[[ -d slides ]] || mkdir slides"
