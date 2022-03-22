@@ -27,7 +27,6 @@ jobs:
             "25_clustering,_part_2",
             "26_conclusion",
             "SQL_08",
-            "test"
           ]
         mode: [
         #        "animation",
@@ -69,7 +68,6 @@ jobs:
             "25_clustering,_part_2",
             "26_conclusion",
             "SQL_08",
-            "test"
         ]
     steps:
       - uses: actions/checkout@v2
