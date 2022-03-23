@@ -1,0 +1,47 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Introduction to Modeling}
+\subtitle{Comparing loss functions}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{MSE vs. MAE for toy data}
+	    Below, we present the plot of the loss surface for our toy dataset, using L2 loss (left) and L1 loss (right).
+	    \begin{itemize}
+	        \item A loss surface is a plot of the loss encountered for each possible value of    $\theta$ .
+	        \item If our model had 2 parameters, this plot would be 3 dimensional.
+	    \end{itemize}
+	    \centering
+	    \includegraphics[scale=.4]{Bild45}
+	\end{frame}
+	
+	
+	\begin{frame}{MSE vs. MAE}
+	    What else is different about squared loss (MSE) and absolute loss (MAE)?\\
+        Mean squared error (optimal parameter for the constant model is the sample mean)\\
+        \begin{itemize}
+            \item Very smooth. Easy to minimize using numerical methods (coming later in the course).
+            \item Very sensitive to outliers, e.g. if we added 1000 to our largest observation, the optimal theta would become 225 instead of 25.
+        \end{itemize}
+        \bigskip
+        Mean absolute error (optimal parameter for the constant model is the sample median)
+        \begin{itemize}
+            \item Not as smooth – at each of the “kinks,” it’s not differentiable. Harder to minimize.
+            \item Robust to outliers! E.g, adding 1000 to our largest observation doesn’t change the median.
+        \end{itemize}
+        \bigskip
+        It’s not clear that one is “better” than the other. \\
+        In practice, we get to choose our loss function!\\
+        
+        \vspace{-7cm}
+        \hspace{6cm} \includegraphics[scale=.33]{Bild46}\\
+        \vspace{7cm}
+	\end{frame}
+	
+\end{document}

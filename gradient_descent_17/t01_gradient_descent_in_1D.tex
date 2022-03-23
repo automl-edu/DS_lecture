@@ -1,0 +1,127 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Gradient Descent}
+\subtitle{Gradient Descent in 1D}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Minimizing a Function}
+	    Suppose we want to minimize a function f(x) = $x^4 -15x^3 + 80x^2 - 180x +144$
+	    \begin{itemize}
+	        \item Many approaches for doing this.
+	        \item We’ll discuss one approach today called “gradient descent”.
+	    \end{itemize}
+	    \centering
+	    \includegraphics[scale=.38]{Bild1}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Gradient Descent Intuition}
+	    The intuition behind 1D gradient descent: 
+	    \begin{itemize}
+	        \item To the left of a minimum, derivative is negative (going down).
+	        \item To the right of a minimum, derivative is positive (going up).
+	        \item Derivative tells you where and how far to go.
+	    \end{itemize}
+	    Let’s work from here and try to invent gradient descent.\\
+	    \centering
+	    \includegraphics[scale=.38]{Bild2}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Gradient Descent Algorithm}
+	    The gradient descent algorithm is shown below:
+	    \begin{itemize}
+	        \item alpha is known as the “learning rate”.
+	        \begin{itemize}
+	            \item Too large and algorithm fails to converge.
+	            \item Too small and it takes too long to converge.
+	        \end{itemize}
+	    \end{itemize}
+	    \begin{equation*}
+	        \hspace{-3cm}x^{(t+1)} = x^{(t)} - \alpha\frac{d}{dx}f(x)
+ 	    \end{equation*}
+ 	    
+ 	    
+ 	    \vspace{-3cm}
+ 	    \hspace{8.5cm} \includegraphics[scale=.35]{Bild4}\\
+ 	    \vspace{3cm}
+ 	    
+ 	    
+ 	    \vspace{-4cm}
+ 	    \hspace{0cm} \includegraphics[scale=.5]{Bild3}\\
+ 	    \vspace{4cm}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Gradient Descent Only Finds Local Minima}
+	    \begin{itemize}
+	        \item If loss function has multiple local minima, GD is not guaranteed to find global minimum.
+	        \item Suppose we have this loss curve:
+	    \end{itemize}
+	    \centering
+	    \includegraphics[scale=.7]{Bild5}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Gradient Descent Only Finds Local Minima}
+	    \begin{itemize}
+	        \item Here’s how GD runs:
+	    \end{itemize}
+	    \centering
+	    \includegraphics[scale=.4]{Bild6}
+	    \begin{itemize}
+	        \item GD can converge at -15 when global minimum is 18
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{Convexity}
+	    \begin{itemize}
+	        \item For a convex function f, any local minimum is also a global minimum.
+	        \begin{itemize}
+	            \item If loss function convex, gradient descent will always find the globally optimal minimizer.
+	        \end{itemize}
+	        \item Formally, f is convex iff:
+	    \end{itemize}
+	    
+	    \begin{align*}
+	        tf(a)+(1-t)f(b)\geq f(ta + (1 - t)b)\\
+	        \text{For all a, b in domain of f and t} \in [0,1]
+	    \end{align*}
+	\end{frame}
+	
+	
+	\begin{frame}{Convexity}
+	        \hspace{4cm}$tf(a)+(1-t)f(b)\geq f(ta + (1 - t)b)$\\
+	        \hspace{4cm} $\text{For all a, b in domain of f and t} \in [0,1]$
+	    \begin{itemize}
+	        \item RTA: If I draw a line between two points on curve, all values on curve need to be on or below line.
+	        \item E.g. MSE loss is convex:
+	    \end{itemize}
+	    \hspace{5cm}
+	    \includegraphics[scale=.4]{Bild7}
+	\end{frame}
+	
+	
+	\begin{frame}{Convexity}
+	        \hspace{4cm}$tf(a)+(1-t)f(b)\geq f(ta + (1 - t)b)$\\
+	        \hspace{4cm} $\text{For all a, b in domain of f and t} \in [0,1]$
+	    \begin{itemize}
+	        \item But this loss function is not convex:
+	    \end{itemize}
+	    \hspace{3.5cm}
+	    \includegraphics[scale=.5]{Bild8}
+	\end{frame}
+	
+\end{document}

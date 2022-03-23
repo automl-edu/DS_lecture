@@ -1,0 +1,130 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Gradient Descent}
+\subtitle{Optimizing Loss in 1D}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Optimization Goal}
+	    Suppose we want to create a model that predicts the tip given the total bill for a table at a restaurant.\\
+	    \bigskip
+	    \begin{columns}
+	     \begin{column}{.5\textwidth}
+	        \\
+	         For this problem, we’ll keep things simple and have only 1 parameter: gamma.
+	             \begin{equation*}
+	                 \hat{y}  = f_{\hat{\gamma}}(\Vec{x})  = \hat{\gamma}\Vec{x}
+                \end{equation*}
+	            \begin{itemize}
+                     \item In other words, we are fitting a line with zero y-intercept.
+	             \end{itemize}
+	             \bigskip
+	             See Notebook.
+	     \end{column}
+	     
+	     
+	     \begin{column}{.5\textwidth}
+	        %\vspace{-2.5cm}
+	            \\
+              \hspace{0cm} \includegraphics[scale=.4]{Bild9}\\
+	         %\vspace{2.5cm}
+	     \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	
+	\begin{frame}[c]{Optimization Goal}
+	    As discussed before, picking the best gamma is meaningless unless we pick:
+	    \begin{itemize}
+	        \item Loss function.
+	        \item Regularization term.
+	    \end{itemize}
+	    For this example, let’s use the L2 loss and no regularization.
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Solution Approach \#1: Closed Form Solution}
+	    One approach is to use a closed form solution. 
+	    \begin{itemize}
+	        \item On HW5 problem 3, you derived the closed form expression below:
+	        \begin{equation*}
+	            \hat{\gamma} = \frac{\sum x_iy_i}{\sum x_i^2}
+	        \end{equation*}
+	        Another closed form expression is just our standard normal equation:
+	        \begin{equation*}
+	            \hat{\gamma} = (\mathbb{X}^T\mathbb{X})^{-1}\mathbb{X}^T\Vec{y}
+	        \end{equation*}
+	    \end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Solution Approach \#2A: Brute Force Plotting}
+	    Another approach is to plot the loss and eyeball the minimum.\\
+	    \includegraphics[scale=.4]{Bild10}
+	\end{frame}
+	
+	
+	\begin{frame}{Solution Approach #2B: Brute Force}
+	    A related approach: Try a bunch of gammas and simply keep the best one.\\
+	    \includegraphics[scale=.4]{Bild11}
+	\end{frame}
+	
+	
+	\begin{frame}{Solution Approach #3: Use Gradient Descent}
+	    We can use our gradient descent algorithm from before.
+	    \begin{itemize}
+	        \item To use this, we need to find the derivative of the function that we’re trying to minimize.
+	        \item Earlier, we minimized an arbitrary 4th degree polynomial.
+	    \end{itemize}
+	    \includegraphics[scale=.4]{Bild12}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Solution Approach #3: Use Gradient Descent}
+	    We can use our gradient descent algorithm from before.
+	    \begin{itemize}
+	        \item To use this, we need to find the derivative of the function that we’re trying to minimize.
+	        \item Earlier, we minimized an arbitrary 4th degree polynomial.
+	    \end{itemize}
+	    \centering
+	    \includegraphics[scale=.4]{Bild13}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Solution Approach #3: Use Gradient Descent}
+	    We can use our gradient descent algorithm from before.
+	    \begin{itemize}
+	        \item To use GD on our linear regression problem, we need to find the derivative of the function that we’re trying to minimize, namely mse\_loss.
+	    \end{itemize}
+	    \centering
+	    \includegraphics[scale=.35]{Bild14}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Solution Approach #3: Use Gradient Descent}
+	    We can use our gradient descent algorithm from before.
+	    \begin{itemize}
+	        \item To use GD on our linear regression problem, we need to find the derivative of the function that we’re trying to minimize, namely mse\_loss.
+	    \end{itemize}
+	    \centering
+	    \includegraphics[scale=.38]{Bild15}
+	\end{frame}
+	
+	
+	
+	\begin{frame}[c]{Solutions \#4/\#5: scipy.optimize.minimize / scipy.linear\_model}
+	    As before, we can also use the scipy.optimize.minimize or scipy.linear\_model libraries. Because it’s exactly the same as before, we omit the exact details from this lecture.\\
+	    \bigskip
+	    Ultimately, both of these approaches use a numerical method similar to gradient descent.
+	\end{frame}
+\end{document}

@@ -1,0 +1,47 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: SQL}
+\subtitle{SQL Predicates and Casting}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{SQL Predicates}
+	    In addition to numerical comparisons (=, <, >), SQL has built-in predicates.
+	    \begin{itemize}
+	        \item Example: The IN operator tests whether a value is in a list.
+	        \begin{itemize}
+	            \item E.g., select rows whose month is either January, March, or May:
+	            \includegraphics[scale=.4]{Bild27}
+	        \end{itemize}
+	    \end{itemize}
+	    
+	    
+	    \begin{itemize}
+	        \item Example: The LIKE operator tests whether a string matches a pattern (similar to a regex, but much simpler syntax):
+	        \begin{itemize}
+	            \item E.g. select rows where the time string is on the hour, such as 8:00 or 12:00 pm.
+	            \includegraphics[scale=.4]{Bild28}
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{SQL Casting}
+	    Can use CAST to convert fields from one type to another:
+	    \begin{itemize}
+	        \item Handy when combined with WHERE:
+	    \end{itemize}
+	    \vspace{1cm}
+	    \includegraphics[scale=.45]{Bild29}
+	\end{frame}
+	
+	
+	
+	
+\end{document}

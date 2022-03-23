@@ -1,0 +1,82 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Introduction to Modeling}
+\subtitle{Summary}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{The modeling process}
+	    We’ve implicitly introduced this three-step process, which we will use constantly throughout the rest of the course.\\
+	    \includegraphics[scale=.4]{Bild47}
+	\end{frame}
+	
+	\begin{frame}{The modeling process}
+	    We’ve implicitly introduced this three-step process, which we will use constantly throughout the rest of the course.\\
+	    \includegraphics[scale=.4]{Bild48}
+	\end{frame}
+	
+	
+	\begin{frame}{The modeling process}
+	    We’ve implicitly introduced this three-step process, which we will use constantly throughout the rest of the course.\\
+	    \includegraphics[scale=.4]{Bild49}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{The modeling process}
+	    We’ve implicitly introduced this three-step process, which we will use constantly throughout the rest of the course.\\
+	    \includegraphics[scale=.4]{Bild50}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Vocabulary review}
+	    \begin{itemize}
+	        \item When we use squared (L2) loss as our loss function, the average loss across our dataset is called mean squared error.
+	        \begin{itemize}
+	            \item “Squared loss” and “mean squared error” are not the exact same thing – one is for a single observation, and one is for an entire dataset.
+	            \item But they are closely related.
+	        \end{itemize}
+	        \item A similar relationship holds true between absolute (L1) loss and mean absolute error.
+	        \item Loss functions and summary statistics you already knew:
+	        \begin{itemize}
+	            \item The sample mean is the value of   $\theta$  that minimizes the mean squared error.
+	            \item The sample median is the value of  $\theta$   that minimizes the mean absolute error.
+	        \end{itemize}
+	        \item “Average loss” and “empirical risk” mean the same thing for our purposes.
+	        \begin{itemize}
+	            \item So far, our empirical risk was either mean squared error, or mean absolute error.
+	            \item  But generally, average loss / empirical risk could be the mean of any loss function across our dataset.
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{What’s next...}
+	    \begin{itemize}
+	        \item Changing the model.
+	        \begin{itemize}
+	            \item Next, we’ll introduce the simple linear regression model that you saw in Data 8.
+	            \item We’ll also look at multiple regression, logistic regression, decision trees, and random forests, all of which are different types of models.
+	        \end{itemize}
+            \item Changing the loss function.
+	        \begin{itemize}
+                \item L2 loss (and, hence, mean squared error) will appear a lot.
+	            \item But we’ll also introduce new loss functions, like cross-entropy loss.
+	        \end{itemize}
+	        \item Changing how we fit the model to the data.
+	        \begin{itemize}
+	            \item We did this largely by hand in this lecture.
+	            \item But shortly, we’ll run into combinations of models and loss functions for which the optimal parameters can’t be determined by hand.
+	            \item As such, we’ll learn about techniques like gradient descent.
+	        \end{itemize}
+	    \end{itemize}
+	    
+	\end{frame}
+\end{document}

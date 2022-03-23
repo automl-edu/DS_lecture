@@ -1,0 +1,52 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: SQL}
+\subtitle{Databases}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Brief Databases Overview}
+	    \begin{itemize}
+	        \item A database is an organized collection of data.
+	        \item A database management system (DBMS) is a software system that stores, manages, and facilitates access to one or more databases. 
+	        \item Why use DBMSes? 
+	        \begin{itemize}
+	            \item Our data might not be stored in a simple-to-read format such as a CSV (comma-separated values) file.
+	            \item Think of a CSV like an Excel sheet or a sheet in Google sheets.
+	            \item In Data 8, most of the data were given to you in CSV files, but that will not always be the case in the real world. 
+	            \item If our data are stored in a DBMS, we must use languages such as Structured Query Language  (SQL) to query for our data.
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}   
+	    
+	    
+	\begin{frame}{Advantages of DBMS over CSV (or similar)}
+	        Data Storage:
+	        \begin{itemize}
+	            \item Reliable storage to survive system crashes and disk failures.
+	            \item Optimize to compute on data that does not fit in memory.
+	            \item Special data structures to improve performance.
+	        \end{itemize}
+	        Data Management:
+	        \begin{itemize}
+	            \item Configure how data is logically organized and who has access.
+	            \item Can enforce guarantees on the data (e.g. non-negative bank account balance).
+	            \begin{itemize}
+	                \item Can be used to prevent data anomalies.
+	                \item Ensures safe concurrent operations on data.
+	            \end{itemize}
+	        \end{itemize}
+	\end{frame}
+	
+	
+	
+	
+	
+	
+\end{document}

@@ -1,0 +1,216 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Introduction to Modeling}
+\subtitle{Minimizing mean squared error (MSE)}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Minimizing MSE}
+	    We saw with the toy example of [20, 21, 22, 29, 33] that the value that minimizes the MSE of the constant model was 25, which was the mean of our observations.\\
+	    \bigskip
+	    We can try other examples if we want to, and we’ll end up with the same result. Let’s instead pivot to proving this rigorously, using mathematics. There are two ways we’ll go about doing this:
+	    \begin{itemize}
+	        \item Using calculus.
+	        \item Using a neat algebraic trick.
+	    \end{itemize}
+	    \bigskip
+	    For both derivations, the slides contain the key ideas, but the lecture videos will contain a step-by-step walkthrough.
+	\end{frame}
+	
+	
+	\begin{frame}{MSE minimization using calculus}
+	    One way to minimize a function is by using calculus: we can take the derivative, set it equal to 0, and solve for the optimizing value.
+	    \begin{itemize}
+	        \item The derivative of the sum of several pieces is equal to the sum of the derivative of said pieces.
+	        \item The derivative of the loss for a single point is    $\frac{d}{d\theta} (y_i - \theta)^2 = 2(y_i - \theta)(-1) = -2(y_i - \theta)$.                                
+	    \end{itemize}
+	    Then:\\
+	    \vspace{2.5cm}
+	    \hspace{6.5cm} \includegraphics[scale=.4]{Bild27}\\
+	    \vspace{-2.5cm}
+	    
+	    \vspace{-.7cm}
+	    \hspace{10.5cm} \includegraphics[scale=.4]{Bild28}\\
+	    \vspace{0.7cm}
+	    
+	    \vspace{-3cm}
+	    \begin{align*}
+	        R(\theta) &= \frac{1}{n}\sum\limits_{i=1}^n(y_i - \theta)^2\\
+	        \rightarrow \frac{d}{d\theta}R(\theta)  &= \frac{1}{n} \sum\limits_{i=1}^n\frac{d}{d\theta}(y_i -\theta)^2 = \frac{1}{n}\sum\limits_{i=1}^n(-2)(y_i - \theta) = \frac{-2}{n}\sum\limits_{i=1}^n(y_i - \theta)
+	    \end{align*}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{MSE minimization using calculus}
+	     %\begin{align*}
+	       % R(\theta) &= \frac{1}{n}\sum\limits_{i=1}^n(y_i - \theta)^2\\
+	      %  \rightarrow \frac{d}{d\theta}R(\theta)  &= \frac{1}{n} \sum\limits_{i=1}^n\frac{d}{d\theta}(y_i -\theta)^2 = \frac{1}{n}\sum\limits_{i=1}^n(-2)(y_i - \theta) = \frac{-2}{n}\sum\limits_{i=1}^n(y_i - \theta)
+	   % \end{align*}
+	    
+	    \vspace{0.5cm}
+	    \hspace{8cm} \includegraphics[scale=.4]{Bild29}\\
+	    \vspace{-0.5cm}
+	    
+	    
+	    \vspace{1cm}
+	    \hspace{11cm} \includegraphics[scale=.4]{Bild30}\\
+	    \vspace{-1cm}
+	    
+	    \vspace{-3.5cm}
+	    Setting this term to 0, we have:
+        \begin{align*}
+            0 &= \frac{-2}{n}\sum\limits_{i=1}^n(y_i - \theta)\\
+            0 &= \sum\limits_{i=1}^n(y_i - \theta) = \sum\limits_{i=1}^ny_i - \sum\limits_{i=1}^n\theta = \sum\limits_{i=1}^ny_i - n\theta\\
+            n\theta &= \sum\limits_{i=1}^ny_i\\
+            \rightarrow \hat{\theta} &= \frac{\sum_{i=1}^ny_i}{n} = mean(y)
+        \end{align*}
+        Thus, with squared loss and the constant model, the sample mean minimizes MSE.
+	\end{frame}
+	
+	
+	\begin{frame}{MSE minimization using calculus}
+	    \vspace{-1cm}
+	    \begin{equation*}
+	        \rightarrow \hat{\theta} &= \frac{\sum_{i=1}^ny_i}{n} = mean(y)
+	    \end{equation*}
+	    We’re not done yet! To be thorough, we need to perform the second derivative test, to guarantee that the point we found is truly a minimum (rather than a maximum or saddle point). We hope that the second derivative of our objective function is positive, indicating our function is convex opening upwards.
+	    \begin{align*}
+	        \frac{d}{d\theta}R(\theta) &= \frac{-2}{n}\sum\limits_{i=1}^n(y_i - \theta)\\
+	        \frac{d^2}{d\theta^2}R(\theta) &= \frac{-2}{n}\sum\limits_{i=1}^n(0 - 1)  = \frac{2}{n}\sum\limits_{i=1}^n1 = 2
+	    \end{align*}
+	    Fortunately, it is, so the sample mean truly is the minimizer we were looking for. We will interpret what this means shortly.
+	\end{frame}
+	
+	
+	\begin{frame}{MSE minimization using an algebraic trick}
+	    \vspace{-.5cm}
+	    It turns out that in this case, there’s another rather elegant way of performing the same minimization algebraically, but without using calculus.
+	    \begin{itemize}
+	        \item We present this derivation in the next few slides. The lecture video will walk through it in detail.
+	        \item In this proof, you will need to use the fact that the sum of deviations from the mean is 0 (in other words, that        $\sum\limits_{i=1}^n(y_i - \overline{y}) = 0$               ). We present that proof here:\\
+	            $\sum_{i=1}^n(y_i - \overline{y}) = \sum_{i=1}^ny_i - \sum_{i=1}^n\overline{y}\\
+	           \hspace{2.9cm} = \sum_{i=1}^ny_i - n\overline{y} \\
+	           \hspace{3cm}= \sum_{i=1}^ny_i - n\cdot \frac{1}{n} \sum_{i=1}^ny_i \\
+	           \hspace{3cm}= \sum_{i=1}^ny_i - \sum_{i=1}^ny_i\\
+	            \hspace{3cm}= 0$
+	            
+	        \item Our proof will also use the definition of the variance of a sample. As a refresher:
+	        $\sigma_y^2 = \frac{1}{n}\sum_{i=1}^n(y_i - \overline{y})^2$\\
+	        \vspace{-3.5cm}
+	        \hspace{8cm}\includegraphics[scale=.5]{Bild31}\\
+	        \vspace{3.5cm}
+	        
+	        
+	        \vspace{-2.7cm}
+	        \hspace{4cm}\includegraphics[scale=.3]{Bild32}\\
+	        \vspace{2.7cm}
+	    \end{itemize}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{MSE minimization using an algebraic trick}
+	    \begin{columns}
+	        \begin{column}{.65\textwidth}
+	                    
+	                   \vspace{5.5cm}
+	                   \hspace{0.1cm} \includegraphics[scale=.3]{Bild34}\\
+	                   \vspace{-5.5cm}
+	                   
+	                   \vspace{-1.5cm}
+	                    $R(\theta) = \dfrac{1}{n} \sum\limits_{i=1}^n(y_i - \theta)^2\\
+	                    %\bigskip
+	                   \hspace{1cm}= \dfrac{1}{n}  \sum_{i=1}^n[(y_i - \overline{y}) + (\overline{y} - \theta)]^2\\
+	                   %\bigskip
+	                   \hspace{1cm}= \dfrac{1}{n} \sum_{i=1}^n[(y_i - \overline{y})^2 + 2(y_i - \overline{y})(\overline{y} - \theta) + (\overline{y} - \theta)^2]\\
+	                   %\bigskip
+	                   \hspace{1cm}= \dfrac{1}{n} [\sum_{i=1}^n(y_i - \overline{y})^2 +2(\overline{y} - \theta)\sum_{i=1}^n(y_i - \overline{y}) + n(\overline{y} - \theta)^2]\\
+	                   %\bigskip
+	                   \hspace{1cm}= \dfrac{1}{n} \sum_{i=1}^n(y_i - \overline{y})^2 +\frac{2}{n}(\overline{y} - \theta)\cdot 0 + (\overline{y} - \theta)^2\\
+	                  %\bigskip
+	                   \hspace{1cm} = \sigma_y^2 + (\overline{y} - \theta)^2
+	                   $\\
+	                   \vspace{-1cm}
+	                   \hspace{5.3cm} \includegraphics[scale=.3]{Bild33}\\
+	                   \vspace{1cm}
+	                   
+	                   
+	                   
+	        \end{column}
+	        
+	        
+	        \begin{column}{.35\textwidth}
+	                   \\
+	                   \vspace{-.5cm}
+	                This proof relies on an algebraic trick. We can write the difference a - b as 
+                    (a - c) + (c - b), where a, b, and c are any numbers.\\
+                    \bigskip
+                    Using that fact, we can write
+                     $y_i - \theta = (y_i - \overline{y}) +  (\overline{y} -\theta)$, where
+                    $\overline{y} = \frac{1}{n} \sum_{i=1}^ny_i $ , our sample mean.\\
+                    \bigskip
+                    Also note: going from line 3 to 4, we distribute the sum to the individual terms. This is a property of sums you should become familiar with!
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Minimization using an algebraic trick}
+	    In the previous slide, we showed that          $R(\theta) = \sigma^2_y + (\overline{y} - \theta )^2$.
+	    \begin{itemize}
+	        \item Since variance can’t be negative, the first term is greater than or equal to 0.
+	        \begin{itemize}
+	            \item Of note, the first term doesn’t involve  $\theta$   at all. Changing our model won’t change this value, so for the purposes of determining   $\hat{\theta}$   , we can ignore it.
+	        \end{itemize}
+	        \item The second term is being squared, and so also must be greater than or equal to 0.
+	        \begin{itemize}
+	            \item This term does involve    $\theta$, and so picking the right value of $\theta$     will minimize our average loss.
+	            \item We need to pick the    $\theta$  that sets the second term to 0.
+	            \item This is achieved when      $\theta = \overline{y}$         . In other words: 
+                \begin{equation*}
+                    \hat{\theta} = \overline{y} = \text{mean}(y)
+                \end{equation*}
+	        \end{itemize}
+	    \end{itemize}
+	    Looks familiar!\\
+	    Question: What is the value of average loss, when evaluated at       $\theta = \hat{\theta}$        ? 
+	\end{frame}
+	
+	
+	\begin{frame}{Minimum value of MSE is the sample variance}
+	    It’s worth noting that when we substitute     $\theta = \overline{y}$            back into our average loss, we obtain a familiar result:
+	    \begin{equation*}
+	        R(\overline{y}) = \frac{1}{n}\sum\limits_{i=1}^n(y_i - \overline{y})^2 = \sigma^2_y
+	    \end{equation*}
+	    \bigskip\\
+	    That is, the minimum value that mean squared error can take on (again, for the constant model) is the sample variance. \\
+	    \bigskip
+	    Put another way, the following statement is true whenever      $\theta \neq \overline{y}$         : \\
+	    \begin{equation*}
+	        \frac{1}{n}\sum\limits_{i=1}^n(y_i - \overline{y})^2 < \frac{1}{n}\sum\limits_{i=1}^n(y_i - \theta)^2
+	    \end{equation*}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Mean minimizes MSE for the constant model}
+	    As we determined a variety of ways, for the constant model with squared loss, the mean of the dataset is the optimal model.
+	    \begin{equation*}
+	        \hat{\theta} = \text{mean}(y) = \overline{y}
+	    \end{equation*}
+	    \begin{itemize}
+	        \item This holds true regardless of the dataset we use, but it’s only true for this combination of model and loss.
+	        \item If we choose any other constant other than the sample mean, the empirical risk will not be as small as possible, and so our model is “worse” (for this loss).
+	    \end{itemize}
+	    This is not all that surprising! It provides some formal reasoning as to why we use means so commonly as summary statistics. It is the best, in some sense.\\
+	    Note, we now write  $\hat{\theta}$   instead of  $\theta$    . This is because we are referring to the optimal parameter, not just any arbitrary  $\theta$    . 
+	\end{frame}
+\end{document}

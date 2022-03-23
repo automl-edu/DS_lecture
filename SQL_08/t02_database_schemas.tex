@@ -1,0 +1,101 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: SQL}
+\subtitle{Database Schemas}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Relational DBMS Terminology}
+	    
+	    \begin{columns}
+	        \begin{column}{.75\textwidth}
+	        \vspace{.4cm}\\
+	        In a relational database, each table is called a relation.\\
+            Each row of relation is called a record or tuple. Rows do not have names.\\
+            Each column of a relation is called an attribute or field.
+
+	                \begin{itemize}
+	                    \item Attributes have names (e.g. temperature, city, legs).
+	                    \item Attributes have data types (e.g. INTEGER, CHAR(20)).
+	                    \item Attributes may also have constraints (e.g. must be non-negative).
+	                    \item Attributes may be marked as primary or foreign keys.
+	                    \begin{itemize}
+	                        \item Primary key must be unique. Example on next slide.
+	                        \item Foreign key means that an attribute is some other table’s primary key.
+	                        \begin{itemize}
+	                            \item Explicitly shows how tables are linked.
+	                        \end{itemize}
+	                    \end{itemize}
+	                \end{itemize}
+	        \end{column}
+	        
+	        
+	        
+	        \begin{column}{.25\textwidth}
+	                \begin{center}
+	                    \includegraphics[scale=.35]{Bild1}
+	                \end{center}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Example Relation Schema}
+	    \begin{columns}
+	        \begin{column}{.6\textwidth}
+	             \begin{center}
+	                \includegraphics[scale=.35]{Bild2}
+	             \end{center}
+	             Given the table animal above, it is impossible to:
+	             \begin{itemize}
+	                 \item Insert a record with the same name as another.
+	                 \item Insert a record with a negative value for legs or weight.
+	                 \item Insert a record with a non-integer legs or weight.
+	             \end{itemize}
+	        \end{column}
+	        
+	        
+	        
+	        \begin{column}{.4\textwidth}
+	                \begin{center}
+	                    \includegraphics[scale=.35]{Bild3}
+	                \end{center}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	
+	\begin{frame}[c]{Database Schema}
+	    A relational database is a set of relations.
+	    \begin{itemize}
+	        \item Set of the schemas of those relations is called the database schema.
+	        \item If the database schema includes foreign key relations, schema effectively includes a description how the tables refer to one another.
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{Example Database Schema}
+	    \includegraphics[scale=.4]{Bild4}
+	\end{frame}
+	
+	
+	
+	
+	\begin{frame}{Database Implementations}
+	    We can query relational databases with SQL, but there are many implementations of SQL. 
+	    \begin{itemize}
+	        \item And many other database implementations that are not SQL based / relational.
+	    \end{itemize}
+	    \includegraphics[scale=.4]{Bild5}\\
+	    \vspace{.9cm}
+	    \url{https://db-engines.com/en/ranking}
+	\end{frame}
+\end{document}
