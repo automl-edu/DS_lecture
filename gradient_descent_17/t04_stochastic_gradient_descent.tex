@@ -1,0 +1,144 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Gradient Descent}
+\subtitle{Stochastic Gradient Descent}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{The Gradient Descent Algorithm}
+	    \vspace{1cm}
+	    \hspace{4cm}\fbox{\parbox{.4\textwidth}{$\theta^{(0)} \leftarrow$ initial vector (random, zeros …)\\
+	    For $\tau$ from 0 to convergence:\\
+	    \begin{equation*}
+	         \Vec{\theta}^{(t+1)} = \Vec{\theta}^{(t)} - \alpha \nabla_{\Vec{\theta}}L(\Vec{\theta}, \mathbb{X}, \Vec{y})
+	    \end{equation*}}}
+	    \begin{itemize}
+	        \item $\alpha$ is the learning rate
+	        \item Converges when gradient is $\approx$ 0 (or we run out of patience)
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{Which Step in This Algorithm is Most Time Consuming?}
+    	Gradient Descent Algorithm\\
+    	\vspace{1cm}
+	    \hspace{4cm}\fbox{\parbox{.4\textwidth}{$\theta^{(0)} \leftarrow$ initial vector (random, zeros …)\\
+	    For $\tau$ from 0 to convergence:\\
+	    \begin{equation*}
+	         \Vec{\theta}^{(t+1)} = \Vec{\theta}^{(t)} - \alpha \fcolorbox{red}{white}{\parbox{.13\textwidth}{$\nabla_{\Vec{\theta}}L(\Vec{\theta}, \mathbb{X}, \Vec{y}$)}}
+	    \end{equation*}}}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Which Step in This Algorithm is Most Time Consuming?}
+	    \begin{equation*}
+	         \Vec{\theta}^{(t+1)} = \Vec{\theta}^{(t)} - \alpha \fcolorbox{red}{white}{\parbox{.13\textwidth}{$\nabla_{\Vec{\theta}}L(\Vec{\theta}, \mathbb{X}, \Vec{y}$)}}
+	    \end{equation*}
+	    Typically the loss function is really the average loss over a large dataset.
+	    \begin{equation*}
+	        \nabla_\theta L(\theta)  \left|_{\theta = \theta^{(\tau)}}=\frac{1}{n}\sum_{i=1}^n \nabla_\theta \text{loss}(y,f_\theta (x))\right|_{\theta = \theta^{(\tau)}}
+	    \end{equation*}
+	    \begin{itemize}
+	        \item Loading and computing on all the data is expensive.
+	        \item What do we do when accessing the “population” is prohibitively expensive?
+	    \end{itemize}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Stochastic Gradient Descent}
+    	\vspace{0cm}
+	    \hspace{4cm}\fbox{\parbox{.5\textwidth}{$\theta^{(0)} \leftarrow$ initial vector (random, zeros …)\\
+	    For $\tau$ from 0 to convergence:\\
+	    \vspace{.1cm}
+	    \hspace{1cm}
+	    $\mathcal{B} \textasciitilde $Random subset of indices\\
+	    \begin{equation*}
+	        \theta^{(\tau + 1)} \leftarrow \theta^{(\tau)} -  \alpha\left(\left.\frac{1}{|\mathcal{B}|}\sum\limits_{i\in \mathcal{B}}\nabla_\theta L_i(\theta)\right|_{\theta = \theta^{(\tau)}}\right)
+	    \end{equation*}}}
+	    \begin{itemize}
+	        \item[1.] Draw a simple random sample of data indices 
+	        \begin{itemize}
+	            \item Often called a batch or mini-batch
+	            \item Choice of batch size trade-off gradient quality and speed
+	        \end{itemize}
+	        \item[1.] Compute gradient estimate and uses as gradient
+	    \end{itemize}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Stochastic Gradient Descent}
+    	\vspace{0cm}
+	    \hspace{4cm}\fbox{\parbox{.5\textwidth}{$\theta^{(0)} \leftarrow$ initial vector (random, zeros …)\\
+	    For $\tau$ from 0 to convergence:\\
+	    \vspace{.1cm}
+	    \hspace{1cm}
+	    $\mathcal{B} \textasciitilde $Random subset of indices\\
+	    \begin{equation*}
+	        \theta^{(\tau + 1)} \leftarrow \theta^{(\tau)} -  \alpha\left(\left.\frac{1}{|\mathcal{B}|}\sum\limits_{i\in \mathcal{B}}\nabla_\theta L_i(\theta)\right|_{\theta = \theta^{(\tau)}}\right)
+	    \end{equation*}}}\\
+	   Decomposable Loss
+       \begin{equation*}
+           L(\theta)  = \sum\limits_{i=1}^nL_i(\theta) = \sum\limits_{i=1}^nL(\theta, x_i, y_i)
+       \end{equation*}
+       Loss can be written as a sum of the loss on each record.
+	\end{frame}
+	
+	
+	
+	\begin{frame}{.}
+	    \vspace{-1cm}
+	    \hspace{2cm}\fbox{\parbox{.7\textwidth}{$\theta^{(0)} \leftarrow$ initial vector (random, zeros …)\\
+	    For $\tau$ from 0 to convergence:\\
+	    \begin{equation*}
+	        \theta^{(\tau + 1)} \leftarrow \theta^{(\tau)} -  \alpha\left(\left.\frac{1}{n}\sum\limits_{i=1}^n\nabla_\theta L_i(\theta)\right|_{\theta = \theta^{(\tau)}}\right)
+	    \end{equation*}}}
+        
+        \vspace{1cm}
+	    \hspace{2cm}\fbox{\parbox{.7\textwidth}{$\theta^{(0)} \leftarrow$ initial vector (random, zeros …)\\
+	    For $\tau$ from 0 to convergence:\\
+	    \vspace{.1cm}
+	    \hspace{1cm}
+	    $\mathcal{B} \textasciitilde $Random subset of indices\\
+	    \begin{equation*}
+	        \theta^{(\tau + 1)} \leftarrow \theta^{(\tau)} -  \alpha\left(\left.\frac{1}{|\mathcal{B}|}\sum\limits_{i\in \mathcal{B}}\nabla_\theta L_i(\theta)\right|_{\theta = \theta^{(\tau)}}\right)
+	    \end{equation*}}}\\
+       
+       \vspace{-3.6cm}
+       \hspace{8.5cm}\includegraphics[scale=.4]{Bild29}\\
+       \hspace{3.6cm}
+       
+       \vspace{-5.8cm}
+       \hspace{1.5cm}\rotatebox{90}{Gradient Descent}\\
+       \vspace{5.8cm}
+       
+       \vspace{-5.3cm}
+       \hspace{1.5cm}\rotatebox{90}{Stochastic Gradient Descent}\\
+       \vspace{5.3cm}
+       
+       \vspace{-12.5cm}
+       \hspace{12.8cm}\rotatebox{270}{Assuming Decomposable Loss Functions}\\
+       \vspace{12.5cm}
+	\end{frame}
+	
+	
+	\begin{frame}{Gradient Descent}
+	    \vspace{-.5cm}
+	    \includegraphics[scale=.4]{Bild30}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{\underline{Stochastic} Gradient Descent}
+	    \vspace{-.5cm}
+        \includegraphics[scale=.4]{Bild31}
+	\end{frame}
+\end{document}

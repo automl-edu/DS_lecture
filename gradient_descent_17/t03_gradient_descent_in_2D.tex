@@ -1,0 +1,329 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Gradient Descent}
+\subtitle{Gradient Descent in 2D}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}[c]{Loss Minimization Game}
+	    From Fall 2018:
+	    \begin{itemize}
+	        \item \url{https://tinyurl.com/3dloss18}
+	        \item Try playing until you get the “You Win!” message.
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{Optimization Goal}
+	    Now suppose we change our model so that it has two parameters $\theta_0$ and $\theta_1$.
+	    \begin{itemize}
+	        \item $\theta_0$ is the y-intercept, and $\theta_1$   is the slope.
+	    \end{itemize}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	                \begin{align*}
+	                     &\text{tip} = \hat{\theta}_0 + \hat{\theta}_1 \text{bill}\\
+	                     &\Vec{\hat{y}}  = f_{\Vec{\hat{\theta}}}(\mathbb{X}) = \mathbb{X}\Vec{\hat{\theta}}\\
+	                     &\mathbb{X} = \left[\begin{array}{cc}
+	                                 1 & 16.99 \\
+	                                 1 & 10.34 \\
+	                                 1 & 21.01 \\
+	                                 1 & 23.68 \\
+	                                 \vdots & \vdots
+	                        \end{array}\right]
+	                 \end{align*}
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                \\
+	                \includegraphics[scale=.4]{Bild16}
+	        \end{column}
+	    \end{columns}
+	    
+	\end{frame}
+	
+	
+	
+	
+	\begin{frame}{Approach \#1: Closed Form Solution}
+	    Since this is just a linear model, we can simply apply the normal equation.
+	    \begin{equation*}
+	        \Vec{\hat{y}} = f_{\Vec{\hat{\theta}}}(\mathbb{X}) = \mathbb{X}\Vec{\hat{\theta}}
+	        \hspace{3cm} \Vec{\hat{\theta}} = (\mathbb{X}^T\mathbb{X})^{-1}\mathbb{X}^T\Vec{y}
+	    \end{equation*}
+	    
+	    \begin{columns}
+            \begin{column}{.5\textwidth}
+                    \begin{equation*}
+                        \mathbb{X} = \left[\begin{array}{cc}
+	                                 1 & 16.99 \\
+	                                 1 & 10.34 \\
+	                                 1 & 21.01 \\
+	                                 1 & 23.68 \\
+	                                 \vdots & \vdots
+	                        \end{array}\right] \hspace{.5cm} \Vec{y} = \left[\begin{array}{c}
+	                             1.01  \\
+	                             1.66  \\
+	                             3.50  \\
+	                             3.31  \\
+	                             \vdots
+	                        \end{array}\right]
+                    \end{equation*}
+            \end{column}
+            
+            
+            \begin{column}{.5\textwidth}
+                    \vspace{.5cm}\\
+                    For reasons we won’t discuss, when calculating the closed form equation above, it’s generally better to use np.linalg.solve instead of np.linalg.inv.
+            \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Approach \#2: Brute Force / Plotting}
+	    As before, we could just plot the 2D loss surface and find the minimum that way (plot is easy to understand in the notebook). \\
+	    \centering
+	    \includegraphics[scale=.35]{Bild17}
+	\end{frame}
+	
+	
+	\begin{frame}{Approach \#3: Gradient Descent}
+	    Another approach is to pick a starting point on our loss surface and follow the slope to the bottom.\\
+	    \begin{itemize}
+	        \item On a 2D surface, the best way to go down is described by a 2D vector.
+	    \end{itemize}
+	    \centering
+	    \includegraphics[scale=.45]{Bild18}
+	\end{frame}
+	
+	
+	\begin{frame}{Approach \#3: Gradient Descent}
+	    On a 2D surface, the best way to go down is described by a 2D vector.\\
+	    \centering
+	    \includegraphics[scale=.4]{Bild19}
+	\end{frame}
+	
+	\begin{frame}{Approach \#3: Gradient Descent}
+	    On a 2D surface, the best way to go down is described by a 2D vector.\\
+	    \centering
+	    \includegraphics[scale=.4]{Bild20}
+	\end{frame}
+	
+	\begin{frame}{Approach \#3: Gradient Descent}
+	    On a 2D surface, the best way to go down is described by a 2D vector.\\
+	    \centering
+	    \includegraphics[scale=.4]{Bild21}
+	\end{frame}
+	
+	
+	\begin{frame}{Approach \#3: Gradient Descent}
+	    On a 2D surface, the best way to go down is described by a 2D vector.\\
+	    \centering
+	    \includegraphics[scale=.4]{Bild22}
+	\end{frame}
+	
+	
+	\begin{frame}{Example: Gradient of a 2D Function}
+	    Consider the 2D function: $f(\theta_0, \theta_1) = 8\theta_0^2 + 3\theta_0\theta_1$\\
+	    \bigskip
+	    For a function of 2 variables,     $f(\theta_0, \theta_1)$             we define the gradient           $\nabla_{\Vec{\theta}}f = \frac{\partial f}{\partial\theta_0}\Vec{i} + \frac{\partial f}{\partial\theta_1}\Vec{j} $                         , where  $\Vec{i}$   and  $\Vec{j}$   are the unit vectors in the $\theta_0$ and $\theta_1$ directions.\\
+	    
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	            \begin{align*}
+	                &\frac{\partial f}{\partial \theta_0} = 16\theta_0 + 3\theta_1\\
+	                &\frac{\partial f}{\partial \theta_1} = 3\theta_0
+	            \end{align*}
+	                
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                \\
+	                \vspace{.7cm}
+	                \begin{equation*}
+	                    \nabla_{\Vec{\theta}}f = (16\theta_0 + 3\theta_1)\Vec{i} + 3\theta_0\Vec{j}
+	                \end{equation*}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Approach \#3: Gradient Descent}
+	    On a 2D surface, the best way to go down is described by a 2D vector.\\
+	    \centering
+	    \includegraphics[scale=.4]{Bild23}
+	\end{frame}
+	
+	
+	\begin{frame}[c]{Example: Gradient of a 2D Function in Column Vector Notation}
+	    Consider the 2D function:
+	    \begin{equation*}
+	        f(\theta_0, \theta_1) = 8\theta^2_0 + 3\theta_0\theta_1
+	    \end{equation*}
+	    Gradients are also often written in column vector notation.
+	    \begin{equation*}
+	        \nabla_{\Vec{\theta}}f(\Vec{\theta}) = \left[\begin{array}{c}
+	             16\theta_0 + 3\theta_1  \\
+	             3\theta_0
+	        \end{array}\right]
+	    \end{equation*}
+	\end{frame}
+	
+	
+	\begin{frame}[c]{Example: Gradient of a Function in Column Vector Notation}
+	    For a generic function of p + 1 variables.
+	    \begin{equation*}
+	        \nabla_{\Vec{\theta}}f(\Vec{\theta}) = \left[\begin{array}{c}
+	             \frac{\partial}{\partial\theta_0}(f)  \\
+	              \frac{\partial}{\partial\theta_1}(f) \\
+	              \vdots\\
+	               \frac{\partial}{\partial\theta_p}(f)
+	        \end{array}\right]
+	    \end{equation*}
+	\end{frame}
+	
+	
+	
+	\begin{frame}[c]{How to Interpret Gradients}
+	    \begin{itemize}
+	        \item You should read these gradients as:
+	        \begin{itemize}
+	            \item If I nudge the 1st model weight, what happens to loss?
+	            \item If I nudge the 2nd, what happens to loss?
+	            \item Etc.
+	        \end{itemize}
+	    \end{itemize}
+	    \bigskip
+	    This is similar to what you were doing when playing the loss game.
+	\end{frame}
+	
+	
+	\begin{frame}{Batch Gradient Descent}
+	    \begin{itemize}
+	        \item Gradient descent algorithm: nudge $\theta$ in negative gradient direction until $\theta$ converges.
+	        \item Batch gradient descent update rule:
+	    \end{itemize}
+	    \vspace{2cm}
+	    \begin{equation*}
+	        \Vec{\theta}^{(t+1)} = \Vec{\theta}^{(t)} - \alpha \nabla_{\Vec{\theta}}L(\Vec{\theta}, \mathbb{X}, \Vec{y})
+	    \end{equation*}
+	    \vspace{-2cm}
+	    
+	    
+	    \vspace{.7cm}
+	    \hspace{2cm} \includegraphics[scale=.3]{Bild24}\\
+	    \vspace{-.7cm}
+	    
+	    \vspace{0.7cm}
+	    \hspace{6.3cm} \includegraphics[scale=.3]{Bild25}\\
+	    \vspace{-0.7cm}
+	    
+	    \vspace{-1.3cm}
+	    \hspace{10.3cm} \includegraphics[scale=.3]{Bild26}\\
+	    \vspace{1.3cm}
+	    
+	    
+
+	    $\theta$: Model weights \hspace{2cm} L: loss function\\
+	    $\alpha$: Learning rate, usually a small constant\\
+	    $\gamma$: True values from the training data 
+	\end{frame}
+	
+	
+	
+	\begin{frame}[c]{Gradient Descent Algorithm}
+	    \begin{itemize}
+	        \item Initialize model weights to all zero
+	        \begin{itemize}
+	            \item Also common: initialize using small random numbers
+	        \end{itemize}
+	        \item Update model weights using update rule:
+	    \end{itemize}
+	    
+	    \begin{equation*}
+	        \Vec{\theta}^{(t+1)} = \Vec{\theta}^{(t)} - \alpha \nabla_{\Vec{\theta}}L(\Vec{\theta}, \mathbb{X}, \Vec{y})
+	    \end{equation*}
+	    
+	    \begin{itemize}
+	        \item Repeat until model weights don’t change (convergence).
+	        \begin{itemize}
+	            \item At this point, we have $\hat{\theta}$ , our minimizing model weights
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{The Gradient Descent Algorithm}
+	    \hspace{4cm}\fbox{\parbox{.4\textwidth}{$\theta^{(0)} \leftarrow$ initial vector (random, zeros …)\\
+	    For $\tau$ from 0 to convergence:\\
+	    \begin{equation*}
+	         \Vec{\theta}^{(t+1)} = \Vec{\theta}^{(t)} - \alpha \nabla_{\Vec{\theta}}L(\Vec{\theta}, \mathbb{X}, \Vec{y})
+	    \end{equation*}}}
+	    \begin{itemize}
+	        \item $\alpha$ is the learning rate
+	        \item Converges when gradient is $\approx$ 0 (or we run out of patience)
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}[c]{You Try:}
+	    Derive the gradient descent rule for a linear model with two model weights and MSE loss. 
+	    \begin{itemize}
+	        \item Below we’ll consider just one observation (i.e. one row of our design matrix).
+	    \end{itemize}
+	    \begin{align*}
+	        &f_{\Vec{\theta}}(\Vec{x}) = \Vec{x}^T\Vec{\theta} = \theta_0x_0 + \theta_1x_1\\
+	        & \mathcal{L}(\Vec{\theta}, \Vec{x}, y_i) = (y_i \theta_0x_0 - \theta_1x_1)^2
+	    \end{align*}
+	    \begin{equation*}
+	        \nabla_\theta \mathcal{L}(\Vec{\theta}, \Vec{x}, y_i) = ?
+	    \end{equation*}
+	    
+	    \vspace{-2.5cm}
+	    \hspace{10cm} \includegraphics[scale=.3]{Bild27}
+	    \vspace{2.5cm}
+	\end{frame}
+	
+	
+	
+	\begin{frame}[c]{You Try:}
+	    \begin{equation*}
+	        \mathcal{L}(\Vec{\theta}, \Vec{x}, y_i) = (y_i - \theta_0x_0 - \theta_1x_1)^2
+	    \end{equation*}
+	    \begin{align*}
+	        &\frac{\partial}{\partial\theta_0}\mathcal{L}(\Vec{\theta}, \Vec{x}, y_i) = 2(y_i - \theta_0x_0 - \theta_1x_1)(-x_0)\\
+	        &\frac{\partial}{\partial\theta_1}\mathcal{L}(\Vec{\theta}, \Vec{x}, y_i) = 2(y_i - \theta_0x_0 - \theta_1x_1)(-x_1)
+	    \end{align*}
+	    
+	    \hspace{3.3cm}\fcolorbox{blue}{white}{\parbox{.55\textwidth}{The gradient for the entire dataset is the average of the gradients for each point, so we can run GD as-is.}}
+	    \begin{equation*}
+	        \nabla_\theta \mathcal{L}(\Vec{\theta}, \Vec{x}, y_i) = \left[\begin{array}{c}
+	             -2(y_i - \theta_0x_0 - \theta_1x_1)(x_0) \\
+                 -2(y_i - \theta_0x_0 - \theta_1x_1)(x_1)
+	        \end{array}\right]
+	    \end{equation*}
+	\end{frame}
+	
+	
+	
+	\begin{frame}[c]{You Try:}
+	    \begin{equation*}
+	        \mathcal{L}(\Vec{\theta}, \Vec{x}, y_i) = (y_i - \theta_0x_0 - \theta_1x_1)^2
+	    \end{equation*}
+	    \begin{equation*}
+	        \nabla_\theta \mathcal{L}(\Vec{\theta}, \Vec{x}, y_i) = \left[\begin{array}{c}
+	             -2(y_i - \theta_0x_0 - \theta_1x_1)(x_0) \\
+                 -2(y_i - \theta_0x_0 - \theta_1x_1)(x_1)
+	        \end{array}\right]
+	    \end{equation*}
+	    \includegraphics[scale=.4]{Bild28}
+	\end{frame}
+\end{document}

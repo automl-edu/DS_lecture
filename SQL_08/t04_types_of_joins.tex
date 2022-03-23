@@ -1,0 +1,111 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: SQL}
+\subtitle{Types of Joins}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Cross Join - Querying Multiple Relations}
+	    All pairs of rows appear in the result.\\
+	    \includegraphics[scale=.4]{Bild9}
+	\end{frame}
+	
+	
+	\begin{frame}{Cross Join - Querying Multiple Relations}
+	    All pairs of rows appear in the result.\\
+	    %\centering
+	    \includegraphics[scale=.35]{Bild10}
+	\end{frame}
+	
+	
+	\begin{frame}{Inner Join}
+	    %\centering
+	    \includegraphics[scale=.4]{Bild11}
+	\end{frame}
+	
+	
+	\begin{frame}{Inner Join}
+	    %\centering
+	    \includegraphics[scale=.4]{Bild12}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Relationship Between Cross Joins and Inner Joins}
+	    %\centering
+	    \includegraphics[scale=.38]{Bild13}
+	\end{frame}
+	
+	
+	
+	
+	\begin{frame}{Relationship Between Cross Joins and Inner Joins}
+	    %\centering
+	    \includegraphics[scale=.4]{Bild14}
+	\end{frame}
+	
+	
+	\begin{frame}{Left Outer Join}
+	    %\centering
+	    \includegraphics[scale=.41]{Bild15}\\
+	    Every row in the first table appears in the result, matching or not.
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Left Outer Join}
+	    %\centering
+	    \includegraphics[scale=.41]{Bild16}\\
+	    Every row in the first table appears in the result, matching or not.
+	\end{frame}
+	
+	
+	\begin{frame}{Right Outer Join}
+	    %\centering
+	    \includegraphics[scale=.41]{Bild17}\\
+	    Every row in the first table appears in the result, matching or not.
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Full Outer Join}
+	    %\centering
+	    \includegraphics[scale=.4]{Bild18}\\
+	    Every row in the first table appears in the result, matching or not.
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Other Join Conditions}
+	    %\centering
+	    \includegraphics[scale=.4]{Bild19}\\
+	    We can join on conditions other than equality. \\
+	    \includegraphics[scale=.4]{Bild21}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Other Join Conditions}
+	    %\centering
+	    \includegraphics[scale=.4]{Bild20}\\
+	    We can join on conditions other than equality.
+	    \begin{itemize}
+	        \item Inner joins are just cross joins followed by removing rows that don’t match. 
+	    \end{itemize}
+	    \includegraphics[scale=.4]{Bild21}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{.}
+	    \centering
+	    \includegraphics[scale=.45]{Bild22}\\
+	    {\small \url{https://www.codeproject.com/KB/database/Visual_SQL_Joins/Visual_SQL_JOINS_orig.jpg}}
+	\end{frame}
+\end{document}

@@ -1,0 +1,55 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: SQL}
+\subtitle{NULL Values}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}[c]{Brief Detour: NULL Values}
+	    \begin{itemize}
+	        \item Field values are sometimes unknown
+	        \begin{itemize}
+	            \item SQL provides a special value NULL for such situations
+	            \item Every data type can be NULL
+	        \end{itemize}
+	        \item The presence of null complicates many issues. E.g.:
+	        \begin{itemize}
+	            \item Selection predicates (WHERE)
+	            \item Aggregation
+	        \end{itemize}
+	        \item But NULLs are common after outer joins
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{NULL in comparators}
+	    \includegraphics[scale=.5]{Bild23}
+	\end{frame}
+	
+	
+	
+	\begin{frame}[c]{Explicit NULL Checks}
+    	To check if a value is NULL you must use explicit NULL checks\\
+	    \includegraphics[scale=.5]{Bild24}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Aggregation with NULLs}
+	    %\centering
+	    \includegraphics[scale=.43]{Bild25}
+	\end{frame}
+	
+	
+	
+	
+	\begin{frame}{Aggregation with NULLs}
+	    \includegraphics[scale=.43]{Bild26}
+	\end{frame}
+\end{document}

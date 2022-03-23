@@ -1,0 +1,194 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Introduction to Modeling}
+\subtitle{Minimizing mean absolute error (MAE)}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Exploring MAE}
+	    When we use absolute (or L1) loss, we call the average loss mean absolute error. For the constant model, our MAE looks like:
+	    \begin{equation*}
+	        R(\theta) = \frac{1}{n}\sum\limits_{i=1}^n|y_i - \theta|
+	    \end{equation*}
+	    Let’s again re-visit our toy example of 5 observations,  [20, 21, 22, 29, 33].
+	    \begin{equation*}
+	        L_1(20,\theta) = |20 - \theta| \hspace{1cm} R(\theta) = \frac{1}{5}(|20 - \theta| + |21-\theta| + |22 - \theta| + |29 - \theta| + |33 - \theta|)
+	    \end{equation*}
+	    \hspace{1cm}\includegraphics[scale=.4]{Bild35}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Exploring MSE}
+	        $L_1(20,\theta) = |20 - \theta| \hspace{1cm} R(\theta) = \frac{1}{5}(|20 - \theta| + |21-\theta| + |22 - \theta| + |29 - \theta| + |33 - \theta|)$
+	    \includegraphics[scale=.4]{Bild36}
+	\end{frame}
+	
+	
+	\begin{frame}{Exploring MAE}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	                \\
+	                \includegraphics[scale=.4]{Bild37}
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                The shape of the MAE with the constant model seems to be jagged. This is because it is the (weighted) sum of several absolute value curves, which results in a piecewise linear function. \\
+                    It also doesn’t seem to be immediately clear what the optimal choice of theta should be. It’s somewhere in the “middle” of our points, but it’s clearly not 25, which was the minimizing value for the MSE. \\
+                    Let’s once again resort to calculus!
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Exploring MAE}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	                \\
+	                \includegraphics[scale=.4]{Bild38}
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                The shape of the MAE with the constant model seems to be jagged. This is because it is the (weighted) sum of several absolute value curves, which results in a piecewise linear function. \\
+                    It also doesn’t seem to be immediately clear what the optimal choice of theta should be. It’s somewhere in the “middle” of our points, but it’s clearly not 25, which was the minimizing value for the MSE. \\
+                    Let’s once again resort to calculus!
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{MAE minimization using calculus}
+	    Once again, we can use calculus to determine the optimal  $\hat{\theta}$   .\\
+        The first step is to determine the derivative of our loss function for a single point. Absolute value functions can be written as two piecewise linear functions:
+        \begin{equation*}
+            |y_i - \theta|  = \left\{\begin{array}{cc}
+                y_i  - \theta & \text{if }\theta \leq y_i\\
+               \theta - y_i  & \text{if } \theta > y_i
+            \end{array}\right.
+        \end{equation*}
+        The derivative of our loss for a single point, then, is also a piecewise linear function:
+        \begin{equation*}
+            \frac{d}{d\theta}|y_i - \theta| = \left\{\begin{array}{cc}
+               -1 & \text{if }\theta < y_i\\
+              1  & \text{if } \theta > y_i
+            \end{array}\right.
+        \end{equation*}
+        Note: The derivative of the absolute value when the argument is 0 (i.e. when          $y_i = \theta$   ) is technically undefined. We ignore this case in our derivation, since thankfully, it doesn’t change our result.      
+
+	\end{frame}
+	
+	
+	
+	\begin{frame}{MAE minimization using calculus}
+	    \begin{equation*}
+            \frac{d}{d\theta}|y_i - \theta| = \left\{\begin{array}{cc}
+               -1 & \text{if }\theta < y_i\\
+              1  & \text{if } \theta > y_i
+            \end{array}\right.
+        \end{equation*}
+        From here, we again use the fact that the derivative of a sum is a sum of derivatives:
+        \begin{align*}
+            \frac{d}{d\theta}R(\theta) &= \frac{1}{n}\sum\limits_{i=1}^n\frac{d}{d\theta}|y_i - \theta|\\
+            &= \frac{1}{n}[\sum\limits_{\theta < y_i}(-1) + \sum\limits_{\theta > y_i} 1]
+        \end{align*}\\
+        
+        \vspace{-.3cm}
+        \hspace{2.5cm} \includegraphics[scale=.4]{Bild39}\\
+        \vspace{.3cm}
+        
+        
+        \vspace{-2.8cm}
+        \hspace{9.7cm} \includegraphics[scale=.4]{Bild40}\\
+        \vspace{2.8cm}
+	\end{frame}
+	
+	
+	\begin{frame}{MAE minimization using calculus}
+	    Setting this derivative equal to 0:
+	    \begin{align*}
+	        0 &= \frac{1}{n}[\sum\limits_{\theta < y_i} (-1) + \sum\limits_{\theta > y_i} 1 ]\\
+	        0 &= - \sum\limits_{\theta < y_i} 1 + \sum\limits_{\theta > y_i} 1\\
+	        \sum\limits_{\theta < y_i} 1 &= \sum\limits_{\theta > y_i} 1
+	    \end{align*}
+	    The last line is telling us that in order for our MAE to be minimized, we need to choose a theta such that the number of observations less than theta needs to be equal to the number of observations greater than theta.
+
+	\end{frame}
+	
+	
+	
+	\begin{frame}{MAE minimization using calculus}
+	    \begin{align*}
+	        \sum\limits_{\theta < y_i} 1 &= \sum\limits_{\theta > y_i} 1
+	    \end{align*}
+	    In order for our MAE to be minimized, we need to choose a theta such that the number of observations less than theta needs to be equal to the number of observations greater than theta. In other words, theta needs to be such that there are an equal number of points to the left and right.\\
+	    \bigskip
+	    This is the definition of the median! For example, in our toy dataset, the point below in red (22) is the median of our observations. It is the value in the “middle.”\\
+	    \hspace{4cm} \includegraphics[scale=.5]{Bild41}
+	\end{frame}
+	
+	
+	\begin{frame}{MAE minimization using calculus}
+	    \begin{align*}
+	        \sum\limits_{\theta < y_i} 1 &= \sum\limits_{\theta > y_i} 1
+	    \end{align*}
+	    In order for our MAE to be minimized, we need to choose a theta such that the number of observations less than theta needs to be equal to the number of observations greater than theta. In other words, theta needs to be such that there are an equal number of points to the left and right.\\
+	    \bigskip
+	    This is the definition of the median! For example, in our toy dataset, the point below in red (22) is the median of our observations. It is the value in the “middle.”\\
+	    \hspace{4cm} \includegraphics[scale=.4]{Bild42}
+	\end{frame}
+	
+	
+	\begin{frame}{Median minimizes MAE for the constant model}
+	    We’ve now shown that the median minimizes MAE for the constant model.
+	    \begin{equation*}
+	        \hat{\theta} = \text{median}(y)
+	    \end{equation*}
+	    This is consistent with what we saw earlier, when plotting the MAE for our toy dataset: 
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	                \\
+	                \includegraphics[scale=.4]{Bild43}
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	              \vspace{.2cm}\\
+	              Important note: In general, the mean and median of a dataset are not the same. Therefore, using MSE and MAE give us different optimal theta values! \\
+                  A key takeaway here is that our choice of loss function determines the optimal parameters for our model.
+  
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Median minimizes MAE for the constant model}
+	    \begin{columns}
+	        \begin{column}{.6\textwidth}
+	                \\
+	                 Our toy dataset only had 5 observations. What if it had an even number of observations? Let’s say our toy dataset is now [20, 21, 22, 29, 33, 35]. The 35 is new.
+	                 \begin{itemize}
+	                     \item There’s no longer a unique solution!
+	                     \item Any value in the range [22, 29] minimizes MAE.
+	                     \item This reflects the fact that there are an even number of observations, and any number in that range has the same number of points to the left and right.
+	                     \item (When there are an even number of data points, we typically set the median to be the mean of the two middle ones. Here, that’d be 25.5.)
+	                 \end{itemize}
+	        \end{column}
+	        
+	        
+	        \begin{column}{.4\textwidth}
+	              \\
+	              \includegraphics[scale=.4]{Bild44}
+  
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+\end{document}

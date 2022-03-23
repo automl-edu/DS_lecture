@@ -1,0 +1,90 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: SQL}
+\subtitle{SQL Sampling, Subqueries, and Common Table Expressions}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Sampling with LIMIT?}
+	    \includegraphics[scale=.35]{Bild30}
+	\end{frame}
+	
+	
+	\begin{frame}{Sampling with LIMIT?}
+	    \includegraphics[scale=.35]{Bild31}
+	\end{frame}
+	
+	
+	\begin{frame}{Random Sampling}
+	    The random sampling methods available depend on the database engine. Suppose we want to draw a SRS from an SQL table.\\
+	    \bigskip
+	    One common approach (with SQLite):
+	    \begin{itemize}
+	        \item SELECT * FROM action\_movie ORDER BY RANDOM() LIMIT 3
+	    \end{itemize}
+	    \\\bigskip
+	    May seem inefficient to order the entire table by some random values, then to only select 3.
+	    \begin{itemize}
+	        \item Query optimization under the hood will make this much more efficient.
+	        \item Reminder: SQL is a declarative language. You say “what”, not “how”.
+	    \end{itemize}
+	\end{frame}
+	
+	
+	\begin{frame}{Random Sampling}
+	    Suppose we want to pick 3 random years.\\
+	    \includegraphics[scale=.5]{Bild32}
+	\end{frame}
+	
+	
+	\begin{frame}{Random Sampling}
+	    Suppose we want to pick 3 random years.\\
+	    \includegraphics[scale=.45]{Bild33}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Random Sampling}
+	    Suppose we want to pick 3 random years.\\
+
+	    \includegraphics[scale=.45]{Bild34}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Subqueries}
+	    A query within another query can be used to create a temporary table.
+	    \begin{itemize}
+	        \item In a FROM clause: Describe a table instead of naming it.
+	    \end{itemize}
+	    E.g., join table u with a simple random sample from table t:\\
+	    \hspace{.5cm} \includegraphics[scale=.4]{Bild35}
+	    \bigskip
+	    \begin{itemize}
+	        \item In a WHERE clause: Describe a one-column table instead of a list; used with IN.
+	    \end{itemize}
+	    E.g., select rows in a top-3 most popular month:\\
+	    \hspace{.5cm}
+	    \includegraphics[scale=.4]{Bild36}
+	\end{frame}
+	
+	
+	\begin{frame}{Common Table Expressions}
+	    \begin{itemize}
+	        \item A Common Table Expressions (CTE) allows for the creation of “temporary tables” to help organize complex queries.
+	        \begin{itemize}
+	            \item CTEs can help make complex queries more readable.
+	            \item CTEs can be used instead of subqueries.
+	        \end{itemize}
+	    \end{itemize}
+	    \bigskip
+	    \includegraphics[scale=.4]{Bild37}
+	\end{frame}
+	
+\end{document}
