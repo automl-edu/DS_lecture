@@ -1,0 +1,88 @@
+name: Compile all
+
+on: push
+
+jobs:
+  compile:
+    name: Compile
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        week: [
+            "00_Orga",
+            "01_introduction",
+            "02_data_sampling_and_probability",
+            "04_visualization",
+            "06_simple_linear_regression_ols",
+            "14_feature_engineering",
+            "16_bias_and_variance",
+            "17_cross-validation_and_regularization",
+            "19_logistic_regression,_part_1",
+            "20_decision_trees",
+            "20_logistic_regression,_classification",
+            "22_inference_for_modeling",
+            "23_principal_component_analysis",
+            "24_clustering,_part_1",
+            "25_clustering,_part_2",
+            "26_conclusion",
+            "SQL_08",
+          ]
+        mode: [
+        #        "animation",
+                "handout",
+        ]
+    steps:
+      - uses: actions/checkout@v2
+      - name: compile week ${{ matrix.week }} with xelatex
+        uses: ./.github/actions/xelatex-week
+        with:
+          folder: ${{ matrix.week }}
+          mode: ${{ matrix.mode }}
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Slides ${{ matrix.week }} (${{ matrix.mode }})
+          path: ${{ matrix.week }}/${{ matrix.mode }}/*.pdf
+  merge:
+    name: Merge slides
+    needs: compile
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        week: [
+            "00_Orga",
+            "01_introduction",
+            "02_data_sampling_and_probability",
+            "04_visualization",
+            "06_simple_linear_regression_ols",
+            "14_feature_engineering",
+            "16_bias_and_variance",
+            "17_cross-validation_and_regularization",
+            "19_logistic_regression,_part_1",
+            "20_decision_trees",
+            "20_logistic_regression,_classification",
+            "22_inference_for_modeling",
+            "23_principal_component_analysis",
+            "24_clustering,_part_1",
+            "25_clustering,_part_2",
+            "26_conclusion",
+            "SQL_08",
+        ]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: Slides ${{ matrix.week }} (handout)
+          path: ${{ matrix.week }}/
+      - name: Prepare output folder
+        run: sh -c "[ -d slides ] || mkdir slides"
+      - name: Merge slides for week ${{ matrix.week }} with pdftk
+        uses: ./.github/actions/merge-pdftk
+        with:
+          input-pattern: ${{ matrix.week }}/t*.pdf
+          output-name: slides/${{ matrix.week }}.pdf
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Merged slides
+          path: slides/*.pdf
