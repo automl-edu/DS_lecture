@@ -1,7 +1,7 @@
 \documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
 \input{../latex_main/preamble}
 
-\title[Introduction]{DS: Bias and Variance}
+\title[Statistics]{DS: Bias and Variance}
 \subtitle{Variance}
 
 \graphicspath{ {./figure/} }
@@ -13,17 +13,17 @@
 	\maketitle
 	\begin{frame}{Definition of variance}
 	    \begin{itemize}
-	        \item Variance is the expected squared deviation from the expectation of X.
+	        \item \alert{Variance} is the expected squared deviation from the expectation of $X$.
 	        \item It is defined as follows:
 	        \begin{equation*}
-	            \mathbb{V}ar(X) = \mathbb{E}((X - \mathbb{E}(X))^2)
+	            \mathbb{V}ar(X) = \mathbb{E}\left[(X - \mathbb{E}(X))^2\right]
 	        \end{equation*}
-	        \item The units of the variance are the square of the units of X
-	        \item To get back to the right scale, we look at the standard deviation of X:
+	        \item The units of the variance are the square of the units of $X$
+	        \item To get back to the right scale, we look at the \alert{standard deviation} of $X$:
 	        \begin{equation*}
 	            \mathbb{SD}(X)  = \sqrt{\mathbb{V}ar(X)}  =\sqrt{\mathbb{E}((X - \mathbb{E}(X))^2)}
 	        \end{equation*}
-	        \item Both standard deviation and variance must be non-negative.
+	        \item Both standard deviation and variance must be non-negative\\ because $x^2$ is non-negative for any $x$.
 	    \end{itemize}
 	\end{frame}
 	
@@ -32,17 +32,13 @@
 	    \begin{itemize}
 	        \item The main use of variance is to quantify chance error.
 	        \begin{itemize}
-	            \item How far away from the expectation can X be, just by chance?
+	            \item How far away from the expectation can $X$ be, just by chance?
 	        \end{itemize}
-	        \item By Chebyshev’s inequality from Data 8:
+	        \item By Chebyshev’s inequality:
 	        \begin{itemize}
-	            \item No matter what the shape of the distribution of X is,
-	            \item The vast majority of the probability lies in the interval “expectation plus or minus a few SDs”.
-	            \item Specifically, if   $\mu$  = E[X] and    $\sigma$   = SD[X], then $P(|X - \mu| \leq \frac{1}{k^2})$.   
-	            \item We will not be using this formula in this class; it’s just here to remind you of it.
-	            \begin{itemize}
-	                \item Here’s a link to a discussion in the Data 8 book about this.
-	            \end{itemize}
+	            \item[$\leadsto$] The vast majority of the probability lies in the interval “expectation plus or minus a few standard deviations”.
+	            \item Specifically, if   $\mu  = \mathbb{E}[X]$ and    $\sigma   = \mathbb{SD}[X]$, then $P(|X - \mu| \leq \frac{1}{k^2})$.   
+	            \item Independent of the shape of the distribution of $X$:\\
 	        \end{itemize}
 	    \end{itemize}
 	\end{frame}
@@ -74,40 +70,52 @@
 	    \end{equation*}
 	    
 	    \begin{itemize}
-	        \item This formulation also makes clear that if X is centered, i.e. $\mathbb{E}$(X) = 0, then $\mathbb{V}ar$(X) = $\mathbb{E}$($X^2$).
-	        \item Since $\mathbb{V}ar$(X) is non-negative, this property also shows us that                   $\mathbb{E}(X^2) \geq (\mathbb{E}(X))^2$.      Equality is if and only if X is a constant.
+	        \item This formulation also makes clear that if X is centered, i.e. $\mathbb{E}(X) = 0$, then $\mathbb{V}ar(X) = \mathbb{E}(X^2)$.
+	        \item Since $\mathbb{V}ar(X)$ is non-negative, this property also shows us that $\mathbb{E}(X^2) \geq (\mathbb{E}(X))^2$.
+	        \item Equality is if and only if $X$ is a constant.
 	        \item If you know the expectation and variance of a random variable, you can easily determine the expectation of its square:   $\mathbb{E}(X^2) = \mathbb{V}ar(X) + (\mathbb{E}(X))^2$. 
 	    \end{itemize}
 	\end{frame}
 	
 	
 	\begin{frame}[c]{Linear transformations}
-	    We know that  $\mathbb{E}(aX + b) = a\mathbb{E}(X) + b$. In order to compute Var(aX + b), consider:\\
+	    
+	    \begin{itemize}
+	        \item We know that  $\mathbb{E}(aX + b) = a\mathbb{E}(X) + b$.
+	        \item In order to compute $\mathbb{V}ar(X)(aX + b)$, consider:\\
+	    \end{itemize}
+	    
 	    \begin{columns}
-	        \begin{column}{.4\textwidth}
-	                A shift by b units does not affect spread:
-	                \begin{figure}
+	    
+	        \begin{column}{.5\textwidth}
+	        
+	                A shift by $b$ units does not affect spread:
+
+                        \centering
 	                    \includegraphics[scale=.5]{Bild7}
-	                \end{figure}
-	                Here, the distribution of X is in blue, and the distribution of X+4 is in orange.
+	                    
+	                Here, the distribution of $X$ is in blue, and the distribution of $X+4$ is in orange.
 	        \end{column}
 	        
 	        
-	        \begin{column}{.4\textwidth}
+	        \begin{column}{.5\textwidth}
+	        
 	                But scaling by a units does affect spread:
-	                \begin{figure}
+                        
+                        \centering
 	                    \includegraphics[scale=.35]{Bild8}
-	                \end{figure}
-	                The distribution of X is in blue, and the distribution of 3X is in orange. 
+
+	                The distribution of $X$ is in blue, and the distribution of $3X$ is in orange. 
 	        \end{column}
 	    \end{columns}
 	\end{frame}
 	
 	
 	\begin{frame}[c]{Linear transformations}
-	   We know that       $\mathbb{E}(aX + b) = a\mathbb{E}(X) + b$. \\                  In order to compute $\mathbb{V}ar$(aX + b), consider:
+	   We know that $\mathbb{E}(aX + b) = a\mathbb{E}(X) + b$. \\                  
+	   In order to compute $\mathbb{V}ar(aX + b)$, consider:
 	    \begin{itemize}
-	        \item A shift by b units does not affect spread. Thus, $\mathbb{V}ar$(aX + b) = $\mathbb{V}ar$(aX).
+	        \item A shift by $b$ units does not affect spread. Thus, $\mathbb{V}ar(aX + b) = \mathbb{V}ar(aX)$.
 	        \item The multiplication by a does affect spread!
 	    \end{itemize}
 	    Then,
@@ -126,7 +134,7 @@
 	
 	
 	\begin{frame}[c]{Standardization of random variables}
-	   X in standard units is the random variable $X_{su} = \frac{X- \mathbb{E}(X)}{\mathbb{SD}(X)}$
+	   $X$ in standard units is the random variable $X_{su} = \frac{X- \mathbb{E}(X)}{\mathbb{SD}(X)}$
 	   \begin{itemize}
 	       \item $X_{su}$ measures X on the scale “number of SDs from expectation.”
 	       \item It is a linear transformation of X. By the linear transformation rules for expectation and variance:
@@ -137,7 +145,12 @@
 	       \begin{equation*}
 	           \mathbb{E}(X^2_{su}) = \mathbb{V}ar(X_{su}) = 1
 	       \end{equation*}
-	       You should prove these facts yourself.
+	       
+	       \item \alert{Note}: Standardization of your data with $\mu$ and $\sigma$ makes most sense\\ if your data is Gaussian distributed
+	       \begin{itemize}
+	           \item Don't blindly apply data transformations! 
+	       \end{itemize}
+	       
 	   \end{itemize}
 	\end{frame}
 	
@@ -147,7 +160,8 @@
 	       \mathbb{C}ov(X,Y) = \mathbb{E}((X-\mathbb{E}(X))(Y-\mathbb{E}(Y)))
 	   \end{equation*}
 	   \begin{itemize}
-	       \item It is a generalization of variance. Note:   $\mathbb{C}ov(X,X) = \mathbb{V}ar(X)$.   
+	       \item It is a generalization of variance. 
+	       \item Note: $\mathbb{C}ov(X,X) = \mathbb{V}ar(X)$.   
 	       \item Using the linearity of expectation and some algebra, you can show the following equality, which is a generalization of the alternative calculation for variance:
 	       \begin{equation*}
 	           \mathbb{C}ov(X,Y) = \mathbb{E}(XY) - \mathbb{E}(X)\mathbb{E}(Y)
@@ -157,15 +171,16 @@
 	\end{frame}
 	
 	\begin{frame}[c]{Correlation}
-	   The units of the covariance are hard to interpret (e.g. “inch pounds”). In order to get rid of the units, we can scale it:
+	   The units of the covariance are hard to interpret because they ``mix'' two RVs.
+	   
+	   In order to get rid of the units, we can scale it:
+	   
 	   \begin{align*}
 	       \frac{\mathbb{C}ov(X,Y)}{\mathbb{SD}(X)\mathbb{SD}(Y)}  &= \frac{ \mathbb{E}((X-\mathbb{E}(X))(Y-\mathbb{E}(Y)))}{\mathbb{SD}(X)\mathbb{SD}(Y)}\\
 	       &= \mathbb{E}\left( \frac{X-\mathbb{E}(X)}{\mathbb{SD}(X)} \cdot \frac{Y-\mathbb{E}(Y)}{\mathbb{SD}(Y)}\right)\\
 	       &= \mathbb{E}(X_{su}Y_{su})\\
 	       &= r(X,Y)
 	   \end{align*}
-	   Recall from Data 8: correlation is the average product in standard units. This is the random variable equivalent of that!
-
-	   Correlation is covariance scaled by the two SDs.
+	   \alert{Correlation is covariance scaled by the two SDs!}
 	\end{frame}
 \end{document}

@@ -1,7 +1,7 @@
 \documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
 \input{../latex_main/preamble}
 
-\title[Introduction]{DS: Bias and Variance}
+\title[Statistics]{DS: Bias and Variance}
 \subtitle{Decomposition of Risk}
 
 \graphicspath{ {./figure/} }
@@ -12,17 +12,17 @@
 	
 	\maketitle
 	\begin{frame}{Model Risk}
-	    For a new individual at (x, Y):
+	    For a new sample at $(x, Y)$:
 	    \begin{itemize}
 	        \item Expected mean squared error of prediction:
 	        \begin{equation*}
-	            \text{model risk} = \mathbb{E}((Y-\hat{Y}(x))^2)
+	            \text{model risk} = \mathbb{E}\left[(Y-\widehat{Y}(x))^2\right]
 	        \end{equation*}
 	    \end{itemize}
 	    The expectation is taken over all possible samples that we could have collected.
 	    \begin{itemize}
-	        \item Remember, each new sample would generate a different $\hat{Y}(x)$
-	        \item Also, for some fixed x, Y can be different due to the random error $\epsilon$
+	        \item Remember, each new sample would generate a different $\widehat{Y}(x)$
+	        \item Also, for some fixed $x$, $Y$ can be different due to the random error $\epsilon$
 	    \end{itemize}
 	\end{frame}
 	
@@ -30,18 +30,17 @@
 	\begin{frame}[c]{Decomposition of Error and Risk}
 	    The model risk can be decomposed into three pieces:
 	    \begin{align*}
-	        \mathbb{E}((Y-\hat{Y}(x))^2) &= \mathbb{E}(\epsilon^2)\\
+	        \mathbb{E}\left[(Y-\hat{Y}(x))^2\right] &= \mathbb{E}(\epsilon^2)\\
 	        &+ (g(x) - \mathbb{E}(\hat{Y}(x)))^2\\
-	        &+ \mathbb{E}((\mathbb{E}(\hat{Y}(x))-\hat{Y}(x))^2)
+	        &+ \mathbb{E}\left[(\mathbb{E}(\hat{Y}(x))-\hat{Y}(x))^2\right]
 	    \end{align*}
 	    \begin{equation*}
 	        \text{model risk} = \sigma^2 + (\text{model bias})^2 + \text{model variance}
 	    \end{equation*}
-	    See the video for the derivation!
 	\end{frame}
 	
 	
-	\begin{frame}[c]{Observation Variance}
+	\begin{frame}[c]{Observation Variance (Noise)}
 	    \begin{equation*}
 	        \mathbb{V}ar(Y) = \mathbb{V}ar(g(x) + \epsilon) = \mathbb{V}ar(\epsilon) = \sigma^2
 	    \end{equation*}
@@ -54,13 +53,13 @@
 	    Some remedies:
 	    \begin{itemize}
 	        \item Could try to get more precise measurements.
-	        \item Often this is beyond the control of the data scientist.
+	        \item Sometimes this is beyond the control of the data scientist.
 	    \end{itemize}
 	\end{frame}
 	
 	\begin{frame}[c]{Model Variance}
 	    \begin{equation*}
-	        \text{model variance} = \mathbb{V}ar(\hat{Y}(x)) = \mathbb{E}((\hat{Y}(x) - \mathbb{E}(\hat{Y}(x)))^2)
+	        \text{model variance} = \mathbb{V}ar(\hat{Y}(x)) = \mathbb{E}\left[(\hat{Y}(x) - \mathbb{E}(\hat{Y}(x)))^2\right]
 	    \end{equation*}
 	    Main reason:
 	    \begin{itemize}
@@ -94,10 +93,10 @@
 	
 	
 	\begin{frame}[c]{A Constant Model}
-	    So which model is better? Model A or Model B?\\
+	    So which model is better for a Bernoulli distribution with $p=.5$? Model A or Model B?\\
 	    \bigskip
-	    Model A: Select a random number between 0 and 1. This is your estimate of p. This is equivalent to running np.random.random()in Python.\\
-        Model B: Select .75 as your estimate of p.\\
+	    \textbf{Model A:} Select a random number between $0$ and $1$. This is your estimate of p.\\
+        \textbf{Model B:}: Select $.75$ as your estimate of p.\\
         \bigskip
         We can calculate the model risks directly. Note that the observation variance is 0.
         \begin{columns}

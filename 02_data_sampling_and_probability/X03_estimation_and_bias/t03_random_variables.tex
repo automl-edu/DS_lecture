@@ -1,10 +1,10 @@
 \documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
 \input{../latex_main/preamble}
 
-\title[Introduction]{DS: Estimation and Bias}
+\title[Statistics]{DS: Estimation and Bias}
 \subtitle{Random Variables}
 
-\graphicspath{ {./figure/} }
+\graphicspath{ {./figure_bias/} }
 %\institute{}
 
 
@@ -35,7 +35,7 @@
 	            \begin{itemize}
 	                \item Can describe sampling from a population, but that’s not all
 	                \begin{itemize}
-	                    \item \# of pips on die roll
+	                    \item \# of numbers on die roll
 	                \end{itemize}
 	                \item Often not known
 	            \end{itemize}
@@ -57,15 +57,15 @@
 	           \end{figure}
 	        \end{column}
 	        
-	        \begin{column}{.4\textwidth}
+	        \begin{column}{.5\textwidth}
 	           Probability Distributions\\
-	           Sampling process 1: draw n = 10 million
+	           Sampling Process 1: draw n = 10~million
 
 	           
                 \begin{figure}
                     \includegraphics[scale=.4]{Bild14}
                 \end{figure}
-                Sampling process 2: draw n = 1 person
+                Sampling Process 2: draw n = 1 person
                 \begin{figure}
                     \includegraphics[scale=.4]{Bild15}
                 \end{figure}
@@ -80,77 +80,40 @@
 	            A random variable is a variable that can takes numerical values with particular probabilities.\\
 	            \bigskip
 	            Example 1:\\
-                Let X take the value 1 if FDR, 0 if Landon\\
+                Let $X$ take the value 1 if FDR, 0 if Landon\\
                 \bigskip
                 Example 2:\\
-                Let Y be the \# of pips on a roll of a 6-sided die
+                Let $Y$ be the \# of numbers on a roll of a 6-sided die
 	        \end{column}
 	        
-	        \begin{column}{.4\textwidth}
+	        \begin{column}{.5\textwidth}
 	           Notation:\\
-	           Sampling process 1: draw n = 10 million
+	           Sampling Process 1: draw n = 10 million
                 \begin{itemize}
                     \item Random variables (RVs) use capital letters
                     \begin{itemize}
-                        \item X, Y, Z
+                        \item $X$, $Y$, $Z$
                     \end{itemize}
                     \item A particular value taken by an RV is indicated by a lowercase letter.
                     \begin{itemize}
-                        \item x, y, z
+                        \item $x$, $y$, $z$
                     \end{itemize}
                     \item The (Probability) Distribution of a discrete RV can be expressed as a table or graphic.
                     \begin{itemize}
-                        \item P(X = x)
+                        \item $P(X = x)$
                     \end{itemize}
                 \end{itemize}
 	        \end{column}
 	    \end{columns}
 	\end{frame}
-	
-	
-	
-	\begin{frame}{Random Variable}
-	    \begin{columns}
-	        \begin{column}{.4\textwidth}
-	            A random variable is a variable that can takes numerical values with particular probabilities.\\
-	            \bigskip
-	            Example 1:\\
-                Let X take the value 1 if FDR, 0 if Landon\\
-                \bigskip
-                Example 2:\\
-                Let Y be the \# of pips on a roll of a 6-sided die
-	        \end{column}
-	        
-	        \begin{column}{.4\textwidth}
-	           Notation:\\
-	           Sampling process 1: draw n = 10 million
-                \begin{itemize}
-                    \item Random variables (RVs) use capital letters
-                    \begin{itemize}
-                        \item X, Y, Z
-                    \end{itemize}
-                    \item A particular value taken by an RV is indicated by a lowercase letter.
-                    \begin{itemize}
-                        \item x, y, z
-                    \end{itemize}
-                    \item The (Probability) Distribution of a discrete RV can be expressed as a table or graphic.
-                    \begin{itemize}
-                        \item P(X = x)
-                    \end{itemize}
-                \end{itemize}
-	        \end{column}
-	    \end{columns}
-	\end{frame}
-	
-	
 	
 	\begin{frame}[c]{Functions of Random Variables}
 	    \begin{columns}
 	        \begin{column}{.4\textwidth}
 	            A function of random variables is also a random variable.\\
 	            \bigskip
-	            Example 1, cont.:\\
-                Let S be the total # of voters that say “FDR” in a sample of size 10 million\\
+	            Example 1 cont.:\\
+                Let $S$ be the total # of voters that say “FDR” in a sample of size 10 million\\
 	        \end{column}
 	        
 	        \begin{column}{.4\textwidth}
@@ -176,12 +139,12 @@
 	        \begin{column}{.3\textwidth}
 	          The outcome of a coin flip\\
 	          \bigskip
-	          A: Each have only two outcomes, one of which happens with a particular probability p
+	          A: Each have only two outcomes, one of which happens with a particular probability $p$
 
 	        \end{column}
 	        
 	        \begin{column}{.3\textwidth}
-	          The outcome of a COVID test for a randomly selected Californian
+	          The outcome of a COVID test for a randomly selected citizen 
 
 	        \end{column}
 	    \end{columns}
@@ -191,34 +154,34 @@
 	\begin{frame}[c]{Bernoulli Distribution}
 	    \begin{columns}
 	        \begin{column}{.3\textwidth}
-	             A random variable that takes the value 1 with probability p and 0 otherwise.\\
-	            \begin{figure}
+	             A random variable that takes the value $1$ with probability $p$ and $0$ otherwise.\\
+
 	                \centering
 	                \includegraphics[scale=.6]{Bild17}
-	            \end{figure}
+	                
 	        \end{column}
 	        
 	        
-	        \begin{column}{.5\textwidth}
-	          X is Bernoulli(p) if:\\
+	        \begin{column}{.52\textwidth}
+	          $X$ is Bernoulli ($p$) if:\\
 	          \begin{itemize}
-	              \item P(X = 1) = p
-	              \item P(X = 0) = 1-p
+	              \item $P(X = 1) = p$
+	              \item $P(X = 0) = 1-p$
 	          \end{itemize}
               This is a Probability Mass Function (PMF)\\
               Examples:
               \begin{itemize}
-                  \item Ask a randomly drawn American who they plan to vote for
+                  \item Ask a randomly drawn American for their vote
                   \begin{itemize}
-                      \item Bernoulli(p = .61)
+                      \item Bernoulli($p = .61$)
                   \end{itemize}
                   \item The outcome of a coin flip
                   \begin{itemize}
-                      \item Bernoulli(p = .5)
+                      \item Bernoulli($p = .5$)
                   \end{itemize}
-                  \item The outcome of a COVID test for a randomly selected Californian
+                  \item The outcome of a COVID test for a randomly selected citizen in Lower-Saxony
                   \begin{itemize}
-                      \item Bernoulli(p = .08)
+                      \item Bernoulli($p = 0.021$ (as of end of March'22)
                   \end{itemize}
               \end{itemize}
                 
@@ -230,18 +193,18 @@
 	\begin{frame}[c]{Binomial Distribution}
 	    \begin{columns}
 	        \begin{column}{.4\textwidth}
-	             A random variable that counts the number of “successes” in n independent trials where each succeeds with probability p.\\
-	             \begin{figure}
+	             A random variable that counts the number of “successes” in \alert{$n$} independent trials where each succeeds with probability $p$.\\
+
 	                 \centering
 	                 \includegraphics[scale=.5]{Bild19}
-	             \end{figure}
+
 	        \end{column}
 	        
 	        \begin{column}{.4\textwidth}
-	         \begin{figure}
+
 	             \centering
 	             \includegraphics[scale=.5]{Bild18}
-	         \end{figure}
+
 	        \end{column}
 	    \end{columns}
 	\end{frame}

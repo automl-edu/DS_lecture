@@ -1,10 +1,10 @@
 \documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
 \input{../latex_main/preamble}
 
-\title[Introduction]{DS: Estimation and Bias}
-\subtitle{Random variables, expected value, parameters, statistics and bias.}
+\title[Statistics]{DS: Estimation and Bias}
+\subtitle{Overview}
 
-\graphicspath{ {./figure/} }
+\graphicspath{ {./figure_bias/} }
 %\institute{}
 
 
@@ -14,15 +14,13 @@
     \begin{frame}{Understanding the world through data}
         \begin{columns}
         \begin{column}{.4\textwidth}
-            \begin{figure}
-                \centering
+
+                \centering        
                 \includegraphics[scale=.6]{Bild1}
-            \end{figure}
         
         \end{column}
         
         \begin{column}{.4\textwidth}
-            Lectures 2 - 3
             \begin{itemize}
                 \item Simple data
                 \begin{itemize}
@@ -32,13 +30,12 @@
                 \end{itemize}
             \end{itemize}
         
-            Lectures 4 - 10
             \begin{itemize}
                 \item Complex data
                 \begin{itemize}
                     \item Many variables
                     \item Many units of observation
-                    \item Messy!
+                    \item ``Messy''
                 \end{itemize}
             \end{itemize}
         
@@ -49,13 +46,24 @@
         \end{columns}
         
     \end{frame}
-
-
-
-     \begin{frame}[c]{Where we’re headed today}
-       \hspace{3cm} What is statistical bias?\\
-        \hspace{5cm} The difference between your estimate and the truth.
-
+    
+    \begin{frame}[c]{Overview}
+        \begin{itemize}
+            \item We need a sound statistical understanding of what we are doing in data science!
+            \begin{itemize}
+                \item Some people say: ``Data Science is statistics+''
+            \end{itemize}
+            \item Basics of statistics, incl.
+            \begin{itemize}
+                \item Random variables
+                \item Expectation, bias, variance, 
+                \item Data generation process
+                \item Measuring risks of our predictions
+                \item Overfitting
+                \item Complexity
+            \end{itemize}
+        \end{itemize}
+        
         
     \end{frame}
 

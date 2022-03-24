@@ -1,7 +1,7 @@
 \documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
 \input{../latex_main/preamble}
 
-\title[Introduction]{DS: Bias and Variance}
+\title[Statistics]{DS: Bias and Variance}
 \subtitle{Data Generation Process}
 
 \graphicspath{ {./figure/} }
@@ -14,22 +14,20 @@
 	\begin{frame}{Data Generation Process}
 	    \begin{columns}
 	        \begin{column}{.4\textwidth}
-	                \begin{figure}
+
 	                    \includegraphics[scale=.5]{Bild1}
-	                \end{figure}
+
 	        \end{column}
 	        
 	        
 	         \begin{column}{.4\textwidth}
-	            \\ \bigskip
-	            \bigskip
-	            \bigskip
+
 	                \begin{itemize}
-	                    \item Assume true relation g
+	                    \item Assume true relation $g$
 	                    \item For example: $g(x) = \theta_0 + \theta_1x$
 	                    \item For each individual:
 	                    \begin{itemize}
-	                        \item fixed value of x, so also g(x)
+	                        \item fixed value of $x$, so also $g(x)$
 	                        \item random error $\epsilon$
 	                        \item Observation is:
 	                        \begin{equation*}
@@ -37,6 +35,7 @@
 	                        \end{equation*}
 	                    \end{itemize}
 	                \end{itemize}
+
 	        \end{column}
 	    \end{columns}
 	    Errors $\epsilon$ have expectation 0, and are “iid” across individuals
@@ -46,15 +45,17 @@
 	
 	\begin{frame}{The Data}
 	    \begin{columns}
+	    
 	        \begin{column}{.4\textwidth}
+	        
 	                \begin{itemize}
-	                    \item At each x, truth is g(x)
+	                    \item At each $x$, truth is $g(x)$
 	                    \item noise is $\epsilon$
 	                    \item Observation is $Y = g(x) + \epsilon$
 	                \end{itemize}
-	                \begin{figure}
+	                
 	                    \includegraphics[scale=.4]{Bild1}
-	                \end{figure}
+	                
 	        \end{column}
 	        
 	        
@@ -63,10 +64,10 @@
 	         \bigskip
 	         \bigskip
 	         \medskip
-	               We only see Y
-	                \begin{figure}
+	         
+	               \alert{We only observe $Y$!}
 	                    \includegraphics[scale=.45]{Bild2}
-	                \end{figure}
+	                    
 	        \end{column}
 	    \end{columns}
 	\end{frame}
@@ -76,26 +77,32 @@
 	    \begin{itemize}
 	        \item We choose a model and fit it to our data
 	        \begin{itemize}
-	            \item Choosing a model is codifying our assumption of the form of g(x)
+	            \item Choosing a model is codifying our assumption of the form of $g(x)$
 	        \end{itemize}
-	        \item The red line is our fitted function—the best possible function given g(x)
+	        \item The red line is our fitted function—the best possible function given $g(x)$
 	    \end{itemize}
+
 	    \begin{columns}
+
 	        \begin{column}{.4\textwidth}
-	                \begin{figure}
+
 	                    \includegraphics[scale=.5]{Bild3}
-	                \end{figure}
 	        \end{column}
 	        
 	        
 	         \begin{column}{.4\textwidth}
-	         \\ \bigskip
-	         \bigskip
-	               At every x, our prediction for Y is
+	         
+	               At every $x$, our prediction for $Y$ is
 	                \begin{itemize}
-	                    \item the height of the red line at x
-	                    \item Denote this  $\hat{Y}$(x)
+	                    \item the height of the red line at $x$
+	                    \item Denote this  $\widehat{Y}(x)$
+	                    \item Depending on our model, our prediction can be
+	                    \begin{itemize}
+	                        \item a random variable $\widehat{Y}(x)$, or
+	                        \item a point estimate $\widehat{y}(x)$
+	                    \end{itemize}
 	                \end{itemize}
+	                
 	        \end{column}
 	    \end{columns}
 	\end{frame}
