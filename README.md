@@ -3,7 +3,7 @@ Lecture on Data Science at the Leibniz University of Hannover
 
 ## Acknowledgements
 
-This lecture is build upon the [DS100 Lecture at Berkley](https://ds100.org/fa21/), which is available under a CC BY-NC-SA license. We thank the DS100 team to personally approve that we can use their material. We checked, modified, extended and re-arranged the material s.t. it fits to the needs of the students at the Leibniz University Hannover. All our modifications are again available under CC BY-NC-SA.
+This lecture is build upon the [DS100 Lecture at Berkley](https://ds100.org/fa21/), which is available under a CC BY-NC-SA license. We thank the DS100 team to personally approve that we can use their material. We checked, modified, extended and re-arranged the material s.t. it fits to the needs of the students at the Leibniz University Hannover. All our modifications are again available under CC BY-NC-SA. 
 
 ## Compiled PDFs
 
