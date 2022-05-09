@@ -1,7 +1,7 @@
 \documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
 \input{../latex_main/preamble}
 
-\title[Introduction]{Introduction to Data Science}
+\title[Introduction]{Data Science Foundations}
 \subtitle{Logistics for the Lecture}
 
 %\institute{}
@@ -34,13 +34,21 @@ Large parts of the material (i.e. slides, figures and exercise) were created at 
 %-----------------------------------------------------------------------------------------------------------------------------
 \begin{frame}[c]{Goals of the Lecture}
 
+Data Science is not a spectator sport.
+You will learn to code and to analyze!
+
 You will be able to \ldots
 \begin{enumerate}
   \item \alert{identify} steps needed to apply data science
+  \pause
   \item \alert{explain} different data processing steps required in data science
+  \pause
   \item \alert{choose} a promising combination of approaches to build data science pipelines
+  \pause
   \item \alert{evaluate} data science pipelines on different datasets
+  \pause
   \item \alert{visualize} data and results in data science
+  \pause
   \item \alert{apply} data science to new tasks at hand
 \end{enumerate}
 
@@ -54,13 +62,17 @@ You will be able to \ldots
 	\item Data Sampling and Probability [Abedjan] % May 2nd
 	\item Data Preprocessing [Abedjan] % May 9th
 	\item Visualization [Lindauer] % May 16 th
+	\pause
 	\item Intro to Modelling [Abedjan] % 
 	\item Simple Linear Regression + Ordinary Least Squares [Lindauer] % May 30th
+	\pause
 	\item Feature Engineering [Abedjan] % June 13th (June 6th is Pentecost)
 	\item Bias and Variance [Lindauer] % June 20th 
 	\item Evaluation, Regularization and AutoML [Lindauer] % June 27th
+	\pause
 	\item Classification [Lindauer] % July 4th
 	\item Inference for Modelling [Abedjan] % July 11th
+	\pause
 	\item Conclusion \& Ethics [Abedjan] % July 18th --> that's ICML week and afterwards is AutoML-Conf --> @Ziawasch: could you please take care of this session alone?
 \end{itemize}
 
@@ -79,10 +91,10 @@ You will be able to \ldots
 	\smallskip
 	\item ``Classic'' lecture
 	\begin{itemize}
-	  \item 1 Slot lecture + 1 slot guided exercise
+	  \item 1 Slot lecture + 1 slot guided lab exercise
 	\end{itemize}
 	\smallskip
-	\item Practical exercises and home works
+	\item Practical lab exercises and home works
 	\begin{itemize}
 	  \item implement it, use it and play with it!
 	\end{itemize}
@@ -156,13 +168,13 @@ Tim Ruhkopf\\
 % \end{frame}
 % %-----------------------------------------------------------------------
 %----------------------------------------------------------------------
-\begin{frame}[c]{Organization (Exercises \& Home Work)}
+\begin{frame}[c]{Organization (Labs \& Homework)}
 
 \begin{itemize}
-  \item Every week new exercise sheet
+  \item Every week new lab sheet
   \begin{itemize}
-      \item Exercise focus is aligned with lectures
-      \item Do the exercises in the exercise sessions (Thursdays at 11:00am s.t.)
+      \item Lab focus is aligned with lectures
+      \item Do the lab exercise in the exercise sessions (Thursdays at 11:00am s.t.)
       %\item Watch videos and start to directly work on exercise 
       %\item[$\leadsto$] \alert{Deadline one day after the live session: Wednesday at 23:59}
   \end{itemize}
@@ -170,8 +182,9 @@ Tim Ruhkopf\\
   \begin{itemize}
     \item Expected work load: 1.5h each week
   \end{itemize}
-  \item Team work highly recommended, e.g. team size of 3!
-  \item Home work every 3 weeks, i.e. 4 times overall
+  \item Team work highly recommended, i.e., max team size of 3!
+  \pause
+  \item Homework every 3 weeks, i.e. 4 times overall
   \begin{itemize}
       \item You can get \alert{5\% as bonus points} for the final exam
       \item You need 66\% of all homework points to get the bonus points\\
@@ -222,9 +235,9 @@ Tim Ruhkopf\\
 \begin{itemize}
   \item Lecture session every Monday (14:00am s.t.) and exercise session every Thursday (11:00 am s.t.)
   \item \alert{Use the forum in StudIP for all kind of questions}
-  \item Don't send us emails
   \begin{itemize}
-      \item[$\leadsto$] Only in case of emergencies
+        \item[$\leadsto$] Contact TAs first if necessary 
+      \item[$\leadsto$] Email to Professors only in case of emergencies
   \end{itemize}
 \end{itemize}
 
@@ -240,19 +253,19 @@ Tim Ruhkopf\\
     \end{itemize}
   \item Programming in \alert{Python} (mandatory)
   \begin{itemize}
-    \item all exercises will require that you implement something in~Python 
+    \item All exercises will require that you implement something in~Python 
     \item We will show you basics at the beginning in the exercises.\\ However if you never used Python before, it could get quite hard for you.
   \end{itemize}
   \item \alert{English} (mandatory)
     \begin{itemize}
-    \item You can ask us any question also in German. However, we will reply in English. So, you need to understand us ;-)
+    \item You can ask us any question also in German. However, we will reply in English.\\ So, you need to understand us ;-)
   \end{itemize}
 \end{itemize}
 
 \end{frame}
 %-----------------------------------------------------------------------
 %----------------------------------------------------------------------
-\begin{frame}[c]{Final Project Exam -- Tentative Plan!}
+\begin{frame}[c]{Final Exam -- Tentative Plan!}
 
 \begin{itemize}
   \item Written Exam
@@ -265,16 +278,26 @@ Tim Ruhkopf\\
 \end{frame}
 %----------------------------------------------------------------------
 %----------------------------------------------------------------------
-\begin{frame}[c]{Additional Resources}
+\begin{frame}[c]{Additional Resources -- These are Hyperlinks!}
 
-\begin{itemize}
-  \item There are also awesome online courses (MOOCs), teaching you many concepts
+\begin{itemize} 
+  \item Data science is such a big field
+  \item Don't expect that you will learn everything in a single lecture / course\\ $\leadsto$ there might be parts you can only learn in our lecture (e.g., AutoML)
+  \item There many awesome resources from which you can learn many more concepts
+  \pause
+  \bigskip
+  \item Free online books
   \begin{itemize}
-      \item Data science is such a big field
-      \item Don't expect that you will learn everything in a single lecture / course\\ $\leadsto$ there might be parts you can only learn in our lecture (e.g., AutoML)
+    \item \href{https://inferentialthinking.com/chapters/intro.html}{Inferential Thinking}
+      \item \href{https://www.textbook.ds100.org/intro.html}{DS100 Textbook}
+\end{itemize}
+  \pause
+  \item Online courses (MOOCs)
+  \begin{itemize}
       \item \href{https://www.coursera.org/specializations/data-science-python}{Applied Data Science with Python Specialization} by the University of Michigan
       \item \href{https://www.coursera.org/learn/machine-learning/home/welcome}{Machine Learning} by Andrew NG
   \end{itemize}
+  \pause
   \item \href{https://www.kaggle.com/}{Kaggle} for online competitions, datasets and code
   \begin{itemize}
       \item If you can become a grant master at Kaggle, you have very good chances for job offers
@@ -313,7 +336,7 @@ $\to$ Give us some feedback and we will improve the course!
 \end{frame}
 %-----------------------------------------------------------------------
 %----------------------------------------------------------------------
-\begin{frame}[c]{AI@LUH}
+\begin{frame}[c]{AI@LUH -- Mostly M.Sc. Courses}
 
 \centering
 \vspace{-1.3cm}
