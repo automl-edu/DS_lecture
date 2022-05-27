@@ -58,7 +58,7 @@ jobs:
             "06_simple_linear_regression_ols",
             "07_feature_engineering",
             "08_bias_and_variance",
-            "17_cross-validation_and_regularization",
+            "09_cv_reg_auto",
             "19_logistic_regression,_part_1",
             "20_decision_trees",
             "20_logistic_regression,_classification",
