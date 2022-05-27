@@ -1,0 +1,61 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Cross-Validation, Regularization & AutoML}
+\subtitle{Overview}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}[c]{Idea: Validation}
+	    
+	    \begin{itemize}
+	        \item Given: $n$ observation in a dataset $\mathcal{D}$
+	        \item What could happen if we use $\mathcal{D}$ to train our machine learning model $\mathcal{M}$ and evaluate it on the same $\mathcal{D}$?
+	        \pause
+	        \item[$\leadsto$] $\mathcal{M}$ could simply remember $\mathcal{D}$, but is not able to provide reasonable predictions for any point not being in $\mathcal{D}$
+	        \bigskip
+	        \pause
+	        \item So, how can we validate $\mathcal{M}$ s.t. we know how well it will generalize to new data?
+	    
+	    \end{itemize}
+	    
+	    
+	\end{frame}
+	
+	\begin{frame}[c]{Idea: Regularization}
+	    
+	    \begin{itemize}
+	        \item Problem: Even if we figure out that $\mathcal{M}$ simply remembered $\mathcal{D}$, how can we deal with it?
+	        \begin{itemize}
+	            \item Big problem if we have large noise in $\mathcal{D}$, and $\mathcal{M}$ learns the noise and not the important patterns
+	            \item Remember \alert{over-fitting} from previous session
+	        \end{itemize}
+	        \pause
+	        \bigskip
+	        \item Can we tell $\mathcal{M}$ to learn a good model without remembering $\mathcal{D}$?
+	        \item Regularization can be seen as a form of constraining the learning process
+	        \item Goal of regularization: Don't learn noise but only the important patterns and concepts
+	    \end{itemize}
+	\end{frame}
+	
+	\begin{frame}[c]{Idea: AutoML}
+	    
+	    \begin{itemize}
+	        \item Problem: How strong should we regularize $\mathcal{M}$?
+	        \bigskip
+	        \item Regularization comes with a hyperparameter that needs to be tuned for your dataset at hand
+	        \begin{itemize}
+	            \item Too strong regularization can hinder learning at all
+	            \item On very noisy datasets you want more regularization than on less noisy datasets
+	        \end{itemize}
+	        \item Challenge: How to find the regularization strength on a new dataset?
+	        \item AutoML helps to answer such questions in an automatic, systematic and efficient way
+	    \end{itemize}
+	\end{frame}
+	
+\end{document}
