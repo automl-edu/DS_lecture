@@ -17,7 +17,7 @@
 	        \item The minimum value of both mean squared error and mean absolute error is 0.
 	    \end{itemize}
 	    \begin{equation*}
-	        MSE(\vect{y},\hat{\vect{y}}) = \frac{1}{n}\sum\limits_{i=1}^n(y_i \hat{y_i})^2 \hspace{1cm} MAE(\vect{y},\hat{\vect{y}}) = \frac{1}{n}\sum\limits_{i=1}^n|y_i \hat{y_i}|
+	        MSE(\vect{y},\hat{\vect{y}}) = \frac{1}{n}\sum\limits_{i=1}^n(y_i - \hat{y_i})^2 \hspace{1cm} MAE(\vect{y},\hat{\vect{y}}) = \frac{1}{n}\sum\limits_{i=1}^n|y_i - \hat{y_i}|
 	    \end{equation*}
 	    
 	    \begin{itemize}
@@ -125,7 +125,7 @@
 	        \item When does a unique solution for   $\hat{\vect{\theta}}$  exist?
             \begin{itemize}
                 \item When     $\vect{X}^\intercal\vect{X}$      is invertible. If it is not invertible, a unique solution does not exist.
-                \item In such a case, there will be infinitely many values of theta that minimize average squared loss.
+                \item In such a case, there will be infinitely many values of $\vect{\theta}$ that minimize average squared loss.
                 \item If there are infinitely many “optimal” choices of coefficients, it’s unclear which to use.
                 \item We want a unique solution.
             \end{itemize}
@@ -163,13 +163,14 @@
 	        \item When some features in our design matrix are linear combinations of other features.
 	        \begin{itemize}
 	            \item If “Width”, “Height”, and “Perimeter” are all columns, $\vect{X}$ will not have full rank, since\\ Perimeter = 2 $\cdot$ Width + 2 $\cdot$ Height (linear combination).
-	            \item When we discuss one-hot encoding, this is something to be aware of.
+	           % \item When we discuss one-hot encoding, this is something to be aware of.
 	        \end{itemize}
 	        \item  When our design matrix has more columns than rows (i.e. it is “fat”).
 	        \begin{itemize}
 	            \item In the normal setting, n > p + 1 (we typically have more observations than features). 
 	        \end{itemize}
 	    \end{itemize}
-	    \includegraphics[scale=.45]{Bild16}
+	    \centering
+	    \includegraphics[scale=.35]{Bild16}
 	\end{frame}
 \end{document}

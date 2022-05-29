@@ -16,8 +16,8 @@
 	        \item The norm of a vector is some measure of that vector’s size.
 	        \item  The two norms we need to know (for now) are the L1 and L2 norms.
 	        \begin{itemize}
-	            \item $L_2$ will be used today.
-	            \item $L_1$ will appear a few lectures from now.
+	            \item We will mainly focus on $L_2$ today.
+	            %\item $L_1$ will appear a few lectures from now.
 	        \end{itemize}
 	    \end{itemize}
 	    \begin{columns}
@@ -98,7 +98,7 @@
 	\end{frame}
 	
 	\begin{frame}{Residual vector}
-	    We can stack all n residuals into a vector, called the residual vector, $\vect{e}$:
+	    We can stack all $n$ residuals into a vector, called the residual vector, $\vect{e}$:
         \begin{equation*}
             \vect{e} = \vect{Y} - \hat{\vect{Y}}  =\left[\begin{array}{c}
                  y_1 - \hat{y_1}\\
@@ -127,7 +127,7 @@
 	
 	
 	\begin{frame}{Optimization procedure}
-	    As we did in the last lecture, we note that the value of $\vect{\theta}$ that minimizes  $\frac{1}{n}||\vect{Y} - \vect{X}\vect{\theta}||_2^2$                     is the same value that minimizes
+	    As we did before, we note that the value of $\vect{\theta}$ that minimizes  $\frac{1}{n}||\vect{Y} - \vect{X}\vect{\theta}||_2^2$                     is the same value that minimizes
 
         \begin{equation*}
             R(\vect{\theta} ) = ||\vect{Y} - \vect{X}\vect{\theta}||_2^2
@@ -137,7 +137,7 @@
         There are two ways we can determine the optimal $\hat{\vect{\theta}}$     here.
         \begin{itemize}
             \item Using calculus, like we’ve done earlier.
-            \item Using a geometric argument. This is what we’ll do here.
+            \item Using a geometric argument. This is what we’ll do next.
         \end{itemize}
 	\end{frame}
 \end{document}

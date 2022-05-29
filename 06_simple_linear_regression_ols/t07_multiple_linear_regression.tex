@@ -51,7 +51,6 @@
         \begin{align*}
             \text{prediction PTS = 2.163 + 1.64} \cdot \text{AST + 1.26} \cdot 3\text{PA}
         \end{align*}
-        (These coefficients were determined by minimizing average squared loss, in the companion notebook.)
 
 	\end{frame}
 	
@@ -114,7 +113,7 @@
         Multiple linear regression model: $f_\theta (x) = \theta_0 + \theta_1x_1 + \theta_2x_2 + ... + \theta_px_p $\\
         \bigskip
         \begin{itemize}
-            \item Note: In the latter two models, $\theta$ is a vector, not a scalar! In the last model, $x$ is a vector too. We will formalize this in the next lecture
+            \item Note: In the latter two models, $\theta$ is a vector, not a scalar! In the last model, $x$ is a vector too. 
             \item We denote the prediction function that uses the optimal choice of parameters for a given loss and model with $f_\hat{\theta}(x)$. For instance, for the SLR  model, $f_\hat{\theta}(x) = \hat{\theta}_0 + \hat{\theta}_1x$                              
             \begin{itemize}
                 \item Parameters [2.163, 1.64, 1.26] minimize average squared loss for Model 2.
