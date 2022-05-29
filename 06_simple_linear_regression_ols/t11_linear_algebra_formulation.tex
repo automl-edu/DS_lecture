@@ -34,7 +34,7 @@
         \end{itemize}
             \item The dot product between two vectors is a scalar, not another vector.
             \item The dot product is only defined for two vectors of the same length.  
-            \item The dot product is a special case of the inner product.
+           % \item The dot product is a special case of the inner product.
     \end{itemize}
 
 	\end{frame}
@@ -43,18 +43,18 @@
 	\begin{frame}{Multiple regression as a dot product}
 	   We previously stated that the multiple regression model was of the form\\
         \hspace{3cm}
-	    $\hat{y} = f_\theta (x) = \theta_0 + \theta_1x_1 + \theta_2x_2 + ... + \theta_px_p = \sum\limits_{j=1}^p\theta_jx_j$ 
+	    $\hat{y} = f_\theta (\vect{x}) = \theta_0 + \theta_1x_1 + \theta_2x_2 + ... + \theta_px_p = \sum\limits_{j=1}^p\theta_jx_j$ 
 	   
 	   This can be restated as a dot product between two vectors.
 
-	   	$\theta = \left[\begin{array}{c}
+	   	$\vect{\theta} = \left[\begin{array}{c}
 	          \theta_0\\
 	          \theta_1 \\
 	          \theta_2 \\
 	          \vdots\\
 	          \theta_p
 	    \end{array}\right]$	       
-	    $x = \left[\begin{array}{c}
+	    $\vect{x} = \left[\begin{array}{c}
 	          1\\
 	          x_1 \\
 	          x_2 \\
@@ -208,7 +208,7 @@
 	              Consider the following design matrix and value of $\vect{\theta}$.
 	              \begin{figure}
 	                  \includegraphics[scale=.35]{Bild2}
-	                   $\vect{\theta} = \left[\begin{array}{}
+	                   $\vect{\theta} = \left[\begin{array}{r}
 	                   -5  \\
 	                   2 \\
 	                   -1 \\
@@ -221,7 +221,7 @@
 	         \begin{column}{.4\textwidth}
 	              The predicted response (output) for the second observation:
 	                \begin{align*}
-	                   \hat{\vect{y}_2} &=[1, 0.4, 0.8 ,1.7] \hspace{.5cm}  \left[\begin{array}{}
+	                   \hat{\vect{y}_2} &=[1, 0.4, 0.8 ,1.7] \cdot \left[\begin{array}{r}
 	                   -5  \\
 	                   2 \\
 	                   -1 \\
