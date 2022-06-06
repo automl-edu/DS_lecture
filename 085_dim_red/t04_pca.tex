@@ -1,0 +1,130 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Introduction]{DS: Dimension Reduction}
+\subtitle{PCA}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Dimensionality}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	               Consider the data shown. How many dimensions does this data have?
+	               \begin{itemize}
+	                   \item 3, because 2 weight columns are redundant
+	                   \item In linear algebra terms, we’d observe that this matrix has rank 3
+	                   \item More generally: Can think of a dataset’s dimensionality as the rank of the matrix representing the data 
+	               \end{itemize}
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.4]{Bild4}
+	                \end{figure}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Dimensionality}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	               In the previous example, we had one column that was exactly linearly dependent on another.\\
+	               \bigskip
+	               More generally, we want to summarize data with fewer dimensions, even if no obvious redundancies exist.
+	        \end{column}
+	        
+	        
+	        \begin{column}{.5\textwidth}
+	                \begin{figure}
+	                    \centering
+	                    \includegraphics[scale=.4]{Bild5}
+	                \end{figure}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Summarizing Our Data}
+	    We want to summarize each student with a single “score.”
+	    \begin{itemize}
+	        \item We usually have a predetermined rubric (e.g. 40\% HW, 24\% Final, 10\% Discussion, etc.)
+	        \item Notice the rubric is a linear combination of the features for each student.
+	    \end{itemize}
+	    BUT, what if we wanted a different score, one number that captures the student’s relative performance as comprehensively as possible?\\
+	    \bigskip
+	    We want to find a linear combination that maximizes the variance of this score.\\
+	    \hfill \includegraphics[scale=.6]{Bild6}
+	\end{frame}
+	
+	
+	\begin{frame}{Summarizing Our Data}
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	        
+	       \vspace{-2em}
+	        \begin{itemize}
+	            \item Let’s say we wanted to assign the “score” based only on the midterm and final exam.
+	            \item Different linear combinations of the midterm and final affect the variance of our score $\rightarrow$
+	            \item The variance seems to be maximized when our arrow points up and to the right (or down and to the left).
+                \item \alert{Objective:} Find linear combination of features that maximizes preserved variance	           
+                \begin{itemize}
+                    \item Data scientists can decide dimensionality of the results space (either directly or by a threshold)
+                    \item Special case of singular value decomposition (SVD)
+                \end{itemize}
+	        \end{itemize}
+	               
+	        \end{column}
+	        
+	        \begin{column}{.5\textwidth}
+	                    \centering
+	                    \includegraphics[scale=.1]{vect1}
+	                    \includegraphics[scale=.1]{vect2}
+	                    \includegraphics[scale=.1]{vect3}
+	                    \includegraphics[scale=.1]{vect4}
+	        \end{column}
+	    \end{columns}
+	\end{frame}
+	
+	\begin{frame}{Projecting Data}
+        \centering
+        \includegraphics[width=0.5\textwidth]{Bild9.PNG}
+	\end{frame}
+	
+	\begin{frame}{Information Quantity in each Principal Component}
+        \centering
+        \includegraphics[width=0.5\textwidth]{Bild13.PNG}
+        
+        \begin{itemize}
+            \item Each principal component is a vector on which your data is projected
+            \item Using more will help you to preserve more of the variance in your data
+        \end{itemize}
+        
+	\end{frame}
+	
+	\begin{frame}{Traits of PCA}
+
+    Advantages:
+    \begin{itemize}
+        \item Can be fairly efficiently computed for medium-sized data sets
+        \item Removes correlated features implicitly (because of the learned linear combination)
+    \end{itemize}
+    
+    Disadvantages
+    \begin{itemize}
+        \item Assumption of linear projects --- can be circumvented with KernelPCA
+        \item Defining a threshold on the proportion of variance can be hard
+    \end{itemize}
+
+
+	\end{frame}
+	
+	
+\end{document}

@@ -1,0 +1,54 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Statistics]{DS: Dimension Reduction}
+\subtitle{Agenda}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	
+    \begin{frame}{Motivation}
+
+    \begin{itemize}
+        \item We often looked at 1 or 2 input variables in our examples
+        \item BUT: This is often not possible in practice because of high-dimensional data
+        \medskip
+        \pause
+        \item Being blind is never a good a idea for data scientist
+        \item[$\leadsto$] Always visualize your data!
+        \medskip
+        \pause
+        \item Remember: Strongly correlated features in the input could also be a problem for your model
+        \item[$\leadsto$] Might be also a good idea to reduce the number of dimensions for achieving better predictions!?
+    \end{itemize}
+
+	\end{frame}
+	
+	\begin{frame}{Agenda for Today}
+
+ Key questions: 
+    \begin{itemize} 
+        \item How can we identify important input features?
+        \item How can we reduce the number of input dimensions?
+        \item How can we visualize our data?
+    \end{itemize}
+            
+    \pause
+    \medskip
+    
+    \begin{enumerate}
+        \item Feature Selection
+        \item Multi dimensional scaling
+        \item PCA
+        \item t-SNE
+    \end{enumerate}
+
+
+	\end{frame}
+	
+\end{document}

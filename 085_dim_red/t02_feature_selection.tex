@@ -1,0 +1,140 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Statistics]{DS: Dimension Reduction}
+\subtitle{Feature Selection}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	
+    \begin{frame}[c]{Motivation}
+
+    \begin{itemize}
+        \item If we have too many input features, can we simply get rid of some?
+        \item Use expert knowledge:
+        \begin{itemize}
+            \item if you, your teammates, client or other stakeholders have expert knowledge, make use of it
+            \item[$\leadsto$] Remove redundant features
+            \item[$\leadsto$] Remove very noisy features (or reduce noise)
+            \item[$\leadsto$] Remove uninformative features
+        \end{itemize}
+        \pause
+        \medskip
+        \item Can we automate this process?
+        \item What would be a good metric for removing features?
+        \item[$\leadsto$] Use (validation) loss for assessing model quality
+    \end{itemize}
+
+	\end{frame}
+	
+	\begin{frame}[c]{Forward Selection}
+
+    Algorithm Outline:
+    \begin{enumerate}
+        \item[0.] Initialize set of selected features $\mathcal{S}$ with $\emptyset$ and $\mathcal{F}$ with all features
+        \item While True:
+        \begin{enumerate}
+            \item For each feature $f_i$ in your $\mathcal{F}$
+            \begin{enumerate}
+                \item Let $\mathcal{S}'$ be $f_i \cup \mathcal{S}$
+                \item Train your model with features in $\mathcal{S}'$
+                \item Assess model (validation) error $e_i$
+            \end{enumerate}
+            \item Add feature with best (validation) error $e_i$: 
+            \begin{itemize}
+                \item Let $\mathcal{S}$ be  $f_i \cup \mathcal{S}$
+                \item Let $\mathcal{F}$ be $\mathcal{F} \setminus f_i$
+            \end{itemize}
+        \end{enumerate}
+        \item If model error is not improving anymore, return $\mathcal{S}$
+    \end{enumerate}
+
+
+	\end{frame}
+	
+	\begin{frame}[c]{Traits of Forward Selection}
+
+    Advantages:
+    \begin{itemize}
+        \item Set of selected features is often fairly small
+        \item Memory footprint is small
+    \end{itemize}
+
+    Disadvantages:
+    \begin{itemize}
+        \item If there are important interaction effects between two or more features,\\ these won't be selected
+        \item Number of model fits is $\mathcal{O}(n^2)$ $\leadsto$ not feasible for big models
+    \end{itemize}
+
+	\end{frame}
+	
+	\begin{frame}[c]{Backward Elimination}
+
+    Algorithm Outline:
+    \begin{enumerate}
+        \item[0.] Initialize set of selected features $\mathcal{S}$ with all features
+        \item While True:
+        \begin{enumerate}
+            \item For each feature $f_i$ in your $\mathcal{S}$
+            \begin{enumerate}
+                \item Let $\mathcal{S}'$ be $\mathcal{S} \setminus f_i$
+                \item Train your model with features in $\mathcal{S}'$
+                \item Assess model (validation) error $e_i$
+            \end{enumerate}
+            \item Remove feature with lowest error $e_i$ (if $e_i \leq \delta$) : 
+            \begin{itemize}
+                \item Let $\mathcal{S}$ be  $\mathcal{S} \setminus f_i$
+            \end{itemize}
+        \end{enumerate}
+        \item If model error is $e_i > \delta$, return $\mathcal{S}$
+    \end{enumerate}
+
+	\end{frame}
+	
+	\begin{frame}{Traits of Backward Elimination}
+    
+    Advantages:
+    \begin{itemize}
+        \item Interaction effects between input features can be preserved
+        \item Might terminate with less iteration
+    \end{itemize}
+
+    Disadvantages:
+    \begin{itemize}
+        \item Still no guarantee for optimal subset
+        \item Number of model fits is $\mathcal{O}(n^2)$ $\leadsto$ not feasible for big models
+        \item Each mode fit has to consider more features compared to forward selection $\leadsto$ more compute time and larger memory footprint
+    \end{itemize}
+
+	\end{frame}
+	
+	\begin{frame}[c]{Extensions}
+
+    \begin{itemize}
+        \item We could also combine forward selection and backward elimination and interleave both 
+        \begin{itemize}
+            \item A feature selected early on can be eliminated later again, after other features were added
+            \item Initialization with random feature subset possible
+            \begin{itemize}
+                \item Repeat the process
+            \end{itemize}
+        \end{itemize}
+        \medskip
+        \pause
+        \item Can also be combined with feature engineering
+        \begin{itemize}
+            \item Search for the best feature extensions to be added
+        \end{itemize}
+        \medskip
+        \pause
+        \item Other black-box optimizers (e.g., evolutionary algorithms or Bayesian Optimization) can also be used
+    \end{itemize}
+
+	\end{frame}
+	
+\end{document}

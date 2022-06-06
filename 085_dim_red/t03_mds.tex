@@ -1,0 +1,106 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Statistics]{DS: Dimension Reduction}
+\subtitle{Multi-Dimensional Scaling}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	
+    \begin{frame}[c]{Motivation}
+        
+        \begin{itemize}
+            \item Let's assume that we have $d$ features in our input space, but we would like to go down to $d'$ features
+            \begin{itemize}
+                \item $d'$ could be 2 in case we want to visualize our data
+                \item Note: we only talk about $X$ and not about $y$ in any way here
+            \end{itemize}
+            \medskip
+            \item What would be the best way to project down from $d$ features to $d'$ features?
+            \item Main idea
+            \begin{itemize}
+                \item The information should be minimal!
+                \item Information is best preserved if the distance between two points $x_i$ and $x_j$ in the $d$-dimensional space is roughly the same in the $d'$-dimensional space:
+                $$ ||x_i - x_j || \approx || x'_i - x'_j || $$
+                \item $||\cdot||$ can be any vector norm, e.g., Euclidean norm, but doesn't have to.
+            \end{itemize}
+        \end{itemize}
+
+	\end{frame}
+	
+	\begin{frame}[c]{MDS Objective}
+        
+         $$\argmin_{x'_1, \ldots x'_M \in \mathbb{R}^{d'}} \sum_{i< j}  (||x_i - x_j || - || x'_i - x'_j ||)^2$$
+        
+        \begin{itemize}
+            
+            \item Note that $||x_i - x_j ||$ is fixed since the data is given
+            \item We can only change our projected points $x'$
+            \item[$\leadsto$] Depending on the vector norm and other assumptions different optimization approaches can be used to solve it
+        \end{itemize}
+        
+	\end{frame}
+	
+	\begin{frame}[c]{MDS with Extensions}
+        
+        \begin{columns}
+        
+        \begin{column}{0.5\textwidth}
+        
+        \begin{itemize}
+            \item Plot predictions in background
+            \item Plot labels with different points
+            \smallskip
+            \item Note: 
+            \begin{itemize}
+                \item Categorical features can lead to separated regions
+                \item axes-scales have no real meaning anymore
+                \item Scale your data first if your vector does not care of same scales 
+            \end{itemize}
+        \end{itemize}
+        
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+        
+        \begin{center}
+            \includegraphics[width=1\textwidth]{mds1.jpg}
+        \end{center}
+        
+        \end{column}
+        
+        \end{columns}
+        
+	\end{frame}
+	
+	\begin{frame}[c]{MDS with Clusters}
+        
+        \begin{columns}
+        
+        \begin{column}{0.5\textwidth}
+        
+        \begin{itemize}
+            \item If you have dense clusters in your data, MDS will zoom in on these
+            \item Could be a hint that your i.i.d. assumption is violated
+        \end{itemize}
+        
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+        
+        \begin{center}
+            \includegraphics[width=1\textwidth]{mds2.jpg}
+        \end{center}
+        
+        \end{column}
+        
+        \end{columns}
+        
+	\end{frame}
+	
+\end{document}

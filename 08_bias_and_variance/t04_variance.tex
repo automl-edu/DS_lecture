@@ -36,31 +36,32 @@
 	        \end{itemize}
 	        \item By Chebyshev’s inequality:
 	        \begin{itemize}
+	            \item No matter what the shape of the distribution of $X$ is:
 	            \item[$\leadsto$] The vast majority of the probability lies in the interval “expectation plus or minus a few standard deviations”.
 	            \item Specifically, if   $\mu  = \mathbb{E}[X]$ and    $\sigma   = \mathbb{SD}[X]$, then $P(|X - \mu| \leq \frac{1}{k^2})$.   
-	            \item Independent of the shape of the distribution of $X$:\\
 	        \end{itemize}
 	    \end{itemize}
 	\end{frame}
 	
 	
-	\begin{frame}[c]{An alternative calculation}
-	    There’s a more convenient form of variance for use in calculations.
-	    \begin{equation*}
-	        \mathbb{V}ar(X) = \mathbb{E}(X^2) - (\mathbb{E}(X))^2
-	    \end{equation*}
-	    To derive this, we make repeated use of the linearity of expectation.
-	    \begin{align*}
-	        \mathbb{V}ar(X) &= \mathbb{E}((X-\mathbb{E}(X))^2)\\
-	        &=  \mathbb{E}(X^2-2X\mathbb{E}(X) + (\mathbb{E}(X)^2))\\
-	        &= \mathbb{E}(X^2) - 2\mathbb{E}(X)\mathbb{E}(X) + (\mathbb{E}(X))^2\\
-	        &= \mathbb{E}(X^2) - (\mathbb{E}(X))^2
-	    \end{align*}
-	\end{frame}
+% 	\begin{frame}[c]{An alternative calculation}
+% 	    There’s a more convenient form of variance for use in calculations.
+% 	    \begin{equation*}
+% 	        \mathbb{V}ar(X) = \mathbb{E}(X^2) - (\mathbb{E}(X))^2
+% 	    \end{equation*}
+% 	    To derive this, we make repeated use of the linearity of expectation.
+% 	    \begin{align*}
+% 	        \mathbb{V}ar(X) &= \mathbb{E}((X-\mathbb{E}(X))^2)\\
+% 	        &=  \mathbb{E}(X^2-2X\mathbb{E}(X) + (\mathbb{E}(X)^2))\\
+% 	        &= \mathbb{E}(X^2) - 2\mathbb{E}(X)\mathbb{E}(X) + (\mathbb{E}(X))^2\\
+% 	        &= \mathbb{E}(X^2) - (\mathbb{E}(X))^2
+% 	    \end{align*}
+% 	\end{frame}
 	
 	
 	
 	\begin{frame}[c]{An alternative calculation}
+	There’s a more convenient form of variance for use in calculations.
 	    \begin{equation*}
 	        \mathbb{V}ar(X) = \mathbb{E}(X^2) - (\mathbb{E}(X))^2
 	    \end{equation*}
@@ -82,7 +83,7 @@
 	    
 	    \begin{itemize}
 	        \item We know that  $\mathbb{E}(aX + b) = a\mathbb{E}(X) + b$.
-	        \item In order to compute $\mathbb{V}ar(X)(aX + b)$, consider:\\
+	        \item In order to compute $\mathbb{V}ar(aX + b)$, consider:\\
 	    \end{itemize}
 	    
 	    \begin{columns}

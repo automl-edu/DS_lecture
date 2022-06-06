@@ -1,0 +1,60 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Statistics]{DS: Bias and Variance}
+\subtitle{Agenda}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	
+    \begin{frame}{Motivation}
+
+    \begin{itemize}
+        \item Models are never perfect
+    \end{itemize}
+
+    \begin{center}
+        \includegraphics[width=0.4\textwidth]{08_bias_and_variance/figure/Bild9.png}
+        \includegraphics[width=0.4\textwidth]{08_bias_and_variance/figure/Bild10.png}    
+    \end{center}
+    
+    $\leadsto$ Remember: Your data generation can be noisy.
+    
+    $\leadsto$ Even for simple problems, it is not always obvious how complex your model should be.
+
+	\end{frame}
+	
+	\begin{frame}{Agenda for Today}
+
+ Key questions: 
+    \begin{itemize} 
+        \item Why are our models imperfect?
+        \item What are possible sources of errors?
+        \item How complex should your model be?
+    \end{itemize}
+            
+    \pause
+    \medskip
+    
+    \begin{enumerate}
+        \item Recap: Data generation process
+        \item Recap: Expectation
+        \item Recap: Variance
+        \item Bias and Variance in Modelling
+        \item Complexity of Models
+        \item Decomposition of Risk
+    \end{enumerate}
+
+    \pause
+    \medskip
+
+    $\leadsto$ A lot of math (again), but important to understand what is going on with your models
+
+	\end{frame}
+	
+\end{document}
