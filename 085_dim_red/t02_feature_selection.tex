@@ -80,13 +80,14 @@
         \item[0.] Initialize set of selected features $\mathcal{S}$ with all features
         \item While True:
         \begin{enumerate}
+            \item Baseline $e_\mathcal{S}$ by training a model with $\mathcal{S}$
             \item For each feature $f_i$ in your $\mathcal{S}$
             \begin{enumerate}
                 \item Let $\mathcal{S}'$ be $\mathcal{S} \setminus f_i$
                 \item Train your model with features in $\mathcal{S}'$
                 \item Assess model (validation) error $e_i$
             \end{enumerate}
-            \item Remove feature with lowest error $e_i$ (if $e_i \leq \delta$) : 
+            \item Remove feature with highest error diff $e_\mathcal{S} - e_i$ (if $e_i \leq \delta$) : 
             \begin{itemize}
                 \item Let $\mathcal{S}$ be  $\mathcal{S} \setminus f_i$
             \end{itemize}

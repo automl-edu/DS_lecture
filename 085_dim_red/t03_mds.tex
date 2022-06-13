@@ -15,7 +15,7 @@
     \begin{frame}[c]{Motivation}
         
         \begin{itemize}
-            \item Let's assume that we have $d$ features in our input space, but we would like to go down to $d'$ features
+            \item Let's assume that we have $d$ features in our input space,\\ but we would like to go down to $d'$ features ($d' \ll d$)
             \begin{itemize}
                 \item $d'$ could be 2 in case we want to visualize our data
                 \item Note: we only talk about $X$ and not about $y$ in any way here
@@ -24,7 +24,7 @@
             \item What would be the best way to project down from $d$ features to $d'$ features?
             \item Main idea
             \begin{itemize}
-                \item The information should be minimal!
+                \item The information loss should be minimal!
                 \item Information is best preserved if the distance between two points $x_i$ and $x_j$ in the $d$-dimensional space is roughly the same in the $d'$-dimensional space:
                 $$ ||x_i - x_j || \approx || x'_i - x'_j || $$
                 \item $||\cdot||$ can be any vector norm, e.g., Euclidean norm, but doesn't have to.
@@ -53,7 +53,7 @@
         \begin{column}{0.5\textwidth}
         
         \begin{itemize}
-            \item Plot predictions in background
+            \item Plot predictions in background ($y$)
             \item Plot labels with different points
             \smallskip
             \item Note: 
