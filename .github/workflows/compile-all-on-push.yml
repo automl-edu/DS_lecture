@@ -23,9 +23,6 @@ jobs:
             "20_decision_trees",
             "20_logistic_regression,_classification",
             "22_inference_for_modeling",
-            "23_principal_component_analysis",
-            "24_clustering,_part_1",
-            "25_clustering,_part_2",
             "26_conclusion",
             "SQL_08",
           ]
@@ -65,9 +62,6 @@ jobs:
             "20_decision_trees",
             "20_logistic_regression,_classification",
             "22_inference_for_modeling",
-            "23_principal_component_analysis",
-            "24_clustering,_part_1",
-            "25_clustering,_part_2",
             "26_conclusion",
             "SQL_08",
         ]
