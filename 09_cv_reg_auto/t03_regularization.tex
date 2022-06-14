@@ -1,7 +1,7 @@
 \documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
 \input{../latex_main/preamble}
 
-\title[Introduction]{DS: Cross-Validation and Regularization}
+\title[CV, Reg \& AutoML]{DS: Cross-Validation, Regularization \& AutoML}
 \subtitle{Regularization}
 
 \graphicspath{ {./figure/} }
@@ -13,7 +13,7 @@
 	\maketitle
 	\begin{frame}{Basic Idea}
 	    \begin{equation*}
-	        \hat{\theta} = \underset{\theta}{arg min} \frac{1}{n}\sum\limits_{i=1}^n\text{Loss}(y_i,f_\theta(x_i))
+	        \hat{\theta} \in \argmin_{\theta} \frac{1}{n}\sum\limits_{i=1}^n\mathcal{L}(y_i,f_{\bm{\theta}}(\bm{x}_i))
 	    \end{equation*}
 	    \underline{such that:}
 	    \begin{equation*}
@@ -25,11 +25,11 @@
 	
 	\begin{frame}[c]{Basic Idea}
 	    \begin{equation*}
-	        \hat{\theta} = \underset{\theta}{arg min} \frac{1}{n}\sum\limits_{i=1}^n\text{Loss}(y_i,f_\theta(x_i))
+	        \hat{\theta} \in \argmin_{\theta} \frac{1}{n}\sum\limits_{i=1}^n\mathcal{L}(y_i,f_{\bm{\theta}}(\bm{x}_i))
 	    \end{equation*}
 	    \underline{such that:}
 	    \begin{equation*}
-	         \text{Complexity}(f_\theta) \leq \beta
+	         \text{Complexity}(f_{\bm{\theta}}) \leq \beta
 	    \end{equation*}
 	    Complexity: How do we define this?\\
 	    $\beta$:  Regularization Hyperparameter
@@ -39,7 +39,7 @@
 	
 	\begin{frame}[c]{Idealized Notion of Complexity}
 	   \begin{equation*}
-	         \text{Complexity}(f_\theta) \leq \beta
+	         \text{Complexity}(f_{\bm{\theta}}) \leq \beta
 	    \end{equation*}
         \begin{itemize}
             \item Focus on complexity of linear models:
@@ -48,7 +48,7 @@
             \end{itemize}
             \item Ideal definition:
             \begin{equation*}
-                \text{Complexity}(f_\theta) = \sum\limits_{j=1}^d\mathbb{I}[\theta_j \neq 0] 
+                \text{Complexity}(f_{\bm{\theta}}) = \sum\limits_{j=1}^d\mathbb{I}[\bm{\theta}_j \neq 0] 
             \end{equation*}
             \item Why?
         \end{itemize}
@@ -58,70 +58,92 @@
 	\begin{frame}[c]{Ideal “Regularization”}
 	Find the best value of $\theta$ which uses fewer than $\beta$ features.
 	  \begin{equation*}
-	        \hat{\theta} = \underset{\theta}{arg min} \frac{1}{n}\sum\limits_{i=1}^n\text{Loss}(y_i,f_\theta(x_i))
+	        \hat{\theta} \in \argmin_{\theta} \frac{1}{n}\sum\limits_{i=1}^n\mathcal{L}(y_i,f_{\bm{\theta}}(\bm{x}_i))
 	    \end{equation*}
 	    \underline{such that}
 	    \begin{equation*}
-                \text{Complexity}(f_\theta) = \sum\limits_{j=1}^d\mathbb{I}[\theta_j \neq 0] \leq \beta
+                \text{Complexity}(f_{\bm{\theta}}) = \sum\limits_{j=1}^d\mathbb{I}[\bm{\theta}_j \neq 0]  \leq \beta
         \end{equation*}
         Combinatorial search problem – NP-hard to solve in general.
 
 	\end{frame}
 	
+	\begin{frame}{Different Norms for Regularization}
 	
-	\begin{frame}{Norm Balls}
-	    \includegraphics[scale=.35]{Bild5}
+	\begin{center}
+	       \includegraphics[scale=.3]{Bild17}
+	       
+	       $L^0 = \sum_{j=1}^d\mathbb{I}[\bm{\theta}_j \neq 0]$\hspace{1em} $L^1 = \sum_{j=1}^d|\bm{\theta}_j|$\hspace{1em} $L^2 = \sum_{j=1}^d\bm{\theta}_j^2$
+	\end{center}
+	    
 	\end{frame}
 	
-	\begin{frame}{Norm Balls}
-	    \includegraphics[scale=.35]{Bild6}
-	\end{frame}
-	
-	\begin{frame}{Norm Balls}
-	    \includegraphics[scale=.35]{Bild7}
-	\end{frame}
-	
-	\begin{frame}{Norm Balls}
-	    \includegraphics[scale=.35]{Bild8}
-	\end{frame}
-	
-	\begin{frame}{Norm Balls}
-	    \includegraphics[scale=.35]{Bild9}
-	\end{frame}
-	
-	
-	\begin{frame}{Norm Balls}
-	    \includegraphics[scale=.35]{Bild10}
-	\end{frame}
-	
-	\begin{frame}{Norm Balls}
-	    \includegraphics[scale=.35]{Bild11}
-	\end{frame}
-	
-	\begin{frame}{Norm Balls}
-	    \includegraphics[scale=.35]{Bild12}
-	\end{frame}
-	
-	\begin{frame}{Norm Balls}
-	    \includegraphics[scale=.35]{Bild13}
-	\end{frame}
-	
-	
-	\begin{frame}{Norm Balls}
-	    \includegraphics[scale=.35]{Bild14}
-	\end{frame}
-	
-	
-	\begin{frame}{Norm Balls}
-	    \includegraphics[scale=.35]{Bild15}
+	\begin{frame}{Generic Regularization}
+	    
+	    \begin{columns}
+	            
+	            \begin{column}{0.5\textwidth}
+	                
+	                Constrained:
+	                	    \begin{align*}
+                    	        &\text{Complexity}(f_{\bm{\theta}}) = R(\bm{\theta})\\
+                    	        &\hat{\theta} \in \argmin_{\theta} \frac{1}{n}\sum_{i=1}^n\mathcal{L}(y_i,f_{\bm{\theta}}(\bm{x}_i))\\
+                    	        &\underline{\text{such that: }} R(\bm{\theta}) \leq \beta
+                    	    \end{align*}
+	                
+	            \end{column}
+	            
+	            \begin{column}{0.5\textwidth}
+	            
+	                Unconstrained (obtained by Lagrangian duality):
+	                
+	                	    \begin{align*}
+	        &\text{Complexity}(f_{\bm{\theta}}) = R(\bm{\theta})
+	    \end{align*}
+	    \begin{equation*}
+	        \hat{\theta} \in \argmin_{\theta}\left[ \left(\frac{1}{n}\sum_{i=1}^n\mathcal{L}(y_i,f_{\bm{\theta}}(\bm{x}_i)) \right) + \lambda R(\bm{\theta})\right]
+	    \end{equation*}
+        $\lambda$: Regularization Hyperparameter
+	                
+	                
+	            \end{column}
+	            
+	    \end{columns}
+
 	\end{frame}
 	
 	
-	\begin{frame}{Norm Balls}
-	    \includegraphics[scale=.35]{Bild16}
+	
+	\begin{frame}{Standardization and the Intercept Term}
+	    \begin{itemize}
+	        \item Height = $\theta_1 \cdot$  (age\_in\_seconds) + $\theta_2\cdot$ (weight\_in\_tons)
+	    \end{itemize}
+	    $\theta_1$ will be small (because lives on a large scale)  and  $\theta_2$ will be large (because lives on a small scale)
+	    \begin{columns}
+	        \begin{column}{.5\textwidth}
+	                \begin{itemize}
+	                    \item \alert{Regularization penalizes dimensions equally}
+	                    \item Standardization
+	                    \begin{itemize}
+	                        \item Ensure that each dimensions has the same scale
+	                        \item centered around zero
+	                    \end{itemize}
+	                    \item Intercept Terms
+	                    \begin{itemize}
+	                        \item Typically don’t regularize intercept term 
+	                    \end{itemize}
+	                \end{itemize}
+	        \end{column}
+	        
+	        \begin{column}{.4\textwidth}
+	                \\ 
+	                Standardization\\
+	                For each dimension $k$:
+	                \begin{equation*}
+	                    Z_k = \frac{x_k - \mu_k}{\sigma_k}
+	                \end{equation*}
+	        \end{column}
+	    \end{columns}
 	\end{frame}
 	
-	\begin{frame}{.}
-	    \includegraphics[scale=.4]{Bild17}
-	\end{frame}
 \end{document}

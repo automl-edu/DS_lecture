@@ -1,7 +1,7 @@
 \documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
 \input{../latex_main/preamble}
 
-\title[Introduction]{DS: Cross-Validation and Regularization}
+\title[CV, Reg \& AutoML]{DS: Cross-Validation, Regularization \& AutoML}
 \subtitle{Cross-Validation}
 
 \graphicspath{ {./figure/} }
@@ -49,7 +49,7 @@
 	        \end{column}
 	    \end{columns}
 	    \bigskip
-	    You can only use the test dataset once after deciding on the model.
+	    \alert{Warning:} You can only use the test dataset once after deciding on the model.
 
 	\end{frame}
 	
@@ -69,7 +69,10 @@
 	        \end{itemize}
 	        \item Commit to your final model and train once more using only the training data.
 	        \item Test the final model using the test data. 
-	        \item Train on all available data and ship it!
+	        \begin{itemize}
+	            \item If you can afford it, you can also use nested cross-validation:\\ (i) for simulating test data and (ii) for getting validation data
+	        \end{itemize}
+	        \item Train your model on all available data and deploy it!
 	    \end{itemize}
 	\end{frame}
 \end{document}

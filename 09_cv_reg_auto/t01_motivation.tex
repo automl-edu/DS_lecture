@@ -1,7 +1,7 @@
 \documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
 \input{../latex_main/preamble}
 
-\title[Introduction]{DS: Cross-Validation, Regularization & AutoML}
+\title[CV, Reg \& AutoML]{DS: Cross-Validation, Regularization \& AutoML}
 \subtitle{Overview}
 
 \graphicspath{ {./figure/} }
@@ -30,10 +30,10 @@
 	\begin{frame}[c]{Idea: Regularization}
 	    
 	    \begin{itemize}
-	        \item Problem: Even if we figure out that $\mathcal{M}$ simply remembered $\mathcal{D}$, how can we deal with it?
+	        \item Problem: Even if we figure out that $\mathcal{M}$ simply remembered $\mathcal{D}$ and does not generalize to new data, how can we deal with it?
 	        \begin{itemize}
-	            \item Big problem if we have large noise in $\mathcal{D}$, and $\mathcal{M}$ learns the noise and not the important patterns
-	            \item Remember \alert{over-fitting} from previous session
+	            \item Big problem if we have (large) noise in $\mathcal{D}$, and $\mathcal{M}$ learns the noise and not the important patterns
+	            \item Remember \alert{variance} problem from previous session
 	        \end{itemize}
 	        \pause
 	        \bigskip
@@ -54,6 +54,7 @@
 	            \item On very noisy datasets you want more regularization than on less noisy datasets
 	        \end{itemize}
 	        \item Challenge: How to find the regularization strength on a new dataset?
+	        \item[$\leadsto$] Hyperparameters cannot be learned from the data directly,\\ but we have to optimize them explicitly
 	        \item AutoML helps to answer such questions in an automatic, systematic and efficient way
 	    \end{itemize}
 	\end{frame}

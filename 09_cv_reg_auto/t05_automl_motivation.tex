@@ -1,0 +1,117 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[CV, Reg \& AutoML]{DS: Cross-Validation, Regularization \& AutoML}
+\subtitle{AutoML: Basics}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+\maketitle
+
+\begin{frame}[c]{Problem of Hyperparameters}
+	
+	\begin{itemize}
+	    \item We have seen that algorithms have important hyperparameters
+	    \item Depending on your hyperparameter configuration, your model might learn only noise, will learn a constant model or maybe even achieve state-of-the-art performance 
+	    \item In fact, many ML algorithms are fairly brittle regarding their hyperparameter configuration
+	    \medskip
+	    \item Since we cannot directly learn the hyperparameter configuration from data, we have tune somehow differently
+	    \item Manual hyperparameter optimization?
+	    \begin{itemize}
+	        \item tedious, error-prone, time-consuming
+	        \item Requires years of expertise
+	    \end{itemize}
+	    \smallskip
+	    \item Simply choosing default settings?
+	    \begin{itemize}
+	        \item Developers of algorithms often tuned the hyperparameters on a limited set of datasets
+	        \item[$\leadsto$] might work well on your dataset or might fail
+	    \end{itemize}
+	    \item[$\leadsto$] Can we automate this process?
+	\end{itemize}
+	
+\end{frame}
+%-----------------------------------------------------------------------
+%----------------------------------------------------------------------
+\begin{frame}[c]{What are Hyperparameters in ML?}
+	
+	\begin{itemize}
+	    \item ...
+	\end{itemize}
+	
+\end{frame}
+%-----------------------------------------------------------------------
+%----------------------------------------------------------------------
+\begin{frame}[c]{What are Hyperparameters in ML?}
+	
+	\begin{itemize}
+	    \item Regularization strength
+	    \item Complexity of model (e.g., degree of polynomial)
+	    \smallskip
+	    \item Which regression model to use (e.g., lasso or ridge regression)
+	    \item Which data reduction technique to use (e.g., feature selection or PCA)
+	    \item Which feature normalization technique to use (e.g., standardization or min-max scaling)
+	    \smallskip
+	    \item Learning rate in Deep Learning
+	    \item Architecture of your neural network
+	    \item \ldots
+	\end{itemize}
+	
+	\bigskip
+	\alert{Warning:} The correct configuration of your hyperparameters depends on your dataset at hand.
+	
+\end{frame}
+%-----------------------------------------------------------------------
+%----------------------------------------------------------------------
+\begin{frame}[c]{Effect of Hyperparameter Optimization}
+	
+	\centering
+\includegraphics[width=0.63\textwidth]{09_cv_reg_auto/figure/image12.png}
+	
+\end{frame}
+%-----------------------------------------------------------------------
+\begin{frame}[c]{Grid Search vs. Random Search}
+
+\vspace{-1em}
+\begin{itemize}
+    \item Let's tune 2 hyperparameters 
+    \item Plotting the samples of hyperparameter configurations for grid search and random search
+    \item On each axis, we see the effect of each hyperparameter on the performance
+\end{itemize}
+
+\centering
+\includegraphics[width=.72\textwidth]{figure/grid_random.jpg}
+
+\footnotesize
+[\href{https://www.jmlr.org/papers/volume13/bergstra12a/bergstra12a.pdf}{Bergstra and Bengio 2012}]
+
+
+\end{frame}
+%-----------------------------------------------------------------------
+%-----------------------------------------------------------------------
+\begin{frame}[c]{Grid Search vs. Random Search}
+	
+\begin{itemize}
+    \item Grid Search:
+    \begin{itemize}
+        \item[+] Structured study
+        \item[-] Requires discretization (from an expert)
+        \item[-] Doesn't scale well to high dimensions
+        \item[-] Cannot be interrupted mid-way
+    \end{itemize}
+    \item Random Search
+    \begin{itemize}
+        \item[+/-] Less structured
+        \item[+] Works better if effective dimensionality is low 
+        \item[+] Better anytime behavior
+        \item[+] Easy to add more points later on
+        \item[-] Still very inefficient
+    \end{itemize}
+\end{itemize}
+\end{frame}
+%-----------------------------------------------------------------------
+
+\end{document}

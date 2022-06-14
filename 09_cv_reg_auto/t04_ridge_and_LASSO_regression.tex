@@ -1,0 +1,124 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[CV, Reg \& AutoML]{DS: Cross-Validation, Regularization \& AutoML}
+\subtitle{Ridge and LASSO Regression}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Ridge Regression}
+	    “Ridge Regression” is a term for the following specific combination of model, loss, and regularization:
+	    \begin{itemize}
+	        \item Linear Model: $\mathbb{\hat{Y}} = \mathbb{X}\hat{\bm\theta}$
+	        \item Loss: Squared loss (MSE)
+	        \item Regularization: $L^2$ regularization
+	    \end{itemize}
+	    The objective function we minimize for Ridge Regression is average squared loss, plus an added penalty:
+	    \begin{equation*}
+	        \hat{\bm{\theta}}_{ridge} \in \argmin_{\bm\theta}\frac{1}{n}||\mathbb{Y} - \mathbb{X}\bm{\theta}||_2^2 + \lambda \sum_{j=1}^d\bm{\theta}_i^2 
+	    \end{equation*}
+	\end{frame}
+	
+	
+	\begin{frame}{Ridge Regression}
+	    We can also express this objective slightly differently:
+	    \begin{equation*}
+	        \hat{\bm{\theta}}_{ridge} \in \argmin_{\bm\theta}\frac{1}{n}||\mathbb{Y} - \mathbb{X}\bm{\theta}||_2^2 + \lambda \sum_{j=1}^d\bm{\theta}_i^2 
+	    \end{equation*}
+	    
+	    \begin{equation*}
+	    	        \hat{\bm{\theta}}_{ridge} \in \argmin_{\bm\theta}\frac{1}{n}||\mathbb{Y} - \mathbb{X}\bm{\theta}||_2^2 + \lambda ||\bm{\theta}_i||^2_2 
+	        
+	    \end{equation*}
+	    $||\bm{\theta} ||^2_2$: $L^2$ norm of $\bm\theta$ (hence, $L^2$ regularization)\\
+	    \bigskip
+	    (The latter representation ignores the fact that we typically don’t regularize the intercept term.)
+	\end{frame}
+	
+	
+	\begin{frame}[c]{Ridge Regression}
+	    Ridge Regression has a closed form solution, conveniently:
+	    \begin{equation*}
+	        \hat{\bm\theta}_{ridge} = (\mathbb{X}^\intercal\mathbb{X} + n\lambda \bm{I})^{-1} \mathbb{X}^\intercal\mathbb{Y}
+	    \end{equation*}
+	   $\bm{I}$: Identity matrix\\[1em]
+	    Unlike OLS, there always exists a unique optimal parameter vector for Ridge Regression.\\[1em]
+	    
+	    \alert{Warning}: If you have too many features, inverting the matrix gets expensive and you want to use a numerical methods (such as gradient descent).
+
+	\end{frame}
+	
+	
+	\begin{frame}{LASSO  Regression}
+	    “LASSO Regression” is a term for the following specific combination of model, loss, and regularization:
+	    \begin{itemize}
+	        \item Linear Model: $\mathbb{\hat{Y}} = \mathbb{X}\hat{\bm\theta}$
+	        \item Loss: Squared loss (MSE)
+	        \item Regularization: \alert{$L^1$ regularization}
+	    \end{itemize}
+	    \bigskip
+	    The objective function we minimize for LASSO  Regression is average squared loss, plus an added penalty:
+	    \begin{equation*}
+	        \hat{\bm\theta}_{LASSO} \in \argmin_{\bm\theta}\frac{1}{n}||\mathbb{Y} - \mathbb{X}\bm{\theta}||_2^2 + \lambda \sum_{j=1}^d|\bm{\theta}_i|
+	    \end{equation*}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{LASSO  Regression}
+	    We can also express this objective slightly differently:
+	    \begin{equation*}
+	        \hat{\bm\theta}_{LASSO} \in \argmin_{\bm\theta}\frac{1}{n}||\mathbb{Y} - \mathbb{X}\bm{\theta}||_2^2 + \lambda \sum_{j=1}^d|\bm{\theta}_i|
+	    \end{equation*}
+	    
+	    \begin{equation*}
+	    	        \hat{\bm\theta}_{LASSO} \in \argmin_{\bm\theta}\frac{1}{n}||\mathbb{Y} - \mathbb{X}\bm{\theta}||_2^2 + \lambda ||\bm{\theta} ||_1
+	    \end{equation*}
+	    \bigskip
+	   
+	   Unfortunately, there is no closed-form solution for the optimal parameter vector for LASSO. We must use numerical methods (like gradient descent).
+
+	\end{frame}
+	
+	\begin{frame}{Fitting vs. Evaluating}
+	While we may use a regularized objective function to determine our model’s parameters, we still look at (root) mean squared error to evaluate our model’s performance.
+    
+    \begin{equation*}
+	        \hat{\bm{\theta}}_{ridge} \in \argmin_{\bm\theta}\frac{1}{n}||\mathbb{Y} - \mathbb{X}\bm{\theta}||_2^2 + \lambda \sum_{j=1}^d\bm{\theta}_i^2 
+    \end{equation*}
+    The regularization penalty is there for the purposes of model fitting only.
+    \begin{equation*}
+        RMSE = \sqrt{\frac{1}{n}\sum\limits_{i=1}^n(y_i - \mathbb{X}_i^\intercal\hat{\bm\theta}_{ridge})^2} = \sqrt{\frac{1}{n}||\mathbb{Y} - \mathbb{X}\hat{\bm\theta}_{ridge}||_2^2}
+    \end{equation*}
+	\end{frame}
+	
+	
+	\begin{frame}{Hyperparameters vs. Parameters}
+        \begin{itemize}
+            \item Facts about the world that we want to estimate
+            \begin{itemize}
+                \item Commonly denoted by $p, \theta, \theta_i$
+            \end{itemize}
+            \item Statistics are the estimators of these facts, based on our data
+            \begin{itemize}
+                \item called \alert{parameters of the model}
+                \item Commonly denoted by $\hat{p}, \hat{\theta}, \hat{\theta}_i$
+            \end{itemize}
+        \end{itemize}
+        \bigskip
+        \alert{Hyperparameters} are design choices we make in our modeling process that affect our model, but cannot not directly learned from the data
+
+        \begin{itemize}
+            \item Some also say that these are the \alert{parameters of the algorithm} 
+            \item Examples: regularization hyperparameter, degree of polynomial
+            \item Commonly denoted by $\lambda, \alpha, C$
+            \item[$\leadsto$] How can we determine good settings of the hyperparameters?
+        \end{itemize}
+        
+	\end{frame}
+\end{document}
