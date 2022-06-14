@@ -95,7 +95,7 @@
 	\begin{frame}[c]{A Constant Model}
 	    So which model is better for a Bernoulli distribution with $p=.5$? Model A or Model B?\\
 	    \bigskip
-	    \textbf{Model A:} Select a random number between $0$ and $1$. This is your estimate of p.\\
+	    \textbf{Model A:} Select a random number between $0$ and $1$. This is your estimate of p.\footnote{See \url{https://proofwiki.org/wiki/Variance_of_Continuous_Uniform_Distribution} for the derivation of the variance estimate.}\\
         \textbf{Model B:}: Select $.75$ as your estimate of p.\\
         \bigskip
         We can calculate the model risks directly. Note that the observation variance is 0.
@@ -104,7 +104,7 @@
                   Model A:\\
                   \bigskip
                   Model Bias = .5 - .5 = 0\\
-                  Model Variance = (1 - 0)$^2$ / 12 = 1/12\\
+                  Model Variance = (1 - 0)$^2$ / 12 = 1/12 \\
                   \bigskip
                   Risk = 0$^2$ + 1/12 = 1/12
             \end{column}
