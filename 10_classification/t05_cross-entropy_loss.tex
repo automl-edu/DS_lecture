@@ -1,8 +1,8 @@
 \documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
 \input{../latex_main/preamble}
 
-\title[Introduction]{DS: Logistic Regression, Part 1}
-\subtitle{Cross-entropy loss}
+\title[Cross Entropy Loss]{DS: Classification}
+\subtitle{LR: Cross Entropy Loss}
 
 \graphicspath{ {./figure/} }
 %\institute{}
@@ -13,17 +13,16 @@
 	\maketitle
 	\begin{frame}{Log loss}
 	    \begin{columns}
-	        \begin{column}{.4\textwidth}
+	        \begin{column}{.5\textwidth}
 	                Consider this new loss, called the (negative) log loss, for a single observation when the true y is equal to 1.\\
 	                \bigskip
 	                We can see that as our prediction gets further and further from 1, the loss approaches infinity (unlike squared loss, which maxed out at 1).
 	        \end{column}
 	        
 	        \begin{column}{.4\textwidth}
-	                \begin{figure}
+	                    
 	                    \centering
 	                    \includegraphics[scale=.5]{Bild18}
-	                \end{figure}
 	        \end{column}
 	    \end{columns}
 	\end{frame}
@@ -36,7 +35,7 @@
             \centering
             \includegraphics[scale=.33]{Bild19}
         \end{figure}
-	    Note: The logistic function never outputs 0 or 1 exactly, so there’s never actually 0 loss or infinite loss
+	    Note: The logistic function never outputs 0 or 1 exactly, so there’s never a loss of  0 or infinite 
 	\end{frame}
 	
 	\begin{frame}{Log loss}
@@ -70,7 +69,7 @@
 	\begin{frame}{Mean cross-entropy loss}
 	    The empirical risk for the logistic regression model when using cross-entropy loss is then
 	    \begin{align*}
-	        R(\theta) = -\frac{1}{n}\sum\limits_{i=1}^n(y_i\log (\sigma (\mathbb{X}_i^T\theta)) + (1 - y_i)\log (1 - \sigma (\mathbb{X}_i^T\theta)))
+	        R(\bm{\theta}) = -\frac{1}{n}\sum\limits_{i=1}^n(y_i\log (\sigma (\mathbb{X}_i^T\bm{\theta})) + (1 - y_i)\log (1 - \sigma (\mathbb{X}_i^T\bm{\theta})))
 	    \end{align*}
 	    Benefits over mean squared error for logistic regression:
 	    \begin{itemize}
@@ -92,7 +91,7 @@
 	
 	
 	\begin{frame}{Comparing loss surfaces}
-	  On the left, we have a plot of the MSE loss surface on our toy dataset from before.\\ On the right, we have a plot of the mean cross-entropy loss surface on the same dataset. 
+	  On the left, we have a plot of the MSE loss surface.\\ On the right, we have a plot of the mean cross-entropy loss surface on the same dataset. 
 
 	    \begin{figure}
 	        \centering
@@ -118,7 +117,7 @@
 	    \end{itemize}
 	    For logistic regression, we can use squared loss if we want to!
 	    \begin{itemize}
-	        \item Using squared loss and using cross-entropy loss will usually result in different  $\hat{\theta}$
+	        \item Using squared loss and using cross-entropy loss will usually result in different  $\hat{\bm{\theta}}$
 	        \begin{itemize}
 	            \item Different optimization problems, different solutions.
 	            \item  Constant model: absolute loss meant median, squared loss meant mean.

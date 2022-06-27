@@ -1,10 +1,10 @@
 \documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
 \input{../latex_main/preamble}
 
-\title[Introduction]{DS: Decision Trees}
-\subtitle{Basic Decision Tree Generation}
+\title[Pruning]{DS: Decision Trees}
+\subtitle{Tree Pruning}
 
-\graphicspath{ {./figure/} }
+\graphicspath{ {./figure_tree/} }
 %\institute{}
 
 
@@ -47,14 +47,29 @@
 	
 	\begin{frame}{Approach 2: Pruning}
 	    Approach 2: Let tree fully grow, then cut off less useful branches of the tree. For example, consider the highlighted branch below:
-	    \begin{itemize}
-	        \item Many rules that affect few points
-	        \item How can we avoid this?
-	    \end{itemize}
-	    \begin{figure}
-	        \centering
-	        \includegraphics[scale=.25]{Bild53}
-	    \end{figure}
+	    
+	    \begin{columns}
+	        
+	        \begin{column}{0.3\textwidth}
+	    
+	        \begin{itemize}
+	            \item Many rules that affect few points
+	            \item How can we avoid this?
+	        \end{itemize}
+	                
+	        \end{column}
+	        
+	        \begin{column}{0.7\textwidth}
+	        
+	            \centering
+	        \vspace{-2.3em}
+	        \includegraphics[scale=.33]{Bild53}
+	                
+	        \end{column}
+	        
+	    \end{columns}
+	    
+	        
 	\end{frame}
 	
 	
@@ -90,7 +105,7 @@
 	    
         Won’t discuss these in any great detail
         \begin{itemize}
-            \item There’s a completely different idea called a “random forest” that is more popular and IMO more beautiful
+            \item There’s a completely different idea called a “random forest” that is more effective
         \end{itemize}
 	\end{frame}
 \end{document}

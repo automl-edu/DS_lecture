@@ -4,7 +4,7 @@
 \title[Introduction]{DS: Decision Trees}
 \subtitle{Decision Trees and Overfitting}
 
-\graphicspath{ {./figure/} }
+\graphicspath{ {./figure_tree/} }
 %\institute{}
 
 
@@ -12,7 +12,7 @@
 	
 	\maketitle
 	\begin{frame}{Overfitting and Decision Trees}
-	    With the exception of samples that have the exact same data, we can always get 100\% accuracy. This should give us concern about possible overfitting\\
+	    With the exception of samples that have the exact same data, we can always get 100\% accuracy with decision trees. This should give us concern about possible overfitting.\\
 	    \bigskip
 	    Let’s see how bad things are by separating our data into train and test sets
 	    \begin{itemize}
@@ -26,9 +26,9 @@
 	\end{frame}
 	
 	\begin{frame}{Visualizing Our New Model}
-	   Comparing our model trained on 150 vs. 110 data points, we see slight differences in the generated model\\
+	   Comparing our model trained on 150 vs. 110 data points, we see differences in the generated model\\
 	    \begin{itemize}
-	        \item Naturally, both models get very high accuracy on the data that they use for training (100\% for non-overlapping points)
+	        \item Naturally, both models get very high accuracy on the data that they use for training\\ (100\% for non-overlapping points)
 	    \end{itemize}
 	    \begin{figure}
 	        \centering

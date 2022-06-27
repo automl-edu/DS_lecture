@@ -1,8 +1,8 @@
 \documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
 \input{../latex_main/preamble}
 
-\title[Introduction]{DS: Logistic Regression, Part 1}
-\subtitle{Regression vs. Classification}
+\title[Regression vs Classification]{DS: Classification}
+\subtitle{Regression vs Classification}
 
 \graphicspath{ {./figure/} }
 %\institute{}
@@ -18,9 +18,9 @@
 	        \item We determined optimal model parameters by minimizing some average loss, and (sometimes) an added regularization penalty.
 	    \end{itemize}
 	    \begin{equation*}
-	        \hat{y} = f_\theta (x) = x^T\theta
+	        \hat{y} = f_{\bm{\theta}} (\bm{x}) = \bm{x}^T\bm{\theta}
 	    \end{equation*}
-	    Remember, $x^T\theta = \theta_0 + \theta_1x_1 + \theta_2x_2 + ... + \theta_px_p$ 
+	    Remember, $\bm{x}^T\bm{\theta} = \bm{\theta}_0 + \bm{\theta}_1\bm{x}_1 + \bm{\theta}_2\bm{x}_2 + ... + \bm{\theta}_p\bm{x}_p$ 
 	\end{frame}
 	
 	
@@ -45,12 +45,9 @@
 	        \begin{itemize}
 	            \item Examples: Image labeling (cat, dog, car), next word in a sentence, etc.
 	        \end{itemize}
-	    \end{itemize}
-	    This is not the first time you are seeing classification!
-	    \begin{itemize}
-	        \item k-Nearest Neighbors was a classification technique you learned in Data 8.
+	        \item Multi-Label classification: more than one label for each observation
 	        \begin{itemize}
-	            \item Won’t cover it in Data 100.
+	            \item Example: Image labeling with more than one class in the image 
 	        \end{itemize}
 	    \end{itemize}
 	\end{frame}

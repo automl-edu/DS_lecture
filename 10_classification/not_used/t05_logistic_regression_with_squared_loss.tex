@@ -12,13 +12,13 @@
 	
 	\maketitle
 	\begin{frame}{Logistic regression with squared loss}
-	    To find   $\hat{\theta}$   so that we can make predictions, we need to choose a loss function. 
+	    To find   $\hat{\bm{\theta}}$   so that we can make predictions, we need to choose a loss function. 
         \begin{itemize}
             \item We can start with our old friend, squared loss.
             \item Doing so yields the following empirical risk:
         \end{itemize}
         \begin{equation*}
-            R(\theta) = \frac{1}{n}\sum\limits_{i=1}^n(y_i-\sigma (\mathbb{X}_i^T\theta))^2
+            R(\bm{\theta}) = \frac{1}{n}\sum\limits_{i=1}^n(y_i-\sigma (\mathbb{X}_i^T\bm{\bm{\theta}}))^2
         \end{equation*}
         
         Sometimes, this works fine (and it is actually still used in some applications). Other times...\\
@@ -33,9 +33,9 @@
 	        \begin{column}{.4\textwidth}
 	                The loss surface of MSE for a logistic regression model with a single slope plus an intercept often looks something like this.\\
 	                \bigskip
-	                If your initial guess for   $\hat{\theta}$  is way out in the flat yellow region, your numerical optimization routine can get stuck.
+	                If your initial guess for   $\hat{\bm{\theta}}$  is way out in the flat yellow region, your numerical optimization routine can get stuck.
 	                \begin{equation*}
-	                    \theta^{(t+1)} = \theta^{(t)} - \alpha\nabla_\theta R(\theta,\mathbb{X},\mathbb{Y})
+	                    \bm{\theta}^{(t+1)} = \bm{\theta}^{(t)} - \alpha\nabla_{\bm{\theta}} R(\bm{\theta},\mathbb{X},\mathbb{Y})
 	                \end{equation*}
 	                If the gradient is 0, your update rule will stop changing.
 	        \end{column}
@@ -52,7 +52,7 @@
 	
 	
 	\begin{frame}{Pitfalls of squared loss with logistic regression}
-	    On the left, we have a toy dataset (i.e. we’ve plotted the original data, y vs. x). On the right, we have a plot of the mean squared error of this dataset when fitting a single-feature logistic regression model, for different values of (i.$\theta$ the loss surface).
+	    On the left, we have a toy dataset (i.e. we’ve plotted the original data, $y$ vs. $x$). On the right, we have a plot of the mean squared error of this dataset when fitting a single-feature logistic regression model, for different values of (i.e. $\bm{\theta}$ the loss surface).
 	    \begin{figure}
 	        \centering
 	        \includegraphics[scale=.4]{Bild13}
@@ -61,7 +61,7 @@
 	
 	
 	\begin{frame}{Pitfalls of squared loss with logistic regression}
-	    On the left, we have a toy dataset (i.e. we’ve plotted the original data, y vs. x). On the right, we have a plot of the mean squared error of this dataset when fitting a single-feature logistic regression model, for different values of (i.$\theta$ the loss surface).
+	    On the left, we have a toy dataset (i.e. we’ve plotted the original data, y vs. x). On the right, we have a plot of the mean squared error of this dataset when fitting a single-feature logistic regression model, for different values of (i.$\bm{\theta}$ the loss surface).
 	    \begin{figure}
 	        \centering
 	        \includegraphics[scale=.4]{Bild14}

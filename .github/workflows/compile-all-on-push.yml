@@ -19,12 +19,7 @@ jobs:
             "08_bias_and_variance",
             "085_dim_red",
             "09_cv_reg_auto",
-            "19_logistic_regression,_part_1",
-            "20_decision_trees",
-            "20_logistic_regression,_classification",
-            "22_inference_for_modeling",
-            "26_conclusion",
-            "SQL_08",
+            "10_classification"
           ]
         mode: [
         #        "animation",
@@ -58,12 +53,7 @@ jobs:
             "08_bias_and_variance",
             "085_dim_red",
             "09_cv_reg_auto",
-            "19_logistic_regression,_part_1",
-            "20_decision_trees",
-            "20_logistic_regression,_classification",
-            "22_inference_for_modeling",
-            "26_conclusion",
-            "SQL_08",
+            "10_classification"
         ]
     steps:
       - uses: actions/checkout@v2

@@ -4,7 +4,7 @@
 \title[Introduction]{DS: Decision Trees}
 \subtitle{Basic Decision Tree Generation}
 
-\graphicspath{ {./figure/} }
+\graphicspath{ {./figure_tree/} }
 %\institute{}
 
 
@@ -19,7 +19,7 @@
 	\end{frame}
 	
 	\begin{frame}{Decision Tree Generation}
-	    In order to understand how to avoid overfitting, let’s first discuss how decision trees are created from data\\
+	    Let’s first discuss how decision trees are created from data\\
 	    \bigskip
 	    Traditional decision tree generation algorithm: 
 	    \begin{itemize}
@@ -121,81 +121,86 @@ Notes: A node that has only one type is called a “pure” node. A node that ha
 	
 	
 	\begin{frame}{Node Entropy}
+	
+	    \vspace{-2em}
 	    \begin{columns}
 	        \begin{column}{.5\textwidth}
+	        
 	                Let $p_c$ the proportion of data points in a node with label C.\\
 	                \bigskip
 	                For example, for the node at the top of the decision tree, $p_0$ = 34/110 = 0.31,\\
                     $p_1$ = 36/110 = 0.33, and $p_2$ = 40/110 = 0.36\\
                     \bigskip
-                    Define the entropy S of a node as:
+                    Define the entropy $S$ of a node as:
                     \begin{equation*}
                         S = -\sum\limits_c p_c\log_2p_c
                     \end{equation*}
-                    For example, S for the top node is:
-                    −0.31 log$_2$⁡0.31 − 0.33 log$_2$⁡0.33 − 0.36 log$_2$⁡0.36
-                    = 0.52 + 0.53 + 0.53 = 1.58
+                    For example, $S$ for the top node is:
+                    $−0.31 \log_2{⁡0.31} − 0.33 \log_2{⁡0.33} − 0.36 \log_2{⁡0.36}    = 0.52 + 0.53 + 0.53 = 1.58$
+                    
 	        \end{column}
 	        
 	        \begin{column}{.5\textwidth}
-	                \begin{figure}
+
 	                    \centering
 	                    \includegraphics[scale=.5]{Bild47}
-	                \end{figure}
+	                    
 	        \end{column}
 	    \end{columns}
 	\end{frame}
 	
 	
-	\begin{frame}{Test Your Understanding}
-	    What is p$_0$?
-	    \begin{figure}
-            \centering
-            \includegraphics[scale=.5]{Bild47}
-	   \end{figure}
-	   What is the entropy of the node on the left with [31, 4, 1] in each class?
-	   \begin{itemize}
-	       \item Try writing out an expression, or try to compute an exact value
-	   \end{itemize}
-	   \begin{equation*}
-            S = -\sum\limits_c p_c\log_2p_c
-        \end{equation*}
-	\end{frame}
+% 	\begin{frame}{Test Your Understanding}
+% 	    What is $p_0$?
+% 	    \begin{figure}
+%             \centering
+%             \includegraphics[scale=.5]{Bild47}
+% 	   \end{figure}
+% 	   What is the entropy of the node on the left with [31, 4, 1] in each class?
+% 	   \begin{itemize}
+% 	       \item Try writing out an expression, or try to compute an exact value
+% 	   \end{itemize}
+% 	   \begin{equation*}
+%             S = -\sum\limits_c p_c\log_2p_c
+%         \end{equation*}
+% 	\end{frame}
 	
 	
-	\begin{frame}{Test Your Understanding}
-	    \begin{columns}
-	        \begin{column}{.7\textwidth}
-	                What is the entropy of the node on the left with [31, 4, 1] in each class?
-	                \begin{itemize}
-	                    \item $p_0$ = 31/36 = 0.86, $p_1$ = 4/36 = 0.11, and $p_2$=1/36 = 0.028
-	                    \item S =  −0.86 log$_2$⁡0.86 
-	                    \begin{itemize}
-	                        \item 0.11 log$_2$⁡0.11 
-	                        \item 0.028 log$_2$⁡0.028 = 0.68
-	                    \end{itemize}
-	                \end{itemize}
-	                Define the entropy S of a node as:
-                    \begin{equation*}
-                        S = -\sum\limits_c p_c\log_2p_c
-                    \end{equation*}
-                    Can think of entropy as how unpredictable a node is:
-                    \begin{itemize}
-                        \item Low entropy means more predictable 
-                        \item High entropy means more unpredictable
-                    \end{itemize}
-	        \end{column}
+% 	\begin{frame}{Test Your Understanding}
+	
+% 	    \vspace{-2em}
+% 	    \begin{columns}
+% 	        \begin{column}{.7\textwidth}
+	            
+% 	                What is the entropy of the node on the left with [31, 4, 1] in each class?
+% 	                \begin{itemize}
+% 	                    \item $p_0$ = 31/36 = 0.86, $p_1$ = 4/36 = 0.11, and $p_2$=1/36 = 0.028
+% 	                    \item $S$ =  −0.86 log$_2$⁡0.86 
+% 	                    \begin{itemize}
+% 	                        \item 0.11 log$_2$⁡0.11 
+% 	                        \item 0.028 log$_2$⁡0.028 = 0.68
+% 	                    \end{itemize}
+% 	                \end{itemize}
+% 	                Define the entropy $S$ of a node as:
+%                     \begin{equation*}
+%                         S = -\sum\limits_c p_c\log_2p_c
+%                     \end{equation*}
+%                     Can think of entropy as how unpredictable a node is:
+%                     \begin{itemize}
+%                         \item Low entropy means more predictable 
+%                         \item High entropy means more unpredictable
+%                     \end{itemize}
+                    
+% 	        \end{column}
 	        
-	        \begin{column}{.3\textwidth}
-	                \begin{figure}
-	                    \centering
-	                    \includegraphics[scale=.35]{Bild47}
-	                \end{figure}
+% 	        \begin{column}{.3\textwidth}
+
+% 	                    \centering
+% 	                    \includegraphics[scale=.35]{Bild47}
 	                
-	                
-	        \end{column}
-	    \end{columns}
-	\end{frame}
+% 	        \end{column}
+% 	    \end{columns}
+% 	\end{frame}
 	
 	
 	\begin{frame}{Exploring Entropy}
@@ -203,10 +208,11 @@ Notes: A node that has only one type is called a “pure” node. A node that ha
 	        \begin{column}{.7\textwidth}
 	                Observations about entropy:
 	                \begin{itemize}
-	                    \item A node where all data are part of the same class has zero entropy \\ -1log$_2$1 = 0
-	                    \item A node where data are evenly split between two classes has entropy 1 \\−0.5 log$_2$⁡ 0.5 − 0.5 log$_2$⁡ 0.5= 1
-	                    \item A node where data are evenly split between 3 classes has entropy 1.58 \\3 × (−0.33 log$_2$⁡ 0.33) = 1.58
-	                    \item A node where data are evenly split into C classes has entropy log$_2$C \\ C × (−1/C log$_2$⁡ 1/C) = −log$_2$⁡ 1/C = log$_2$⁡ C
+	                    \item A node where all data are part of the same class has zero entropy \\ $-1 \log_2 1 = 0$
+	                    \item A node where data are evenly split between two classes has
+	                    entropy 1 \\$−0.5 \log_2{ 0.5} − 0.5\log_2{ 0.5}= 1$
+	                    \item A node where data are evenly split between 3 classes has entropy 1.58 \\$3 \cdot (−0.33 \log_2{ 0.33}) = 1.58$
+	                    \item A node where data are evenly split into C classes has entropy $\log_2{C}$ \\ $C \cdot (−1/C \log_{2}{⁡ 1/C}) = −\log_{2}{⁡ 1/C} = \log_{2}{⁡C}$
 	                \end{itemize}
 	        \end{column}
 	        
@@ -229,7 +235,7 @@ Notes: A node that has only one type is called a “pure” node. A node that ha
 	    \bigskip
 	    Suppose a given split results in two nodes X and Y with N1 and N2 total samples each. The loss of that split is given by:
 	    \begin{equation*}
-	        L=\frac{N_1S(X) + N_2S(Y)}{N_1 + N_2}
+	        \mathcal{L}=\frac{N_1S(X) + N_2S(Y)}{N_1 + N_2}
 	    \end{equation*}
 	\end{frame}
 	
@@ -238,7 +244,7 @@ Notes: A node that has only one type is called a “pure” node. A node that ha
 	    \begin{itemize}
 	        \item entropy([50, 46, 3]) = 1.16
 	        \item entropy([4, 47]) = 0.4
-	        \item Weighted average: 99/150 × 1.16 + 51/150 × 0.4 = 0.9
+	        \item Weighted loss: 99/150 × 1.16 + 51/150 × 0.4 = 0.9
 	    \end{itemize}
 	    
 	    \begin{figure}
@@ -253,7 +259,7 @@ Notes: A node that has only one type is called a “pure” node. A node that ha
 	    \begin{itemize}
 	        \item entropy([50, 9]) = 0.62
 	        \item entropy([41, 50]) = 0.99
-	        \item Weighted Average: 0.84: Better than split choice \#1!
+	        \item Weighted loss: 0.84: Better/smaller than split choice \#1!
 	    \end{itemize}
 	    
 	    \begin{figure}
@@ -268,7 +274,7 @@ Notes: A node that has only one type is called a “pure” node. A node that ha
 	    \begin{itemize}
 	        \item entropy([2, 50, 50]) = 1.12
 	        \item entropy([48]) = 0
-	        \item Weighted average: 0.76: Lower than split choice \#2!
+	        \item Weighted loss: 0.76: Lower than split choice \#2!
 
 	    \end{itemize}
 	    
@@ -284,7 +290,7 @@ Notes: A node that has only one type is called a “pure” node. A node that ha
 	    \begin{itemize}
 	        \item entropy([50, 50]) = 1
 	        \item entropy([50]) = 0
-	        \item Weighted average: 0.66: Lower than split choice \#3!
+	        \item Weighted loss: 0.66: Lower than split choice \#3!
 
 	    \end{itemize}
 	    
@@ -301,13 +307,11 @@ Notes: A node that has only one type is called a “pure” node. A node that ha
 	        \item All of the data starts in the root node
 	        \item Repeat until every node is either pure or unsplittable:
 	        \begin{itemize}
-	            \item Pick the best feature x and split value $\beta$ such that the loss of the resulting split is minimized, e.g. x = petal\_width, $\beta$ = 0.8 has loss 0.66
-	            \item Split data into two nodes, one where x < $\beta$ , and one where x ≥ $\beta$ 
+	            \item Pick the best feature $f_i$ and split value $\beta$ such that the loss of the resulting split is minimized, e.g. $f_i$ = petal\_width, $\beta$ = 0.8 has loss 0.66
+	            \item Split data into two nodes, one where $x < \beta$ , and one where $x \geq \beta$ 
 	        \end{itemize}
 	    \end{itemize}
 	    Notes: A node that has only one type is called a “pure” node. A node that has duplicate data that cannot be split is called “unsplittable” \\
-	    \bigskip
-        Let’s now turn our attention to avoiding overfitting
 
 	\end{frame}
 \end{document}

@@ -1,8 +1,8 @@
 \documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
 \input{../latex_main/preamble}
 
-\title[Introduction]{DS: Logistic Regression, Part 1}
-\subtitle{Deriving the logistic regression model}
+\title[LR: Derivation]{DS: Classification}
+\subtitle{Deriving Logistic Regression}
 
 \graphicspath{ {./figure/} }
 %\institute{}
@@ -84,7 +84,7 @@
 	        \text{odds(p)} = \frac{p}{1 - p}\hspace{1cm} \text{log-odds(p)} = \text{log}\left(\frac{p}{1 - p}\right)
 	    \end{equation*}
 	    
-	    For now, let’s let t denote our linear function (since log-odds is linear). Solving for p:
+	    For now, let’s denote $t$ as our linear function (since log-odds is linear). Solving for p:
 	    \begin{align*}
 	        &t = \text{log}\left(\frac{p}{1 - p}\right)\rightarrow \text{With logistic regression, we are always referring to log base e (“ln”).
 } \\
@@ -105,7 +105,6 @@
 	        &t = \text{log}\left(\frac{p}{1 - p}\right)\\
 	        &e^t = \frac{p}{1 - p}\\
 	        &e^t - pe^t = p\\
-	        &p = \frac{e^t}{1 + e^t} = \frac{1}{1 + e^{-t}} \rightarrow \text{This is called the logistic function, } \sigma (t)
 	    \end{align*}
 	\end{frame}
 	
@@ -114,20 +113,20 @@
 	\begin{frame}{Arriving at the logistic regression model}
 	    We know how to model linear functions quite well.\\
 	    \begin{itemize}
-	        \item We can substitute          $t = x^T\theta $           , since t was just a placeholder.
+	        \item We can substitute          $t = \bm{x}^\intercal\bm{\theta} $           , since t was just a placeholder.
 	    \end{itemize}
 	    \begin{equation*}
-	        p = \frac{1}{1 + e^-t} = \sigma (t)
+	        p = \frac{1}{1 + e^{-t}} = \sigma (t)
 	    \end{equation*}
 	    p represents the probability of belonging to class 1.
 	    \begin{itemize}
-	        \item We are modeling          $P(Y=1|x)$.
+	        \item We are modeling          $P(Y=1|\bm{x})$.
 	    \end{itemize}
 	    Putting this all together:
 	    \begin{equation*}
-	        P(Y=1|x) = \frac{1}{1 + e^{-x^T\theta}} = \sigma(x^T\theta)
+	        P(Y=1|\bm{x}) = \frac{1}{1 + e^{-\bm{x}^\intercal\bm{\theta}}} = \sigma(\bm{x}^\intercal\bm{\theta})
 	    \end{equation*}
-	    Looks just like the linear regression model, with a $\sigma$() wrapped around it.
+	    Looks just like the linear regression model, with a $\sigma()$ wrapped around it.
 We call logistic regression a generalized linear model, since it is a non-linear transformation of a linear model.
 
 	\end{frame}

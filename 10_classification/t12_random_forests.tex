@@ -1,27 +1,27 @@
 \documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
 \input{../latex_main/preamble}
 
-\title[Introduction]{DS: Decision Trees}
+\title[Random Forest]{DS: Decision Trees}
 \subtitle{Random Forests}
 
-\graphicspath{ {./figure/} }
+\graphicspath{ {./figure_tree/} }
 %\institute{}
 
 
 \begin{document}
 	
 	\maketitle
-	\begin{frame}{Random Forests: Harnessing Variance}
+	\begin{frame}[c]{Random Forests: Harnessing Variance}
 	    \begin{columns}
 	        \begin{column}{.5\textwidth}
-	                As we’ve seen, fully-grown decision trees will almost always overfit data
+	                Fully-grown decision trees will almost always overfit data
 	                \begin{itemize}
 	                    \item Low model bias, high model variance
 	                    \item In other words, small changes in dataset will result in very different decision tree
 	                    \item Example: Two models on the right trained on different subsets of the same data
 	                \end{itemize}
 	                
-	                Random Forest Idea: Build many decision trees and have them vote
+	                \alert{Random Forest Idea:} Build many decision trees and have them vote
 	        \end{column}
 	        
 	        \begin{column}{.5\textwidth}
@@ -34,7 +34,7 @@
 	\end{frame}
 	
 	
-	\begin{frame}{Random Forests: Harnessing Variance}
+	\begin{frame}[c]{Random Forests: Harnessing Variance}
 	    \begin{columns}
 	        \begin{column}{.5\textwidth}
 	                What do we mean by vote?
@@ -58,7 +58,7 @@
 	    \end{columns}
 	\end{frame}
 	
-	\begin{frame}{Building Many Trees}
+	\begin{frame}[c]{Building Many Trees}
 	    Big fundamental problem: We only have one training set\\
 	    \bigskip
 	    How can we build many trees using one training set?
@@ -67,18 +67,19 @@
 	
 	
 	
-	\begin{frame}{Bagging}
+	\begin{frame}[c]{Bagging}
 	    Bagging: Short for Bootstrap AGGregatING
 	    \begin{itemize}
 	        \item Generate bootstrap resamples of training data
 	        \item Fit one model for each resample
 	        \item Final model = average predictions of each small model
-	        \item Invented by Leo Breiman in 1994 (Berkeley Statistics!)
+	        \item By Leo Breiman in 1994
+	        \item Still very well-known model
 	    \end{itemize}
 
 	\end{frame}
 	
-	\begin{frame}{Random Forests}
+	\begin{frame}[c]{Random Forests}
 	    Bagging often isn’t enough to reduce model variance!
 	    \begin{itemize}
 	        \item Decision trees often look very similar to each other
@@ -92,7 +93,7 @@
 	\end{frame}
 	
 	
-	\begin{frame}{Random Forests}
+	\begin{frame}[c]{Random Forests}
 	    \begin{itemize}
 	        \item Bagging often isn’t enough to reduce model variance!
 	        \begin{itemize}
@@ -102,31 +103,32 @@
 	        \end{itemize}
 	        \item Idea: Only use a sample of m features at each split
 	        \begin{itemize}
-	            \item Usually m = sqrt(p) for decision trees used for classification
+	            \item Usually $m = \sqrt{p}$ for decision trees used for classification\footnote{Actually a hyperparameter that can be tuned!}
 	            \item Here p is the number of features
 	        \end{itemize}
 	        \item Algorithm creates individual trees, each overfit in a different way
 	        \begin{itemize}
-	            \item The hope is that the the overall forest has low variance
+	            \item The hope is that the overall forest has low variance
 	        \end{itemize}
 	    \end{itemize}
 	\end{frame}
 	
-	\begin{frame}{Random Forests Algorithm}
+	\begin{frame}[c]{Random Forests Algorithm Outline}
 	    \begin{itemize}
-	        \item Bootstrap training data T times. For each resample, fit a decision tree by doing the following:
+	        \item Bootstrap training data $T$ times.\footnote{Again a hyperparameter!} For each resample, fit a decision tree $t_i$ by doing the following:
 	        \begin{itemize}
 	            \item Start with data in one node. Until all nodes pure:
-	            \item Pick an impure node
-	            \item Pick a random subset of m features. Pick the best feature x and split value $\beta$ such that the loss of the resulting split is minimized, e.g. x = petal\_width, $\beta$ = 0.8 has loss 0.66
-	            \item Split data into two nodes, one where x < $\beta$, and one where x ≥ $\beta$
+	            \begin{itemize}
+	                \item Pick an impure node
+	                \item Pick a random subset of m features. Pick the best feature x and split value $\beta$ such that the loss of the    resulting split is minimized, e.g. x = petal\_width, $\beta$ = 0.8 has loss 0.66
+	                \item Split data into two nodes, one where x < $\beta$, and one where x ≥ $\beta$
+	            \end{itemize}
 	        \end{itemize}
-	        \item To predict, ask the T decision trees for their predictions and take majority vote
+	        \item To predict, ask the $T$ decision trees for their predictions and take majority vote
 	    \end{itemize}
-	    This approach has two hyperparameters T and m
 	\end{frame}
 	
-	\begin{frame}{Avoiding Overfitting with Heuristics}
+	\begin{frame}[c]{Avoiding Overfitting with Heuristics}
 	    We’ve seen many approaches to avoid overfitting decision trees
 	    \begin{itemize}
 	        \item Preventing growth
@@ -143,7 +145,7 @@
 	\end{frame}
 	
 	
-	\begin{frame}{Why Random Forests?}
+	\begin{frame}[c]{Why Random Forests?}
 	    \begin{itemize}
 	        \item Versatile: does both regression and classification
 	        \item Invariant to feature scaling and translation
