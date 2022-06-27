@@ -1,10 +1,10 @@
 \documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
 \input{../latex_main/preamble}
 
-\title[Introduction]{DS: Decision Trees}
+\title[Summary]{DS: Decision Trees}
 \subtitle{Beyond Decision Trees for Classification}
 
-\graphicspath{ {./figure/} }
+\graphicspath{ {./figure_tree/} }
 %\institute{}
 
 
@@ -14,24 +14,19 @@
 	\begin{frame}{Trees for Regression}
 	    \begin{columns}
 	    \begin{column}{.5\textwidth}
-	        In earlier lectures we saw how we could use a logistic regression model for classification
-            \begin{itemize}
-                \item This lecture: We saw decision trees as an alternative technique for classification
-            \end{itemize}
-            \bigskip
-            We could do the same exercise for regression
-            \begin{itemize}
+	    
+	        \begin{itemize}
+	            \item We saw how we could use a logistic regression model for classification
+                \item We could do the same exercise for regression
                 \item Rather than using a linear model, we could build a regression tree
             \end{itemize}
         \end{column}
 	    
         \begin{column}{.5\textwidth}
             
-        
-	        \begin{figure}
 	            \centering
 	            \includegraphics[scale=.4]{Bild58}
-	        \end{figure}
+
 	   \end{column}
 	    \end{columns}
 	\end{frame}
@@ -39,7 +34,7 @@
 	
 	
 	\begin{frame}{Summary}
-	    Decision trees provide an alternate non-linear framework for classification and regression
+	    Decision trees provide an alternative non-linear framework for classification and regression
 	    \begin{itemize}
 	        \item The underlying principle is fundamentally different
 	        \item Decision boundaries can be more complex
@@ -50,10 +45,7 @@
 	    \begin{itemize}
 	        \item Hard constraints
 	        \item Pruning rules
-	        \item Random forests
-	        \begin{itemize}
-	            \item Very interesting application of bootstrapping
-	        \end{itemize}
+	        \item Boostrapping (random forest)
 	    \end{itemize}
 	\end{frame}
 	
@@ -65,15 +57,12 @@
 	        \item Nearest neighbors
 	        \item Support vector machines
 	        \item Bayes Nets
-	        \item Perceptrons
-	        \begin{itemize}
-	            \item Neural networks / deep learning
-	        \end{itemize}
-	        \item And many many many many more
+            \item Neural networks / deep learning
+	        \item And many many many many more $\leadsto$ 100+ more!
 	    \end{itemize}
-	    Machine learning classes will go over these ideas in more detail
-	    \begin{itemize}
-	        \item How they work (and the tradeoffs for using them) are beyond our class
-	    \end{itemize}
+	    
+	    \bigskip
+	    
+	    $\leadsto$ AutoML can even be used to selected between all of them ;-)
 	\end{frame}
 \end{document}

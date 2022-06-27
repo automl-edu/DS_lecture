@@ -33,11 +33,11 @@
 
     \vspace{-1em}
     \begin{itemize}
-        \item Let's assume that we fit $m$ trees $\hat{F}_m$ already
+        \item Let's assume that we fitted $m$ trees $\hat{F}_m$ already
         \item All of these together provide a prediction for a given input:
         $$ \hat{F}_m(\bm{x}_i) = \hat{y}_i $$
         \smallskip
-        \item The model will now be off from the true label to a certain degree
+        \item The model will now be off from the true label $y_i$ to a certain degree
         $$e_i = y_i - \hat{F}_m(\bm{x}_i)$$
         \item Remember: residuals!
         \smallskip
@@ -59,7 +59,7 @@
         $$F_0 = \argmin_{\gamma} \sum \mathcal{L}(y_i, \gamma) $$
         \item Extend the ensemble by a base model correcting for the residuals -- recursive definition!
         
-        $$ F_m (\bm{x}) = F_{m-1}(\bm{x}) + \argmin_{h_m} \left[ \sum_i \mathcal{L}(y_i, F_{m-1}(\bm{x}_i) + f_m(\bm{x}_i) \right] $$
+        $$ F_m (\bm{x}) = F_{m-1}(\bm{x}) + \argmin_{h_m} \left[ \gamma_m \sum_i \mathcal{L}(y_i, F_{m-1}(\bm{x}_i) + f_m(\bm{x}_i) \right] $$
     \end{itemize}
 
 	\end{frame}
@@ -67,13 +67,34 @@
 	\begin{frame}[c]{Learning how to boost (cont'd)}
 
     \vspace{-1em}
+    $$ F_m (\bm{x}) = F_{m-1}(\bm{x}) + \argmin_{h_m} \left[ \sum_i \mathcal{L}(y_i, F_{m-1}(\bm{x}_i) + f_m(\bm{x}_i) \right] $$
     \begin{itemize}
-        
-        $$ F_m (\bm{x}) = F_{m-1}(\bm{x}) + \argmin_{h_m} \left[ \sum_i \mathcal{L}(y_i, F_{m-1}(\bm{x}_i) + f_m(\bm{x}_i) \right] $$
         \item[$\leadsto$] that would be an infeasible optimization problem
         \item[$\leadsto$] take a step in the steepest direction (steepest descent) of this minimization problem:
         $$ F_m(x) = F_{m-1}(\bm{x}) - \gamma \sum_i \nabla_{F_{m-1}} \mathcal{L}(y_i, F_{m-1}(\bm{x_i})) $$
         \item where $\gamma$ is the step length
+    \end{itemize}
+
+	\end{frame}
+	
+	\begin{frame}[c]{Practical Considerations}
+
+    \begin{itemize}
+        \item Base models should be very shallow models, e.g,, decisions trees with a single split
+        \smallskip
+        \item Learning rate $\gamma_m$ decides how many trees you need to change the predictions
+        \begin{itemize}
+            \item too large $\gamma$ will lead to unstable learning
+            \item too small $\gamma$ will lead to very slow learning and large models
+            \item[$\leadsto$] often between $0.3$ and $0.1$ $\leadsto$ better to tune it explicitly (e.g., with Bayesian Optimization)
+        \end{itemize}
+        \smallskip
+        \item One of the most robust and well-performing ML models for tabular data
+        \begin{itemize}
+            \item Nevertheless, good feature engineering and preprocessing can be crucial
+        \end{itemize}
+        \smallskip
+        \item XGBoost is one of the most well-known libraries for gradient-boosting trees:\\ \url{https://xgboost.readthedocs.io/en/stable/index.html}
     \end{itemize}
 
 	\end{frame}
