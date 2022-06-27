@@ -20,7 +20,7 @@
 	    \end{itemize}
 	    The objective function we minimize for Ridge Regression is average squared loss, plus an added penalty:
 	    \begin{equation*}
-	        \hat{\bm{\theta}}_{ridge} \in \argmin_{\bm\theta}\frac{1}{n}||\mathbb{Y} - \mathbb{X}\bm{\theta}||_2^2 + \lambda \sum_{j=1}^d\bm{\theta}_i^2 
+	        \hat{\bm{\theta}}_{ridge} \in \argmin_{\bm\theta}\frac{1}{n}||\mathbb{Y} - \mathbb{X}\bm{\theta}||_2^2 + \lambda \sum_{j=1}^d\bm{\theta}_j^2 
 	    \end{equation*}
 	\end{frame}
 	
@@ -28,11 +28,11 @@
 	\begin{frame}{Ridge Regression}
 	    We can also express this objective slightly differently:
 	    \begin{equation*}
-	        \hat{\bm{\theta}}_{ridge} \in \argmin_{\bm\theta}\frac{1}{n}||\mathbb{Y} - \mathbb{X}\bm{\theta}||_2^2 + \lambda \sum_{j=1}^d\bm{\theta}_i^2 
+	        \hat{\bm{\theta}}_{ridge} \in \argmin_{\bm\theta}\frac{1}{n}||\mathbb{Y} - \mathbb{X}\bm{\theta}||_2^2 + \lambda \sum_{j=1}^d\bm{\theta}_j^2 
 	    \end{equation*}
 	    
 	    \begin{equation*}
-	    	        \hat{\bm{\theta}}_{ridge} \in \argmin_{\bm\theta}\frac{1}{n}||\mathbb{Y} - \mathbb{X}\bm{\theta}||_2^2 + \lambda ||\bm{\theta}_i||^2_2 
+	    	        \hat{\bm{\theta}}_{ridge} \in \argmin_{\bm\theta}\frac{1}{n}||\mathbb{Y} - \mathbb{X}\bm{\theta}||_2^2 + \lambda ||\bm{\theta}||^2_2 
 	        
 	    \end{equation*}
 	    $||\bm{\theta} ||^2_2$: $L^2$ norm of $\bm\theta$ (hence, $L^2$ regularization)\\
@@ -64,7 +64,7 @@
 	    \bigskip
 	    The objective function we minimize for LASSO  Regression is average squared loss, plus an added penalty:
 	    \begin{equation*}
-	        \hat{\bm\theta}_{LASSO} \in \argmin_{\bm\theta}\frac{1}{n}||\mathbb{Y} - \mathbb{X}\bm{\theta}||_2^2 + \lambda \sum_{j=1}^d|\bm{\theta}_i|
+	        \hat{\bm\theta}_{LASSO} \in \argmin_{\bm\theta}\frac{1}{n}||\mathbb{Y} - \mathbb{X}\bm{\theta}||_2^2 + \lambda \sum_{j=1}^d|\bm{\theta}_j|
 	    \end{equation*}
 	\end{frame}
 	
@@ -73,7 +73,7 @@
 	\begin{frame}{LASSO  Regression}
 	    We can also express this objective slightly differently:
 	    \begin{equation*}
-	        \hat{\bm\theta}_{LASSO} \in \argmin_{\bm\theta}\frac{1}{n}||\mathbb{Y} - \mathbb{X}\bm{\theta}||_2^2 + \lambda \sum_{j=1}^d|\bm{\theta}_i|
+	        \hat{\bm\theta}_{LASSO} \in \argmin_{\bm\theta}\frac{1}{n}||\mathbb{Y} - \mathbb{X}\bm{\theta}||_2^2 + \lambda \sum_{j=1}^d|\bm{\theta}_j|
 	    \end{equation*}
 	    
 	    \begin{equation*}
@@ -88,10 +88,16 @@
 	\begin{frame}{Fitting vs. Evaluating}
 	While we may use a regularized objective function to determine our model’s parameters, we still look at (root) mean squared error to evaluate our model’s performance.
     
+    \alert{Training:}
+    
     \begin{equation*}
-	        \hat{\bm{\theta}}_{ridge} \in \argmin_{\bm\theta}\frac{1}{n}||\mathbb{Y} - \mathbb{X}\bm{\theta}||_2^2 + \lambda \sum_{j=1}^d\bm{\theta}_i^2 
+	        \hat{\bm{\theta}}_{ridge} \in \argmin_{\bm\theta}\frac{1}{n}||\mathbb{Y} - \mathbb{X}\bm{\theta}||_2^2 + \lambda \sum_{j=1}^d\bm{\theta}_j^2 
     \end{equation*}
     The regularization penalty is there for the purposes of model fitting only.
+    
+    \bigskip
+    \alert{Validation or Test:}
+    
     \begin{equation*}
         RMSE = \sqrt{\frac{1}{n}\sum\limits_{i=1}^n(y_i - \mathbb{X}_i^\intercal\hat{\bm\theta}_{ridge})^2} = \sqrt{\frac{1}{n}||\mathbb{Y} - \mathbb{X}\hat{\bm\theta}_{ridge}||_2^2}
     \end{equation*}
@@ -102,7 +108,7 @@
         \begin{itemize}
             \item Facts about the world that we want to estimate
             \begin{itemize}
-                \item Commonly denoted by $p, \theta, \theta_i$
+                \item Commonly denoted by $p^*, \theta^*, \theta^*_i$
             \end{itemize}
             \item Statistics are the estimators of these facts, based on our data
             \begin{itemize}

@@ -439,10 +439,11 @@
 \end{itemize}
 
 \begin{equation}
-    \alpha_{\text{UCB}} = \mu + \kappa \sigma
+    \alpha_{\text{UCB}} (\conf) = \mu(\conf) + \kappa \sigma(\conf)
 \end{equation}
 
-with $\mu$ being the posterior mean and $\sigma$ the posterior variance
+with $\mu$ being the posterior mean and $\sigma$ the posterior variance.
+$\kappa$ is a hyper-hyperparameter controlling the exploration-exploitation tradeoff.
 
 \end{frame}
 
