@@ -56,10 +56,10 @@
         
         $$ \hat{F}(\bm{x}) = \sum_{m=1}^{M} \gamma_m \hat{f}_m(\bm{x}) + c $$
         \item Let's start with fitting a first constant base model on all training data
-        $$F_0 = \argmin_{\gamma} \sum \mathcal{L}(y_i, \gamma) $$
+        $$F_0 \in \argmin_{\gamma} \sum \mathcal{L}(y_i, \gamma) $$
         \item Extend the ensemble by a base model correcting for the residuals -- recursive definition!
         
-        $$ F_m (\bm{x}) = F_{m-1}(\bm{x}) + \argmin_{h_m} \left[ \gamma_m \sum_i \mathcal{L}(y_i, F_{m-1}(\bm{x}_i) + f_m(\bm{x}_i) \right] $$
+        $$ F_m (\bm{x}) = F_{m-1}(\bm{x}) + \argmin_{h_m} \left[ \gamma_m \sum_i \mathcal{L}(y_i, F_{m-1}(\bm{x}_i) + f_m(\bm{x}_i)) \right] $$
     \end{itemize}
 
 	\end{frame}
@@ -67,7 +67,7 @@
 	\begin{frame}[c]{Learning how to boost (cont'd)}
 
     \vspace{-1em}
-    $$ F_m (\bm{x}) = F_{m-1}(\bm{x}) + \argmin_{h_m} \left[ \sum_i \mathcal{L}(y_i, F_{m-1}(\bm{x}_i) + f_m(\bm{x}_i) \right] $$
+    $$ F_m (\bm{x}) = F_{m-1}(\bm{x}) + \argmin_{h_m} \left[ \sum_i \mathcal{L}(y_i, F_{m-1}(\bm{x}_i) + f_m(\bm{x}_i)) \right] $$
     \begin{itemize}
         \item[$\leadsto$] that would be an infeasible optimization problem
         \item[$\leadsto$] take a step in the steepest direction (steepest descent) of this minimization problem:

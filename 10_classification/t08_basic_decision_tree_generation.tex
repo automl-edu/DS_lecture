@@ -19,7 +19,7 @@
 	\end{frame}
 	
 	\begin{frame}{Decision Tree Generation}
-	    Let’s first discuss how decision trees are created from data\\
+	    Let’s discuss how decision trees are created from data\\
 	    \bigskip
 	    Traditional decision tree generation algorithm: 
 	    \begin{itemize}
@@ -31,8 +31,11 @@
 	        \end{itemize}
 	    \end{itemize}
 	    
-	    
-Notes: A node that has only one type is called a “pure” node. A node that has duplicate data that cannot be split is called “unsplittable”.
+Notes: 
+\begin{itemize}
+    \item A node that has only one class is called a “\alert{pure}” node.
+    \item A node that has duplicate data that cannot be split is called “\alert{unsplittable}”.
+\end{itemize}
 
 	\end{frame}
 	
@@ -98,7 +101,7 @@ Notes: A node that has only one type is called a “pure” node. A node that ha
 	    \begin{itemize}
 	        \item  Equivalently: Which horizontal or vertical line do we want to draw?
 	    \end{itemize}
-	    We need some sort of rigorous definition for a good split
+	    \alert{We need some sort of rigorous definition for a good split.}
 	    \begin{figure}
 	        \centering
 	        \includegraphics[scale=.4]{Bild45}
@@ -111,7 +114,7 @@ Notes: A node that has only one type is called a “pure” node. A node that ha
 	    \begin{itemize}
 	        \item  Equivalently: Which horizontal or vertical line do we want to draw?
 	    \end{itemize}
-	    We need some sort of rigorous definition for a good split
+	   \alert{We need some sort of rigorous definition for a good split.}
 	    \begin{figure}
 	        \centering
 	        \includegraphics[scale=.4]{Bild46}
@@ -136,7 +139,7 @@ Notes: A node that has only one type is called a “pure” node. A node that ha
                         S = -\sum\limits_c p_c\log_2p_c
                     \end{equation*}
                     For example, $S$ for the top node is:
-                    $−0.31 \log_2{⁡0.31} − 0.33 \log_2{⁡0.33} − 0.36 \log_2{⁡0.36}    = 0.52 + 0.53 + 0.53 = 1.58$
+                    $-0.31 \log_2  0.31 - 0.33 \log_2 0.33 - 0.36 \log_2 0.36 = 0.52 + 0.53 + 0.53 = 1.58$
                     
 	        \end{column}
 	        
@@ -208,11 +211,12 @@ Notes: A node that has only one type is called a “pure” node. A node that ha
 	        \begin{column}{.7\textwidth}
 	                Observations about entropy:
 	                \begin{itemize}
-	                    \item A node where all data are part of the same class has zero entropy \\ $-1 \log_2 1 = 0$
-	                    \item A node where data are evenly split between two classes has
-	                    entropy 1 \\$−0.5 \log_2{ 0.5} − 0.5\log_2{ 0.5}= 1$
-	                    \item A node where data are evenly split between 3 classes has entropy 1.58 \\$3 \cdot (−0.33 \log_2{ 0.33}) = 1.58$
-	                    \item A node where data are evenly split into C classes has entropy $\log_2{C}$ \\ $C \cdot (−1/C \log_{2}{⁡ 1/C}) = −\log_{2}{⁡ 1/C} = \log_{2}{⁡C}$
+	                    \item A node where all data are part of the \alert{same class} has zero entropy \\ $-1 \log_2 1 = 0$
+	                    \item A node where data are \alert{evenly split between two classes} has
+	                    entropy 1 \\$-0.5 \log_2{ 0.5} - 0.5\log_2{ 0.5}= 1$
+	                    \item A node where data are \alert{evenly split between 3 classes} has entropy 1.58 \\$3 \cdot (-0.33 \log_2{ 0.33}) = 1.58$
+	                    \item A node where data are \alert{evenly split into C classes} has entropy $\log_2{C}$ \\ 
+	                    $C \cdot (-1 /C \log_2 1/C) = - \log_2 1/C = \log_2 C$
 	                \end{itemize}
 	        \end{column}
 	        
@@ -231,11 +235,15 @@ Notes: A node that has only one type is called a “pure” node. A node that ha
 	
 	
 	\begin{frame}[c]{Weighted Entropy as a Loss Function}
-	    We can use Weighted Entropy as a loss function in helping us decide which split to take\\
-	    \bigskip
-	    Suppose a given split results in two nodes X and Y with N1 and N2 total samples each. The loss of that split is given by:
+	
+	    \begin{itemize}
+	        \item Idea: If there are more points in one of the leaf nodes, it should have a higher weight for the loss.
+	        \item[$\leadsto$] We can use \alert{Weighted Entropy} as a loss function in helping us decide which split to take.
+	        \item Suppose a given split results in two nodes $X_1$ and $X_2$ with $N_1$ and $N_2$ total samples each.\\ The loss of that split is given by:
+	    \end{itemize}
+	    
 	    \begin{equation*}
-	        \mathcal{L}=\frac{N_1S(X) + N_2S(Y)}{N_1 + N_2}
+	        \mathcal{L}=\frac{N_1S(X_1) + N_2S(X_2)}{N_1 + N_2}
 	    \end{equation*}
 	\end{frame}
 	
@@ -244,7 +252,7 @@ Notes: A node that has only one type is called a “pure” node. A node that ha
 	    \begin{itemize}
 	        \item entropy([50, 46, 3]) = 1.16
 	        \item entropy([4, 47]) = 0.4
-	        \item Weighted loss: 99/150 × 1.16 + 51/150 × 0.4 = 0.9
+	        \item Weighted loss: $99/150 \cdot 1.16 + 51/150 \cdot 0.4 = 0.9$
 	    \end{itemize}
 	    
 	    \begin{figure}
@@ -259,7 +267,7 @@ Notes: A node that has only one type is called a “pure” node. A node that ha
 	    \begin{itemize}
 	        \item entropy([50, 9]) = 0.62
 	        \item entropy([41, 50]) = 0.99
-	        \item Weighted loss: 0.84: Better/smaller than split choice \#1!
+	        \item Weighted loss: 0.84: \alert{Better/smaller than split choice \#1!}
 	    \end{itemize}
 	    
 	    \begin{figure}
@@ -274,7 +282,7 @@ Notes: A node that has only one type is called a “pure” node. A node that ha
 	    \begin{itemize}
 	        \item entropy([2, 50, 50]) = 1.12
 	        \item entropy([48]) = 0
-	        \item Weighted loss: 0.76: Lower than split choice \#2!
+	        \item Weighted loss: 0.76: \alert{Lower than split choice \#2!}
 
 	    \end{itemize}
 	    
@@ -290,7 +298,7 @@ Notes: A node that has only one type is called a “pure” node. A node that ha
 	    \begin{itemize}
 	        \item entropy([50, 50]) = 1
 	        \item entropy([50]) = 0
-	        \item Weighted loss: 0.66: Lower than split choice \#3!
+	        \item Weighted loss: 0.66: \alert{Lower than split choice \#3!}
 
 	    \end{itemize}
 	    
@@ -301,17 +309,16 @@ Notes: A node that has only one type is called a “pure” node. A node that ha
 	\end{frame}
 	
 	
-	\begin{frame}{Decision Tree Generation}
+	\begin{frame}[c]{Decision Tree Generation}
 	    Traditional decision tree generation algorithm: 
 	    \begin{itemize}
 	        \item All of the data starts in the root node
 	        \item Repeat until every node is either pure or unsplittable:
 	        \begin{itemize}
-	            \item Pick the best feature $f_i$ and split value $\beta$ such that the loss of the resulting split is minimized, e.g. $f_i$ = petal\_width, $\beta$ = 0.8 has loss 0.66
+	            \item Pick the best feature $f_i$ and split value $\beta$ such that the loss of the resulting split is minimized,\\ e.g. $f_i$ = petal\_width, $\beta$ = 0.8 has loss 0.66
 	            \item Split data into two nodes, one where $x < \beta$ , and one where $x \geq \beta$ 
 	        \end{itemize}
 	    \end{itemize}
-	    Notes: A node that has only one type is called a “pure” node. A node that has duplicate data that cannot be split is called “unsplittable” \\
 
 	\end{frame}
 \end{document}

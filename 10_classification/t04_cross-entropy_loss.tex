@@ -14,7 +14,7 @@
 	\begin{frame}{Log loss}
 	    \begin{columns}
 	        \begin{column}{.5\textwidth}
-	                Consider this new loss, called the (negative) log loss, for a single observation when the true y is equal to 1.\\
+	                Consider this new loss, called the (negative) log loss, for a single observation\\ \alert{when the true $y$ is equal to $1$.}\\
 	                \bigskip
 	                We can see that as our prediction gets further and further from 1, the loss approaches infinity (unlike squared loss, which maxed out at 1).
 	        \end{column}
@@ -29,14 +29,14 @@
 	
 	
 	
-	\begin{frame}{Log loss}
-	    Let’s look at some losses in particular:
-        \begin{figure}
-            \centering
-            \includegraphics[scale=.33]{Bild19}
-        \end{figure}
-	    Note: The logistic function never outputs 0 or 1 exactly, so there’s never a loss of  0 or infinite 
-	\end{frame}
+% 	\begin{frame}{Log loss}
+% 	    Let’s look at some losses in particular:
+%         \begin{figure}
+%             \centering
+%             \includegraphics[scale=.33]{Bild19}
+%         \end{figure}
+% 	    Note: The logistic function never outputs 0 or 1 exactly, so there’s never a loss of  0 or infinite 
+% 	\end{frame}
 	
 	\begin{frame}{Log loss}
 	    So far, we’ve only looked at log loss when the correct class was 1. \\
@@ -63,40 +63,40 @@
 	    \end{equation*}
 	    Note: Since y = 0 or 1, one of these two terms is always equal to 0, which reduces this equation to the piecewise one above.\\
 	    \bigskip
-	    We call this loss function cross-entropy loss (or “log loss”).
+	    We call this loss function \alert{cross-entropy loss} (or “log loss”).
 	\end{frame}
 	
 	\begin{frame}{Mean cross-entropy loss}
 	    The empirical risk for the logistic regression model when using cross-entropy loss is then
 	    \begin{align*}
-	        R(\bm{\theta}) = -\frac{1}{n}\sum\limits_{i=1}^n(y_i\log (\sigma (\mathbb{X}_i^T\bm{\theta})) + (1 - y_i)\log (1 - \sigma (\mathbb{X}_i^T\bm{\theta})))
+	        R(\bm{\theta}) = -\frac{1}{n}\sum\limits_{i=1}^n(y_i\log (\underbrace{\sigma (\mathbb{X}_i^T\bm{\theta})}_{\hat{y}}) + (1 - y_i)\log (1 - \underbrace{\sigma (\mathbb{X}_i^T\bm{\theta})}_{\hat{y}}))
 	    \end{align*}
 	    Benefits over mean squared error for logistic regression:
 	    \begin{itemize}
 	        \item Loss surface is guaranteed to be convex.
 	        \item More strongly penalizes bad predictions.
-	        \item Has roots in probability and information theory (next section).
+	        \item Has roots in probability and information theory.
 	    \end{itemize}
 	\end{frame}
 	
 	
 	\begin{frame}{Comparing loss surfaces}
-	  On the left, we have a plot of the MSE loss surface on our toy dataset from before.\\ On the right, we have a plot of the mean cross-entropy loss surface on the same dataset. 
-
-	    \begin{figure}
+    
 	        \centering
+	        
+	        Mean Squared Error (MSE) \hspace{2.5cm} Cross-Entropy Loss
+	        
 	        \includegraphics[scale=.35]{Bild21}
-	    \end{figure}
 	\end{frame}
 	
 	
 	\begin{frame}{Comparing loss surfaces}
-	  On the left, we have a plot of the MSE loss surface.\\ On the right, we have a plot of the mean cross-entropy loss surface on the same dataset. 
 
-	    \begin{figure}
 	        \centering
+	        
+	        Mean Squared Error (MSE) \hspace{2.5cm} Cross-Entropy Loss
+	        
 	        \includegraphics[scale=.35]{Bild22}
-	    \end{figure}
 	\end{frame}
 	
 	
@@ -115,18 +115,37 @@
 	        \item[2] Choose a loss (and, optionally, a regularization penalty).
 	        \item[3] Minimize empirical risk for the given model, loss, and regularization penalty (using an analytical solution, or numerical technique like gradient descent).
 	    \end{itemize}
-	    For logistic regression, we can use squared loss if we want to!
+
 	    \begin{itemize}
 	        \item Using squared loss and using cross-entropy loss will usually result in different  $\hat{\bm{\theta}}$
 	        \begin{itemize}
 	            \item Different optimization problems, different solutions.
 	            \item  Constant model: absolute loss meant median, squared loss meant mean.
 	        \end{itemize}
-	        \item Cross-entropy loss is strictly better than squared loss for logistic regression.
+	        \item Cross-entropy loss is often better than squared loss for logistic regression.
 	        \begin{itemize}
 	            \item Convex, so easier to minimize using numerical techniques
 	            \item Better suited for modeling probabilities.
 	        \end{itemize}
 	    \end{itemize}
 	\end{frame}
+	
+	\begin{frame}{Summary Logistic regression}
+	    \begin{itemize}
+	        \item In a logistic regression model, our goal is to predict a binary categorical variable\\ (Class 0 or Class 1) as a linear function of features, passed through the logistic function.
+	        \begin{itemize}
+	            \item Our response is the probability that our observation belongs to class 1.
+	            \begin{equation*}
+	                \hat{y} = f_{\bm{\theta}}(\bm{x}) = P(Y=1|\bm{x}) = \sigma (\bm{x}^\intercal\theta)
+	            \end{equation*}
+	            \item We arrived at this model by assuming that the log-odds of the probability of belonging to Class 1 is linear.
+	            \item To find  $\hat{\bm{\theta}}$, we can choose squared loss or cross-entropy loss.
+                \begin{itemize}
+                    \item Squared loss works, but is often not a good idea.
+                    \item Cross-entropy loss is much better (convex, better suited for modeling probabilities).
+                \end{itemize}
+	        \end{itemize}
+	    \end{itemize}
+	\end{frame}
+	
 \end{document}
