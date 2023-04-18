@@ -1,0 +1,99 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Regression]{DS: Learning}
+\subtitle{Supervised Learning: Regression}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+    \maketitle
+    
+    \begin{frame}[c]{What is Regression?}
+        \begin{itemize}
+            \item Supervised learning considers learning $f: x \mapsto y$ from training data $\mathcal{D}= \{(x_i,y_i)\}_{i}$ 
+            \item If $y$ is a continuous variable we consider it as a regression problem
+            \item (Time series prediction can be seen a special case of regression problems)
+        \end{itemize} 
+
+        \centering
+        \includegraphics[width=0.5\textwidth]{figure/nonlinear_regression}
+
+        % import numpy as np
+        % import matplotlib.pyplot as plt
+        % from sklearn.mixture import GaussianMixture
+        
+        % # generate some data points with outliers
+        % np.random.seed(42)
+        % X_train = np.concatenate([np.random.normal(size=(200, 2)), np.random.normal(5, size=(10, 2))])
+        
+        % # fit a Gaussian mixture model
+        % gmm = GaussianMixture(n_components=2)
+        % gmm.fit(X_train)
+        
+        % # create a grid of points to evaluate the model
+        % xx, yy = np.meshgrid(np.linspace(-7, 7, 100), np.linspace(-7, 7, 100))
+        % Z = -gmm.score_samples(np.c_[xx.ravel(), yy.ravel()])
+        % Z = Z.reshape(xx.shape)
+        
+        % # plot the data and the contour lines of the model
+        % plt.figure(figsize=(8, 6), dpi=300)
+        % plt.scatter(X_train[:, 0], X_train[:, 1], c='black')
+        % plt.contour(xx, yy, Z, levels=[3], linewidths=2, colors='red')
+        % plt.xlabel('Input feature x_1')
+        % plt.ylabel('Input feature x_2')
+        % plt.savefig('anomaly.png', dpi=300)
+        % plt.show()
+
+
+    \end{frame}
+
+    
+    \begin{frame}[c]{Loss Functions (I)}
+
+    \begin{description}
+        \item[Mean Squared Error] The most often used loss function
+        $$\mathcal{L}(y,\hat{y}) = \frac{1}{n} \sum_{i=1}^{N} (y_i - \hat{y}_i)^2$$
+        $\leadsto$ Outliers will be severely punished
+        \item[Mean Absolute Error] is a loss function that penalizes the absolute difference between the predicted and actual values.
+        $$ \text{MAE}= \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y_i}|$$
+    \end{description}
+        
+    \end{frame}
+
+        \begin{frame}[c]{Loss Functions (II)}
+
+    \begin{description}
+        \item[Huber Loss] is a loss function that is less sensitive to data outliers than MSE. It uses the squared error for small values of the difference between predicted and actual values and the absolute error for large values.
+        $$\mathcal{L}_{\delta}(y,\hat{y}) = \begin{cases} \frac{1}{2}(y - \hat{y})^2 & \text{for } |y - \hat{y}| \leq \delta,\\ \delta(|y - \hat{y}| - \frac{1}{2}\delta) & \text{otherwise}, \end{cases} $$
+        \item[Quantile Loss]: is a loss function that measures the difference between the predicted and actual values at a specified quantile level. It is commonly used for quantile regression problems where the goal is to predict a range of possible outcomes rather than a single value.
+        $$\mathcal{L}_q(y,\hat{y}) = \begin{cases} q(y - \hat{y}) & \text{if } y - \hat{y} > 0,\\ (1-q)(\hat{y} - y) & \text{otherwise}, \end{cases}$$
+    \end{description}
+        
+    \end{frame}
+
+    \begin{frame}[c]{Regression Models}
+        \begin{description}
+            \item[Linear Regression] Linear relation between input $x$ and output label $y$
+            \pause
+            \item[Polynomial Regression] Extension of the linear regession by polynomial terms, e.g., $x^2$ or $x^{(1)} \cdot x^{(2)}$
+            \pause
+            \item[Ridge Regression] Penalization of linear regression by adding $||\theta||_2$ to $\mathcal{L}$ $\leadsto$ small model weights
+            \pause
+            \item[Support Vector Regression] Non-linear regression models based on Support Vector Machines.
+            \pause
+            \item[Decision Tree Regression] Decision Tree (i.e., in each split of the tree, a decision on an input variable~$x^{(i)}$)
+            \pause
+            \item[Ensemble Tree Regression] for example, Random Forest Regression, Gradient Boosting Regression
+            \pause
+            \item[Deep Neural Networks] ... surprisingly not so well studied anymore.
+        \end{description}
+    
+        
+    \end{frame}
+
+
+\end{document}

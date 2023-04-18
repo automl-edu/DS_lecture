@@ -31,7 +31,7 @@
 	\end{frame}
 	
 	
-	\begin{frame}{Why not use Ordinary Least Squares?}
+	\begin{frame}{Why not use a Simple Linear Regression?}
 	    \begin{columns}
 	        \begin{column}{.4\textwidth}
 	                We already have a model that can predict any quantitative response. Why not use it here?
@@ -56,7 +56,7 @@
 		\begin{frame}{Graph of averages}
 	    \begin{columns}
 	        \begin{column}{.5\textwidth}
-	                When defining the simple linear regression model, we binned the x-axis, and took the average y-value for each bin, and tried to model that.\\
+	                When defining the simple linear regression model, we bin the x-axis, and took the average y-value for each bin, and tried to model that.\\
 	                \bigskip
 	                Doing so here yields a curve that resembles an s.
 	                \begin{itemize}
@@ -91,32 +91,17 @@
 	        p &= \frac{e^t}{1 + e^t} = \frac{1}{1 + e^{-t}}
 	    \end{align*}
 	\end{frame}
-	
-	\begin{frame}{Log-odds of probability is roughly linear}
-	    The log-odds of the probability of belonging to class 1 was linear. This is the assumption that logistic regression is based on. \\
-	    \begin{equation*}
-	        \text{odds(p)} = \frac{p}{1 - p}\hspace{1cm} \text{log-odds(p)} = \text{log}\left(\frac{p}{1 - p}\right)
-	    \end{equation*}
-	    
-	    For now, let’s let t denote our linear function (since log-odds is linear). Solving for p:
-	    \begin{align*}
-	        t &= \text{log}\left(\frac{p}{1 - p}\right)\\
-	        e^t &= \frac{p}{1 - p}\\
-	        e^t - pe^t &= p\\
-	    \end{align*}
-	\end{frame}
-	
-	
+		
 	
 	\begin{frame}{Arriving at the logistic regression model}
 	    We know how to model linear functions quite well.\\
 	    \begin{itemize}
-	        \item We can substitute          $t = \bm{x}^\intercal\bm{\theta} $           , since t was just a placeholder.
+	        \item We can substitute          $t = \bm{x}^\intercal\bm{\theta} $           , since $t$ was just a placeholder.
 	    \end{itemize}
 	    \begin{equation*}
 	        p = \frac{1}{1 + e^{-t}} = \sigma (t)
 	    \end{equation*}
-	    p represents the probability of belonging to class 1.
+	    $p$ represents the probability of belonging to class 1.
 	    \begin{itemize}
 	        \item We are modeling          $P(Y=1|\bm{x})$.
 	    \end{itemize}

@@ -1,7 +1,7 @@
 \documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
 \input{../latex_main/preamble}
 
-\title[Pruning]{DS: Decision Trees}
+\title[Tree Pruning]{DS: Decision Trees}
 \subtitle{Tree Pruning}
 
 \graphicspath{ {./figure_tree/} }
@@ -22,7 +22,7 @@
 	\end{frame}
 	
 	\begin{frame}{Regularization Terms and Decision Trees?}
-	    We can’t just use the regularization term idea from linear models
+	    We can’t just use the common regularization term idea 
 	    \begin{itemize}
 	        \item There is no global function being minimized
 	        \item Instead, the decision tree is built up node by node in a “greedy” fashion
@@ -93,19 +93,4 @@
 	\end{frame}
 	
 	
-	
-	\begin{frame}{Overfitting and Our Algorithm}
-	    A “fully grown” decision tree built with our algorithm runs the risk of overfitting\\
-	    \bigskip
-	    One idea to avoid overfitting: Don’t allow fully grown trees
-	    \begin{itemize}
-	        \item Approach 1: Set rules to prevent full growth
-	        \item Approach 2: Allow full growth then prune branches afterwards
-	    \end{itemize}
-	    
-        Won’t discuss these in any great detail
-        \begin{itemize}
-            \item There’s a completely different idea called a “random forest” that is more effective
-        \end{itemize}
-	\end{frame}
 \end{document}

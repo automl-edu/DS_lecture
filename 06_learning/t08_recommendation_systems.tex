@@ -1,0 +1,76 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Recommender Systems]{DS: Learning}
+\subtitle{Recommender Systems}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+    \maketitle
+    
+    \begin{frame}{What is the Recommendation Task?}
+        \vspace{-1em}
+        \begin{itemize}
+            \item Only some labels $y_i$ are given
+            \begin{itemize}
+                \item Classical assumption: no explicit $x_i$ given
+                \item But, there could be information about the objects being recommended
+            \end{itemize}
+            \item Common Example:
+            \begin{itemize}
+                \item You watched a few movies and rated them from $1-5$ stars
+                \item Based on movies rated by others, which movies will you also like?
+            \end{itemize}
+            \item $\leadsto$ User feedback can be collected in different ways (e.g., watching time, thumbs up, reviews)
+            \item \alert{Task}: Extract similarity of different objects $x_i$ based on the labels $y_i$
+            \begin{itemize}
+                \item Each label consists of an entire (sparse) vector ratings
+            \end{itemize}
+        \end{itemize}
+
+    \end{frame}
+
+   \begin{frame}{Recommender Approaches}
+
+        \begin{description}
+            \item[Collaborative filtering] works by analyzing the behavior and preferences of users, and then recommending items that are preferred by similar users. 
+            \begin{description}
+                \item[user-based] the system finds users who are similar to the current user and recommends items that these similar users have liked
+                \item[item-based] the system finds items that are similar to the items the current user has liked and recommends those similar items.
+            \end{description}
+           \pause
+           \item[Content-based filtering] works by analyzing the recommended items' characteristics and matching them to the user's preferences. The system recommends items with similar features to items that the user has liked in the past
+            \item[Matrix factorization] learns the latent factors or features present in the user-item interaction matrix. This approach can effectively handle sparse data and can also handle new items and users that were not present during training.
+        \end{description}
+       
+   \end{frame}
+
+    \begin{frame}{Matrix Multiplication}
+
+        \vspace{-1em}
+        \begin{itemize}
+            \item Matrix factorization learns latent features or factors that describe the relationships between users and items.
+            \item The user-item interaction matrix is decomposed into two matrices: a user matrix and an item matrix
+            \begin{description}
+                \item[user matrix] represents each user's preferences across all the latent features
+                \item[item matrix] represents each item's attributes across all the latent features
+            \end{description}
+            \item \alert{Result} The dot product of the user and item matrices approximates the user-item interaction matrix, allowing for the prediction of missing ratings
+        \end{itemize}
+
+        $$\mathbf{R} \approx \mathbf{P} \times \mathbf{Q}^T = \hat{\mathbf{R}}$$
+
+        \begin{itemize}
+            \item $\mathbf{R}$ represents the user-item interaction matrix.
+            \item $\mathbf{P}$ represents the user matrix.
+            \item $\mathbf{Q}$ represents the item matrix.
+            \item $\hat{\mathbf{R}}$ represents the predicted ratings matrix.
+        \end{itemize}
+      
+   \end{frame}
+
+\end{document}

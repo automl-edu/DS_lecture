@@ -1,0 +1,82 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Anomaly Detection]{DS: Learning}
+\subtitle{Unsupervised Learning: Anomaly Detection}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+    \maketitle
+    
+    \begin{frame}[c]{What is Anomaly Detection?}
+        \begin{itemize}
+            \item Unsupervised learning: Only input features $x$ are given, but no trainings labels
+            \item Anomamly detection: Only data from a single class is given
+            \begin{itemize}
+                \item Typically, it is harder to collect data from the other class since anomalies should only happen rarely
+            \end{itemize}
+        \end{itemize} 
+
+        \centering
+        \includegraphics[width=0.5\textwidth]{figure/anomaly}
+
+        % import numpy as np
+        % import matplotlib.pyplot as plt
+        % from sklearn.datasets import make_blobs
+        % from sklearn.cluster import KMeans
+        
+        % # Generate some random training data with more pronounced clusters
+        % X, y = make_blobs(n_samples=500, centers=4, random_state=42, cluster_std=1.5)
+        
+        % # Fit a clustering model
+        % kmeans = KMeans(n_clusters=4, random_state=42)
+        % y_pred = kmeans.fit_predict(X)
+        
+        % # Create a meshgrid to plot the decision boundaries
+        % x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
+        % y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
+        % xx, yy = np.meshgrid(np.arange(x_min, x_max, 0.1), np.arange(y_min, y_max, 0.1))
+        % Z = kmeans.predict(np.c_[xx.ravel(), yy.ravel()])
+        
+        % # Create a contour plot of the decision boundaries
+        % Z = Z.reshape(xx.shape)
+        % plt.contourf(xx, yy, Z, alpha=0.2)
+        
+        % # Create a scatter plot of the data
+        % plt.scatter(X[:, 0], X[:, 1], c='black')
+        
+        % # Add axis labels and increase font size
+        % plt.xlabel(r'Input feature $x_1$', fontsize=14)
+        % plt.ylabel(r'Input feature $x_2$', fontsize=14)
+        % plt.xticks(fontsize=12)
+        % plt.yticks(fontsize=12)
+        
+        % plt.savefig('clustering.png', dpi=300)
+        
+        % # Show the plot
+        % plt.show()
+
+    \end{frame}
+
+    
+
+    \begin{frame}[c]{Anomaly Models (I)}
+        \begin{description}
+            \item[Density-Based Models] are based on the assumption that normal data points appear in high-density regions, while anomalies appear in low-density regions. Examples of density-based models include Gaussian Mixture Models (GMM), Local Outlier Factor (LOF), and Autoencoder-based methods.
+            \pause
+            \item[Distance-Based Models] detect anomalies based on their distance from the normal data points. Examples of distance-based models include k-Nearest Neighbors (k-NN) and Support Vector Data Description (SVDD).
+            \pause
+            \item[Reconstruction-Based Models] use reconstruction errors to identify anomalies. They learn the normal behavior of the system and flag anything that deviates significantly from it. Examples of reconstruction-based models include Principal Component Analysis (PCA), Isolation Forest, and Variational Autoencoder (VAE).
+            \pause
+            \item[Deep Learning Models] use deep neural networks to detect anomalies. Examples of deep learning models include Convolutional Autoencoder (CAE), Recurrent Neural Network (RNN), and Generative Adversarial Network (GAN).
+
+        \end{description}
+
+    \end{frame}
+
+
+\end{document}

@@ -1,0 +1,91 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Clustering]{DS: Learning}
+\subtitle{Unsupervised Learning: Clustering}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+    \maketitle
+    
+    \begin{frame}[c]{What is Clustering?}
+        \begin{itemize}
+            \item Unsupervised learning: Only input features $x$ are given, but no trainings labels
+            \item Task: Find patterns in the data and cluster similar data points into groups
+        \end{itemize} 
+
+        \centering
+        \includegraphics[width=0.5\textwidth]{figure/clustering}
+
+        % import numpy as np
+        % import matplotlib.pyplot as plt
+        % from sklearn.datasets import make_blobs
+        % from sklearn.cluster import KMeans
+        
+        % # Generate some random training data with more pronounced clusters
+        % X, y = make_blobs(n_samples=500, centers=4, random_state=42, cluster_std=1.5)
+        
+        % # Fit a clustering model
+        % kmeans = KMeans(n_clusters=4, random_state=42)
+        % y_pred = kmeans.fit_predict(X)
+        
+        % # Create a meshgrid to plot the decision boundaries
+        % x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
+        % y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
+        % xx, yy = np.meshgrid(np.arange(x_min, x_max, 0.1), np.arange(y_min, y_max, 0.1))
+        % Z = kmeans.predict(np.c_[xx.ravel(), yy.ravel()])
+        
+        % # Create a contour plot of the decision boundaries
+        % Z = Z.reshape(xx.shape)
+        % plt.contourf(xx, yy, Z, alpha=0.2)
+        
+        % # Create a scatter plot of the data
+        % plt.scatter(X[:, 0], X[:, 1], c='black')
+        
+        % # Add axis labels and increase font size
+        % plt.xlabel(r'Input feature $x_1$', fontsize=14)
+        % plt.ylabel(r'Input feature $x_2$', fontsize=14)
+        % plt.xticks(fontsize=12)
+        % plt.yticks(fontsize=12)
+        
+        % plt.savefig('clustering.png', dpi=300)
+        
+        % # Show the plot
+        % plt.show()
+
+    \end{frame}
+
+    
+    \begin{frame}[c]{Loss Functions}
+
+    \begin{itemize}
+        \item Since there are no labels, there is no specific loss function in the same sense as in supervised learning
+        \item \alert{Objective:} Clustering algorithms aim to group similar data points together based on some distance metric or similarity measure.
+        \pause
+        \medskip
+        \item $k$-Means optimization metric:
+        $$\sum_{i=1}^{n}\sum_{j=1}^{k} w_{ij} ||x_i - \mu_j||^2$$
+        where $n$ is the number of data points, $k$ is the number of clusters, $x_i$ is the i-th data point, $w_{ij}$ is a binary indicator variable that takes the value 1 if $x_i$ is assigned to cluster j, and 0 otherwise, and $\mu_j$ is the centroid of cluster $j$.
+        \end{itemize}
+    
+    \end{frame}
+
+    \begin{frame}[c]{Clustering Models (I)}
+        \begin{description}
+            \item[K-Means Clustering] partitions the data into $k$ clusters, where $k$ is a user-defined hyperparameter. It works by iteratively assigning each data point to the nearest cluster center (centroid) and then recomputing the centroid based on the updated cluster assignments.
+            \pause
+            \item[Hierarchical Clustering] builds a hierarchy of clusters by recursively merging smaller clusters into larger ones.
+            \pause
+            \item[Density-Based Spatial Clustering of Applications with Noise (DBSCAN)] groups together points that are in "dense" regions of the dataset and separates points that are in sparse regions.
+            \pause
+            \item[Spectral Clustering] uses the eigenvectors of a similarity matrix to cluster the data. It first constructs a graph based on the similarity between data points and then uses the eigenvectors to embed the data into a lower-dimensional space where clustering can be performed.
+        \end{description}
+
+    \end{frame}
+
+
+\end{document}

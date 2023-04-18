@@ -1,0 +1,96 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Semi-Supervised Learning]{DS: Learning}
+\subtitle{Semi-Supervised Learning}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+    \maketitle
+    
+    \begin{frame}[c]{What is Semi-Supervised Learning?}
+        \begin{itemize}
+            \item Semi-supervised learning considers learning $f: x \mapsto y$ from training data $\mathcal{D}= \{(x_i,y_i)\}_{i}$ 
+            \item \alert{Important:} For some of the $x_i$, the label $y_i$ is unknown.
+            \begin{itemize}
+                \item Typically, only a small amount of data is labeled and most of the data is unlabeled.
+                \item Often the case, if data labeling is very expensive or difficult.
+            \end{itemize}
+        \end{itemize} 
+
+        \centering
+        \includegraphics[width=0.46\textwidth]{figure/semi-supervised}
+
+    % import numpy as np
+    % import matplotlib.pyplot as plt
+    % from sklearn.datasets import make_classification
+    % from sklearn.semi_supervised import LabelPropagation
+    
+    % # generate some random data
+    % X, y = make_classification(n_classes=2, n_samples=100, n_features=2, n_redundant=0, n_informative=2, n_clusters_per_class=1)
+    
+    % # set labels for only a few samples
+    % y[20:80] = -1
+    
+    % # fit a semi-supervised learning model
+    % model = LabelPropagation()
+    % model.fit(X, y)
+    
+    % # create a grid of points to evaluate the model
+    % xx, yy = np.meshgrid(np.linspace(-4, 4, 100), np.linspace(-4, 4, 100))
+    % Z = model.predict(np.c_[xx.ravel(), yy.ravel()])
+    % Z = Z.reshape(xx.shape)
+    
+    % # plot the data and the decision boundary
+    % plt.figure(figsize=(8,6), dpi=100)
+    % plt.scatter(X[:,0], X[:,1], c=y, cmap='coolwarm', edgecolors='k')
+    % plt.contour(xx, yy, Z, levels=[0], linewidths=2, colors='black')
+    % plt.xlabel('Input feature x_1', fontsize=12)
+    % plt.ylabel('Input feature x_2', fontsize=12)
+    % plt.title('Semi-Supervised Learning Example', fontsize=14)
+    % plt.legend(handles=[plt.scatter([],[],color='red', label='Class 1'),
+    %                      plt.scatter([],[],color='blue', label='Unlabeled Samples'),
+    %                      plt.scatter([],[],color='gray', label='Class2')],
+    %            loc='lower right', fontsize=12)
+    % plt.show()
+
+
+    \end{frame}
+
+    \begin{frame}{Exemplary Semi-Supervised Learning: Label Propagation}
+
+        \begin{itemize}
+            \item  Propagate the labels from labeled data points to unlabeled data points based on their similarity in feature space.
+            \item assumes that similar data points should have similar labels.
+            \item Constructs a graph, where each data point is a node and edges are added between neighboring data points. The weight of each edge is determined by the similarity between the two data points.
+            \item Iteratively assigns labels to the unlabeled data points based on the labels of the labeled data points that are most similar to them in feature space.
+            \item Often used for scenarios where labeled data is scarce but large amounts of unlabeled data are available.
+        \end{itemize}
+        
+    \end{frame}
+
+    
+    \begin{frame}[c]{Semi-Supervised Learning with Two Loss Functions}
+
+    \begin{description}
+        \item[Supervised loss] is calculated on the labeled data points and it measures the difference between the predicted output and the true output. Eg. mean squared error (MSE), cross-entropy loss, and hinge loss.
+        \item[Unsupervised loss] is calculated on the entire dataset, including both labeled and unlabeled data points. It encourages the model to learn a smooth representation of the input space, so that similar inputs are mapped to similar feature representations. E.g. reconstruction loss, mutual information loss, and contrastive loss.]
+    \end{description}
+
+    \pause
+    \medskip
+
+    $\leadsto$ By combining both supervised and unsupervised loss functions, semi-supervised learning approaches can leverage both labeled and unlabeled data points to improve the model's performance.
+    
+    \end{frame}
+
+
+
+
+
+
+\end{document}

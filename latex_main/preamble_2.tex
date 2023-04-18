@@ -12,13 +12,13 @@
 \usepackage{mathtools}
 
 \usepackage{amsmath,amssymb}
-%\usepackage{latexsym}
 
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
 
 \usepackage{amsbsy}
 \newcommand{\vect}[1]{\bm{#1}}
+%\newcommand{\vect}[1]{\boldsymbol{#1}}
 
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.16}
@@ -41,24 +41,23 @@
 \pgfdeclarelayer{foreground}
 \pgfsetlayers{background,main,foreground}
 
-%\input{../latex_main_old/macros}
-
 % Requires XeLaTeX or LuaLaTeX
-\usepackage{unicode-math}
+%\usepackage{unicode-math}
 
 \usepackage{fontspec}
 %\setsansfont{Arial}
 \setsansfont{RotisSansSerifStd}[ 
-Path="../latex_main/fonts/",
+Path=../latex_main/fonts/,
 Extension = .otf,
 UprightFont = *-Regular,  % or *-Light
 BoldFont = *-ExtraBold,  % or *-Bold
 ItalicFont = *-Italic
 ]
-\setmonofont{Cascadia}[
-%	Path=../latex_main/fonts/,
-	Scale=0.8
+\setmonofont{Cascadia Mono}[
+Scale=0.8
 ]
+
+\renewcommand{\ttdefault}{Cascadia Mono}
 
 % scale factor adapted; mathrm font added (Benjamin Spitschan @TNT, 2021-06-01)
 %\setmathfont[Scale=1.05]{Libertinus Math}
@@ -76,11 +75,7 @@ ItalicFont = *-Italic
 % TeX Gyre Termes Math
 
 % Literature References
-% #1 = Display Name
-% #2 = Url (without \href)
 \newcommand{\lit}[2]{\href{#2}{\footnotesize\color{black!60}[#1]}}
-
-\newcommand{\vect}[1]{\mathbf{#1}}
 
 %%% Beamer Customization
 %----------------------------------------------------------------------
@@ -90,17 +85,17 @@ ItalicFont = *-Italic
 % Add header logo for normal frames
 \setheaderimage{
 	% \includegraphics[height=\logoheight]{figures/TNT_darkv4.pdf}
- \includegraphics[height=\logoheight]{../latex_main/figures/Leibniz-AI-Academy_Logo}
- 	
+	\includegraphics[height=\logoheight]{../latex_main/figures/Leibniz-AI-Academy_Logo}
 	% \includegraphics[height=\logoheight]{figures/logo_tntluh.pdf}
 }
 
 % Header logo for title page
 \settitleheaderimage{
 	% \includegraphics[height=\logoheight]{figures/TNT_darkv4.pdf}
-	\includegraphics[height=\logoheight]{../latex_main/figures/luh_logo_rgb_0_80_155.pdf}
+	\includegraphics[height=\logoheight]{../latex_main/figures/Leibniz-AI-Academy_Logo}
 	% \includegraphics[height=\logoheight]{figures/logo_tntluh.pdf}
 }
+
 % Title page: tntdefault 
 \setbeamertemplate{title page}[tntdefault]  % or luhstyle
 % Add optional title image here

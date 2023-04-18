@@ -1,5 +1,5 @@
 \documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
-\input{../latex_main/preamble}
+\input{../latex_main/preamble_2}
 
 \title[Gradient-Boosting Trees]{DS: Decision Trees}
 \subtitle{Gradient-Boosting Trees}
@@ -35,11 +35,11 @@
     \begin{itemize}
         \item Let's assume that we fitted $m$ trees $\hat{F}_m$ already
         \item All of these together provide a prediction for a given input:
-        $$ \hat{F}_m(\bm{x}_i) = \hat{y}_i $$
+        $$ \hat{F}_m(\bm{x}_i) \to \hat{y}_i $$
         \smallskip
-        \item The model will now be off from the true label $y_i$ to a certain degree
+        \item The model might be off from the true label $y_i$ to a certain amount
         $$e_i = y_i - \hat{F}_m(\bm{x}_i)$$
-        \item Remember: residuals!
+        \item $e_i$ is called a residual.
         \smallskip
         \item Can we add a model that correct our ensemble $\hat{F}_m$ in the directions of the residuals by adding another model $\hat{f}_{m+1}$?
         $$ \hat{f}_{m+1} :=  y_i - \hat{F}_m(\bm{x}_i)$$ 
@@ -55,11 +55,11 @@
         \item Coming back to the idea of ensembles $F$ (with $M$ base models) by weighting $\gamma$ each model:
         
         $$ \hat{F}(\bm{x}) = \sum_{m=1}^{M} \gamma_m \hat{f}_m(\bm{x}) + c $$
-        \item Let's start with fitting a first constant base model on all training data
-        $$F_0 \in \argmin_{\gamma} \sum \mathcal{L}(y_i, \gamma) $$
+        \item Let's start with fitting a first constant base model $\hat{F}_0$ (with constant prediction $\gamma_0$) on all training data
+        $$\hat{F}_0 \in \argmin_{\gamma_0} \sum \mathcal{L}(y_i, \gamma_0) $$
         \item Extend the ensemble by a base model correcting for the residuals -- recursive definition!
         
-        $$ F_m (\bm{x}) = F_{m-1}(\bm{x}) + \argmin_{h_m} \left[ \gamma_m \sum_i \mathcal{L}(y_i, F_{m-1}(\bm{x}_i) + f_m(\bm{x}_i)) \right] $$
+        $$ \hat{F}_m (\bm{x}) = \hat{F}_{m-1}(\bm{x}) + \argmin_{\hat{f}_m} \left[ \gamma_m \sum_i \mathcal{L}(y_i, \hat{F}_{m-1}(\bm{x}_i) + \hat{f}_m(\bm{x}_i)) \right] $$
     \end{itemize}
 
 	\end{frame}
@@ -67,12 +67,12 @@
 	\begin{frame}[c]{Learning how to boost (cont'd)}
 
     \vspace{-1em}
-    $$ F_m (\bm{x}) = F_{m-1}(\bm{x}) + \argmin_{h_m} \left[ \sum_i \mathcal{L}(y_i, F_{m-1}(\bm{x}_i) + f_m(\bm{x}_i)) \right] $$
+    $$ \hat{F}_m (\bm{x}) = \hat{F}_{m-1}(\bm{x}) + \argmin_{\hat{f}_m} \left[ \gamma_m \sum_i \mathcal{L}(y_i, \hat{F}_{m-1}(\bm{x}_i) + \hat{f}_m(\bm{x}_i)) \right] $$
     \begin{itemize}
         \item[$\leadsto$] that would be an infeasible optimization problem
         \item[$\leadsto$] take a step in the steepest direction (steepest descent) of this minimization problem:
-        $$ F_m(x) = F_{m-1}(\bm{x}) - \gamma \sum_i \nabla_{F_{m-1}} \mathcal{L}(y_i, F_{m-1}(\bm{x_i})) $$
-        \item where $\gamma$ is the step length
+        $$ \hat{F}_m(x) = \hat{F}_{m-1}(\bm{x}) - \gamma_m \sum_i \nabla_{\hat{F}_{m-1}} \mathcal{L}(y_i, \hat{F}_{m-1}(\bm{x_i})) $$
+        \item where $\gamma_m$ is the step length (a.k.a learning rate)
     \end{itemize}
 
 	\end{frame}
@@ -80,12 +80,12 @@
 	\begin{frame}[c]{Practical Considerations}
 
     \begin{itemize}
-        \item Base models should be very shallow models, e.g,, decisions trees with a single split
+        \item Base models should be very shallow models, e.g., decisions trees with a single split
         \smallskip
         \item Learning rate $\gamma_m$ decides how many trees you need to change the predictions
         \begin{itemize}
-            \item too large $\gamma$ will lead to unstable learning
-            \item too small $\gamma$ will lead to very slow learning and large models
+            \item too large $\gamma_m$ will lead to unstable learning
+            \item too small $\gamma_m$ will lead to very slow learning and large models
             \item[$\leadsto$] often between $0.3$ and $0.1$ $\leadsto$ better to tune it explicitly (e.g., with Bayesian Optimization)
         \end{itemize}
         \smallskip

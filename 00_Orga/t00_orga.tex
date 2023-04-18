@@ -11,6 +11,43 @@
 	
 	\maketitle
 
+%----------------------------------------------------------------------
+\begin{frame}[c]{Team}
+
+\begin{columns}[T]
+
+
+
+\column{0.2\textwidth}
+\centering
+\includegraphics[height=8em]{./figures/zia}
+
+Prof. Dr.\\ Ziawasch Abedjan
+
+\column{0.2\textwidth}
+\centering
+\includegraphics[height=8em]{./figures/Lindauer_Marius_004small.jpg}
+
+Prof. Dr.\\ Marius Lindauer
+
+\column{0.2\textwidth}
+\centering
+\includegraphics[height=8em]{./figures/mahdi}
+
+Mahdi Esmailoghli\\
+
+\column{0.2\textwidth}
+\centering
+\includegraphics[height=8em]{./figures/tim}
+
+Tim Ruhkopf\\
+
+\end{columns}
+
+\end{frame}
+%----------------------------------------------------------------------
+
+
 %-----------------------------------------------------------------------------------------------------------------------------
 \begin{frame}[c]{Acknowledgments}
 
@@ -58,22 +95,22 @@ You will be able to \ldots
 \begin{frame}[c]{Course Overview}
 
 \begin{itemize} 
-    \item Motivation [Abedjan \& Lindauer] % today: April 25th
-	\item Data Sampling and Probability [Abedjan] % May 2nd
-	\item Data Preprocessing [Abedjan] % May 9th
-	\item Visualization [Lindauer] % May 16 th
+    \item Motivation [Abedjan \& Lindauer] 
+	\item Data Sampling and Probability [Abedjan]
+        \item Visualization [Lindauer]	
+        \item Data Preprocessing [Abedjan] 
 	\pause
-	\item Intro to Modelling [Abedjan] % 
-	\item Simple Linear Regression + Ordinary Least Squares [Lindauer] % May 30th
+	\item Intro to Modelling + Linear Regression [Abedjan]  
+	\item Learning Paradigms [Lindauer] 
+	\item Classification  [Lindauer]
+        \pause
+	\item Bias and Variance + Data Reduction [Lindauer]  
+        \item Feature Engineering [Abedjan] 
+        \item Evaluation and AutoML [Lindauer]
 	\pause
-	\item Feature Engineering [Abedjan] % June 13th (June 6th is Pentecost)
-	\item Bias and Variance [Lindauer] % June 20th 
-	\item Evaluation, Regularization and AutoML [Lindauer] % June 27th
+	\item Inference + Ethics [Abedjan] 
 	\pause
-	\item Classification [Lindauer] % July 4th
-	\item Inference for Modelling [Abedjan] % July 11th
-	\pause
-	\item Conclusion \& Ethics [Abedjan] % July 18th --> that's ICML week and afterwards is AutoML-Conf --> @Ziawasch: could you please take care of this session alone?
+	\item Conclusion [Abedjan \& Lindauer]
 \end{itemize}
 
 
@@ -89,9 +126,11 @@ You will be able to \ldots
 	  \item We highly recommend that you dig deeper and read additional material to become a real expert
 	\end{itemize}
 	\smallskip
-	\item ``Classic'' lecture
+	\item Flipped-classroom lecture
 	\begin{itemize}
-	  \item 1 Slot lecture + 1 slot guided lab exercise
+        \item Watching video lectures at home
+	  \item Discussion lecture (Wednesdays \alert{9am -10am})
+        \item Guided lab exercise (Thursdays 11:00 - 12:30)
 	\end{itemize}
 	\smallskip
 	\item Practical lab exercises and home works
@@ -103,40 +142,48 @@ You will be able to \ldots
 \end{frame}
 %----------------------------------------------------------------------
 %----------------------------------------------------------------------
-\begin{frame}[c]{Team}
+\begin{frame}[c]{Learning Pyramid [\href{https://www.researchgate.net/publication/221801860_Applying_principles_from_Scientific_Foundations_for_Future_Physicians_to_teaching_chemistry_in_the_department_of_medicine_at_Chang_Gung_University}{Lou. 2012}]}
 
-\begin{columns}[T]
-
-
-
-\column{0.2\textwidth}
 \centering
-\includegraphics[height=8em]{./figures/zia}
-
-Prof. Dr.\\ Ziawasch Abedjan
-
-\column{0.2\textwidth}
-\centering
-\includegraphics[height=8em]{./figures/Lindauer_Marius_004small.jpg}
-
-Prof. Dr.\\ Marius Lindauer
-
-\column{0.2\textwidth}
-\centering
-\includegraphics[height=8em]{./figures/mahdi}
-
-Mahdi Esmailoghli\\
-
-\column{0.2\textwidth}
-\centering
-\includegraphics[height=8em]{./figures/tim}
-
-Tim Ruhkopf\\
-
-\end{columns}
+\includegraphics[width=0.6\textwidth]{figures/The-learning-pyramid-from-NTL-Institute-for-Applied-Behavioral-Science.jpg}
 
 \end{frame}
+%-----------------------------------------------------------------------
 %----------------------------------------------------------------------
+\begin{frame}[c]{Why Videos?}
+
+
+\begin{itemize}
+  \item Advantages of videos:
+  \begin{itemize}
+      \item Watch it whenever (\& wherever) you want
+      \item Watch it at your own speed
+      \begin{itemize}
+          \item[$\leadsto$] Stop it if you need time to think about it
+      \end{itemize}
+      \item Go back and watch it again, if you missed or forgot something
+      \item Annotate questions on the fly (e.g., using the Miro boards)
+      \item After each video ($\sim$10-20min), you can take a break and\\ think about what you learned in this video (and whether you understood it)
+      \item \alert{Recommendation:} Make your own notes while (or after) watching!
+      \pause
+      \item \alert{We have time in the lecture sessions to discuss the content!}
+  \end{itemize}
+  \medskip
+  \pause
+  \item Risks and challenges:
+  \begin{itemize}
+      \item You have to be self-disciplined 
+      \item You have to wait with your questions until our meetings
+      \begin{itemize}
+          \item[$\leadsto$] Use the StudIP forum to discuss with your peers
+          \item[$\leadsto$] Try to use ChatGPT -- \alert{maybe} it will provide you a good explanation
+      \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+%-----------------------------------------------------------------------
+
 % %----------------------------------------------------------------------
 % \begin{frame}[c]{Why Videos?}
 
@@ -170,11 +217,13 @@ Tim Ruhkopf\\
 %----------------------------------------------------------------------
 \begin{frame}[c]{Organization (Labs \& Homework)}
 
+\vspace{-1em}
 \begin{itemize}
   \item Every week new lab sheet
   \begin{itemize}
       \item Lab focus is aligned with lectures
       \item Do the lab exercise in the exercise sessions (Thursdays at 11:00am s.t.)
+      \item Bring your own laptop
       %\item Watch videos and start to directly work on exercise 
       %\item[$\leadsto$] \alert{Deadline one day after the live session: Wednesday at 23:59}
   \end{itemize}
@@ -199,6 +248,19 @@ Tim Ruhkopf\\
   \pause
   \item Homework is not mandatory\\ \alert{BUT: quite unlikely that you will pass the course without doing them}
   \pause
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[c]{Organization (Labs \& Homework)}
+
+\vspace{-1em}
+\begin{itemize}
+    \item To access the labs \& homework, you need to  \alert{register yourself TODAY after the lecture (!) on StudIP for the lecture}. 
+    \item Tim Ruhkopf will send you an email with your credentials based on this list of participants. 
+    \item Login using VPN (or on-site) and type  \href{https://jupyterhub.cluster.uni-hannover.de/} into your browser.
+    \item Select the DataScience course in the dropdown and start a job 
+    (this is an actual job on the LUIS Cluster)
 \end{itemize}
 
 \end{frame}
@@ -233,8 +295,8 @@ Tim Ruhkopf\\
 \begin{frame}[c]{Get in Touch with Us}
 
 \begin{itemize}
-  \item Lecture session every Monday (14:00am s.t.) and exercise session every Thursday (11:00 am s.t.)
-  \item \alert{Use the forum in StudIP for all kind of questions}
+  \item Lecture session every Wednesday (9am s.t.) and exercise session every Thursday (11am s.t.)
+  \item \alert{Use the forum in StudIP for all kinds of questions}
   \begin{itemize}
         \item[$\leadsto$] Contact TAs first if necessary 
       \item[$\leadsto$] Email to Professors only in case of emergencies
@@ -311,7 +373,7 @@ Tim Ruhkopf\\
 %----------------------------------------------------------------------
 \begin{frame}[c]{Opportunities and Risks}
 
-``Introduction to Data Science'' is a basic lecture.\\ It is the first time we teach it at the Leibniz University Hannover.
+``Data Science Foundations'' is a basic lecture.\\ It is the second time we teach it at the Leibniz University Hannover.
 
 \bigskip
 \pause
@@ -336,15 +398,30 @@ $\to$ Give us some feedback and we will improve the course!
 \end{frame}
 %-----------------------------------------------------------------------
 %----------------------------------------------------------------------
-\begin{frame}[c]{AI@LUH -- Mostly M.Sc. Courses}
+\begin{frame}[c]{AI@LUH}
 
+\vspace{-2em}
 \centering
-\vspace{-1.3cm}
-\includegraphics[width=0.75\textwidth]{./figures/ai_luh.PNG}
+\includegraphics[width=0.43\textwidth]{figures/ai_luh.png}
 
 \end{frame}
-%-----------------------------------------------------------------------
 %----------------------------------------------------------------------
+%----------------------------------------------------------------------
+\begin{frame}[c]{Leibniz AI Academy}
+
+\centering
+\includegraphics[width=0.6\textwidth]{figures/leibniz_ai_academy.png}
+
+\end{frame}
+%----------------------------------------------------------------------
+%----------------------------------------------------------------------
+\begin{frame}[c]{DS Lecture as Part of Leibniz AI Academy}
+
+\centering
+\includegraphics[width=0.8\textwidth]{figures/LAI-New-Blue.png}
+
+\end{frame}
+%----------------------------------------------------------------------%----------------------------------------------------------------------
 \begin{frame}[c]{Introduce yourself}
 
 

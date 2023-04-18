@@ -1,0 +1,92 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[Learning]{DS: Learning}
+\subtitle{Learning Paradigms}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+    \maketitle
+    
+    \begin{frame}[c]{What is machine learning?}
+
+            Given
+            \begin{itemize}
+                \item Data distribution $\mathrm{P}$
+                %\item paradigm $\mathcal{P}$
+                \item loss function $\mathcal{L}$
+            \end{itemize}
+            find the best model $f^{\text{ }\ast}$ that minimizes the error:
+
+            \begin{equation}
+                f^{\text{ }\ast} \in \argmin_{f \in \mathcal{F}} \int_{x,y \sim \mathrm{P}} \mathcal{L}(f(x), y)
+            \end{equation}
+
+        Remarks:
+        \begin{itemize}
+            \item Solution might not be unique.
+            \item Some people also like to use $h$ as a hypothesis from an hypothesis space
+        \end{itemize}
+        
+    \end{frame}
+
+    \begin{frame}[c]{Training}
+
+        \begin{itemize}
+            \item \alert{Overall Objective:} Identify patterns in training data that allow us to generalize to new data
+            \bigskip
+            \item \alert{Notes:} 
+            \begin{itemize}
+                \item The amount of data we collect is finite and thus, we will never cover all possible cases
+                \item[$\leadsto$] We learn only an approximation of the real world
+                \item[$\leadsto$] Approximation also helps us to focus on the important aspects and to filter noise in our observations
+            \end{itemize}
+
+            \item \alert{Learning} describes the process of going from a finite training dataset $\mathcal{D}$ to a learned model $\hat{f}$
+            
+        \end{itemize}
+        
+    \end{frame}
+
+    \begin{frame}[c]{Learning Paradigms}
+
+        \begin{itemize}
+            \item \alert{Question}: What kind of training data is available?
+            \begin{description}
+                \item[$x,y$ pairs] $\leadsto$ supervised learning\newline $\leadsto$ you have a teacher that showed you the correct answers, and you were able to learn from it
+                \item[$x$ but not $y$] $\leadsto$ unsupervised learning\newline $\leadsto$ you have many tasks, but no one telling you what is right and what is wrong\newline $\leadsto$ you have to discover the patterns yourself
+                \item [$x$ and some $y$] $\leadsto$ semi-supervised learning\newline
+                                         $\leadsto$ even unlabeled data points $x$ can help you to learn and infer some of the missing $y$~s
+                \item[some $y$ but not $x$] $\leadsto$ recommendation system \newline
+                                        $\leadsto$ Learn how different $y$~s relate to each other (e.g., product recommendation)
+                \item[ $x$ can only be queried and some reward $r$] $\leadsto$ Reinforcement learning \newline
+                    $\leadsto$ you can only learn by interacting with the environment
+            \end{description}
+            
+        \end{itemize}
+        
+    \end{frame}
+
+    \begin{frame}[c]{Identify Paradigms}
+
+        \begin{itemize}
+            \item In $90\%$ of all cases, you can identify the correct paradigm by the available data
+            \item \alert{Pitfalls}:
+            \begin{enumerate}
+                \item For training, you have different kind of data than for deployment.
+                \item Your training data is not informative, e.g., all data points have the same label $y$
+                \item For all paradigms, there are different loss functions. The ``correct'' one might be needed to learn a good model (e.g., unbalanced data).
+                \item Some learning algorithms have assumptions. Without knowing and considering these, the training can fail or generalization performance to new data can be horrible.
+            \end{enumerate}
+        \end{itemize}
+
+        $\leadsto$ A good data scientist will be aware of these pitfalls, the corresponding solutions, and much more.
+        
+    \end{frame}
+
+
+\end{document}
