@@ -68,7 +68,7 @@ jobs:
         with:
           input-pattern: ${{ matrix.week }}/t*.pdf
           output-name: slides/${{ matrix.week }}.pdf
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: Merged slides
           path: slides/*.pdf
