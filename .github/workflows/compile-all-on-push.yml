@@ -14,8 +14,8 @@ jobs:
             "01_introduction",
             "02_data_sampling_and_probability",
             "04_visualization",
-            "07_classification",
             "06_learning",
+            "07_classification",
             "07_feature_engineering",
             "08_bias_and_variance",
             "085_dim_red",
@@ -48,12 +48,12 @@ jobs:
             "01_introduction",
             "02_data_sampling_and_probability",
             "04_visualization",
-            "06_simple_linear_regression_ols",
+            "06_learning",
+            "07_classification",
             "07_feature_engineering",
             "08_bias_and_variance",
             "085_dim_red",
-            "09_cv_reg_auto",
-            "10_classification"
+            "09_cv_reg_auto"
         ]
     steps:
       - uses: actions/checkout@v2
