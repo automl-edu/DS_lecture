@@ -1,7 +1,7 @@
 \documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
 \input{../latex_main/preamble}
 
-\title[CV, Reg \& AutoML]{DS: Cross-Validation, Regularization \& AutoML}
+\title[CV, Reg \& AutoML]{DS: Evaluation}
 \subtitle{Cross-Validation}
 
 \graphicspath{ {./figure/} }
@@ -55,7 +55,7 @@
 	
 	\begin{frame}{Generalization: Validation Split}
 	    \includegraphics[scale=.43]{Bild4}\\
-	    Cross validation simulates multiple train test-splits within the training data.
+	    Cross-validation simulates multiple train-test splits within the training data.
 
 	\end{frame}
 	
@@ -64,7 +64,7 @@
 	        \item Split your data into training and test sets (90\%, 10\%)
 	        \item Use only the training data when designing, training, and tuning the model
 	        \begin{itemize}
-	            \item Use cross validation to test generalization during this phase
+	            \item Use cross-validation to test generalization during this phase
 	            \item Do not look at the test data!
 	        \end{itemize}
 	        \item Commit to your final model and train once more using only the training data.
