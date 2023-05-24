@@ -19,7 +19,7 @@ jobs:
             "07_feature_engineering",
             "08_bias_and_variance",
             "085_dim_red",
-            "09_cv_reg_auto"
+            "09_evaluation"
           ]
         mode: [
         #        "animation",
@@ -53,7 +53,7 @@ jobs:
             "07_feature_engineering",
             "08_bias_and_variance",
             "085_dim_red",
-            "09_cv_reg_auto"
+            "09_evaluation"
         ]
     steps:
       - uses: actions/checkout@v3
