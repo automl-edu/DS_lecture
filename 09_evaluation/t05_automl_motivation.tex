@@ -1,7 +1,7 @@
 \documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
 \input{../latex_main/preamble}
 
-\title[CV, Reg \& AutoML]{DS: Cross-Validation, Regularization \& AutoML}
+\title[Evaluation]{DS: Evaluation}
 \subtitle{AutoML: Basics}
 
 \graphicspath{ {./figure/} }
@@ -18,7 +18,7 @@
 	    \item Depending on your hyperparameter configuration, your model might learn only noise, will learn a constant model or maybe even achieve state-of-the-art performance 
 	    \item In fact, many ML algorithms are fairly brittle regarding their hyperparameter configuration
 	    \medskip
-	    \item Since we cannot directly learn the hyperparameter configuration from data, we have tune somehow differently
+	    \item Since we cannot directly learn the hyperparameter configuration from data, we have to tune somehow differently
 	    \item Manual hyperparameter optimization?
 	    \begin{itemize}
 	        \item tedious, error-prone, time-consuming
@@ -31,15 +31,6 @@
 	        \item[$\leadsto$] might work well on your dataset or might fail
 	    \end{itemize}
 	    \item[$\leadsto$] Can we automate this process?
-	\end{itemize}
-	
-\end{frame}
-%-----------------------------------------------------------------------
-%----------------------------------------------------------------------
-\begin{frame}[c]{What are Hyperparameters in ML?}
-	
-	\begin{itemize}
-	    \item ...
 	\end{itemize}
 	
 \end{frame}
@@ -77,7 +68,7 @@
 
 \vspace{-1em}
 \begin{itemize}
-    \item Let's tune 2 hyperparameters 
+    \item Let's tune two hyperparameters 
     \item Plotting the samples of hyperparameter configurations for grid search and random search
     \item On each axis, we see the effect of each hyperparameter on the \alert{validation loss}
 \end{itemize}
