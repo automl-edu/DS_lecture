@@ -1,8 +1,8 @@
-\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\documentclass[aspectratio=169,handout]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
 \input{../latex_main/preamble}
 
 \title[Introduction]{Data Science Foundations}
-\subtitle{Logistics for the Lecture}
+\subtitle{Logistics of the Lecture}
 
 %\institute{}
 
@@ -18,11 +18,6 @@
 
 
 
-\column{0.2\textwidth}
-\centering
-\includegraphics[height=8em]{./figures/zia}
-
-Prof. Dr.\\ Ziawasch Abedjan
 
 \column{0.2\textwidth}
 \centering
@@ -30,11 +25,6 @@ Prof. Dr.\\ Ziawasch Abedjan
 
 Prof. Dr.\\ Marius Lindauer
 
-\column{0.2\textwidth}
-\centering
-\includegraphics[height=8em]{./figures/mahdi}
-
-Mahdi Esmailoghli\\
 
 \column{0.2\textwidth}
 \centering
@@ -55,7 +45,7 @@ Large parts of the material (i.e. slides, figures and exercise) were created at 
 
 \bigskip
 
-\alert{Warning}:
+\alert{Important}:
 \begin{itemize}
     \item We changed material...
     \item We condensed it...
@@ -63,6 +53,9 @@ Large parts of the material (i.e. slides, figures and exercise) were created at 
     \item We fixed it...
 \end{itemize}
 
+\vspace{1em}
+
+Prof. Ziawasch Abedjan contributed to the first two iterations of this course.
 
 \end{frame}
 %-----------------------------------------------------------------------
@@ -94,24 +87,28 @@ You will be able to \ldots
 %----------------------------------------------------------------------
 \begin{frame}[c]{Course Overview}
 
+\vspace*{-2em}
 \begin{itemize} 
-    \item Motivation [Abedjan \& Lindauer] 
-	\item Data Sampling and Probability [Abedjan]
-        \item Visualization [Lindauer]	
-        \item Data Preprocessing [Abedjan] 
+    \item Motivation
+	\item Data Sampling and Probability 
+        \item Visualization 
+        \item Data Cleaning 
 	\pause
-	\item Intro to Modelling + Linear Regression [Abedjan]  
-	\item Learning Paradigms [Lindauer] 
-	\item Classification  [Lindauer]
+	\item Intro to Modelling + Linear Regression 
+	\item Learning Paradigms
+	\item Classification 
+        \item Deep Learning
         \pause
-	\item Bias and Variance + Data Reduction [Lindauer]  
-        \item Feature Engineering [Abedjan] 
-        \item Evaluation and AutoML [Lindauer]
+        \item Feature Engineering 	
+        \item Bias and Variance + Data Reduction 
+        \item Evaluation and AutoML 
+	%\pause
+	%\item Inference + Ethics 
 	\pause
-	\item Inference + Ethics [Abedjan] 
-	\pause
-	\item Conclusion [Abedjan \& Lindauer]
+	\item Conclusion 
 \end{itemize}
+
+Optional video material on Inference and Ethics.
 
 
 \end{frame}
@@ -176,7 +173,7 @@ You will be able to \ldots
       \item You have to wait with your questions until our meetings
       \begin{itemize}
           \item[$\leadsto$] Use the StudIP forum to discuss with your peers
-          \item[$\leadsto$] Try to use ChatGPT -- \alert{maybe} it will provide you a good explanation
+          \item[$\leadsto$] ChatGPT? -- \alert{maybe} it will provide you a good explanation -- maybe it will hallucinate something
       \end{itemize}
   \end{itemize}
 \end{itemize}
@@ -219,9 +216,10 @@ You will be able to \ldots
 
 \vspace{-1em}
 \begin{itemize}
-  \item Every week new lab sheet
+  \item Every \alert{second} week new lab sheet
   \begin{itemize}
       \item Lab focus is aligned with lectures
+      \item Check StudIP for exercise dates
       \item Do the lab exercise in the exercise sessions (Thursdays at 11:00am s.t.)
       \item Bring your own laptop
       %\item Watch videos and start to directly work on exercise 
@@ -231,23 +229,19 @@ You will be able to \ldots
   \begin{itemize}
     \item Expected work load: 1.5h each week
   \end{itemize}
-  \item Team work highly recommended, i.e., max team size of 3!
+  \item Teamwork highly recommended, i.e., max team size of 3!
   \pause
-  \item Homework every 3 weeks, i.e. 4 times overall
+  \item 1 mandatory homework
   \begin{itemize}
-      \item You can get \alert{5\% as bonus points} for the final exam
-      \item You need 66\% of all homework points to get the bonus points\\
-      $\leadsto$ either you get all the bonus points or none at all
+      \item $66\%$ of the points are required for passing the course 
+      \item You'll get $5\%$ of bonus points for the exam, if you reach 90\% of the points\\
+      \item Teamwork possible, max team size of 3
   \end{itemize}
   \pause
   \item Don't cheat (incl. plagiarism)
   \begin{itemize}
-    \item First time cheating: $0$ points for exercise / homework
-    \item Second time cheating: failing the course
+    \item Cheating: failing the course
   \end{itemize}
-  \pause
-  \item Homework is not mandatory\\ \alert{BUT: quite unlikely that you will pass the course without doing them}
-  \pause
 \end{itemize}
 
 \end{frame}
@@ -257,10 +251,12 @@ You will be able to \ldots
 \vspace{-1em}
 \begin{itemize}
     \item To access the labs \& homework, you need to  \alert{register yourself TODAY after the lecture (!) on StudIP for the lecture}. 
+    \item \alert{New accounts will be created ONLY on a weekly basis!}
+    \item Make sure that the email address registered to your studip is ending with "uni-hannover.de".
     \item Tim Ruhkopf will send you an email with your credentials based on this list of participants. 
     \item Login using VPN (or on-site) and type  \href{https://jupyterhub.cluster.uni-hannover.de/} into your browser.
     \item Select the DataScience course in the dropdown and start a job 
-    (this is an actual job on the LUIS Cluster)
+    (this is an actual job on the LUIS Cluster, so waiting times might occur before resources are allocated to you.)
 \end{itemize}
 
 \end{frame}
@@ -295,11 +291,11 @@ You will be able to \ldots
 \begin{frame}[c]{Get in Touch with Us}
 
 \begin{itemize}
-  \item Lecture session every Wednesday (9am s.t.) and exercise session every Thursday (11am s.t.)
+  \item Lecture session every Wednesday (9am s.t.) and\\ exercise session (roughly) every second Thursday (11am s.t.)
   \item \alert{Use the forum in StudIP for all kinds of questions}
   \begin{itemize}
-        \item[$\leadsto$] Contact TAs first if necessary 
-      \item[$\leadsto$] Email to Professors only in case of emergencies
+        \item[$\leadsto$] Contact Tim first if necessary 
+      \item[$\leadsto$] Email to professor only in case of emergencies
   \end{itemize}
 \end{itemize}
 
@@ -316,7 +312,7 @@ You will be able to \ldots
   \item Programming in \alert{Python} (mandatory)
   \begin{itemize}
     \item All exercises will require that you implement something in~Python 
-    \item We will show you basics at the beginning in the exercises.\\ However if you never used Python before, it could get quite hard for you.
+    \item We will show you the basics at the beginning in the exercises.\\ However if you never used Python before, it could get quite hard for you.
   \end{itemize}
   \item \alert{English} (mandatory)
     \begin{itemize}
@@ -327,15 +323,21 @@ You will be able to \ldots
 \end{frame}
 %-----------------------------------------------------------------------
 %----------------------------------------------------------------------
-\begin{frame}[c]{Final Exam -- Tentative Plan!}
+\begin{frame}[c]{Final Exam}
 
 \begin{itemize}
   \item Written Exam
-  \item Show us that you understood the concepts
+  \item Show us that you understand the concepts
   \item Be a master of all the algorithms we showed you
   \item Be able to read and check code
+  \item Be able to answer multiple-choice questions
+  \item Fill blank-field text or graphics
   \item ...
 \end{itemize}
+
+\vspace{1em}
+\alert{Date:} 20.08.2024, 8:00-10:00\\
+\alert{Room:} 1101.E214
 
 \end{frame}
 %----------------------------------------------------------------------
@@ -352,6 +354,7 @@ You will be able to \ldots
   \begin{itemize}
     \item \href{https://inferentialthinking.com/chapters/intro.html}{Inferential Thinking}
       \item \href{https://www.textbook.ds100.org/intro.html}{DS100 Textbook}
+      \item Also see \href{https://www.ai.uni-hannover.de/en/studies/recommended-literature}{our institute website}
 \end{itemize}
   \pause
   \item Online courses (MOOCs)
@@ -364,7 +367,6 @@ You will be able to \ldots
   \begin{itemize}
       \item If you can become a grant master at Kaggle, you have very good chances for job offers
       \item Participate in competitions, look for help in forums, polish your skills!
-      \item \href{https://github.com/abhishekkrthakur/approachingalmost}{Approaching (almost) any machine learning problem}\\ by Abhishek Thakur (first 4x Grant Master at Kaggle)
   \end{itemize}
 \end{itemize}
 
@@ -373,7 +375,7 @@ You will be able to \ldots
 %----------------------------------------------------------------------
 \begin{frame}[c]{Opportunities and Risks}
 
-``Data Science Foundations'' is a basic lecture.\\ It is the second time we teach it at the Leibniz University Hannover.
+``Data Science Foundations'' is a basic lecture.
 
 \bigskip
 \pause
@@ -389,7 +391,7 @@ Opportunities:
 Risks:
 \begin{itemize}
   \item You will find some typos and issues in the slides;\\ please tell us if you find something
-  \item We will not cover deep neural networks
+  \item We will not cover the newest DL methods
 \end{itemize}
 
 \medskip
@@ -402,7 +404,7 @@ $\to$ Give us some feedback and we will improve the course!
 
 \vspace{-2em}
 \centering
-\includegraphics[width=0.43\textwidth]{figures/ai_luh.png}
+\includegraphics[width=0.43\textwidth]{figures/AI_Courses_LUH}
 
 \end{frame}
 %----------------------------------------------------------------------
@@ -431,10 +433,10 @@ $\to$ Give us some feedback and we will improve the course!
 \end{center}
 
 \begin{itemize}
-    \item What drives you for being here?
+    \item What drives you to be here?
     \item What interests you in data science?
     \item Do you already have hands-on experience in data science?
-    \item Are you looking for team members for exercises and home works?
+    \item Are you looking for team members for exercises and home work?
 \end{itemize}
 
 \end{frame}

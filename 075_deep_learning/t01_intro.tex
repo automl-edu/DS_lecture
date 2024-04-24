@@ -1,0 +1,105 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[DL in a Nutshell]{DS: Deep Learning}
+\subtitle{DL in a Nutshell}
+
+\date{\hspace{0.5em} {\includegraphics[height=1.5em]{../latex_main/figures/Cc-by-nc-sa_icon.svg.png}}; Inspired by \href{https://www.deeplearning.ai/resources/}{Andrew Ng}}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	\begin{frame}{Scaling with Data}
+
+        \begin{itemize}
+            \item More and more data is available these days
+            \begin{itemize}
+                \item with all its benefits and downsides
+            \end{itemize}
+            \item Models need to scale with data
+        \end{itemize}
+
+        \centering
+        \includegraphics[width=0.6\textwidth]{figures/dl_scaling}
+
+
+	\end{frame}
+
+ 	\begin{frame}{Layer-wise Feature Engineering}
+        % Housing Price Prediction
+
+        \begin{itemize}
+            \item By combining features, you can get interesting new features
+            \item Main idea: combine features (pairwise) in each layer and build stronger and stronger feature representations
+            \item Important: A linear combination of a linear combination of features is still a linear combination $\leadsto$ we need non-linear combinations
+        \end{itemize}
+
+        \centering
+        \includegraphics[width=0.4\textwidth]{figures/layer_rep}
+
+	\end{frame}
+
+  	\begin{frame}{Application to different Tasks and Data Modalities}
+        % table Input, Output, Application, Modality, Network Type
+
+        {\centering
+        \begin{tabular}{lllll}
+             Input & Output & Application & Modality & Network Type  \\
+             \midrule
+             Home Features & Price & Real Estate & Table & MLP \\
+             Ad, user info & Click on ad? (binary) & Online Advertising & Table & MLP\\
+             Image & Object (1,\ldots, 1000) & Photo Tagging & Images & CNN\\
+             Audio & Text transcript & Speech recognition & Audio Sequence & RNN\\
+             English & German & Machine Translation & Text & Transformer\\
+             Image, Radar Info & Position of other cars & Autonomous driving & Multi-modal & Custom
+        \end{tabular}}
+
+        \vspace{2em}
+
+        $\leadsto$ Consider input, output and data modality to decide which kind of network type you need -- more details later!
+
+	\end{frame}
+	
+
+   	\begin{frame}{Structured vs Unstructured Data}
+        % Structured Data: Table
+        % Unstructured Data: Image, Audio, Text
+
+        \begin{columns}
+
+        \column{0.5\textwidth}
+
+        Structure data: Tables\\[2em]
+
+        \centering
+        \begin{tabular}{llc|r}
+             Size & bedrooms & \ldots & Price  \\
+             \midrule
+             2104 & 3       & & 400.000\\
+             1600 & 3 & & 330.000\\
+             \ldots \\
+             3000 & 4 & & 540.000\\
+        \end{tabular}
+
+        \column{0.5\textwidth}
+            
+        
+        
+        Unstructured Data
+
+        \includegraphics[width=0.4\textwidth]{figures/cat.png}
+        \includegraphics[width=0.4\textwidth]{figures/audio.png}
+
+        \vspace{2em}
+
+        Text: \textit{Once upon a time, there was \ldots}
+
+        \end{columns}
+
+	\end{frame}
+
+\end{document}

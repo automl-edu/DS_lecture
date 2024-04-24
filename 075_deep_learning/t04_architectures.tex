@@ -1,0 +1,96 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[DL in a Nutshell]{DS: Deep Learning}
+\subtitle{DL in a Nutshell}
+
+\date{\hspace{0.5em} {\includegraphics[height=1.5em]{../latex_main/figures/Cc-by-nc-sa_icon.svg.png}}}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+    	\begin{frame}{DNN Architectures}
+
+            \begin{itemize}
+                \item Neural networks have various architectures designed for specific tasks.
+                \item The use of traditional MLP architectures is very rarely seen these days.
+                \item Understanding different architectures is crucial for applying them effectively in real-world applications.
+            \end{itemize}
+    
+                    
+    	\end{frame}
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{frame}{Convolutional Neural Networks (CNNs)}
+        \begin{itemize}
+            \item Designed primarily for processing data that comes in the form of multiple arrays, such as images.
+            \item Utilizes convolutional layers, pooling layers, and fully connected layers.
+            \item Excel at capturing spatial hierarchies in data.
+        \end{itemize}
+        \centering
+        \includegraphics[width=0.7\textwidth]{figures/conv.png}\\
+        Credits: Andreas Maier, CC BY 4.0
+        \end{frame}
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{frame}
+        \frametitle{Residual Networks (ResNet)}
+        \begin{itemize}
+            \item Introduced to address the vanishing gradients problem in very deep networks by using skip connections.
+            \item Allows training of much deeper networks by enabling feature reuse and easier gradient flow.
+            \item Commonly used in tasks requiring very deep networks, such as image classification and recognition.
+        \end{itemize}
+        \centering
+        \includegraphics[width=0.4\textwidth]{figures/resnet.png}
+        \end{frame}
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{frame}
+        \frametitle{Auto-Encoders}
+        \begin{itemize}
+            \item An unsupervised learning technique used to learn efficient codings of unlabeled data.
+            \item Consists of an encoder and a decoder. The encoder compresses the input and the decoder reconstructs the output from this representation.
+            \item Used for tasks like dimensionality reduction, feature learning, and more.
+        \end{itemize}
+        \centering
+        \includegraphics[width=0.5\textwidth]{figures/ae.png}
+        \end{frame}
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{frame}{Recurrent Neural Networks (RNNs)}
+        \begin{itemize}
+            \item Suited for sequential data such as time series or natural language.
+            \item Has the ability to retain information in 'memory' over time through loops.
+            \item Challenges include difficulties with long-range dependencies, see LSTM or GRU.
+        \end{itemize}
+        \centering
+        \includegraphics[width=0.3\textwidth]{figures/rnn.png}
+        \end{frame}
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{frame}{Long Short-Term Memory Networks (LSTMs)}
+        \begin{itemize}
+            \item A type of RNN designed to remember long-term dependencies.
+            \item LSTMs are particularly useful in tasks where context from the distant past is informative.
+            \item Overcomes the vanishing gradient problem typical of standard RNNs.
+        \end{itemize}
+        \centering
+        \includegraphics[width=0.5\textwidth]{figures/lstm.png}\\
+        Credits: Cosmia Nebula, CC BY-SA 4.0
+        \end{frame}
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+ 	
+\end{document}
