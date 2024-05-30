@@ -1,8 +1,8 @@
 \documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
 \input{../latex_main/preamble}
 
-\title[DL in a Nutshell]{DS: Deep Learning}
-\subtitle{DL in a Nutshell}
+\title[DL: Training of DNNs]{DS: Deep Learning}
+\subtitle{Training of DNNs}
 
 \date{\hspace{0.5em} {\includegraphics[height=1.5em]{../latex_main/figures/Cc-by-nc-sa_icon.svg.png}}}
 
@@ -13,18 +13,18 @@
 \begin{document}
 	
 	\maketitle
-	\begin{frame}{MLP Definition (Recap)}
+	\begin{frame}{Multi-Layer Perceptron Definition}
 
         Recursive definition of MLPs:
 
             \[
-            \hat{\textbf{y}}^{(l)} = \sigma(\textbf{W}^{(l)} \hat{\textbf{y}}^{(l-1)} + \textbf{b}^{(l)})
+            \hat{\textbf{y}}^{(l)} = \sigma({\Theta}^{(l)} \hat{\textbf{y}}^{(l-1)} + \textbf{b}^{(l)})
             \]
             
             where:
             \begin{itemize}
                 \item \( \hat{\textbf{y}}^{(l)} \) is the output vector from layer \( l \)
-                \item \( \textbf{W}^{(l)} \) represents the weight matrix for layer \( l \)
+                \item \( \Theta^{(l)} \) represents the weight matrix for layer \( l \)
                 \item \( \hat{\textbf{y}}^{(l-1)} \) is the output vector from the previous layer \( l-1 \)
                 \item \( \textbf{b}^{(l)} \) is the bias vector for layer \( l \)
                 \item \( \sigma \) is the activation function (e.g., ReLU)
@@ -43,7 +43,7 @@
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  	\begin{frame}{Forward Propagation}
+  	\begin{frame}{Forward Pass}
 
         \begin{itemize}
             \item The process of calculating the output from the input layer through to the output layer.
@@ -51,12 +51,12 @@
         \end{itemize}
 
         
-        \begin{block}{Steps of Forward Propagation}
+        \begin{block}{Steps of Forward Pass}
         \begin{enumerate}
             \item Start with the input layer \( \hat{\textbf{y}}^{(0)} = \textbf{x} \), where \( \textbf{x} \) is the input vector.
             \item For each layer from 1 to \( L \) (where \( L \) is the output layer):
                 \begin{itemize}
-                    \item Compute the pre-activation \( \textbf{z}^{(l)} = \textbf{W}^{(l)} \hat{\textbf{y}}^{(l-1)} + \textbf{b}^{(l)} \)
+                    \item Compute the pre-activation \( \textbf{z}^{(l)} = \Theta^{(l)} \hat{\textbf{y}}^{(l-1)} + \textbf{b}^{(l)} \)
                     \item Apply the activation function \( \hat{\textbf{y}}^{(l)} = \sigma(\textbf{z}^{(l)}) \)
                 \end{itemize}
             \item The final output \( \hat{\textbf{y}}^{(L)} \) is the prediction of the network.
@@ -105,16 +105,16 @@
         \begin{block}{Gradient Computation for Weights}
         The gradient of the loss with respect to the weights is given by:
         \[
-        \frac{\partial \mathcal{L}}{\partial w_{ij}^{(l)}} = \hat{y}_j^{(l-1)} \delta_i^{(l)}
+        \frac{\partial \mathcal{L}}{\partial \Theta_{ij}^{(l)}} = \hat{y}_j^{(l-1)} \delta_i^{(l)}
         \]
         where:
         \begin{itemize}
-            \item \( w_{ij}^{(l)} \) are the weights connecting neuron \( j \) in layer \( l-1 \) to neuron \( i \) in layer \( l \).
-            \item \( \delta_i^{(l)} \) is the error term for neuron \( i \) in layer \( l \).
+            \item \( \Theta_{ij}^{(l)} \) are the weights connecting Neuron \( j \) in Layer \( l-1 \) to Neuron \( i \) in Layer \( l \).
+            \item \( \delta_i^{(l)} \) is the error term for Neuron \( i \) in Layer \( l \).
         \end{itemize}
         \end{block}
 
-        Important to note: Backpropagation makes use of the chain rule of calculus
+        Important to note: Backpropagation makes use of the chain rule of calculus (see optional slide at the end)
         
         \end{frame}
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -124,7 +124,7 @@
         \begin{block}{Update Rule}
             Weights are updated using the rule:
             \[
-            w_{ij}^{(l)} \leftarrow w_{ij}^{(l)} - \eta \frac{\partial \mathcal{L}}{\partial w_{ij}^{(l)}}
+            \Theta_{ij}^{(l)} \leftarrow \Theta_{ij}^{(l)} - \eta \frac{\partial \mathcal{L}}{\partial \Theta_{ij}^{(l)}}
             \]
             where \( \eta \) is the learning rate.
          \end{block}
@@ -137,14 +137,14 @@
 
         \vspace{-2em}
         \begin{itemize}
-            \item The chain rule of calculus is essential for understanding how gradients are computed in backpropagation.
+            \item The chain rule of calculus is essential for how gradients are computed in backpropagation.
             \item Backpropagation uses the chain rule to find the derivatives of the loss function with respect to each weight in the network by propagating errors back from the output towards the input layer.
         \end{itemize}
         
         \begin{itemize}
             \item To update the weight \( w_{ij}^{(l)} \), we need to compute:\\
             $
-            \frac{\partial \mathcal{L}}{\partial w_{ij}^{(l)}} = \frac{\partial \mathcal{L}}{\partial \hat{y}_i^{(l)}} \cdot \frac{\partial \hat{y}_i^{(l)}}{\partial z_i^{(l)}} \cdot \frac{\partial z_i^{(l)}}{\partial w_{ij}^{(l)}}
+            \frac{\partial \mathcal{L}}{\partial \Theta_{ij}^{(l)}} = \frac{\partial \mathcal{L}}{\partial \hat{y}_i^{(l)}} \cdot \frac{\partial \hat{y}_i^{(l)}}{\partial z_i^{(l)}} \cdot \frac{\partial z_i^{(l)}}{\partial \Theta_{ij}^{(l)}}
             $
             \item Where:
             \begin{itemize}
@@ -152,16 +152,9 @@
                 \item \( \frac{\partial \hat{y}_i^{(l)}}{\partial z_i^{(l)}} \) is the derivative of the activation function at \( z_i^{(l)} \).
                 \item \( \frac{\partial z_i^{(l)}}{\partial w_{ij}^{(l)}} \) is the input from neuron \( j \) in the previous layer \( l-1 \).
             \end{itemize}
-            \item This decomposition illustrates the chain rule's role in determining how changes in weights affect the loss function.
+            \item This decomposition allows us to update all the weights $\Theta$ in a single backward pass
         \end{itemize}
-        
-        % \begin{block}{Significance}
-        % \begin{itemize}
-        %     \item By applying the chain rule, we systematically compute the impact of each weight on the overall error, enabling efficient optimization of the neural network.
-        %     \item This process is repeated iteratively across all layers and weights to minimize the loss function and improve the model's predictions.
-        % \end{itemize}
-        % \end{block}
-        
+
         \end{frame}
 
  	

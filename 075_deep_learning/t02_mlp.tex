@@ -1,8 +1,8 @@
 \documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
 \input{../latex_main/preamble}
 
-\title[DL in a Nutshell]{DS: Deep Learning}
-\subtitle{DL in a Nutshell}
+\title[DL:Multi-Layer Perceptron]{DS: Deep Learning}
+\subtitle{Multi-Layer Perceptron}
 
 \date{\hspace{0.5em} {\includegraphics[height=1.5em]{../latex_main/figures/Cc-by-nc-sa_icon.svg.png}}}
 
@@ -19,7 +19,7 @@
             \item Basic unit of computation in neural networks.
             \item ``Mimics'' the function of neurons in the biological brain.
             \begin{itemize}
-                \item Although many people claim that deep learning is inspired by the biological brains, this link is very weak.
+                \item Although many people claim that DL is inspired by the biological brains, this link is very weak.
             \end{itemize}
             \item Consists of inputs, weights, (a bias), and an activation function.
         \end{itemize}
@@ -67,30 +67,15 @@
             \end{column}
            
         \end{columns}
+
+        More modern activation functions include: Swish, GeLU, Leaky ReLU
                 
-	\end{frame}
-
- 	\begin{frame}{MLP: Formally}
-
-        Recursive definition of MLPs:
-
-            \[
-            \textbf{y}^{(l)} = \sigma(\textbf{W}^{(l)} \textbf{y}^{(l-1)} + \textbf{b}^{(l)})
-            \]
-            
-            where:
-            \begin{itemize}
-                \item \( \textbf{y}^{(l)} \) is the output vector from layer \( l \)
-                \item \( \textbf{W}^{(l)} \) represents the weight matrix for layer \( l \)
-                \item \( \textbf{y}^{(l-1)} \) is the output vector from the previous layer \( l-1 \)
-                \item \( \textbf{b}^{(l)} \) is the bias vector for layer \( l \)
-                \item \( \sigma \) is the activation function (e.g., ReLU)
-            \end{itemize}
 	\end{frame}
 
   	\begin{frame}{MLP: Multi-Class Classification}
 
         \begin{itemize}
+            \item Instead of a single neuron, let's combine several of them in a hierarchical level design
             \item The most basic version of a deep neural network (DNN)
             \item Input size depends on your input size
             \item Output depends on your task; here: a single value (e.g., regression)
@@ -101,7 +86,43 @@
                 
 	\end{frame}
 
-  	\begin{frame}{Multi-Layer Perceptron (MLP)}
+
+        \begin{frame}{Layer-wise Representation Learning}
+
+            \centering
+            \includegraphics[width=.8\linewidth]{075_deep_learning/figures/deconvnet.png}\\
+            Source \href{https://adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html}{Adit Deshpande}
+            
+        \end{frame}
+        
+        \begin{frame}{Layer-wise Representation Learning}
+
+            \centering
+            \includegraphics[width=0.42\linewidth]{075_deep_learning/figures/deconvnet2.png}\\
+            Source \href{https://adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html}{Adit Deshpande}
+            
+        \end{frame}
+
+ 	\begin{frame}{Multi-Layer Perceptron: Formally}
+
+        Recursive definition of MLPs:
+
+            \[
+            \textbf{y}^{(l)} = \sigma({\Theta}^{(l)} \textbf{y}^{(l-1)} + \textbf{b}^{(l)})
+            \]
+            
+            where:
+            \begin{itemize}
+                \item \( \textbf{y}^{(l)} \) is the output vector from layer \( l \)
+                \item \( {\Theta}^{(l)} \) represents the weight matrix for layer \( l \)
+                \item \( \textbf{y}^{(l-1)} \) is the output vector from the previous layer \( l-1 \)
+                \item \( \textbf{b}^{(l)} \) is the bias vector for layer \( l \)
+                \item \( \sigma \) is the activation function (e.g., ReLU)
+            \end{itemize}
+	\end{frame}
+
+
+  	\begin{frame}{Multi-Layer Perceptron: Classification via Softmax}
 
         \begin{itemize}
             \item 1 output neuron for each output

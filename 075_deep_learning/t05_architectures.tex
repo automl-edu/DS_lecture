@@ -1,8 +1,8 @@
 \documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
 \input{../latex_main/preamble}
 
-\title[DL in a Nutshell]{DS: Deep Learning}
-\subtitle{DL in a Nutshell}
+\title[DL: Neural Architectures]{DS: Deep Learning}
+\subtitle{Neural Architectures}
 
 \date{\hspace{0.5em} {\includegraphics[height=1.5em]{../latex_main/figures/Cc-by-nc-sa_icon.svg.png}}}
 
@@ -19,6 +19,8 @@
                 \item Neural networks have various architectures designed for specific tasks.
                 \item The use of traditional MLP architectures is very rarely seen these days.
                 \item Understanding different architectures is crucial for applying them effectively in real-world applications.
+                \medskip
+                \item In the following, let's talk about one of the most famous architecture types
             \end{itemize}
     
                     
@@ -47,7 +49,8 @@
             \item Commonly used in tasks requiring very deep networks, such as image classification and recognition.
         \end{itemize}
         \centering
-        \includegraphics[width=0.4\textwidth]{figures/resnet.png}
+        \includegraphics[width=0.4\textwidth]{figures/resnet.png}\\
+        Credits: [\href{https://arxiv.org/pdf/1512.03385}{He et al. 2015}]
         \end{frame}
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -61,6 +64,20 @@
         \end{itemize}
         \centering
         \includegraphics[width=0.5\textwidth]{figures/ae.png}
+        \end{frame}
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{frame}
+        \frametitle{GAN: Generative Adversarial Networks}
+        \begin{itemize}
+            \item Fairly easy to fool DNNs by providing a slightly different image that leads to a different prediction, but a human it is not able to tell the difference between both images $\leadsto$ adversarial attack
+            \item GANs are trained to mitigate the chance of adversarial attacks and to increase robustness 
+            \item The generator generates images similar to the training dataset to fool the DNN. The discriminator has to distinguish between real and fake images
+        \end{itemize}
+        \centering
+        \includegraphics[width=0.5\textwidth]{figures/gans.png}\\
+        Credits: [\href{https://sthalles.github.io/intro-to-gans/}{Silva 2017}]
         \end{frame}
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -91,6 +108,59 @@
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{frame}{Tranformers}
 
+        \begin{columns}
+
+        \begin{column}{0.5\textwidth}
+
+            \begin{itemize}
+                \item State of the art for text data, but also fairly prominent in computer vision (as an alternative to CNNs)
+                \item Attention mechanism allows to learn to focus on context information; i.e., not only the most recent word in a sentence is important to predict the next, but other previous keywords, too
+            \end{itemize}
+
+        \end{column}
+
+        \begin{column}{0.5\textwidth}
+
+        \centering
+        \vspace*{-2em}
+        \includegraphics[width=0.6\textwidth]{figures/transformer.png}\\
+        Credits: [\href{https://arxiv.org/pdf/1706.03762}{Vaswani et al. 2017}]
+
+        \end{column}
+            
+        \end{columns}
+        
+
+
+        \end{frame}
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{frame}{Conclusion}
+
+
+            \begin{itemize}
+                \item There are a whole bunch of different architectures
+                \begin{itemize}
+                    \item Even more than we discussed here
+                \end{itemize}
+                \item Depending on your data modality, your modelling assumptions and overall task, you have to choose one of them 
+                \item Furthermore, you have to decide the size of architectures (e.g., width, depth, channels) and certain operators
+                \begin{itemize}
+                    \item[$\leadsto$] Can be partially automated with \emph{neural architecture search} [\href{https://arxiv.org/abs/1808.05377}{Elsken et al. 2018}]
+                \end{itemize}
+            \end{itemize}
+
+
+        
+
+
+        \end{frame}
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  	
 \end{document}

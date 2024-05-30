@@ -1,0 +1,134 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[DL: DL Operations]{DS: Deep Learning}
+\subtitle{DL Operations}
+
+\date{\hspace{0.5em} {\includegraphics[height=1.5em]{../latex_main/figures/Cc-by-nc-sa_icon.svg.png}}}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+
+    \begin{frame}{Operations for DL}
+        \begin{itemize}
+            \item Besides, a simple flow of data through neurons, there are further important operators in neural networks
+            \item In principle, DNNs are universal function approximations, but in practice, these operations help efficiently train DNNs
+            \item Note that with using these operators you add a certain kind of inductive bias (i.e., how should the model being learned) or regularization 
+        \end{itemize}
+    \end{frame}
+ 
+    \begin{frame}
+    \frametitle{Convolution Operation}
+    \begin{itemize}
+        \item Convolution is a fundamental operation in CNNs (Convolutional Neural Networks).
+        \item It involves a filter (or kernel) that slides over the input feature map and computes dot products.
+        \item Typically, used for images
+    \end{itemize}
+    \begin{equation}
+        (I * K)(i,j) = \sum_{m}\sum_{n} I(i-m,j-n)K(m,n)
+    \end{equation}
+        \centering
+            \includegraphics[width=0.38\textwidth]{figures/convolution.jpg}
+        Credit: [\href{https://www.linkedin.com/pulse/image-processing-convolution-filters-calculation-gradients-yadav/}{Yadav 2023}]
+    \end{frame}
+    
+    \begin{frame}
+    \frametitle{Convolution Parameters}
+    \begin{itemize}
+        \item \textbf{Stride:} Determines the step size of the filter as it slides over the input.
+        \item \textbf{Padding:} Controls the spatial size of the output. Common types are 'valid' (no padding) and 'same' (zero-padding).
+        \item \textbf{Depth:} Number of filters applied. Each filter generates a separate output channel.
+    \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+    \frametitle{Pooling Operation}
+    \begin{itemize}
+        \item Pooling reduces the spatial dimensions (width and height) of the input volume.
+        \item Common types are \textbf{Max Pooling} and \textbf{Average Pooling}.
+    \end{itemize}
+        \centering
+        \includegraphics[width=0.6\textwidth]{figures/maxpool.jpeg} Credit: [\href{https://cs231n.github.io/convolutional-networks/#overview}{cs231n}]
+    \end{frame}
+    
+    \begin{frame}
+    \frametitle{Types of Pooling}
+    \begin{itemize}
+        \item \textbf{Max Pooling:} Takes the maximum value from the portion of the image covered by the filter.
+        \item \textbf{Average Pooling:} Takes the average value from the portion of the image covered by the filter.
+    \end{itemize}
+    \begin{equation}
+        y(i,j) = \max_{m,n} x(i+m,j+n) \quad \text{(Max Pooling)}
+    \end{equation}
+    \begin{equation}
+        y(i,j) = \frac{1}{mn}\sum_{m,n} x(i+m,j+n) \quad \text{(Average Pooling)}
+    \end{equation}
+    \end{frame}
+    
+    \begin{frame}
+    \frametitle{Batch Normalization}
+    \begin{itemize}
+        \item Batch normalization is used to normalize the input of each layer.
+        \item It helps in speeding up training and providing some regularization.
+    \end{itemize}
+    \begin{equation}
+        \hat{x}^{(k)} = \frac{x^{(k)} - \mu^{(k)}}{\sqrt{(\sigma^{(k)})^2 + \epsilon}}
+    \end{equation}
+    \begin{equation}
+        y^{(k)} = \gamma^{(k)} \hat{x}^{(k)} + \beta^{(k)}
+    \end{equation}
+    \begin{itemize}
+        \item \(\mu^{(k)}\) and \(\sigma^{(k)}\) are the mean and variance of the batch.
+        \item \(\gamma^{(k)}\) and \(\beta^{(k)}\) are learnable parameters.
+    \end{itemize}
+    \end{frame}
+    
+    \begin{frame}
+    \frametitle{Benefits of Batch Normalization}
+    \begin{itemize}
+        \item Reduces internal covariate shift.
+        \item Allows for higher learning rates.
+        \item Acts as a form of regularization.
+    \end{itemize}
+    \end{frame}
+    
+    \begin{frame}
+    \frametitle{Dropout}
+    \begin{itemize}
+        \item Dropout is a regularization technique used to prevent overfitting.
+        \item During training, randomly selected neurons are ignored (dropped out).
+        \item Note: Learning curves will become dumpy
+    \end{itemize}
+    \begin{equation}
+        y_i = 
+        \begin{cases} 
+        0 & \text{with probability } p \\
+        \frac{x_i}{1-p} & \text{with probability } 1-p 
+        \end{cases}
+    \end{equation}
+
+    \centering
+    \includegraphics[width=0.45\textwidth]{figures/dropout.png} Credit: [\href{https://jmlr.org/papers/volume15/srivastava14a/srivastava14a.pdf}{Srivastava et al. 2015}]
+
+    \end{frame}
+    
+    \section{Summary}
+    \begin{frame}
+    \frametitle{Summary}
+    \begin{itemize}
+        \item Convolution, batch normalization, pooling and dropout are key operations in deep neural networks.
+        \item Convolution captures spatial hierarchies, batch normalization stabilizes learning, pooling reduces dimensionality and dropout prevents overfitting.
+        \item Understanding these operations is crucial for designing effective neural network architectures.
+    \end{itemize}
+    \end{frame}
+
+    
+
+
+ 	
+\end{document}

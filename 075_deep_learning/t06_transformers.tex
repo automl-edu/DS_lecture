@@ -1,0 +1,199 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble}
+
+\title[DL: Transformers]{DS: Deep Learning}
+\subtitle{Transformers}
+
+\date{\hspace{0.5em} {\includegraphics[height=1.5em]{../latex_main/figures/Cc-by-nc-sa_icon.svg.png}} inspired by \href{https://www.youtube.com/watch?v=bQ5BoolX9Ag}{StatQuest by Joshua Starmer}}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{frame}{Tranformers [\href{https://arxiv.org/pdf/1706.03762}{Vaswani et al. 2017}]}
+
+        \begin{columns}
+
+        \begin{column}{0.5\textwidth}
+
+            \begin{itemize}
+                \item Transformers are state of the art in many applications these days
+                \item They allow to processing of huge amounts of data efficiently
+                \item Key concepts include
+                \begin{itemize}
+                    \item They understand the context
+                    \item They attend to the most important context
+                    \item They process all at once (e.g., input of an entire paragraph of text instead of word by word)
+                    \item Let's understand the main concepts step by step
+                \end{itemize}
+            \end{itemize}
+
+        \end{column}
+
+        \begin{column}{0.5\textwidth}
+
+        \centering
+        \vspace*{-2em}
+        \includegraphics[width=0.6\textwidth]{figures/transformer.png}\\
+        Credits: [\href{https://arxiv.org/pdf/1706.03762}{Vaswani et al. 2017}]
+
+        \end{column}
+            
+        \end{columns}
+        
+        \end{frame}
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{frame}{Exemplary Chat I}
+
+            \centering
+            \includegraphics[width=1\linewidth]{075_deep_learning/figures/transformer1.png}
+        
+        \end{frame}
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{frame}{Step 1: Word Embedding}
+
+            \begin{itemize}
+                \item Computers cannot directly work on words $\leadsto$ numbers are better
+                \item Let's translate all the words of a vocabulary into a vector
+                \begin{itemize}
+                    \item in addition <EOS> or <SOS (end/start of sequence)
+                \end{itemize}
+            \end{itemize}
+
+            \centering
+            \includegraphics[width=1\linewidth]{075_deep_learning/figures/transformer2.png}
+        
+        \end{frame}
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{frame}{Exemplary Chat II}
+
+            \begin{itemize}
+                \item Order matters!
+            \end{itemize}
+
+            \centering
+            \includegraphics[width=0.9\linewidth]{075_deep_learning/figures/transformer3.png}
+        
+        \end{frame}
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{frame}{Step2: Positional Encoding}
+
+            \begin{itemize}
+                \item Order matters!
+            \end{itemize}
+
+            \centering
+            \includegraphics[width=0.9\linewidth]{075_deep_learning/figures/transformer4.png}
+        
+        \end{frame}
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{frame}{Step2: Positional Encoding}
+
+            \begin{itemize}
+                \item Order matters!
+            \end{itemize}
+
+            \centering
+            \includegraphics[width=0.9\linewidth]{075_deep_learning/figures/transformer5.png}
+        
+        \end{frame}
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{frame}{Exemplary Chat III}
+
+            \begin{itemize}
+                \item Context matters!
+            \end{itemize}
+
+            \centering
+            \includegraphics[width=0.9\linewidth]{075_deep_learning/figures/transformer6.png}
+        
+        \end{frame}
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{frame}{Self-Masked Attention: Query}
+
+            \centering
+            \includegraphics[width=0.9\linewidth]{075_deep_learning/figures/transformer7.png}
+        
+        \end{frame}
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{frame}{Self-Masked Attention: Query}
+
+            \centering
+            \includegraphics[width=0.9\linewidth]{075_deep_learning/figures/transformer8.png}
+        
+        \end{frame}
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{frame}{Self-Masked Attention: Key}
+
+            \centering
+            \includegraphics[width=0.9\linewidth]{075_deep_learning/figures/transformer9.png}
+        \end{frame}
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{frame}{Self-Masked Attention: Values}
+
+            \centering
+            \includegraphics[width=0.9\linewidth]{075_deep_learning/figures/transformer10.png}
+        
+        \end{frame}
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{frame}{Self-Masked Attention: Final}
+
+            \centering
+            \vspace{-1.2em}
+            \includegraphics[width=0.9\linewidth]{075_deep_learning/figures/transformer11.png}
+        
+        \end{frame}
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{frame}{Reverse Embedding}
+
+            \centering
+            \includegraphics[width=0.9\linewidth]{075_deep_learning/figures/transformer12.png}
+        
+        \end{frame}
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{frame}{Full Example}
+
+            \centering
+            \includegraphics[width=0.9\linewidth]{075_deep_learning/figures/transformer13.png}
+        
+        \end{frame}
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \begin{frame}{Conclusion}
+
+            \begin{itemize}
+                \item Transformers are very powerful models 
+                \begin{itemize}
+                    \item nowadays they can deal with 10 thousands of tokens at once
+                    \item but transformers often give special attention to the beginning and end of a sequence
+                \end{itemize}
+                \item There are quite some variants and further tricks for modern transformers, incl.
+                \begin{itemize}
+                    \item different positional encodings or not using it at all
+                    \item order of the batch norm
+                    \item different attention variants
+                    \item use of encode-decoder vs only-decoder variants (e.g., GPT)
+                \end{itemize}
+            \end{itemize}
+        
+        \end{frame}
+ 	
+\end{document}

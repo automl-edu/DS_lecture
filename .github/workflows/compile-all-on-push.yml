@@ -19,6 +19,7 @@ jobs:
             "07_feature_engineering",
             "08_bias_and_variance",
             "085_dim_red",
+            "075_deep_learning",
             "10_evaluation"
           ]
         mode: [
@@ -53,6 +54,7 @@ jobs:
             "07_feature_engineering",
             "08_bias_and_variance",
             "085_dim_red",
+            "075_deep_learning",
             "10_evaluation"
         ]
     steps:
