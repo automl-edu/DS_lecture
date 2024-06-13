@@ -1,5 +1,5 @@
 \documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
-\input{../latex_main/preamble}
+\input{../latex_main/preamble_2}
 
 \title[DL: DL Operations]{DS: Deep Learning}
 \subtitle{DL Operations}
@@ -24,16 +24,17 @@
  
     \begin{frame}
     \frametitle{Convolution Operation}
+    \vspace*{-2em}
     \begin{itemize}
         \item Convolution is a fundamental operation in CNNs (Convolutional Neural Networks).
-        \item It involves a filter (or kernel) that slides over the input feature map and computes dot products.
+        \item It involves a filter (or kernel) that slides over the input feature map and computes dot products.\footnote{In a 2d-Conv, this refers actually to a element-wise multiplication (or a flattened representation to a vector) and not to a real dot product. The dot-product operation is relevant for 3d-Convs (for which we take the channels into account).}
         \item Typically, used for images
     \end{itemize}
     \begin{equation}
         (I * K)(i,j) = \sum_{m}\sum_{n} I(i-m,j-n)K(m,n)
     \end{equation}
         \centering
-            \includegraphics[width=0.38\textwidth]{figure/convolution.jpg}
+            \includegraphics[width=0.33\textwidth]{figure/convolution.jpg}
         Credit: [\href{https://www.linkedin.com/pulse/image-processing-convolution-filters-calculation-gradients-yadav/}{Yadav 2023}]
     \end{frame}
     
