@@ -1,9 +1,10 @@
 \documentclass[aspectratio=169,handout]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
-\input{../latex_main/preamble}
+\input{../latex_main/preamble_2}
 
-\title[Introduction]{Data Science Foundations}
+\title[Orga]{Data Science Foundations}
 \subtitle{Logistics of the Lecture}
-
+\date{\hspace{0.5em} {\includegraphics[height=1.5em]{../latex_main/figures/Cc-by-nc-sa_icon.svg.png}}
+}
 %\institute{}
 
 
@@ -31,6 +32,12 @@ Prof. Dr.\\ Marius Lindauer
 \includegraphics[height=8em]{./figures/tim}
 
 Tim Ruhkopf\\
+
+\column{0.2\textwidth}
+\centering
+\includegraphics[height=8em]{./figures/lukas}
+
+Lukas Fehring\\
 
 \end{columns}
 
@@ -87,28 +94,29 @@ You will be able to \ldots
 %----------------------------------------------------------------------
 \begin{frame}[c]{Course Overview}
 
-\vspace*{-2em}
+\vspace*{-1em}
 \begin{itemize} 
-    \item Motivation
-	\item Data Sampling and Probability 
-        \item Visualization 
-        \item Data Cleaning 
+    \item Week 0: Motivation
+	\item Week 1: Python, Numpy \& co. (\alert{only exercise! no lecture!})
+        \item Week 2: Data Sampling and Probability 
+        \item Week 3: Visualization (+exercise)
+        \item Week 4: Data Cleaning 
 	\pause
-	\item Intro to Modelling + Linear Regression 
-	\item Learning Paradigms
-	\item Classification 
-        \item Deep Learning
+	\item Week 5: Intro to Modelling + Linear Regression (+exercise)
+	\item Week 6: Learning Paradigms
+	\item Week 7: Classification (+exercise)
+        \item Week 8: Bias and Variance + Dimensionality Reduction 
         \pause
-        \item Feature Engineering 	
-        \item Bias and Variance + Data Reduction 
-        \item Evaluation and AutoML 
+        \item Week 9: Deep Learning (+exercise)
+        \item Week 10: Evaluation and AutoML 
+        \item Week 11: Feature Engineering or Guest Talk (+exercise)
 	%\pause
 	%\item Inference + Ethics 
 	\pause
 	\item Conclusion 
 \end{itemize}
 
-Optional video material on Inference and Ethics.
+%Optional video material on Inference and Ethics.
 
 
 \end{frame}
@@ -126,11 +134,11 @@ Optional video material on Inference and Ethics.
 	\item Flipped-classroom lecture
 	\begin{itemize}
         \item Watching video lectures at home
-	  \item Discussion lecture (Wednesdays \alert{9am -10am})
-        \item Guided lab exercise (Thursdays 11:00 - 12:30)
+	  \item Discussion lecture (Thursdays \alert{10:15am -11:30am})
+        \item Lab exercise (biweekly Thursdays 11:45am - 1:15pm)
 	\end{itemize}
 	\smallskip
-	\item Practical lab exercises and home works
+	\item Practical lab exercises
 	\begin{itemize}
 	  \item implement it, use it and play with it!
 	\end{itemize}
@@ -158,9 +166,12 @@ Optional video material on Inference and Ethics.
       \begin{itemize}
           \item[$\leadsto$] Stop it if you need time to think about it
       \end{itemize}
+      \pause
       \item Go back and watch it again, if you missed or forgot something
-      \item Annotate questions on the fly (e.g., using the Miro boards)
-      \item After each video ($\sim$10-20min), you can take a break and\\ think about what you learned in this video (and whether you understood it)
+      \item Annotate questions on the fly
+      \pause
+      \item After each video ($\sim$10-20min), you should take a break and\\ think about what you learned in this video (and whether you understood it)
+      \pause
       \item \alert{Recommendation:} Make your own notes while (or after) watching!
       \pause
       \item \alert{We have time in the lecture sessions to discuss the content!}
@@ -170,7 +181,7 @@ Optional video material on Inference and Ethics.
   \item Risks and challenges:
   \begin{itemize}
       \item You have to be self-disciplined 
-      \item You have to wait with your questions until our meetings
+      \item You have to wait with some of your questions until our meetings
       \begin{itemize}
           \item[$\leadsto$] Use the StudIP forum to discuss with your peers
           \item[$\leadsto$] ChatGPT? -- \alert{maybe} it will provide you a good explanation -- maybe it will hallucinate something
@@ -220,23 +231,18 @@ Optional video material on Inference and Ethics.
   \begin{itemize}
       \item Lab focus is aligned with lectures
       \item Check StudIP for exercise dates
-      \item Do the lab exercise in the exercise sessions (Thursdays at 11:00am s.t.)
+      \item Do the lab exercise in advanced to the exercise sessions
       \item Bring your own laptop
+      \item We will publish the next exercise two weeks in advance
       %\item Watch videos and start to directly work on exercise 
       %\item[$\leadsto$] \alert{Deadline one day after the live session: Wednesday at 23:59}
   \end{itemize}
   \item Most exercises will be practical, i.e., you have to implement something
   \begin{itemize}
-    \item Expected work load: 1.5h each week
+    \item Expected work load: 2h each week
   \end{itemize}
   \item Teamwork highly recommended, i.e., max team size of 3!
   \pause
-  \item 1 mandatory homework
-  \begin{itemize}
-      \item $66\%$ of the points are required for passing the course 
-      \item You'll get $5\%$ of bonus points for the exam, if you reach 90\% of the points\\
-      \item Teamwork possible, max team size of 3
-  \end{itemize}
   \pause
   \item Don't cheat (incl. plagiarism)
   \begin{itemize}
@@ -246,17 +252,40 @@ Optional video material on Inference and Ethics.
 
 \end{frame}
 
-\begin{frame}[c]{Organization (Labs \& Homework)}
+\begin{frame}[c]{Organization (Labs)}
 
 \vspace{-1em}
 \begin{itemize}
     \item To access the labs \& homework, you need to  \alert{register yourself TODAY after the lecture (!) on StudIP for the lecture}. 
-    \item \alert{New accounts will be created ONLY on a weekly basis!}
+    \item \alert{New accounts will be created ONLY on a bi-weekly basis!}
     \item Make sure that the email address registered to your studip is ending with "uni-hannover.de".
-    \item Tim Ruhkopf will send you an email with your credentials based on this list of participants. 
-    \item Login using VPN (or on-site) and type  \href{https://jupyterhub.cluster.uni-hannover.de/} into your browser.
+    \item Tim (or Lukas) will send you an email with your credentials based on this list of participants. 
+    \item Log in using VPN (or on-site) and type  \href{https://jupyterhub.cluster.uni-hannover.de/} into your browser.
     \item Select the DataScience course in the dropdown and start a job 
     (this is an actual job on the LUIS Cluster, so waiting times might occur before resources are allocated to you.)
+\end{itemize}
+
+\end{frame}
+%-----------------------------------------------------------------------
+\begin{frame}[c]{Bonus Points}
+
+\begin{itemize}
+    \item Kahoot Quizzes
+    \begin{itemize}
+        \item If you correctly answer more than 66\% of the overall questions, you get grading improvement\footnote{That is a grade improvement by 0.3 or 0.4}
+        \item Use the "Ergebnis Pin" in StudIP to attend the quiz
+    \end{itemize}
+    \item Exercise Bonus
+    \begin{itemize}
+        \item Each group can volunteer to present their exercises each week $\to$ post this in the exercise forum by \alert{Wednesday 9am} on the day of an exercise!
+        \item If you volunteer\begin{itemize}
+            \item and you present in this week, you get 2 bonus points.
+            \item and you are not selected for presentation, you get 1 bonus point.
+            \item and the quality of your solution should not be satisfying or you were attending the session on-site, you will lose 2 points.
+        \end{itemize}
+        \item If you obtained 4 points by the end of the semester, you get a grading improvement
+    \end{itemize}
+    \item \alert{Important:} Bonus points are only added \alert{after passing} the exam.
 \end{itemize}
 
 \end{frame}
@@ -291,10 +320,10 @@ Optional video material on Inference and Ethics.
 \begin{frame}[c]{Get in Touch with Us}
 
 \begin{itemize}
-  \item Lecture session every Wednesday (9am s.t.) and\\ exercise session (roughly) every second Thursday (11am s.t.)
+  \item Lecture session every week and\\ exercise session bi-weekly
   \item \alert{Use the forum in StudIP for all kinds of questions}
   \begin{itemize}
-        \item[$\leadsto$] Contact Tim first if necessary 
+        \item[$\leadsto$] Contact Tim and Lukas first if necessary 
       \item[$\leadsto$] Email to professor only in case of emergencies
   \end{itemize}
 \end{itemize}
@@ -312,12 +341,17 @@ Optional video material on Inference and Ethics.
   \item Programming in \alert{Python} (mandatory)
   \begin{itemize}
     \item All exercises will require that you implement something in~Python 
-    \item We will show you the basics at the beginning in the exercises.\\ However if you never used Python before, it could get quite hard for you.
+    \item We will show you the basics at the beginning, i.e, next week.
+    \item If you have never used Python, study the basics as a homework for next week
   \end{itemize}
   \item \alert{English} (mandatory)
     \begin{itemize}
-    \item You can ask us any question also in German. However, we will reply in English.\\ So, you need to understand us ;-)
+    \item You can ask us any question also in German. However, we will reply in English.
+    \item Exam will also be in English, but you can ask us if you don't understand a word.
   \end{itemize}
+    \pause
+    \break
+  \item \alert{MSc Computer science students are not allowed to take this course anymore!}
 \end{itemize}
 
 \end{frame}
@@ -330,14 +364,17 @@ Optional video material on Inference and Ethics.
   \item Show us that you understand the concepts
   \item Be a master of all the algorithms we showed you
   \item Be able to read and check code
-  \item Be able to answer multiple-choice questions
+  \item Be able to answer multiple-choice questions (roughly 50\% of the exam!)
   \item Fill blank-field text or graphics
   \item ...
 \end{itemize}
 
 \vspace{1em}
-\alert{Date:} 20.08.2024, 8:00-10:00\\
-\alert{Room:} 1101.E214
+\alert{Date:} 03.03.2024, 08:00am -10:00am\\
+    \begin{itemize}
+        \item We will meet at 07:30am!
+    \end{itemize}
+\alert{Room:} 1101.E415 (Welfengarten Audimax)
 
 \end{frame}
 %----------------------------------------------------------------------
@@ -366,7 +403,7 @@ Optional video material on Inference and Ethics.
   \item \href{https://www.kaggle.com/}{Kaggle} for online competitions, datasets and code
   \begin{itemize}
       \item If you can become a grant master at Kaggle, you have very good chances for job offers
-      \item Participate in competitions, look for help in forums, polish your skills!
+      \item Participate in competitions, look for help in forums, and polish your skills!
   \end{itemize}
 \end{itemize}
 
@@ -388,7 +425,7 @@ Opportunities:
 
 \medskip
 
-Risks:
+Downsides:
 \begin{itemize}
   \item You will find some typos and issues in the slides;\\ please tell us if you find something
   \item We will not cover the newest DL methods
@@ -400,30 +437,33 @@ $\to$ Give us some feedback and we will improve the course!
 \end{frame}
 %-----------------------------------------------------------------------
 %----------------------------------------------------------------------
-\begin{frame}[c]{AI@LUH}
+\begin{frame}[c]{AI@FEI|LUH: Basics}
 
 \vspace{-2em}
 \centering
-\includegraphics[width=0.43\textwidth]{figures/AI_Courses_LUH}
+\includegraphics[width=0.9\textwidth]{figures/ai_basics}
 
 \end{frame}
 %----------------------------------------------------------------------
 %----------------------------------------------------------------------
-\begin{frame}[c]{Leibniz AI Academy}
+\begin{frame}[c]{AI@FEI|LUH: Advanced}
 
+\vspace{-2em}
 \centering
-\includegraphics[width=0.6\textwidth]{figures/leibniz_ai_academy.png}
+\includegraphics[width=0.9\textwidth]{figures/ai_adv}
 
 \end{frame}
 %----------------------------------------------------------------------
 %----------------------------------------------------------------------
-\begin{frame}[c]{DS Lecture as Part of Leibniz AI Academy}
+\begin{frame}[c]{AI@FEI|LUH: Application-drive, Seminars, Labs}
 
+\vspace{-2em}
 \centering
-\includegraphics[width=0.8\textwidth]{figures/LAI-New-Blue.png}
+\includegraphics[width=0.9\textwidth]{figures/ai_apps_sems}
 
 \end{frame}
-%----------------------------------------------------------------------%----------------------------------------------------------------------
+%----------------------------------------------------------------------
+%----------------------------------------------------------------------
 \begin{frame}[c]{Introduce yourself}
 
 
