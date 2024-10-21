@@ -1,5 +1,5 @@
 \documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
-\input{../latex_main/preamble}
+\input{../latex_main/preamble_2}
 
 \title[Introduction]{DS: Data Sampling and Probability}
 \subtitle{Probability Samples}
@@ -29,6 +29,7 @@
 	        
 	        \begin{column}{.5\textwidth}
 	            For our purposes, probability samples and random samples will mean the same thing.
+             
 	            \bigskip
 	            A probability sample is a type of sampling technique.
 	        \end{column}
@@ -52,6 +53,7 @@
 	        \begin{column}{.5\textwidth}
 	            Not all probability samples are necessarily good.
 	            \bigskip
+             
 	            For instance, suppose I have three students: Allen, Kunal, Ishaan, and I want to sample two of them.
 	            \begin{itemize}
 	                \item I choose Allen with probability 1.
@@ -69,12 +71,12 @@
 		\begin{frame}{Some random sampling schemes}
 	    \begin{columns}
 	        \begin{column}{.7\textwidth}
-	            A random sample with replacement is a sample drawn uniformly at random with replacement.
+	            A \alert{random sample} with replacement is a sample drawn uniformly at random with replacement.
 
 	            \begin{itemize}
 	                \item Random doesn’t always mean “uniformly at random,” but in this specific context, it does.
 	            \end{itemize}
-	            A simple random sample is a sample drawn uniformly at random without replacement.
+	            A \alert{simple random sample} is a sample drawn uniformly at random without replacement.
                  \begin{itemize}
 	                \item Every individual has the same chance of being selected.
 	                \item Every pair has the same chance as every other pair.
@@ -98,7 +100,7 @@
 	
 	
 	
-		\begin{frame}{Example scenario}
+		\begin{frame}{Example Scenario}
 	    \begin{columns}
 	        \begin{column}{.3\textwidth}
 	            Consider the following sampling scheme:
@@ -126,7 +128,7 @@
 	    
 	\end{frame}
 	
-		\begin{frame}{Example scenario}
+		\begin{frame}{Example Scenario (cont'd)}
 	    \begin{columns}
 	        \begin{column}{.3\textwidth}
 	            Consider the following sampling scheme:
@@ -142,79 +144,16 @@
 	        \begin{column}{.6\textwidth}
 	           Is this a probability sample?
 	           \begin{itemize}
-	               \item Yes. If my sample is [n, n + 10, n + 20, …, n + 1190], where 0 $\leq n \leq 10, \text{ the probability of that sample is } \frac{1}{10}$
+	               \item Yes. If my sample is [n, n + 10, n + 20, …, n + 1190], where $0 \leq n \leq 10$, the probability of that sample is $\frac{1}{10}$
 	               \item Otherwise, the probability is 0.
 	               \item Only 10 possible samples!
 	           \end{itemize}
-	           Does each student have the same probability of being selected?\\
-	           \bigskip
-	           Is this a simple random sample?
-
-
-	        \end{column}
-	        
-	    \end{columns}
-	    
-	\end{frame}
-	
-	\begin{frame}{Example scenario}
-	    \begin{columns}
-	        \begin{column}{.3\textwidth}
-	            Consider the following sampling scheme:
-
-	            \begin{itemize}
-	                \item Suppose a class roster has 1200 students listed alphabetically.
-	                \item Pick one of the first 10 students on the list at random.
-	                \item To create your sample, take that student and every 10th student listed after that (e.g. Students 8, 18, 28, etc).
-	            \end{itemize}
-
-                 
-	        \end{column}
-	        
-	        \begin{column}{.6\textwidth}
-	           Is this a probability sample?
-	           \begin{itemize}
-	               \item Yes. If my sample is [n, n + 10, n + 20, …, n + 1190], where 0 $\leq n \leq 10, \text{ the probability of that sample is } \frac{1}{10}$
-	               \item Otherwise, the probability is 0.
-	               \item Only 10 possible samples!
-	           \end{itemize}
+            \pause
 	           Does each student have the same probability of being selected?
 	           \begin{itemize}
 	               \item Yes. Each student is chosen with probability $\frac{1}{10}$. 
 	           \end{itemize}
-	           Is this a simple random sample?
-
-
-	        \end{column}
-	        
-	    \end{columns}
-	    
-	\end{frame}
-	
-	\begin{frame}{Example scenario}
-	    \begin{columns}
-	        \begin{column}{.3\textwidth}
-	            Consider the following sampling scheme:
-
-	            \begin{itemize}
-	                \item Suppose a class roster has 1200 students listed alphabetically.
-	                \item Pick one of the first 10 students on the list at random.
-	                \item To create your sample, take that student and every 10th student listed after that (e.g. Students 8, 18, 28, etc).
-	            \end{itemize}
-                 
-	        \end{column}
-	        
-	        \begin{column}{.6\textwidth}
-	           Is this a probability sample?
-	           \begin{itemize}
-	               \item Yes. If my sample is [n, n + 10, n + 20, …, n + 1190], where 0 $\leq n \leq 10, \text{ the probability of that sample is }\frac{1}{10}$
-	               \item Otherwise, the probability is 0.
-	               \item Only 10 possible samples!
-	           \end{itemize}
-	           Does each student have the same probability of being selected?
-	           \begin{itemize}
-	               \item Yes. Each student is chosen with probability $\frac{1}{10}$. 
-	           \end{itemize}
+                \pause
 	           Is this a simple random sample?
                 \begin{itemize}
                     \item No. The chance of selecting (8, 18) is 1/10; the chance of selecting (8, 9) is 0.
@@ -226,6 +165,7 @@
 	    
 	\end{frame}
 	
+		
 	
 	\begin{frame}{A very common approximation}
 	    \begin{itemize}

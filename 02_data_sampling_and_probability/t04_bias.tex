@@ -1,5 +1,5 @@
 \documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
-\input{../latex_main/preamble}
+\input{../latex_main/preamble_2}
 
 \title[Introduction]{DS: Data Sampling and Probability}
 \subtitle{Bias}
@@ -52,11 +52,11 @@
 	            \bigskip
 
 
-	            The Literary Digest’s prediction:
+	            The Literary Digest’s \alert{prediction}:
                 \begin{align*}
                     \text{43\% Roosevelt, 57\% Landon}
                 \end{align*}
-                The actual outcome of the election:
+                The \alert{actual outcome} of the election:
                 \begin{align*}
                     \text{61\% Roosevelt, 37\% Landon}
                 \end{align*}
@@ -67,7 +67,7 @@
 	            \begin{itemize}
 	                \item Their sample was not representative of the population.
 	                \begin{itemize}
-	                    \item They sampled people who owned phones, subscribed to magazines, and went to country clubs, who at the time were more affluent.
+	                    \item They sampled people who owned phones, subscribed to magazines, and went to country clubs, who at the time were more wealthy.
 	                    \item These people tended to vote Republican (Alf Landon).
 	                \end{itemize}
 	                \item Only 2.4 million people actually filled out the survey!
@@ -87,6 +87,7 @@
 	        \begin{column}{.4\textwidth}
 	            George Gallup, a rising statistician, also made predictions about the impending 1936 elections. He predicted that Roosevelt would win with 56\% of the vote.
                 \bigskip
+                
                 Not only was his estimate much closer than The Literary Digest’s estimate, but he did it with a sample size of only 50,000!
 	        \end{column}
 	        
@@ -107,6 +108,7 @@
 	\begin{frame}{Summary of results}
 	    \begin{columns}
 	        \begin{column}{.6\textwidth}
+         
 	            \begin{tabular}{|l|l|l|}
 	                \hline
 	                 & \% Roosevelt & \#surveyed  \\
@@ -115,11 +117,13 @@
 	               \hline
 	               George Gallup’s poll & 56\% & 50,000\\
 	               \hline
-	               George Gallup’s\\ prediction of\\ Digest’s prediction & 44\% & 3,000\\
+	               George Gallup’s & & \\ prediction of& & \\ 
+                      Digest’s prediction & 44\% & 3,000\\
 	               \hline
 	               Actual election & 61\% & All voters\\
 	               \hline
 	            \end{tabular}
+             
 	        \end{column}
 	        
 	        \begin{column}{.4\textwidth}
@@ -138,6 +142,7 @@
 		\begin{frame}{Population, samples, and sampling frame}
 	    \begin{columns}
 	        \begin{column}{.4\textwidth}
+         
 	            \begin{itemize}
 	                \item Population: The group that you want to learn something about.
                     \item Sampling Frame: The list from which the sample is drawn.
@@ -152,9 +157,11 @@
 	        \end{column}
 	        
 	        \begin{column}{.4\textwidth}
+
+                \vspace*{-2em}
                 \begin{figure}
                     \centering
-                    \includegraphics[scale=.5]{Bild13}\\
+                    \includegraphics[scale=.7]{Bild13}\\
                     Note: There may be individuals in your sampling frame (and hence, your sample) that are not in your population!
 
                 \end{figure}

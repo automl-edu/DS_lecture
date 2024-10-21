@@ -1,5 +1,5 @@
 \documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
-\input{../latex_main/preamble}
+\input{../latex_main/preamble_2}
 
 \title[Introduction]{DS: Data Sampling and Probability}
 \subtitle{Binomial and multinomial probabilities}
@@ -25,7 +25,6 @@
 	    \end{itemize}
 	    \item Want to count the number of each category that end up in our sample.
 	\end{itemize}
-	    Note: In this section, we will make use of the binomial coefficient and factorials. If you want a refresher on these, or want a more in-depth understanding, there’s an extra section at the end of this lecture that covers the derivation and some examples of it.
 
 	\end{frame}
 	
@@ -36,7 +35,7 @@
 	\begin{itemize}
 	    \item What is P(bnbbbnn)?
 	    \begin{itemize}
-	        \item By the product rule from Data 8, since the sample is drawn with replacement:
+	        \item By the product rule, since the sample is drawn with replacement:
             \begin{align*}
                 P(bnbbbnn) &= 0.6 \times 0.4 \times 0.6 \times 0.6 \times 0.6 \times 0.4 \times 0.4 \\
                 &= (0.6)^4 (0.4)^3
@@ -56,7 +55,7 @@
 		\begin{frame}{Binomial probabilities...}
 	“4 blue, 3 not blue” can occur in several equally likely ways.\\                     For instance, P(bnbbbnn) = P(bnbbbnn) = P(bnbbbnn) = ... = $(0.6)^4$ $(0.4)^3$. \\         \bigskip
 	    
-	    P(4 blue, 3 not blue) is the total chance of all of those ways. The number of ways in which we can draw 4 blue marbles and 3 not blue marbles is
+	    P(4 blue, 3 not blue) is the total chance of all of those ways. The number of ways in which we can draw 4 blue marbles and 3 not blue marbles is (i.e., all possible permutations!)
 
         \begin{align*}
             \binom{7}{4} = \frac{7!}{4!3!}
@@ -68,23 +67,5 @@
 
 	\end{frame}
 	
-	
-	\begin{frame}{Next time: random variables}
-    	\begin{itemize}
-    	    \item In the next lecture, we will formalize the notion of a random variable. Random variables arise naturally from this notion of a sample.
-    	    \item We will then explore properties of random variables. 
-    	    \begin{itemize}
-    	        \item Expectation and variance.
-    	        \item Various distributions.
-    	        \item Sample means and sums.
-    	    \end{itemize}
-    	    \item We will then take a break from this discussion on sampling and probability, and switch gears to some of the more tools-focused ideas in this class. 
-    	    \begin{itemize}
-    	        \item SQL, pandas, regex, visualization, etc.
-    	    \end{itemize}
-    	    \item But not to worry – sampling, probability, and random variables in particular will reappear later in the semester.
-    	\end{itemize}
-
-	\end{frame}
 
 \end{document}
