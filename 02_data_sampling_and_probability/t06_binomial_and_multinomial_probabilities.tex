@@ -1,7 +1,7 @@
 \documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
 \input{../latex_main/preamble_2}
 
-\title[Introduction]{DS: Data Sampling and Probability}
+\title[Binomial and Multinomial]{DS: Data Sampling and Probability}
 \subtitle{Binomial and multinomial probabilities}
 
 \graphicspath{ {./figure/} }
@@ -66,6 +66,62 @@
     \end{align*}
 
 	\end{frame}
-	
+
+\begin{frame}{Multinomial probabilities}
+
+Suppose we again sample at random with replacement 7 times from a bag of
+marbles, but this time, 60\% of marbles are blue, 30\% are green, and 10\% are red.
+
+\begin{itemize}
+    \item What is P(bgbbbgr)?
+    \begin{itemize}
+        \item Following the same steps as before:\\
+        $ P(bgbbbgr) = 0.6 \cdot 0.3 \cdot 0.6 \cdot 0.6 \cdot 0.6 \cdot 0.3 \cdot 0.1 = 0.6^4 \cdot 0.3^2 \cdot 0.1$
+    \end{itemize}
+    \item What is P(4 blue, 2 green, 1 red)?
+    \begin{itemize}
+        \item As we saw before, we multiply the above probability by the total number of ways to draw 4 blue, 2 green, and 1 red marbles. This gives\\
+P(4 blue, 2 green, 1 red) $= \frac{7!}{4!2!1!} \cdot  0.6^4 \cdot 0.3^2 \cdot 0.1$
+    \end{itemize}
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}[c]{Generalization of binomial probabilities}
+
+If we are drawing at random with replacement $n$ times, from a population in which a proportion $p$ of the individuals are called “successes” (and the remaining $1 - p$ are
+“failures”), then the probability of $k$ successes (and hence, $n - k$ failures) is
+
+$$P(\text{k successes}) = \binom{n}{k}p^k (1-p)^{n-k}$$
+
+\begin{itemize}
+    \item Note: since the number of successes and the number of failures we draw must
+sum to $n$, saying “$k$ successes” is equivalent to saying “$k$ successes and $n - k$ failures.”
+\begin{itemize}
+    \item For instance, if you flip a coin $10$ times and see $6$ heads, we know there were $4$ tails
+\end{itemize}
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[c]{Generalization of Multinomial Probabilities}
+
+If we are drawing at random with replacement n times, from a population broken into three separate categories (where $p1 + p2 + p3 = 1$):
+
+\begin{itemize}
+    \item Category 1, with proportion $p_1$ of the individuals.
+    \item Category 2, with proportion $p_2$ of the individuals.
+    \item Category 3, with proportion $p_3$ of the individuals.
+\end{itemize}
+
+Then, the probability of drawing $k_1$ individuals from Category 1, $k_2$ individuals from Category 2, and $k_3$ individuals from Category 3 (where $k_1 + k_2 + k_3 = n$) is
+
+$$\frac{n!}{k_1!k_2!k_3!} p_1^{k_1}p_2^{k_2}p_3^{k_3}$$
+
+\pause
+$\leadsto$ In practice, you simply use \texttt{np.random.multinomial()} ;-)
+
+\end{frame}
 
 \end{document}

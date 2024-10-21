@@ -1,0 +1,143 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble_2}
+
+\title[Statistics]{DS: Data Sampling and Probability}
+\subtitle{Statistics}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+	
+
+% Slide 54: Empirics
+\begin{frame}{Empirics}
+    \begin{itemize}
+        \item In science, the word “empirical” means “observed”.
+        \begin{itemize}
+            \item Observed birds in the sky
+            \item Observed car crashes at a round-about
+        \end{itemize}
+        \item Empirical distributions are distributions of observed data, such as data in random samples.
+    \end{itemize}
+\end{frame}
+
+% Slide 55: Inference
+\begin{frame}{Inference}
+    \textbf{Statistical Inference:}
+    \begin{itemize}
+        \item Making conclusions based on data in random samples        
+        \item Example:\\
+        \textbf{Task}: Use the data to guess the value of an unknown (fixed) number.\\
+        \textbf{Approach}: Create an estimate of the unknown quantity!\\
+        \textbf{Remark}: Depends on the random samples.
+    \end{itemize}
+\end{frame}
+
+% Slide 56: What is a statistic?
+\begin{frame}{What is a statistic?}
+    \begin{itemize}
+        \item A single piece of data.
+        \item A numerical summary of a dataset 
+        \begin{itemize}
+            \item function of realizations of RVs
+            \item Often the \textbf{expected value}
+        \end{itemize}
+        
+    \end{itemize}
+    \textbf{What is an estimator?} \\
+    A statistic designed to estimate a parameter.
+\end{frame}
+	
+ 
+ \begin{frame}{Statistic / Estimator}
+	    \begin{columns}
+	        \begin{column}{.4\textwidth}
+
+\includegraphics[scale=.38]{figure/squirrel_stat}
+	       
+	        \end{column}
+	            
+	        \begin{column}{.4\textwidth}
+	            
+	            \includegraphics[scale=.45]{Bild2}
+	            
+	        \end{column}
+	        
+	        \end{columns}
+	\end{frame}
+
+% Slide 58: Expected Value
+\begin{frame}{Expected Value}
+    The \textbf{expected value} of a random variable $X$ is the weighted average of the values of $X$, where the weights are the probabilities of the values.
+
+    \begin{itemize}
+        \item Expected value is a number, not a random variable.
+        \item It is analogous to the average.
+            \begin{itemize}
+                \item It has the same units as the random variable.
+                \item It doesn’t need to be a possible value of the random variable.
+                \item It is the center of gravity of the probability histogram.
+            \end{itemize}
+    \end{itemize}
+
+$$\mathbb{E}(X) = \sum_{\text{all } x_i } x_i P(X=x_i) = \mu$$
+    
+\end{frame}
+
+% Slide 59: Properties of Expectations
+\begin{frame}{Properties of Expectations}
+    \textbf{Linear transformations:}\\
+    Let $a$ and $b$ be constants. Then,
+    \begin{equation}
+        \mathbb{E}(aX + b) = a\mathbb{E}(X) + b
+    \end{equation}
+
+    \textbf{Additivity:}\\
+    Let $X$ and $Y$ be independent random variables. Then,
+    \begin{equation}
+        \mathbb{E}(X + Y) = \mathbb{E}(X) + \mathbb{E}(Y)
+    \end{equation}
+
+    \textbf{Linearity of Expectation:}\\
+    Let $X_1, X_2, \dots, X_n$ be random variables. Then,
+    \begin{equation}
+        \mathbb{E}\left(\sum_{i=1}^{n} c_i X_i\right) = \sum_{i=1}^{n} c_i \mathbb{E}(X_i)
+    \end{equation}
+\end{frame}
+
+% Slide 60: Bernoulli and Binomial Expected Values
+\begin{frame}{Bernoulli and Binomial Expected Values}
+    \textbf{Bernoulli:}\\
+    Let $X$ be Bernoulli$(p)$. The expected value is:
+    \begin{equation}
+        \mathbb{E}(X) = \sum_k k P(X=k) = 0(1-p) + 1p = p
+    \end{equation}
+
+    \textbf{Binomial:}\\
+    Let $Y$ be Binomial$(n, p)$. Since $Y$ is the sum of $n$ independent Bernoulli random variables:
+    \begin{equation}
+        Y = X_1 + X_2 + \dots + X_n
+    \end{equation}
+    The expected value is:
+    \begin{equation}
+        \mathbb{E}(Y) = n \cdot p
+    \end{equation}
+\end{frame}
+
+% Slide 61: Random Variables: Summary
+\begin{frame}{Random Variables: Summary}
+    \begin{itemize}
+        \item In order to understand the world, you need to know how your data was generated.
+        \item Random Variables and their distributions formalize that process.
+        \item Many random variables reoccur and have been given names.
+        \item One of the most prominent features of a random variable is its expected value.
+    \end{itemize}
+\end{frame}
+
+
+	
+\end{document}
