@@ -13,14 +13,17 @@ jobs:
             "00_Orga",
             "01_introduction",
             "02_data_sampling_and_probability",
-            "04_visualization",
+            "03_visualization",
+            "04_data_cleaning",
+            "05_intro_modelling",
             "06_learning",
             "07_classification",
-            "07_feature_engineering",
             "08_bias_and_variance",
             "085_dim_red",
             "075_deep_learning",
-            "10_evaluation"
+            "09_deep_learning",
+            "10_evaluation",
+            "11_feature_engineering"
           ]
         mode: [
         #        "animation",
@@ -48,14 +51,17 @@ jobs:
             "00_Orga",
             "01_introduction",
             "02_data_sampling_and_probability",
-            "04_visualization",
+            "03_visualization",
+            "04_data_cleaning",
+            "05_intro_modelling",
             "06_learning",
             "07_classification",
-            "07_feature_engineering",
             "08_bias_and_variance",
             "085_dim_red",
             "075_deep_learning",
-            "10_evaluation"
+            "09_deep_learning",
+            "10_evaluation",
+            "11_feature_engineering"
         ]
     steps:
       - uses: actions/checkout@v3
