@@ -1,0 +1,136 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble_2}
+
+\title[Cleaning]{DS: Data Cleaning}
+\subtitle{Cleaning}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+
+ \begin{frame}[c]{Motivation}
+
+\begin{itemize}
+    \item \textbf{Rules:}
+    \begin{itemize}
+        \item \textit{Example 1:} The city determines the state
+        \begin{itemize}
+            \item (t4 and t6 violate this rule)
+        \end{itemize}
+        \item \textit{Example 2:} Among employees having the same role, salaries in NYC should be higher
+        \begin{itemize}
+            \item (t5 and t6 violate this rule)
+        \end{itemize}
+    \end{itemize}
+    \item Traditional methods apply rules one by one
+\end{itemize}
+
+\centering\includegraphics[width=0.8\textwidth]{figure/bild18_table}
+
+\end{frame}
+
+\begin{frame}[c]{Goal/Problem}
+
+\begin{itemize}
+    \item Correct violations for different types of constraints with desirable repairs
+    \item $\leadsto$ {Desirability} depends on a cost model such as minimizing the number of changes
+    \item How can we compile heterogeneous rules into the same language and efficiently apply them holistically together?
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[c]{Denial Constraints}
+
+\begin{itemize}
+    \item The method accepts \textbf{Denial Constraints (DCs)} as input
+    \item DCs are a declarative specification of the quality rules
+\end{itemize}
+
+\centering\includegraphics[width=0.8\textwidth]{figure/bild19_constraints}
+
+\vspace{-2cm}
+
+\begin{itemize}
+    \item \textbf{Example Data:}
+    \end{itemize}
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|c|c|c|c|}
+            \hline
+            GID & FN & LN & ROLE & CITY & AC & ST & SAL \\
+            \hline
+            t3 & 102 & Paul J. Smith & V & SJ & 639 & CA & 100 \\
+            t4 & 105 & Anne Nash & M & NYC & 234 & NY & 110 \\
+            t5 & 211 & Mark White & E & SJ & 639 & CA & 80 \\
+            t6 & 386 & Mark Lee & E & NYC & 552 & AZ & 75 \\
+            \hline
+        \end{tabular}
+    \end{center}
+
+\end{frame}
+
+\begin{frame}[c]{System Overview}
+
+\begin{itemize}
+    \item \textbf{Conflict Hypergraph (CH)}: Encodes constraint violations
+    \item \textbf{Repair Context (RC)}: Encodes violation repairs
+\end{itemize}
+
+\centering\includegraphics[width=0.6\textwidth]{figure/bild20_systems}
+
+\end{frame}
+
+\begin{frame}[c]{Violations Representation: Conflict Hypergraph}
+
+\begin{itemize}
+    \item The nodes represent the violating cells
+    \item The edges link cells involved in the same violation
+\end{itemize}
+
+    \centering\includegraphics[width=0.9\textwidth]{figure/bild21_graphs}
+
+\end{frame}
+
+\begin{frame}[c]{Fixing Violation Holistically: Repair Context}
+
+\begin{itemize}
+    \item Start from cells identified by the minimum vertex cover as likely to be changed, e.g., \( t2[C] \)
+\end{itemize}
+    
+    \begin{columns}
+    
+        \column{0.6\textwidth}
+
+    \begin{enumerate}
+        \item Start with \( t2[C] \) in queue; involved in 3 hyper-edges
+        \item \textbf{Consider \( e_1 \):}
+        \begin{itemize}
+            \item Add repair \( t2[C] = t1[C] \); Add \( t1[C] \) to queue
+        \end{itemize}
+        \item \textbf{Consider \( e_2 \):}
+        \begin{itemize}
+            \item Add repair \( t2[C] = t3[C] \); Add \( t3[C] \) to queue
+        \end{itemize}
+        \item \textbf{Consider \( e_3 \):}
+        \begin{itemize}
+            \item Add repair \( t2[C] = t4[C] \); Add \( t4[C] \)
+        \end{itemize}
+        \item \textbf{Considering \( e_4 \):}
+        \begin{itemize}
+            \item Add repair \( t4[C] = 5 \)
+        \end{itemize}
+    \end{enumerate}
+    
+        \column{0.4\textwidth}
+    
+        \centering\includegraphics[width=.8\textwidth]{figure/bild22_graphs2}
+    
+    \end{columns}
+
+
+\end{frame}
+
+\end{document}

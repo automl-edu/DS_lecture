@@ -1,0 +1,142 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble_2}
+
+\title[Data Property: Temporality \& Faithfulness]{DS: Data Cleaning}
+\subtitle{Data Property: Temporality \& Faithfulness}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+ 
+\begin{frame}[c]{Key Data Properties to Consider in EDA}
+    \begin{itemize}
+        \item {Structure} -- the “shape” of a data file.
+        \item {Granularity} -- how fine/coarse is each datum.
+        \item {Scope} -- how (in)complete is the data.
+        \item \textbf{Temporality} -- how is the data situated in time.
+        \item {Faithfulness} --how well does the data capture “reality”.
+    \end{itemize}
+\end{frame}
+
+
+% Slide 34 - Temporality
+\begin{frame}[c]{Temporality}
+
+    \begin{itemize}
+        \item Data changes – when was the data collected?
+        \item What is the meaning of the time and date fields?
+        \begin{itemize}
+            \item When did the “event” happen?
+            \item When the data was collected or was entered into the system?
+        \end{itemize}
+        \pause
+        \item Time depends on where! (Time zones \& daylight savings)
+        \begin{itemize}
+            \item Learn to use datetime python library
+            \item Multiple string representation (depends on region): 07/08/09?
+        \end{itemize}
+        \pause
+        \item Are there hidden null values?
+        \begin{itemize}
+            \item January 1st 1970, January 1st 1900
+        \end{itemize}
+        \pause
+        \item Is there periodicity? 
+        \begin{itemize}
+            \item For example Diurnal patterns because most animals are more active at daylight and sleep at night
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Importance of Data Temporality}
+
+\begin{itemize}
+    \item {Tracks Changes Over Time}
+    \begin{itemize}
+        \item Enables trend analysis, seasonal patterns, and forecasting.
+    \end{itemize}
+\pause
+    \item {Supports Causal Analysis and Predictions}
+    \begin{itemize}
+        \item Allows for understanding cause-effect relationships and predicting outcomes.
+    \end{itemize}
+\pause
+    \item {Facilitates Time-Based Aggregation and Resampling}
+    \begin{itemize}
+        \item Allows for appropriate data summarization at different time intervals.
+    \end{itemize}
+\pause
+    \item {Improves Forecasting and Planning}
+    \begin{itemize}
+        \item Temporal data is essential for accurate predictions in various domains.
+    \end{itemize}
+\pause
+    \item {Supports Seasonal and Cyclical Pattern Identification}
+    \begin{itemize}
+        \item Crucial for identifying recurring trends (e.g., seasonal sales).
+    \end{itemize}
+\pause
+    \item {Helps Identify Data Recency and Relevance}
+    \begin{itemize}
+        \item Ensures that data is current and relevant to the analysis context.
+    \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[c]{Key Data Properties to Consider in EDA}
+    \begin{itemize}
+        \item {Structure} -- the “shape” of a data file.
+        \item {Granularity} -- how fine/coarse is each datum.
+        \item {Scope} -- how (in)complete is the data.
+        \item {Temporality} -- how is the data situated in time.
+        \item \textbf{Faithfulness} --how well does the data capture “reality”.
+    \end{itemize}
+\end{frame}
+
+% Slide 36 - Faithfulness
+\begin{frame}[c]{Faithfulness: Trusting the Data}
+    \begin{itemize}
+        \item Does my data contain unrealistic or “incorrect” values?
+        \begin{itemize}
+            \item Dates in the future for events in the past, locations that don’t exist
+            \item Negative counts, large outliers
+            \item Misspellings of names
+        \end{itemize}
+        \item Does my data violate obvious dependencies?
+        \begin{itemize}
+            \item E.g., age and birthday don’t match
+        \end{itemize}
+        \item Was the data entered by hand?
+        \begin{itemize}
+            \item Spelling errors, fields shifted …
+            \item Did the form require fields or provide default values?
+        \end{itemize}
+        \item Are there obvious signs of data falsification:
+        \begin{itemize}
+            \item Repeated names, fake looking email addresses, repeated use of uncommon names.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+% Slide 37 - Information Quality
+\begin{frame}[c]{Zooming into Information Quality}
+
+    \centering
+    \includegraphics[width=0.8\textwidth]{figure/bild12_information_quality.png}
+
+\end{frame}
+
+% Slide 38 - Data Quality Problems
+\begin{frame}[c]{Common Data Quality Problems}
+    \centering
+    \includegraphics[width=0.8\textwidth]{bild13_dataquality_problems.png}
+
+\end{frame}
+
+\end{document}

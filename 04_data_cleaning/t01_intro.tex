@@ -1,8 +1,8 @@
 \documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
-\input{../latex_main/preamble}
+\input{../latex_main/preamble_2}
 
-\title[Visualization]{DS: Visualization}
-\subtitle{What is visualization?}
+\title[Data Cleaning]{DS: Data Cleaning}
+\subtitle{Motivation}
 
 \graphicspath{ {./figure/} }
 %\institute{}
@@ -11,12 +11,111 @@
 \begin{document}
 	
 	\maketitle
-	\begin{frame}{What is this a visualization of?}
-	    \centering
-	    TODO
-	\end{frame}
-	
 
-	
+
+% Slide 2
+\begin{frame}[c]
+    \frametitle{But, what do data scientists actually do?}
+
+    \centering
+    \includegraphics[width=1.0\textwidth]{bild1_harvard}
+    
+\end{frame}
+
+% Slide 3 - Slide 4
+\begin{frame}[c]
+    \frametitle{CrowdFlower’s Data Science Report 2016}
+
+     \includegraphics[width=1.0\textwidth]{bild2_data_prep}
+    
+\end{frame}
+
+\begin{frame}[c]
+    \frametitle{CrowdFlower’s Data Science Report 2016}
+
+    \includegraphics[width=1.0\textwidth]{bild3_least_enjoyable_thing}
+\end{frame}
+
+% Slide 5
+\begin{frame}[c]{The 3 rd V: Variety, the 800 pound Gorilla in the Corner}
+
+    \centering
+\includegraphics[width=1.0\textwidth]{bild4_gorilla}
+    
+     “Data Integration is the 800-pound Gorilla in the Corner, and everyone's got it in spades” - Michael Stonebraker, MIT
+\end{frame}
+
+% Slide 6
+\begin{frame}[c]{Information Integration: An old problem}
+    \begin{itemize}
+        \item On the research agenda since 50 years.
+        \item Early systems in the 70s.
+        \item Manual integration earlier
+        \item New problems
+        \begin{itemize}
+            \item Many, many sources
+            \item Heterogeneity
+            \item New types of data (XML, GIS, etc.)
+            \item New types of queries (search, UDFs,...)
+            \item New types of results (ranking, visualization, ...) 
+            \item New types of users (laymen, manager, admins, ...)
+        \end{itemize}
+    \end{itemize}
+    \textit{Alon Halevy: “It’s plain hard!” (2004)}
+\end{frame}
+
+% Slide 7
+\begin{frame}[c]{Why is it so difficult?}
+    \begin{itemize}
+        \item Systems reasons: 
+        \begin{itemize}
+            \item managing different platforms
+            \item query processing
+        \end{itemize}
+        \item Social reasons:
+        \begin{itemize}
+            \item Locating and capturing relevant data in the enterprise
+            \item Conciving people to share data fiefdoms
+            \item Privacy and performance implications
+        \end{itemize}
+        \item Logic reasons: 
+        \begin{itemize}
+            \item Schema and data heterogeneity.
+            \item Challenge independent of integration architecture!
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+% Slide 8 - Data Preparation
+\begin{frame}[c]{Data Preparation or Exploratory Data Analysis}
+
+\textbf{``Getting to know the data''}
+
+    \begin{itemize}
+        \item Transform, visualize, summarize data to build understanding.
+        \begin{itemize}
+            \item Build/confirm understanding of the data and its provenance
+            \item Identify and address potential issues in the data
+            \item Inform the subsequent analysis 
+            \item discover potential hypothesis … (be careful)
+        \end{itemize}
+        \item EDA is open-ended analysis.
+        \begin{itemize}
+            \item Be willing to find something surprising
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+% Slide 9 - Key Data Properties
+\begin{frame}[c]{Key Data Properties to Consider in EDA}
+    \begin{itemize}
+        \item \textbf{Structure} -- the “shape” of a data file.
+        \item \textbf{Granularity} -- how fine/coarse is each datum.
+        \item \textbf{Scope} -- how (in)complete is the data.
+        \item \textbf{Temporality} -- how is the data situated in time.
+        \item \textbf{Faithfulness} --how well does the data capture “reality”.
+    \end{itemize}
+\end{frame}
+
 	
 \end{document}

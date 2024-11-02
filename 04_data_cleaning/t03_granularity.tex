@@ -1,0 +1,132 @@
+\documentclass[aspectratio=169]{../latex_main/tntbeamer}  % you can pass all options of the beamer class, e.g., 'handout' or 'aspectratio=43'
+\input{../latex_main/preamble_2}
+
+\title[Data Property: Granularity \& Scope]{DS: Data Cleaning}
+\subtitle{Data Property: Granularity \& Scope}
+
+\graphicspath{ {./figure/} }
+%\institute{}
+
+
+\begin{document}
+	
+	\maketitle
+
+\begin{frame}[c]{Key Data Properties to Consider in EDA}
+    \begin{itemize}
+        \item {Structure} -- the “shape” of a data file.
+        \item \textbf{Granularity} -- how fine/coarse is each datum.
+        \item {Scope} -- how (in)complete is the data.
+        \item {Temporality} -- how is the data situated in time.
+        \item {Faithfulness} --how well does the data capture “reality”.
+    \end{itemize}
+\end{frame}
+
+% Slide 29 - Granularity
+\begin{frame}[c]{Granularity}
+
+    \begin{itemize}
+        \item What does each record represent?
+        \begin{itemize}
+            \item Examples: a purchase, a person, a group of users
+            \item $\leadsto$ Each of these represents a different level of granularity
+        \end{itemize}
+        \pause
+        \item Do all records capture granularity at the same level?
+        \begin{itemize}
+            \item Some data will include summaries (aka rollups) as records
+            \item $\leadsto$ Pay attention when reasoning over different granularity levels
+        \end{itemize}
+        \pause
+        \item If the data are coarse how was it aggregated?
+        \begin{itemize}
+            \item Sampling, averaging, …
+            \item $\leadsto$ This can be important to know for interpreting the data
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Importance of Data Granularity}
+
+\begin{itemize}
+    \item {Informs Analysis Precision}
+    \begin{itemize}
+        \item Determines the level of detail for insights (e.g., daily vs. monthly data).
+    \end{itemize}
+\pause
+    \item {Ensures Relevance and Context}
+    \begin{itemize}
+        \item Helps align the data's detail level with decision-making needs.
+    \end{itemize}
+\pause
+    \item {Facilitates Data Aggregation and Transformation}
+    \begin{itemize}
+        \item Allows for effective data summarization and aggregation.
+    \end{itemize}
+\pause
+    \item {Impacts Data Storage and Performance}
+    \begin{itemize}
+        \item Fine-grained data requires more storage and affects processing speed.
+        \item $\leadsto$ Typically, you have more table rows if you consider fine-grained data
+    \end{itemize}
+\pause
+    \item {Improves Data Quality and Consistency}
+    \begin{itemize}
+        \item Ensures compatibility when merging datasets of different granularity.
+    \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[c]{Key Data Properties to Consider in EDA}
+    \begin{itemize}
+        \item {Structure} -- the “shape” of a data file.
+        \item {Granularity} -- how fine/coarse is each datum.
+        \item \textbf{Scope} -- how (in)complete is the data.
+        \item {Temporality} -- how is the data situated in time.
+        \item {Faithfulness} --how well does the data capture “reality”.
+    \end{itemize}
+\end{frame}
+
+
+% Slide 31 - Scope
+\begin{frame}[c]{Scope}
+    \begin{itemize}
+        \item  Does my data cover my area of interest?
+        \begin{itemize}
+            \item Example: I am interested in studying crime in Hannover but I only have Frankfurt crime data.
+        \end{itemize}
+        \pause
+        \item  Is my data too expansive?
+        \begin{itemize}
+            \item Example: I am interested in student grades for Data Science Foundations but have student grades for all statistics classes
+            \item Solution: Filtering? -- Implications on sample?\\
+            $\leadsto$ If the data is a sample I may have poor coverage after filter
+        \end{itemize}
+        \pause
+        \item Does my data cover the right time frame?
+        \begin{itemize}
+            \item  More on this in temporality...
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+
+% Slide 32 - Sampling Frame
+\begin{frame}[c]{Revisiting the Sampling Frame}
+    \begin{itemize}
+        \item \alert{Reminder:} The sampling frame is the population from which the data was sampled.
+        \begin{itemize}
+            \item Note that this may not be the population of interest.
+        \end{itemize}
+        \item How complete/incomplete is the frame (and its data)?
+        \item How is the frame/data situated in place?
+        \item How well does the frame/data capture reality?
+        \item How is the frame/data situated in time?
+    \end{itemize}
+\end{frame}
+
+
+
+\end{document}
