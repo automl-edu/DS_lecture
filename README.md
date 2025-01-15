@@ -38,4 +38,4 @@ Parts of the material was created by DS100 at Berkly (also under CC 4.0 BY-NC-SA
 
 ## Contact
 
-Marius Lindauer lindauer@tnt.uni-hannover.de
+Marius Lindauer m.lindauer@ai.uni-hannover.de
